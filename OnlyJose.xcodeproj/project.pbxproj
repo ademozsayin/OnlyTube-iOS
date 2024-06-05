@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		B7FE95B82C10DC9900402DE1 /* OnlyJoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */; };
 		B7FE95BA2C10DC9900402DE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95B92C10DC9900402DE1 /* ContentView.swift */; };
-		B7FE95BC2C10DC9900402DE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95BB2C10DC9900402DE1 /* Item.swift */; };
 		B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95C02C10DC9A00402DE1 /* Preview Assets.xcassets */; };
 		B7FE95CB2C10DC9A00402DE1 /* OnlyJoseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95CA2C10DC9A00402DE1 /* OnlyJoseTests.swift */; };
 		B7FE95D52C10DC9A00402DE1 /* OnlyJoseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95D42C10DC9A00402DE1 /* OnlyJoseUITests.swift */; };
 		B7FE95D72C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95D62C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift */; };
+		B7FE95E62C10DF2900402DE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7FE95E52C10DF2900402DE1 /* DesignSystem */; };
+		B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */; };
+		B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95EA2C10DFEA00402DE1 /* AppView.swift */; };
+		B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95ED2C10E08F00402DE1 /* Tabs.swift */; };
+		B7FE95F12C10E30900402DE1 /* Env in Frameworks */ = {isa = PBXBuildFile; productRef = B7FE95F02C10E30900402DE1 /* Env */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +42,6 @@
 		B7FE95B42C10DC9900402DE1 /* OnlyJose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyJose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseApp.swift; sourceTree = "<group>"; };
 		B7FE95B92C10DC9900402DE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B7FE95BB2C10DC9900402DE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7FE95C02C10DC9A00402DE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7FE95C62C10DC9A00402DE1 /* OnlyJoseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlyJoseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +49,11 @@
 		B7FE95D02C10DC9A00402DE1 /* OnlyJoseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlyJoseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FE95D42C10DC9A00402DE1 /* OnlyJoseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseUITests.swift; sourceTree = "<group>"; };
 		B7FE95D62C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B7FE95E32C10DE7300402DE1 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
+		B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnlyJoseApp+Scene.swift"; sourceTree = "<group>"; };
+		B7FE95EA2C10DFEA00402DE1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		B7FE95ED2C10E08F00402DE1 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		B7FE95EF2C10E2DF00402DE1 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FE95F12C10E30900402DE1 /* Env in Frameworks */,
+				B7FE95E62C10DF2900402DE1 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +89,10 @@
 				B7FE95B62C10DC9900402DE1 /* OnlyJose */,
 				B7FE95C92C10DC9A00402DE1 /* OnlyJoseTests */,
 				B7FE95D32C10DC9A00402DE1 /* OnlyJoseUITests */,
+				B7FE95E32C10DE7300402DE1 /* DesignSystem */,
+				B7FE95EF2C10E2DF00402DE1 /* Env */,
 				B7FE95B52C10DC9900402DE1 /* Products */,
+				B7FE95E42C10DF2900402DE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,9 +109,9 @@
 		B7FE95B62C10DC9900402DE1 /* OnlyJose */ = {
 			isa = PBXGroup;
 			children = (
-				B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */,
+				B7FE95EC2C10E03400402DE1 /* Tabs */,
+				B7FE95E72C10DF8E00402DE1 /* App */,
 				B7FE95B92C10DC9900402DE1 /* ContentView.swift */,
-				B7FE95BB2C10DC9900402DE1 /* Item.swift */,
 				B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */,
 				B7FE95BF2C10DC9A00402DE1 /* Preview Content */,
 			);
@@ -130,6 +143,31 @@
 			path = OnlyJoseUITests;
 			sourceTree = "<group>";
 		};
+		B7FE95E42C10DF2900402DE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7FE95E72C10DF8E00402DE1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */,
+				B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */,
+				B7FE95EA2C10DFEA00402DE1 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B7FE95EC2C10E03400402DE1 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE95ED2C10E08F00402DE1 /* Tabs.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +184,10 @@
 			dependencies = (
 			);
 			name = OnlyJose;
+			packageProductDependencies = (
+				B7FE95E52C10DF2900402DE1 /* DesignSystem */,
+				B7FE95F02C10E30900402DE1 /* Env */,
+			);
 			productName = OnlyJose;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnlyJose.app */;
 			productType = "com.apple.product-type.application";
@@ -260,8 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */,
 				B7FE95BA2C10DC9900402DE1 /* ContentView.swift in Sources */,
-				B7FE95BC2C10DC9900402DE1 /* Item.swift in Sources */,
+				B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */,
+				B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */,
 				B7FE95B82C10DC9900402DE1 /* OnlyJoseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +636,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B7FE95E52C10DF2900402DE1 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		B7FE95F02C10E30900402DE1 /* Env */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Env;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B7FE95AC2C10DC9900402DE1 /* Project object */;
 }

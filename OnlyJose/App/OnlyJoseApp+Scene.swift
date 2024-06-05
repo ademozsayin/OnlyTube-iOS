@@ -5,4 +5,12 @@
 //  Created by Adem Özsayın on 5.06.2024.
 //
 
-import Foundation
+import SwiftUI
+
+extension OnlyJoseApp {
+    var appScene: some Scene {
+        WindowGroup(id: "MainWindow") {
+            Text("ss")
+        }
+    }
+}
