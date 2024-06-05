@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import AVFoundation
+import DesignSystem
 
 @main
 struct OnlyJoseApp: App {
@@ -17,9 +18,7 @@ struct OnlyJoseApp: App {
     @Environment(\.openWindow) var openWindow
     
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        appScene
     }
 }
 
