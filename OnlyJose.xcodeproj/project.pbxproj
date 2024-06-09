@@ -19,6 +19,19 @@
 		B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95EA2C10DFEA00402DE1 /* AppView.swift */; };
 		B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95ED2C10E08F00402DE1 /* Tabs.swift */; };
 		B7FE95F12C10E30900402DE1 /* Env in Frameworks */ = {isa = PBXBuildFile; productRef = B7FE95F02C10E30900402DE1 /* Env */; };
+		B7FE96002C10E7A600402DE1 /* tabSelection.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F42C10E7A600402DE1 /* tabSelection.wav */; };
+		B7FE96012C10E7A600402DE1 /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F52C10E7A600402DE1 /* glass.wav */; };
+		B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F62C10E7A600402DE1 /* favorite.wav */; };
+		B7FE96032C10E7A600402DE1 /* boost.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F72C10E7A600402DE1 /* boost.wav */; };
+		B7FE96042C10E7A600402DE1 /* share.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F82C10E7A600402DE1 /* share.wav */; };
+		B7FE96052C10E7A600402DE1 /* pull.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F92C10E7A600402DE1 /* pull.wav */; };
+		B7FE96062C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FA2C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf */; };
+		B7FE96072C10E7A600402DE1 /* glass.caf in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FB2C10E7A600402DE1 /* glass.caf */; };
+		B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FC2C10E7A600402DE1 /* bookmark.wav */; };
+		B7FE96092C10E7A600402DE1 /* OpenDyslexic-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FD2C10E7A600402DE1 /* OpenDyslexic-Regular.otf */; };
+		B7FE960A2C10E7A600402DE1 /* refresh.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FE2C10E7A600402DE1 /* refresh.wav */; };
+		B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95FF2C10E7A600402DE1 /* tootSent.wav */; };
+		B7FE960E2C11CCA800402DE1 /* SettingsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE960D2C11CCA800402DE1 /* SettingsTab.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +67,19 @@
 		B7FE95EA2C10DFEA00402DE1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B7FE95ED2C10E08F00402DE1 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
 		B7FE95EF2C10E2DF00402DE1 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
+		B7FE95F42C10E7A600402DE1 /* tabSelection.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tabSelection.wav; sourceTree = "<group>"; };
+		B7FE95F52C10E7A600402DE1 /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
+		B7FE95F62C10E7A600402DE1 /* favorite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = favorite.wav; sourceTree = "<group>"; };
+		B7FE95F72C10E7A600402DE1 /* boost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boost.wav; sourceTree = "<group>"; };
+		B7FE95F82C10E7A600402DE1 /* share.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = share.wav; sourceTree = "<group>"; };
+		B7FE95F92C10E7A600402DE1 /* pull.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pull.wav; sourceTree = "<group>"; };
+		B7FE95FA2C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Atkinson-Hyperlegible-Regular-102.ttf"; sourceTree = "<group>"; };
+		B7FE95FB2C10E7A600402DE1 /* glass.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = glass.caf; sourceTree = "<group>"; };
+		B7FE95FC2C10E7A600402DE1 /* bookmark.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bookmark.wav; sourceTree = "<group>"; };
+		B7FE95FD2C10E7A600402DE1 /* OpenDyslexic-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenDyslexic-Regular.otf"; sourceTree = "<group>"; };
+		B7FE95FE2C10E7A600402DE1 /* refresh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = refresh.wav; sourceTree = "<group>"; };
+		B7FE95FF2C10E7A600402DE1 /* tootSent.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tootSent.wav; sourceTree = "<group>"; };
+		B7FE960D2C11CCA800402DE1 /* SettingsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTab.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +135,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnlyJose */ = {
 			isa = PBXGroup;
 			children = (
+				B7FE95F22C10E78400402DE1 /* Resources */,
 				B7FE95EC2C10E03400402DE1 /* Tabs */,
 				B7FE95E72C10DF8E00402DE1 /* App */,
 				B7FE95B92C10DC9900402DE1 /* ContentView.swift */,
@@ -163,9 +190,45 @@
 		B7FE95EC2C10E03400402DE1 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				B7FE960C2C11CC9B00402DE1 /* Settings */,
 				B7FE95ED2C10E08F00402DE1 /* Tabs.swift */,
 			);
 			path = Tabs;
+			sourceTree = "<group>";
+		};
+		B7FE95F22C10E78400402DE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE95F32C10E78F00402DE1 /* Sound */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B7FE95F32C10E78F00402DE1 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE95FA2C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf */,
+				B7FE95FC2C10E7A600402DE1 /* bookmark.wav */,
+				B7FE95F72C10E7A600402DE1 /* boost.wav */,
+				B7FE95F62C10E7A600402DE1 /* favorite.wav */,
+				B7FE95FB2C10E7A600402DE1 /* glass.caf */,
+				B7FE95F52C10E7A600402DE1 /* glass.wav */,
+				B7FE95FD2C10E7A600402DE1 /* OpenDyslexic-Regular.otf */,
+				B7FE95F92C10E7A600402DE1 /* pull.wav */,
+				B7FE95FE2C10E7A600402DE1 /* refresh.wav */,
+				B7FE95F82C10E7A600402DE1 /* share.wav */,
+				B7FE95F42C10E7A600402DE1 /* tabSelection.wav */,
+				B7FE95FF2C10E7A600402DE1 /* tootSent.wav */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
+		B7FE960C2C11CC9B00402DE1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B7FE960D2C11CCA800402DE1 /* SettingsTab.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,8 +339,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FE960A2C10E7A600402DE1 /* refresh.wav in Resources */,
+				B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */,
+				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
+				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
+				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
+				B7FE96032C10E7A600402DE1 /* boost.wav in Resources */,
+				B7FE96072C10E7A600402DE1 /* glass.caf in Resources */,
+				B7FE96002C10E7A600402DE1 /* tabSelection.wav in Resources */,
+				B7FE96062C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf in Resources */,
+				B7FE96092C10E7A600402DE1 /* OpenDyslexic-Regular.otf in Resources */,
 				B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */,
+				B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */,
+				B7FE96012C10E7A600402DE1 /* glass.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7FE960E2C11CCA800402DE1 /* SettingsTab.swift in Sources */,
 				B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */,
 				B7FE95BA2C10DC9900402DE1 /* ContentView.swift in Sources */,
 				B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */,

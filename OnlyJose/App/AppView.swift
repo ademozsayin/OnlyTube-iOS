@@ -4,13 +4,16 @@
 //
 //  Created by Adem Özsayın on 5.06.2024.
 //
-
+import DesignSystem
+import Env
 import SwiftUI
-
 
 @MainActor
 struct AppView: View {
     
+    @Environment(UserPreferences.self) private var userPreferences
+    @Environment(Theme.self) private var theme
+
     @Environment(\.openWindow) var openWindow
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
@@ -28,6 +31,10 @@ struct AppView: View {
             tabBarView
         }
 #endif
+    }
+    
+    var availableTabs: [Tab] {
+        return Tab.loggedOutTab()
     }
     
     var tabBarView: some View {
@@ -63,11 +70,10 @@ struct AppView: View {
                     .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .tabBar)
             }
         }
-        .id(appAccountsManager.currentClient.id)
-        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+    }
+    
+    private func badgeFor(tab: Tab) -> Int {
+        return 0
     }
 }
 
-#Preview {
-    AppView()
-}
