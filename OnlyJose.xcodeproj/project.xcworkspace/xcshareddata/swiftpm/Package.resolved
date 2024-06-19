@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "infinitescrollviews",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/b5i/InfiniteScrollViews.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "74d8b299687cc9b092efbe7d3ec5dd543e7ca58e"
+      }
+    },
+    {
       "identity" : "keychain-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/evgenyneu/keychain-swift",
@@ -16,6 +25,33 @@
       "state" : {
         "revision" : "2efd206503e99dd3a88a4dc433a76f98ce8cc198",
         "version" : "12.7.1"
+      }
+    },
+    {
+      "identity" : "purchases-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RevenueCat/purchases-ios-spm.git",
+      "state" : {
+        "revision" : "7ec1091a6f929c40be2a1c695a63471f5d0c330d",
+        "version" : "4.43.0"
+      }
+    },
+    {
+      "identity" : "swipeactions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/aheze/SwipeActions",
+      "state" : {
+        "revision" : "41e6f6dce02d8cfa164f8c5461a41340850ca3ab",
+        "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "youtubekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/b5i/YouTubeKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a690779651cc4d9021210400fdc330686f8f0686"
       }
     }
   ],

@@ -18,11 +18,21 @@ struct AppView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     @Binding var selectedTab: Tab
-    
+    @Binding var appRouterPath: RouterPath
+
     @State var popToRootTab: Tab = .other
     @State var iosTabs = iOSTabs.shared
     @State var sidebarTabs = SidebarTabs.shared
     
+    @ObservedObject private var VPM = VideoPlayerModel.shared
+    @Namespace private var sheetAnimation
+    
+    var addToPlaylistBinding = SheetsModel.shared.makeSheetBinding(.addToPlaylist)
+    var settingsSheetBinding = SheetsModel.shared.makeSheetBinding(.settings)
+    var watchVideoBinding = SheetsModel.shared.makeSheetBinding(.watchVideo)
+
+    @State private var SM = SheetsModel.shared
+
     var body: some View {
 #if os(visionOS)
 #else
@@ -68,8 +78,24 @@ struct AppView: View {
                     .tag(tab)
                     .badge(badgeFor(tab: tab))
                     .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .tabBar)
+                
             }
         }
+        .safeAreaInset(edge: .bottom, content: {
+            if  VPM.currentItem != nil {
+                NowPlayingBarView(
+                    sheetAnimation: sheetAnimation,
+                    isSheetPresented: watchVideoBinding,
+                    isSettingsSheetPresented: settingsSheetBinding.wrappedValue
+                )
+            }
+        })
+        .sheet(isPresented: watchVideoBinding, content: {
+            WatchVideoView()
+                .presentationDragIndicator(.hidden)
+        })
+        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+
     }
     
     private func badgeFor(tab: Tab) -> Int {

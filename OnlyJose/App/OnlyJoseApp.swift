@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 import AVFoundation
 import DesignSystem
+import Env
+import RevenueCat
+
 
 @main
 struct OnlyJoseApp: App {
@@ -17,8 +20,27 @@ struct OnlyJoseApp: App {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.openWindow) var openWindow
     
+ 
+    @State var userPreferences = UserPreferences.shared
+    @State var theme = Theme.shared
+    
+    @State var selectedTab: Tab = .timeline
+    @State var appRouterPath = RouterPath()
+    
+    @State var isSupporter: Bool = false
+    
     var body: some Scene {
         appScene
+    }
+    
+    func setupRevenueCat() {
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_UoVNogcNbQvbVhJdPtMSJJffSiF")
+        Purchases.shared.getCustomerInfo { info, _ in
+            if info?.entitlements["Supporter"]?.isActive == true {
+                isSupporter = true
+            }
+        }
     }
 }
 

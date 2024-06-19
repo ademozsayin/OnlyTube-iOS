@@ -35,8 +35,8 @@ struct SettingsTabs: View {
         NavigationStack(path: $routerPath.path) {
             Form {
                 appSection
-//                accountsSection
-//                generalSection
+                accountsSection
+                generalSection
 //                otherSections
 //                cacheSection
             }
@@ -91,14 +91,24 @@ struct SettingsTabs: View {
         }
     }
     
+    private var accountsSection: some View {
+        Section("settings.section.accounts") {
+      
+            addAccountButton
+        }
+#if !os(visionOS)
+        .listRowBackground(theme.primaryBackgroundColor)
+#endif
+    }
+    
     @ViewBuilder
     private var generalSection: some View {
         Section("settings.section.general") {
             
-//            NavigationLink(destination: DisplaySettingsView()) {
-//                Label("settings.general.display", systemImage: "paintpalette")
-//            }
-    
+            NavigationLink(destination: DisplaySettingsView()) {
+                Label("settings.general.display", systemImage: "paintpalette")
+            }
+            
 #if !targetEnvironment(macCatalyst)
             Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
                 Label("settings.system", systemImage: "gear")
@@ -132,29 +142,24 @@ struct SettingsTabs: View {
     
     private var appSection: some View {
         Section {
-//#if !targetEnvironment(macCatalyst) && !os(visionOS)
-//            NavigationLink(destination: IconSelectorView()) {
-//                Label {
-//                    Text("settings.app.icon")
-//                } icon: {
-//                    let icon = IconSelectorView.Icon(string: UIApplication.shared.alternateIconName ?? "AppIcon")
-//                    Image(uiImage: .init(named: icon.appIconName)!)
-//                        .resizable()
-//                        .frame(width: 25, height: 25)
-//                        .cornerRadius(4)
-//                }
-//            }
-//#endif
-            
-            Link(destination: URL(string: "https://github.com/Dimillian/IceCubesApp")!) {
-                Label("settings.app.source", systemImage: "link")
+#if !targetEnvironment(macCatalyst) && !os(visionOS)
+            NavigationLink(destination: IconSelectorView()) {
+                Label {
+                    Text("settings.app.icon")
+                } icon: {
+                    let icon = IconSelectorView.Icon(string: UIApplication.shared.alternateIconName ?? "AppIcon")
+                    Image(uiImage: .init(named: icon.appIconName)!)
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .cornerRadius(4)
+                }
             }
-            .accessibilityRemoveTraits(.isButton)
-            .tint(theme.labelColor)
+#endif
             
-//            NavigationLink(destination: SupportAppView()) {
-//                Label("settings.app.support", systemImage: "wand.and.stars")
-//            }
+            
+            NavigationLink(destination: SupportAppView()) {
+                Label("settings.app.support", systemImage: "wand.and.stars")
+            }
 //            
 //            if let reviewURL = URL(string: "https://apps.apple.com/app/id\(AppInfo.appStoreAppId)?action=write-review") {
 //                Link(destination: reviewURL) {

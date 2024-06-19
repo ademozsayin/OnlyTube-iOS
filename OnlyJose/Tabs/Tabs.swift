@@ -22,6 +22,17 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
     @ViewBuilder
     func makeContentView(selectedTab: Binding<Tab>, popToRootTab: Binding<Tab>) -> some View {
         EmptyView()
+        switch self {
+            case .timeline:
+              
+                SearchTab(popToRootTab: popToRootTab)
+            case .notifications:
+                Text("notifications")
+            case .settings:
+                SettingsTabs(popToRootTab: popToRootTab, isModal: false)
+            case .other:
+                Text("other")
+        }
     }
     
     @ViewBuilder
@@ -37,7 +48,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 "tab.timeline"
            
             case .notifications:
-                "tab.notifications"
+                "bell"
           
             case .settings:
                 "tab.settings"

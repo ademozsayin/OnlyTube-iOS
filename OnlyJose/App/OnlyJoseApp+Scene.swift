@@ -10,7 +10,13 @@ import SwiftUI
 extension OnlyJoseApp {
     var appScene: some Scene {
         WindowGroup(id: "MainWindow") {
-            Text("ss")
+            AppView(selectedTab: $selectedTab, appRouterPath: $appRouterPath)
+                .applyTheme(theme)
+                .environment(userPreferences)
+                .environment(theme)
+                .onAppear {
+                    setupRevenueCat()
+                }
         }
     }
 }
