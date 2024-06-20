@@ -4,12 +4,58 @@
     "" : {
 
     },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%@ - %lldkbps - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$lldkbps - %3$@"
+          }
+        }
+      }
+    },
     "%@%@%@%@%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$@%2$@%3$@%4$@%5$@"
+          }
+        }
+      }
+    },
+    "%lld video%@ remaining" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld video%2$@ remaining"
+          }
+        }
+      }
+    },
+    "%lld videos" : {
+
+    },
+    "%lld%%" : {
+
+    },
+    "%lldkbps - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lldkbps - %2$@"
           }
         }
       }
@@ -50,6 +96,12 @@
         }
       }
     },
+    "Add to favorites" : {
+
+    },
+    "Add to playlist" : {
+
+    },
     "alert.button.ok" : {
       "localizations" : {
         "en" : {
@@ -70,10 +122,16 @@
         }
       }
     },
+    "Audio formats" : {
+
+    },
     "Background Image" : {
 
     },
     "bell" : {
+
+    },
+    "Cancel download" : {
 
     },
     "chanel" : {
@@ -85,7 +143,13 @@
     "Chapters" : {
 
     },
+    "Create" : {
+
+    },
     "DBView" : {
+
+    },
+    "Default" : {
 
     },
     "Description" : {
@@ -113,10 +177,19 @@
         }
       }
     },
+    "Download" : {
+
+    },
+    "Downloads" : {
+
+    },
     "En Direct" : {
 
     },
     "Go home" : {
+
+    },
+    "Go to channel" : {
 
     },
     "Home" : {
@@ -128,7 +201,16 @@
     "Key" : {
       "extractionState" : "manual"
     },
+    "Loading formats..." : {
+
+    },
+    "Loading other options..." : {
+
+    },
     "Next up" : {
+
+    },
+    "No playlist available." : {
 
     },
     "No title" : {
@@ -146,6 +228,9 @@
           }
         }
       }
+    },
+    "OK" : {
+
     },
     "other" : {
       "localizations" : {
@@ -173,6 +258,9 @@
     "Play next" : {
 
     },
+    "Playlist Name" : {
+
+    },
     "playlistDetails" : {
       "localizations" : {
         "en" : {
@@ -186,10 +274,29 @@
     "Playlists" : {
 
     },
+    "Private" : {
+
+    },
+    "Public" : {
+
+    },
+    "remaining" : {
+
+    },
+    "Remove Download" : {
+
+    },
+    "Remove Favorite" : {
+
+    },
+    "Remove from playlist" : {
+
+    },
     "Search videos or pull up to refresh for the algorithm to fill this menu." : {
 
     },
     "Select an item" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -724,7 +831,10 @@
     "Tips" : {
 
     },
-    "VideoContextMenuView" : {
+    "Unlisted" : {
+
+    },
+    "Video formats" : {
 
     }
   },

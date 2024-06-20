@@ -11,7 +11,8 @@ import SwiftUI
 @main
 struct OnlyJoseWidgetsBundle: WidgetBundle {
     var body: some Widget {
-        OnlyJoseWidgets()
-        OnlyJoseWidgetsLiveActivity()
+//        OnlyJoseWidgets()
+//        OnlyJoseWidgetsLiveActivity()
+        DownloadingsProgressLiveActivity()
     }
 }

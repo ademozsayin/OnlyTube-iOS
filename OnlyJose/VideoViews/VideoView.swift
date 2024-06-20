@@ -122,7 +122,10 @@ struct VideoView: View {
                 .frame(width: geometry.size.width * 0.475, height: geometry.size.height)
             }
             .contextMenu {
-                //                VideoContextMenuView(videoWithData: self.videoWithData, isFavorite: isFavorite, isDownloaded: downloadLocation != nil)
+                VideoContextMenuView(
+                    videoWithData: self.videoWithData,
+                    isFavorite: isFavorite,
+                    isDownloaded: downloadLocation != nil)
             }
             //            .videoSwipeActions(video: video, thumbnailData: self.videoWithData.data.thumbnailData, isConnectedToNetwork: self.NRM.connected, disableChannelNavigation: !self.videoWithData.data.allowChannelLinking, isConnectedToGoogle: APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "")
         }

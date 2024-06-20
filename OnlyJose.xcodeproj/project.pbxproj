@@ -25,7 +25,6 @@
 		B767946C2C172FAF00A623BE /* VideoPlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767945F2C172FAF00A623BE /* VideoPlayerModel.swift */; };
 		B767946D2C172FAF00A623BE /* VideoThumbnailsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794602C172FAF00A623BE /* VideoThumbnailsManager.swift */; };
 		B767946E2C172FAF00A623BE /* YouTubeModelLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794612C172FAF00A623BE /* YouTubeModelLogger.swift */; };
-		B76794712C17300500A623BE /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B76794702C17300500A623BE /* YouTubeKit */; };
 		B76794742C17306F00A623BE /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794732C17306F00A623BE /* SearchView.swift */; };
 		B76794772C1730BD00A623BE /* InfiniteScrollViews in Frameworks */ = {isa = PBXBuildFile; productRef = B76794762C1730BD00A623BE /* InfiniteScrollViews */; };
 		B767947A2C1730F800A623BE /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = B76794792C1730F800A623BE /* SwipeActions */; };
@@ -120,9 +119,6 @@
 		B7A5E8C62C2489600038EDE1 /* BackgroundFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8C52C2489600038EDE1 /* BackgroundFetchOperation.swift */; };
 		B7A5E8C82C2489800038EDE1 /* BackgroundFetchOperation+defaultImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8C72C2489800038EDE1 /* BackgroundFetchOperation+defaultImplementations.swift */; };
 		B7A5E8CA2C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8C92C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift */; };
-		B7A5E8CF2C248DC40038EDE1 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E8CE2C248DC40038EDE1 /* CoreAudio.framework */; };
-		B7A5E8D12C248E250038EDE1 /* CoreAudioTypes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E8D02C248E250038EDE1 /* CoreAudioTypes.framework */; };
-		B7A5E8D32C248E310038EDE1 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E8D22C248E310038EDE1 /* AVKit.framework */; };
 		B7A5E8D52C248F7A0038EDE1 /* PrivacyIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8D42C248F7A0038EDE1 /* PrivacyIconView.swift */; };
 		B7A5E8DB2C2490990038EDE1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E86F2C2483260038EDE1 /* WidgetKit.framework */; platformFilters = (ios, macos, ); };
 		B7A5E8DC2C2490990038EDE1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5E8712C2483260038EDE1 /* SwiftUI.framework */; };
@@ -131,6 +127,12 @@
 		B7A5E8E32C2490990038EDE1 /* OnlyJoseWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8E22C2490990038EDE1 /* OnlyJoseWidgets.swift */; };
 		B7A5E8E52C24909A0038EDE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A5E8E42C24909A0038EDE1 /* Assets.xcassets */; };
 		B7A5E8E92C24909A0038EDE1 /* OnlyJoseWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B7A5E8DA2C2490990038EDE1 /* OnlyJoseWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B7A5E8EE2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */; };
+		B7A5E8EF2C2491570038EDE1 /* DownloadingsProgressAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */; };
+		B7A5E8F02C2491800038EDE1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8862C2483B70038EDE1 /* CircularProgressView.swift */; };
+		B7A5E8F22C2491FB0038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F12C2491FB0038EDE1 /* DesignSystem */; };
+		B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F42C2492470038EDE1 /* YouTubeKit */; };
+		B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F62C2492580038EDE1 /* YouTubeKit */; };
 		B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */; };
 		B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE522C221E41004E0C76 /* SupportAppView.swift */; };
 		B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = B7FCDE552C221EA8004E0C76 /* ReceiptParser */; };
@@ -140,7 +142,6 @@
 		B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */; };
 		B7FCDE602C2318FA004E0C76 /* IconSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE5F2C2318FA004E0C76 /* IconSelectorView.swift */; };
 		B7FE95B82C10DC9900402DE1 /* OnlyJoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */; };
-		B7FE95BA2C10DC9900402DE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95B92C10DC9900402DE1 /* ContentView.swift */; };
 		B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95C02C10DC9A00402DE1 /* Preview Assets.xcassets */; };
 		B7FE95CB2C10DC9A00402DE1 /* OnlyJoseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95CA2C10DC9A00402DE1 /* OnlyJoseTests.swift */; };
@@ -328,6 +329,7 @@
 		B7A5E8E22C2490990038EDE1 /* OnlyJoseWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseWidgets.swift; sourceTree = "<group>"; };
 		B7A5E8E42C24909A0038EDE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A5E8E62C24909A0038EDE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingsProgressAttributes.swift; sourceTree = "<group>"; };
 		B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappablePadding.swift; sourceTree = "<group>"; };
 		B7FCDE522C221E41004E0C76 /* SupportAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAppView.swift; sourceTree = "<group>"; };
 		B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = StoreKit.storekit; path = OnlyJose/Resources/StoreKit.storekit; sourceTree = "<group>"; };
@@ -335,7 +337,6 @@
 		B7FCDE5F2C2318FA004E0C76 /* IconSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSelectorView.swift; sourceTree = "<group>"; };
 		B7FE95B42C10DC9900402DE1 /* OnlyJose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlyJose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FE95B72C10DC9900402DE1 /* OnlyJoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseApp.swift; sourceTree = "<group>"; };
-		B7FE95B92C10DC9900402DE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7FE95C02C10DC9A00402DE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B7FE95C62C10DC9A00402DE1 /* OnlyJoseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlyJoseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -368,8 +369,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A5E8F22C2491FB0038EDE1 /* DesignSystem in Frameworks */,
 				B7A5E8DC2C2490990038EDE1 /* SwiftUI.framework in Frameworks */,
 				B7A5E8DB2C2490990038EDE1 /* WidgetKit.framework in Frameworks */,
+				B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,18 +380,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7A5E8D12C248E250038EDE1 /* CoreAudioTypes.framework in Frameworks */,
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
-				B7A5E8D32C248E310038EDE1 /* AVKit.framework in Frameworks */,
 				B767947A2C1730F800A623BE /* SwipeActions in Frameworks */,
 				B7FE95F12C10E30900402DE1 /* Env in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
 				B7FCDE582C221EA8004E0C76 /* RevenueCat in Frameworks */,
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
 				B7FE95E62C10DF2900402DE1 /* DesignSystem in Frameworks */,
-				B76794712C17300500A623BE /* YouTubeKit in Frameworks */,
-				B7A5E8CF2C248DC40038EDE1 /* CoreAudio.framework in Frameworks */,
 				B76794772C1730BD00A623BE /* InfiniteScrollViews in Frameworks */,
+				B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +571,7 @@
 		B7A5E8DD2C2490990038EDE1 /* OnlyJoseWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */,
 				B7A5E8DE2C2490990038EDE1 /* OnlyJoseWidgetsBundle.swift */,
 				B7A5E8E02C2490990038EDE1 /* OnlyJoseWidgetsLiveActivity.swift */,
 				B7A5E8E22C2490990038EDE1 /* OnlyJoseWidgets.swift */,
@@ -621,7 +622,6 @@
 				B7FE95F22C10E78400402DE1 /* Resources */,
 				B7FE95EC2C10E03400402DE1 /* Tabs */,
 				B7FE95E72C10DF8E00402DE1 /* App */,
-				B7FE95B92C10DC9900402DE1 /* ContentView.swift */,
 				B7FE95BF2C10DC9A00402DE1 /* Preview Content */,
 				B767947B2C1734CB00A623BE /* CachedAsyncImage.swift */,
 				B7A5E8BD2C2487540038EDE1 /* SwipeActionViewModifier.swift */,
@@ -755,6 +755,10 @@
 			dependencies = (
 			);
 			name = OnlyJoseWidgetsExtension;
+			packageProductDependencies = (
+				B7A5E8F12C2491FB0038EDE1 /* DesignSystem */,
+				B7A5E8F62C2492580038EDE1 /* YouTubeKit */,
+			);
 			productName = OnlyJoseWidgetsExtension;
 			productReference = B7A5E8DA2C2490990038EDE1 /* OnlyJoseWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -778,12 +782,12 @@
 				B7FE95E52C10DF2900402DE1 /* DesignSystem */,
 				B7FE95F02C10E30900402DE1 /* Env */,
 				B767944D2C171E7800A623BE /* Models */,
-				B76794702C17300500A623BE /* YouTubeKit */,
 				B76794762C1730BD00A623BE /* InfiniteScrollViews */,
 				B76794792C1730F800A623BE /* SwipeActions */,
 				B7FCDE552C221EA8004E0C76 /* ReceiptParser */,
 				B7FCDE572C221EA8004E0C76 /* RevenueCat */,
 				B7FCDE592C221EA8004E0C76 /* RevenueCatUI */,
+				B7A5E8F42C2492470038EDE1 /* YouTubeKit */,
 			);
 			productName = OnlyJose;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnlyJose.app */;
@@ -861,10 +865,10 @@
 			);
 			mainGroup = B7FE95AB2C10DC9900402DE1;
 			packageReferences = (
-				B767946F2C17300500A623BE /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 				B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */,
 				B76794782C1730F800A623BE /* XCRemoteSwiftPackageReference "SwipeActions" */,
 				B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 			);
 			productRefGroup = B7FE95B52C10DC9900402DE1 /* Products */;
 			projectDirPath = "";
@@ -933,8 +937,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A5E8EF2C2491570038EDE1 /* DownloadingsProgressAttributes.swift in Sources */,
 				B7A5E8E32C2490990038EDE1 /* OnlyJoseWidgets.swift in Sources */,
 				B7A5E8DF2C2490990038EDE1 /* OnlyJoseWidgetsBundle.swift in Sources */,
+				B7A5E8F02C2491800038EDE1 /* CircularProgressView.swift in Sources */,
 				B7A5E8E12C2490990038EDE1 /* OnlyJoseWidgetsLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,7 +973,6 @@
 				B7A5E8612C246FB60038EDE1 /* YTVideoShareSource.swift in Sources */,
 				B7A5E8502C246F4A0038EDE1 /* DownloadedChannel+CoreDataClass.swift in Sources */,
 				B7A5E8B32C2486110038EDE1 /* DownloadVideoContextButtonView.swift in Sources */,
-				B7FE95BA2C10DC9900402DE1 /* ContentView.swift in Sources */,
 				B76794682C172FAF00A623BE /* PopupsModel.swift in Sources */,
 				B767948A2C17364F00A623BE /* ChannelAvatarView.swift in Sources */,
 				B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */,
@@ -1019,6 +1024,7 @@
 				B7A5E8B62C2486110038EDE1 /* RemoveDownloadContextMenuButtonView.swift in Sources */,
 				B76794632C172FAF00A623BE /* APIKeyModel.swift in Sources */,
 				B7A5E8542C246F4A0038EDE1 /* DownloadedVideo+matchesQuery.swift in Sources */,
+				B7A5E8EE2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift in Sources */,
 				B76794992C1762A400A623BE /* AVPlayer+Extension.swift in Sources */,
 				B7A5E8212C2460560038EDE1 /* DefaultElementsInfiniteScrollView.swift in Sources */,
 				B767946C2C172FAF00A623BE /* VideoPlayerModel.swift in Sources */,
@@ -1479,14 +1485,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B767946F2C17300500A623BE /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/b5i/YouTubeKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/b5i/InfiniteScrollViews.git";
@@ -1501,6 +1499,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.0;
+			};
+		};
+		B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/b5i/YouTubeKit";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
@@ -1518,11 +1524,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
 		};
-		B76794702C17300500A623BE /* YouTubeKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B767946F2C17300500A623BE /* XCRemoteSwiftPackageReference "YouTubeKit" */;
-			productName = YouTubeKit;
-		};
 		B76794762C1730BD00A623BE /* InfiniteScrollViews */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */;
@@ -1532,6 +1533,20 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B76794782C1730F800A623BE /* XCRemoteSwiftPackageReference "SwipeActions" */;
 			productName = SwipeActions;
+		};
+		B7A5E8F12C2491FB0038EDE1 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		B7A5E8F42C2492470038EDE1 /* YouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
+			productName = YouTubeKit;
+		};
+		B7A5E8F62C2492580038EDE1 /* YouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
+			productName = YouTubeKit;
 		};
 		B7FCDE552C221EA8004E0C76 /* ReceiptParser */ = {
 			isa = XCSwiftPackageProductDependency;

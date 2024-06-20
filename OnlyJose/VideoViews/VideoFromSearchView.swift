@@ -5,11 +5,6 @@
 //  Created by Antoine Bollengier on 27.12.22.
 //
 
-import SwiftUI
-import CoreData
-import SwipeActions
-import YouTubeKit
-
 import CoreData
 import SwiftUI
 import SwipeActions
