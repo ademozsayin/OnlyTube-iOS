@@ -8,11 +8,10 @@
 import Foundation
 import UIKit
 
-@Observable
-public class SheetsModel {
+public class SheetsModel: ObservableObject {
     public static let shared = SheetsModel()
     
-    private(set) public var shownSheet: (type: SheetType, data: Any?)? = nil
+    @Published private(set) public var shownSheet: (type: SheetType, data: Any?)? = nil
     
     public func showSheet(_ type: SheetType, data: Any? = nil) {
         self.shownSheet = (type, data)

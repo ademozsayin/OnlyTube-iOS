@@ -10,13 +10,28 @@
       "internalID" : "6504541190",
       "localizations" : [
         {
-          "description" : "Oh, boss!",
+          "description" : "Dominate with ultimate support power!",
           "displayName" : "Big Boss",
           "locale" : "en_US"
         }
       ],
       "productID" : "onlyjose.tip.five",
       "referenceName" : "Big Boss",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "1.19",
+      "familyShareable" : false,
+      "internalID" : "6504584415",
+      "localizations" : [
+        {
+          "description" : "Lead with unmatched perks and honor!",
+          "displayName" : "Champion Leader",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "onlyjose.tip.six",
+      "referenceName" : "Champion Leader",
       "type" : "Consumable"
     },
     {
@@ -86,7 +101,7 @@
     "_billingGracePeriodEnabled" : false,
     "_developerTeamID" : "7PX72NXP7V",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 740445796.60529304,
+    "_lastSynchronizedDate" : 740521210.62456501,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -178,7 +193,7 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Legend you are!",
+              "description" : "Your legendary support!",
               "displayName" : "Legend",
               "locale" : "en_US"
             }
@@ -203,7 +218,7 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Patron",
+              "description" : "Power the team!",
               "displayName" : "Patron",
               "locale" : "en_US"
             }
@@ -228,7 +243,7 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Protector",
+              "description" : "Guard our victory with unmatched support!",
               "displayName" : "Protector",
               "locale" : "en_US"
             }

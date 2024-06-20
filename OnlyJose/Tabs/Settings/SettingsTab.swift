@@ -8,9 +8,12 @@
 import DesignSystem
 import Env
 import Foundation
+import Models
+import Network
 import Nuke
 import SwiftData
 import SwiftUI
+
 
 @MainActor
 struct SettingsTabs: View {
@@ -35,9 +38,9 @@ struct SettingsTabs: View {
         NavigationStack(path: $routerPath.path) {
             Form {
                 appSection
-                accountsSection
+//                accountsSection
                 generalSection
-//                otherSections
+                otherSections
 //                cacheSection
             }
             .scrollContentBackground(.hidden)
@@ -109,11 +112,21 @@ struct SettingsTabs: View {
                 Label("settings.general.display", systemImage: "paintpalette")
             }
             
-#if !targetEnvironment(macCatalyst)
-            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
-                Label("settings.system", systemImage: "gear")
+            if UIDevice.current.userInterfaceIdiom == .phone || horizontalSizeClass == .compact {
+                NavigationLink(destination: TabbarEntriesSettingsView()) {
+                    Label("settings.general.tabbarEntries", systemImage: "platter.filled.bottom.iphone")
+                }
+            } else if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
+                NavigationLink(destination: SidebarEntriesSettingsView()) {
+                    Label("settings.general.sidebarEntries", systemImage: "sidebar.squares.leading")
+                }
             }
-            .tint(theme.labelColor)
+            
+#if !targetEnvironment(macCatalyst)
+//            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+//                Label("settings.system", systemImage: "gear")
+//            }
+//            .tint(theme.labelColor)
 #endif
         }
 #if !os(visionOS)
@@ -129,11 +142,26 @@ struct SettingsTabs: View {
             Toggle(isOn: $preferences.soundEffectEnabled) {
                 Label("settings.other.sound-effect", systemImage: "hifispeaker")
             }
+            
+            VStack {
+                Toggle(isOn: $preferences.enableAutoPlayAtStart) {
+                    Label("settings.other.auto-start-video", systemImage: "play.square")
+                }
+                Text("It will play The Special One song at startup")
+                    .font(.footnote)
+                    .fontWeight(.light)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+               
+            }
+            
+            Toggle(isOn: $preferences.showBackgroundImage) {
+                Label("Background Image", systemImage: "photo.tv")
+            }
         
         } header: {
             Text("settings.section.other")
         } footer: {
-            Text("settings.section.other.footer")
+            Text("")
         }
 #if !os(visionOS)
         .listRowBackground(theme.primaryBackgroundColor)

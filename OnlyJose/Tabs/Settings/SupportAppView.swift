@@ -10,10 +10,14 @@ import Env
 import RevenueCat
 import SwiftUI
 
+public extension Color {
+    static let navyBlue = Color(red: 0/255, green: 0/255, blue: 128/255)
+}
+
 @MainActor
 struct SupportAppView: View {
     enum Tip: String, CaseIterable {
-        case one, two, three, four, supporter, protector, patron, legend, five
+        case supporter, protector, patron, legend, five, six
         
         init(productId: String) {
             self = .init(rawValue: String(productId.split(separator: ".")[2]))!
@@ -128,14 +132,20 @@ struct SupportAppView: View {
         Section {
             HStack(alignment: .top, spacing: 12) {
                 VStack(spacing: 18) {
-                    Image("avatar")
+                    Image(.me)
                         .resizable()
                         .frame(width: 50, height: 50)
                         .cornerRadius(4)
-                    Image("icon0")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(4)
+    
+                    HStack() {
+                        Rectangle()
+                            .fill(Color.yellow)
+                            .frame(width: 10,height: 40)
+                        
+                        Rectangle()
+                            .fill(Color.navyBlue)
+                            .frame(width: 10,height: 40)
+                    }
                 }
                 Text("settings.support.message-from-dev")
             }
@@ -157,6 +167,7 @@ struct SupportAppView: View {
                         Text("settings.support.supporter.subscribed")
                             .font(.scaledSubheadline)
                     } else {
+                        Text("Subscriptions")
                         ForEach(Array(subscriptions.enumerated()), id: \.element) { index, package in
                             //                    let tip = Tip(productId: package.productIdentifier)
                             let product = subscriptions[index]

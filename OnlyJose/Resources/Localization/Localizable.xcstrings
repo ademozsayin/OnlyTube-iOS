@@ -70,6 +70,9 @@
         }
       }
     },
+    "Background Image" : {
+
+    },
     "bell" : {
 
     },
@@ -88,8 +91,27 @@
     "Description" : {
 
     },
-    "DL" : {
-
+    "design.theme.navigation-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme Selector"
+          }
+        }
+      }
+    },
+    "design.theme.toots-preview" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toots preview"
+          }
+        }
+      }
     },
     "En Direct" : {
 
@@ -100,8 +122,14 @@
     "Home" : {
 
     },
+    "It will play The Special One song at startup" : {
+
+    },
     "Key" : {
       "extractionState" : "manual"
+    },
+    "Next up" : {
+
     },
     "No title" : {
 
@@ -130,6 +158,19 @@
       }
     },
     "placeholder.loading.short" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading ..."
+          }
+        }
+      }
+    },
+    "Play Later" : {
+
+    },
+    "Play next" : {
 
     },
     "playlistDetails" : {
@@ -169,10 +210,35 @@
       }
     },
     "settings.app.icon" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon"
+          }
+        }
+      }
     },
     "settings.app.icon.navigation-title" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icons"
+          }
+        }
+      }
+    },
+    "settings.app.icon.official" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Official Icons"
+          }
+        }
+      }
     },
     "settings.app.source" : {
       "extractionState" : "stale",
@@ -196,7 +262,14 @@
       }
     },
     "settings.cache-media.clear" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Media Cache"
+          }
+        }
+      }
     },
     "settings.display.navigation-title" : {
       "localizations" : {
@@ -249,7 +322,24 @@
       }
     },
     "settings.display.show-ipad-column" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Secondary Column"
+          }
+        }
+      }
+    },
+    "settings.display.show-tab-label" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Tab Name"
+          }
+        }
+      }
     },
     "settings.display.theme.background" : {
       "localizations" : {
@@ -311,8 +401,45 @@
         }
       }
     },
+    "settings.general.sidebarEntries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sidebar Customizations"
+          }
+        }
+      }
+    },
+    "settings.general.tabbarEntries" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tabs Customizations"
+          }
+        }
+      }
+    },
+    "settings.other.auto-start-video" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable video at start"
+          }
+        }
+      }
+    },
     "settings.other.sound-effect" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Sound Effects"
+          }
+        }
+      }
     },
     "settings.section.accounts" : {
       "localizations" : {
@@ -345,7 +472,14 @@
       }
     },
     "settings.section.cache" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cache"
+          }
+        }
+      }
     },
     "settings.section.general" : {
       "localizations" : {
@@ -368,6 +502,7 @@
       }
     },
     "settings.section.other.footer" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -412,7 +547,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hi there! . Only Jose is fan app. If you're having a blast, consider tossing a little tip my way. It'll make my day (and help keep the app running smoothly for you). 🚀"
+            "value" : "Hi there! . Only Jose is fan app. If you're enjoying, consider a little tip. It'll make my day (and help keep the app running smoothly for you). 🚀"
           }
         }
       }
@@ -531,6 +666,7 @@
       }
     },
     "settings.system" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -560,6 +696,9 @@
         }
       }
     },
+    "Subscriptions" : {
+
+    },
     "tab.settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -583,9 +722,6 @@
       }
     },
     "Tips" : {
-
-    },
-    "UAV" : {
 
     },
     "VideoContextMenuView" : {

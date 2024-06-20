@@ -10,7 +10,6 @@ import SwiftUI
 import YouTubeKit
 import Security
 
-
 class APIKeyModel: ObservableObject {
     static let shared = APIKeyModel()
 
@@ -58,12 +57,12 @@ class APIKeyModel: ObservableObject {
                 withAnimation {
                     if !(result?.isDisconnected ?? true) {
                         self.userAccount = result
-//                        NotificationCenter.default.post(name: .atwyCookiesSetUp, object: nil)
+                        NotificationCenter.default.post(name: .atwyCookiesSetUp, object: nil)
                     } else {
                         self.userAccount = nil
                     }
                 }
-                SearchView.Model.shared.getVideos(demo: false)
+                Model.shared.getVideos(demo: false)
             }
         }
     }

@@ -23,8 +23,6 @@ struct SearchTab: View {
     var body: some View {
         NavigationStack(path: $routerPath.path) {
             SearchView(scrollToTopSignal: $scrollToTopSignal)
-//                .withAppRouter()
-//                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
                 .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
                 .toolbar {
                     ToolbarTab(routerPath: $routerPath)

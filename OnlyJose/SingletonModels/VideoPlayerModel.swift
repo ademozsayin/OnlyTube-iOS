@@ -38,12 +38,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
     }
     
     private var subscriptions = Set<AnyCancellable>()
-    var sampleVideo = YTVideo(
-        videoId: "gO70C5Q_f6Y",
-        title: "The special One",
-        viewCount: "5k",
-        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
-    )
+
     // The group session to coordinate playback with.
     private var groupSession: GroupSession<WatchInGroupActivity>? {
         didSet {
@@ -58,6 +53,13 @@ class VideoPlayerModel: NSObject, ObservableObject {
         }
     }
 
+    var sampleVideo = YTVideo(
+        videoId: "gO70C5Q_f6Y",
+        title: "The special One",
+        viewCount: "5k",
+        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
+    )
+    
     override init() {
         super.init()
         player.publisher(for: \.currentItem)
@@ -244,7 +246,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
             } catch {
                 guard self.loadingVideo?.videoId == video.videoId else { return }
                 print("Error while trying to load video: \(error)")
-//                NotificationCenter.default.post(name: .atwyDismissPlayerSheet, object: nil)
+                NotificationCenter.default.post(name: .atwyDismissPlayerSheet, object: nil)
             }
         }
     }

@@ -34,9 +34,6 @@ struct WatchVideoView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                //                    Rectangle()
-                //                        .fill(Color.init(cgColor: .init(red: 0.96, green: 0.96, blue: 1, alpha: 1)))
-                //                        .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top)
                 ZStack {
                     Rectangle()
                         .fill(Gradient(stops: [
@@ -47,8 +44,8 @@ struct WatchVideoView: View {
                         .clipShape(
                             .rect(
                                 topLeadingRadius: 0,
-//                                bottomLeadingRadius: self.screenCornerRadius,
-//                                bottomTrailingRadius: self.screenCornerRadius,
+                                bottomLeadingRadius: self.screenCornerRadius,
+                                bottomTrailingRadius: self.screenCornerRadius,
                                 topTrailingRadius: 0
                             )
                         )
@@ -58,8 +55,8 @@ struct WatchVideoView: View {
                         .clipShape(
                             .rect(
                                 topLeadingRadius: 0,
-//                                bottomLeadingRadius: self.screenCornerRadius,
-//                                bottomTrailingRadius: self.screenCornerRadius,
+                                bottomLeadingRadius: self.screenCornerRadius,
+                                bottomTrailingRadius: self.screenCornerRadius,
                                 topTrailingRadius: 0
                             )
                         )
@@ -189,7 +186,7 @@ struct WatchVideoView: View {
                                 Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
                                 Group {
                                     if let currentItem = VPM.currentItem {
-//                                        VideoAppreciationView(currentItem: currentItem)
+                                        VideoAppreciationView(currentItem: currentItem)
                                     }
                                 }
                                 .opacity(!(showQueue || showDescription) ? 1 : 0)
@@ -222,28 +219,28 @@ struct WatchVideoView: View {
 //                                            }
 //                                        })
                                     }
-//                                    AddToFavoriteWidgetView(video: video, imageData: VPM.currentItem?.videoThumbnailData)
-//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                        .frame(width: 60)
-//                                        .padding(.trailing, 10)
-//                                    Button {
-//                                        video.showShareSheet(thumbnailData: VPM.currentItem?.videoThumbnailData)
-//                                    } label: {
-//                                        ZStack {
-//                                            RoundedRectangle(cornerRadius: 8)
-//                                                .foregroundStyle(.white)
-//                                                .opacity(0.3)
-//                                                .frame(height: 45)
-//                                            Image(systemName: "square.and.arrow.up")
-//                                                .resizable()
-//                                                .scaledToFit()
-//                                                .frame(width: 18)
-//                                                .foregroundStyle(.white)
-//                                        }
-//                                    }
-//                                    .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                    .frame(width: 60)
-//                                    .padding(.trailing, 10)
+                                    AddToFavoriteWidgetView(video: video, imageData: VPM.currentItem?.videoThumbnailData)
+                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
+                                        .frame(width: 60)
+                                        .padding(.trailing, 10)
+                                    Button {
+                                        video.showShareSheet(thumbnailData: VPM.currentItem?.videoThumbnailData)
+                                    } label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 8)
+                                                .foregroundStyle(.white)
+                                                .opacity(0.3)
+                                                .frame(height: 45)
+                                            Image(systemName: "square.and.arrow.up")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 18)
+                                                .foregroundStyle(.white)
+                                        }
+                                    }
+                                    .opacity(!(showQueue || showDescription) ? 1 : 0)
+                                    .frame(width: 60)
+                                    .padding(.trailing, 10)
                                     if NRM.connected {
                                         Button {
                                             CoordinationManager.shared.prepareToPlay(video)
@@ -310,9 +307,9 @@ struct WatchVideoView: View {
                         }
                         .opacity(showDescription ? 1 : 0)
                         .frame(height: showDescription ? geometry.size.height * 0.85 - 120 : 0)
-//                        PlayingQueueView()
-//                            .opacity(showQueue ? 1 : 0)
-//                            .frame(height: showQueue ? geometry.size.height * 0.85 - 120 : 0)
+                        PlayingQueueView()
+                            .opacity(showQueue ? 1 : 0)
+                            .frame(height: showQueue ? geometry.size.height * 0.85 - 120 : 0)
                         Spacer()
                         HStack {
                             let hasDescription = VPM.currentItem?.videoDescription ?? "" != ""
@@ -376,9 +373,10 @@ struct WatchVideoView: View {
                 .zIndex(1)
             }
         }
-//        .onReceive(of: .atwyDismissPlayerSheet, handler: { _ in
-//            dismiss()
-//        })
+        .onReceive(of: .atwyDismissPlayerSheet, handler: { _ in
+            dismiss()
+        })
+        
 //        .task {
 //            if let channelAvatar = VPM.streamingInfos?.channel?.thumbnails.first?.url {
 //                URLSession.shared.dataTask(with: channelAvatar, completionHandler: { data, _, _ in
@@ -800,4 +798,19 @@ struct AirPlayButton: UIViewRepresentable {
     func updateUIView(_ uiView: AVRoutePickerView, context: Context) {}
     
     typealias UIViewType = AVRoutePickerView
+}
+
+
+// KAVSOFT
+extension View {
+    var screenCornerRadius: CGFloat {
+        let key = "_displayCornerRadius"
+        if let screen = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first?.screen {
+            if let cornerRadius = screen.value(forKey: key) as? CGFloat {
+                return cornerRadius
+            }
+            return 0
+        }
+        return 0
+    }
 }
