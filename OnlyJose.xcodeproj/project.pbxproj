@@ -230,6 +230,7 @@
 		B733A6892C25F3A900E0BDC4 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
 		B733A68B2C25F51300E0BDC4 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B746B0842C261363003D156E /* PRIVACY.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.MD; sourceTree = "<group>"; };
+		B746B0862C261445003D156E /* Terms.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.MD; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -630,6 +631,7 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
+				B746B0862C261445003D156E /* Terms.MD */,
 				B746B0842C261363003D156E /* PRIVACY.MD */,
 				B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,

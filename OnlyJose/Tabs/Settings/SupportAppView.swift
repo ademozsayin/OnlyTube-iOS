@@ -252,7 +252,7 @@ struct SupportAppView: View {
         Section {
             VStack(alignment: .leading, spacing: 16) {
                 Button {
-                    openURL(URL(string: "https://github.com/Dimillian/IceCubesApp/blob/main/PRIVACY.MD")!)
+                    openURL(URL(string: "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/PRIVACY.MD")!)
                 } label: {
                     Text("settings.support.privacy-policy")
                 }
