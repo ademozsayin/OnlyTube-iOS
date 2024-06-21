@@ -7,6 +7,7 @@
 //  
 
 import SwiftUI
+#if !os(visionOS)
 import SwipeActions
 import YouTubeKit
 
@@ -92,3 +93,5 @@ extension View {
             }, minimumSwipeDistance: 50)
     }
 }
+
+#endif

@@ -74,7 +74,7 @@ struct SideBarView<Content: View>: View {
         
         Button {
 #if targetEnvironment(macCatalyst) || os(visionOS)
-            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
+//            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
 #else
 //            routerPath.presentedSheet = .newStatusEditor(visibility: userPreferences.postVisibility)
 #endif

@@ -6,8 +6,9 @@
 //  Copyright © 2024 Antoine Bollengier. All rights reserved.
 //  
 
-
+#if !os(visionOS)
 import ActivityKit
+
 import Combine
 import BackgroundTasks
 
@@ -111,3 +112,4 @@ protocol CastedActivity {}
 @available(iOS 16.1, *)
 extension Activity: CastedActivity {}
 
+#endif

@@ -42,12 +42,12 @@ extension View {
                     }
                         .withEnvironments()
                 case .miniPlayer:
-                    NavigationSheet {
+//                    NavigationSheet {
                         WatchVideoView()
                             .withEnvironments()
                             .presentationDragIndicator(.hidden)
 
-                    }
+//                    }
                    
                 
             }

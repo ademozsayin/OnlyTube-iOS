@@ -7,7 +7,9 @@
 
 import CoreData
 import SwiftUI
+#if !os(visionOS)
 import SwipeActions
+#endif
 import YouTubeKit
 import Env
 

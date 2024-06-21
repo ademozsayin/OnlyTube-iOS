@@ -7,8 +7,11 @@
 
 import Foundation
 import SwiftUI
+#if !os(visionOS)
 import SwipeActions
+#endif
 
+#if !os(visionOS)
 struct SwipeActionViewModifier<LeadingActions, TrailingActions>: ViewModifier where LeadingActions: View, TrailingActions: View {
     @ViewBuilder var leadingActions: (SwipeContext) -> LeadingActions
     @ViewBuilder var trailingActions: (SwipeContext) -> TrailingActions
@@ -30,3 +33,4 @@ extension View {
         modifier(SwipeActionViewModifier(leadingActions: leadingActions, trailingActions: trailingActions, minimumSwipeDistance: minimumSwipeDistance))
     }
 }
+#endif

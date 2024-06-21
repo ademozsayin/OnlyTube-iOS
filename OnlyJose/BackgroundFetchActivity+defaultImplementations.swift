@@ -7,7 +7,9 @@
 //
 
 import BackgroundTasks
+#if !os(visionOS)
 import ActivityKit
+
 
 @available(iOS 16.1, *)
 extension BackgroundFetchActivity {
@@ -60,3 +62,5 @@ extension BackgroundFetchActivity {
         }
     }
 }
+
+#endif

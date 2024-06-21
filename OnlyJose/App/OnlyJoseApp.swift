@@ -12,7 +12,6 @@ import DesignSystem
 import Env
 import RevenueCat
 
-
 @main
 struct OnlyJoseApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate

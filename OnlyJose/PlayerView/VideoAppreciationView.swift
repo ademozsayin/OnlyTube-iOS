@@ -66,7 +66,9 @@ struct VideoAppreciationView: View {
                     }
                     .frame(width: 40, height: 40)
                     .buttonStyle(.borderless)
+                    #if !os(visionOS)
                     .hapticFeedbackOnTap(style: VPM.isFetchingAppreciation || (APIM.userAccount != nil) ? nil : .soft)
+                    #endif
                     .disabled(VPM.isFetchingAppreciation || APIM.userAccount == nil)
                     .padding(.vertical)
                     .foregroundColor(.white)
@@ -110,7 +112,9 @@ struct VideoAppreciationView: View {
                         }
                         .frame(width: 40, height: 40)
                         .buttonStyle(.borderless)
+                        #if !os(visionOS)
                         .hapticFeedbackOnTap(style: VPM.isFetchingAppreciation ? nil : .soft)
+                        #endif
                         .disabled(VPM.isFetchingAppreciation)
                         .padding(.vertical)
                         .foregroundColor(theme.labelColor)
@@ -124,7 +128,7 @@ struct VideoAppreciationView: View {
     }
 }
 
-
+#if !os(visionOS)
 
 extension View {
     //https://codakuma.com/swiftui-haptics/
@@ -139,3 +143,5 @@ extension View {
         
     }
 }
+
+#endif

@@ -367,11 +367,12 @@ struct VideoView2: View {
                     .padding(.leading, 10)
                     .frame(width: geometry.size.width * 0.75, alignment: .leading)
                     Spacer()
-                    VStack {
-                        if video.timeLength != "live" {
-                            DownloadButtonView(video: video, videoThumbnailData: self.videoWithData.data.thumbnailData, downloadURL: downloadLocation)
-                                .foregroundStyle(theme.labelColor)
-                        }
+//                    VStack {
+                        // TODO: - Enable for premium users after added faeture fav and downloads
+//                        if video.timeLength != "live" {
+//                            DownloadButtonView(video: video, videoThumbnailData: self.videoWithData.data.thumbnailData, downloadURL: downloadLocation)
+//                                .foregroundStyle(theme.labelColor)
+//                        }
                         /* to be reinstated later
                         Menu {
                             VideoContextMenuView(video: video, videoThumbnailData: thumbnailData, isFavorite: isFavorite, isDownloaded: (downloadLocation != nil))
@@ -386,15 +387,15 @@ struct VideoView2: View {
                         }
                         .frame(width: 20, height: 20)
                          */
-                        AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
-                            .foregroundStyle(theme.labelColor)
-                        Spacer()
-                    }
-                    .frame(alignment: .top)
-                    .padding(.trailing, 5)
-                    if !(video.channel?.thumbnails.isEmpty ?? true) && self.videoWithData.data.channelAvatarData != nil {
-                        Spacer()
-                    }
+//                        AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
+//                            .foregroundStyle(theme.labelColor)
+//                        Spacer()
+//                    }
+//                    .frame(alignment: .top)
+//                    .padding(.trailing, 5)
+//                    if !(video.channel?.thumbnails.isEmpty ?? true) && self.videoWithData.data.channelAvatarData != nil {
+//                        Spacer()
+//                    }
                 }
                 .padding(.horizontal, 5)
                 .padding(.top, 10)
@@ -415,7 +416,7 @@ struct VideoView2: View {
 //                VideoView2(video: video, thumbnailData: thumbnailData, ownerThumbnailData: ownerThumbnailData)
 //                    .frame(width: geometry.size.width, height: geometry.size.height)
 //            })
-            .videoSwipeActions(video: video, thumbnailData: self.videoWithData.data.thumbnailData, isConnectedToNetwork: self.NRM.connected, disableChannelNavigation: !self.videoWithData.data.allowChannelLinking, isConnectedToGoogle: APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "")
+//           /* .videoSwipeActions(video: video, thumbnailData: self.videoWithData.data.thumbnailData, isConnectedToNetwork: self.NRM.connected, disableChannelNavigation: !self.videoWithData.dat*/a.allowChannelLinking, isConnectedToGoogle: APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "")
         }
     }
 }

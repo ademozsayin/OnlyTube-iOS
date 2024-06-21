@@ -21,14 +21,14 @@ struct VideoContextMenuView: View {
     var body: some View {
         Group {
             Section {
-                if NRM.connected {
-                    if APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "" {
-                        AddToPlaylistContextMenuButtonView(video: self.videoWithData.video)
-                    }
-                    if self.videoWithData.data.allowChannelLinking, let channel = self.videoWithData.video.channel {
-                        GoToChannelContextMenuButtonView(channel: channel)
-                    }
-                }
+//                if NRM.connected {
+//                    if APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "" {
+//                        AddToPlaylistContextMenuButtonView(video: self.videoWithData.video)
+//                    }
+//                    if self.videoWithData.data.allowChannelLinking, let channel = self.videoWithData.video.channel {
+//                        GoToChannelContextMenuButtonView(channel: channel)
+//                    }
+//                }
                 Button {
                     self.videoWithData.video.showShareSheet(thumbnailData: self.videoWithData.data.thumbnailData)
                 } label: {
@@ -42,17 +42,17 @@ struct VideoContextMenuView: View {
                 AddToQueueContextMenuButtonView(video: self.videoWithData.video, videoThumbnailData: self.videoWithData.data.thumbnailData)
             }
             Section {
-                if isFavorite {
-                    DeleteFromFavoritesView(video: self.videoWithData.video)
-                } else {
-                    AddToFavoritesContextButtonView(
-                        video: self.videoWithData.video,
-                        imageData: self.videoWithData.data.thumbnailData
-                    )
-                }
+//                if isFavorite {
+//                    DeleteFromFavoritesView(video: self.videoWithData.video)
+//                } else {
+//                    AddToFavoritesContextButtonView(
+//                        video: self.videoWithData.video,
+//                        imageData: self.videoWithData.data.thumbnailData
+//                    )
+//                }
                 //            if let downloadURL = downloadURL {
-                if isDownloaded {
-                    RemoveDownloadContextMenuButtonView(video: self.videoWithData.video)
+//                if isDownloaded {
+//                    RemoveDownloadContextMenuButtonView(video: self.videoWithData.video)
                     /* to be activated later
                      Button {
                      guard let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene, let source =  scene.keyWindow?.rootViewController else { return }
@@ -84,11 +84,11 @@ struct VideoContextMenuView: View {
                      Text("Export")
                      }
                      */
-                } else if let downloader = self.downloader {
-                    CancelDownloadContextMenuView(downloader: downloader)
-                } else {
-                    DownloadAdaptativeFormatsContextMenuView(video: self.videoWithData.video, videoThumbnailData: self.videoWithData.data.thumbnailData)
-                }
+//                } else if let downloader = self.downloader {
+//                    CancelDownloadContextMenuView(downloader: downloader)
+//                } else {
+//                    DownloadAdaptativeFormatsContextMenuView(video: self.videoWithData.video, videoThumbnailData: self.videoWithData.data.thumbnailData)
+//                }
             }
             if let playlistRemovalCallback = videoWithData.data.removeFromPlaylistAvailable {
                 Section {

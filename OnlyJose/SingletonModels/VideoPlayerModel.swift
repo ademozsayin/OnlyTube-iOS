@@ -36,7 +36,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
             self.player.updateEndAction()
         }
     }
-    
+        
     private var subscriptions = Set<AnyCancellable>()
 
     // The group session to coordinate playback with.

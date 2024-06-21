@@ -8,14 +8,24 @@
 import Foundation
 import YouTubeKit
 
-class Model: ObservableObject {
+@Observable
+class Model {
     
     static public let shared = Model()
     
-    @Published var items: [any YTSearchResult] = []
-    @Published var isFetching: Bool = false
-    @Published var isFetchingContination: Bool = false
-    @Published var error: String?
+    var items: [any YTSearchResult] = []
+    var isFetching: Bool = false
+    var isFetchingContination: Bool = false
+    var error: String?
+    
+    enum State {
+        case loading
+        case error
+        case result
+        case empty
+    }
+    
+    var state: State = .loading
     
     private var homeResponse: HomeScreenResponse?
     private var searchResponse: SearchResponse?
@@ -126,19 +136,19 @@ class Model: ObservableObject {
             self.isFetching = true
             self.error = nil
         }
-        SearchResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query: search], result: { result in
+        SearchResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query: search], result: { [weak self] result in
+            guard let self else { return }
             switch result {
                 case .success(let response):
                     self.searchResponse = response
                     DispatchQueue.main.async {
-                        self.items = response.results
                         self.isFetching = false
-                        
+                      
                         if demo {
-                            self.items = []
                             self.demoSearchResponse = response
                         } else {
                             self.items = response.results
+                            self.state = self.items.isEmpty ? .empty : .result
                         }
                         end?()
                     }
@@ -146,6 +156,7 @@ class Model: ObservableObject {
                     DispatchQueue.main.async {
                         self.error = error.localizedDescription
                         self.isFetching = false
+                        self.state = .error
                         self.items = []
                         end?()
                     }

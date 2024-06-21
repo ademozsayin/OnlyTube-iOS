@@ -186,9 +186,6 @@
     "En Direct" : {
 
     },
-    "Go home" : {
-
-    },
     "Go to channel" : {
 
     },
@@ -296,6 +293,9 @@
 
     },
     "Remove from playlist" : {
+
+    },
+    "Retry" : {
 
     },
     "Search videos or pull up to refresh for the algorithm to fill this menu." : {
@@ -808,6 +808,9 @@
           }
         }
       }
+    },
+    "Something went wrong" : {
+
     },
     "Subscriptions" : {
 

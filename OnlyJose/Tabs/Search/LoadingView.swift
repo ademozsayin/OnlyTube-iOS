@@ -11,7 +11,7 @@ import SwiftUI
 struct LoadingView: View {
     var customText: String? = nil
     var body: some View {
-        VStack {
+        VStack() {
             ProgressView()
                 .foregroundColor(.gray)
                 .padding(.bottom, 0.3)

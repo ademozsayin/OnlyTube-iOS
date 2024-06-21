@@ -5,7 +5,7 @@
 //  Created by Antoine Bollengier on 15.03.2024.
 //  Copyright © 2024 Antoine Bollengier. All rights reserved.
 //
-
+#if !os(visionOS)
 import ActivityKit
 
 /// A protocol describing a Live Activity that regularly needs a background refresh.
@@ -34,3 +34,4 @@ protocol BackgroundFetchActivity: BackgroundFetchOperation {
     /// Stops the activity if it was activated.
     static func stop()
 }
+#endif

@@ -30,36 +30,12 @@ struct WatchVideoView: View {
     @ObservedObject private var VPM = VideoPlayerModel.shared
     @ObservedObject private var APIM = APIKeyModel.shared
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
-
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in
                 ZStack {
-                    Rectangle()
-                        .fill(Gradient(stops: [
-                            .init(color: (colorScheme == .light ? Color.black.opacity(0.15) : Color.white.opacity(0.85)), location: 0),
-                            .init(color: (colorScheme == .light ? Color.black.opacity(0.25) : Color.white.opacity(0.75)), location: 0.7),
-                            .init(color: (colorScheme == .light ? Color.black.opacity(0.65) : Color.white.opacity(0.35)), location: 1)
-                        ]))
-                        .clipShape(
-                            .rect(
-                                topLeadingRadius: 0,
-                                bottomLeadingRadius: self.screenCornerRadius,
-                                bottomTrailingRadius: self.screenCornerRadius,
-                                topTrailingRadius: 0
-                            )
-                        )
-                    Rectangle()
-                        .fill(LinearGradient(colors: usedAnimationColors, startPoint: animateStartPoint, endPoint: animateEndPoint).shadow(.inner(radius: 5)))
-                        .blendMode(.multiply)
-                        .clipShape(
-                            .rect(
-                                topLeadingRadius: 0,
-                                bottomLeadingRadius: self.screenCornerRadius,
-                                bottomTrailingRadius: self.screenCornerRadius,
-                                topTrailingRadius: 0
-                            )
-                        )
+
                 }
                 .ignoresSafeArea(.all)
                 .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top)
@@ -74,19 +50,23 @@ struct WatchVideoView: View {
                                         .fill(Color.black.opacity(0.4))
                                         .shadow(radius: 10)
                                 }
-                                //                                .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: (showQueue || showDescription) ? geometry.size.height * 0.40 : geometry.size.height * 0.45)
                                 .frame(width: geometry.size.width, height: (showQueue || showDescription) ?  geometry.size.height * 0.175 : geometry.size.height * 0.45)
                                 .padding(.top, -geometry.size.height * 0.01)
-                                //.padding(.bottom, geometry.size.height * 0.05)
-                                //(showQueue || showDescription) ? :
                                 HStack(spacing: 0) {
                                     if VPM.player.currentItem != nil {
                                         PlayerViewController(
                                             player: VPM.player,
                                             controller: VPM.controller
                                         )
-                                        .frame(width: (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width, height: (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
-                                        .padding(.top, (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
+//
+#if !os(visionOS)
+                                        .frame(width: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.width : (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width, height: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.height
+                                               : (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
+                                       
+                                       
+                                        .padding(.top, UIDevice.current.orientation.isLandscape ? 0 : (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
+                                       
+#endif
                                         .shadow(radius: 10)
                                         /* TODO: Remove that in a future version (17/04/2024)
                                         .onReceive(of: UIApplication.willEnterForegroundNotification, handler: { _ in
@@ -181,94 +161,94 @@ struct WatchVideoView: View {
                             .offset(y: geometry.size.height * 0.17)
                         }
                         .ignoresSafeArea()
-                        ScrollView(.horizontal) {
-                            HStack {
-                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
-                                Group {
-                                    if let currentItem = VPM.currentItem {
-                                        VideoAppreciationView(currentItem: currentItem)
-                                    }
-                                }
-                                .opacity(!(showQueue || showDescription) ? 1 : 0)
-                                if let video = VPM.currentItem?.video ?? VPM.loadingVideo {
-                                    if NRM.connected {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .foregroundStyle(.white)
-                                                .opacity(0.3)
-                                                .frame(height: 45)
-//                                            let downloadLocation: URL? = {
-//                                                return PM.currentData.downloadedVideoIds.first(where: {$0.videoId == video.videoId})?.storageLocation
-//                                            }()
-//                                            DownloadButtonView(video: video, videoThumbnailData: VPM.currentItem?.videoThumbnailData, downloadURL: downloadLocation)
+//                        ScrollView(.horizontal) {
+//                            HStack {
+//                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
+//                                Group {
+//                                    if let currentItem = VPM.currentItem {
+//                                        VideoAppreciationView(currentItem: currentItem)
+//                                    }
+//                                }
+//                                .opacity(!(showQueue || showDescription) ? 1 : 0)
+//                                if let video = VPM.currentItem?.video ?? VPM.loadingVideo {
+//                                    if NRM.connected {
+//                                        ZStack {
+//                                            RoundedRectangle(cornerRadius: 8)
 //                                                .foregroundStyle(.white)
-                                        }
-                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-                                        .frame(width: 60)
-                                        .padding(.horizontal, 10)
-//                                        .contextMenu(menuItems: {
-//                                            if DM.downloadings[video.videoId] != nil {
-//                                                Button(role: .destructive) {
-//                                                    DownloadingsModel.shared.cancelDownloadFor(videoId: video.videoId)
-//                                                } label: {
-//                                                    HStack {
-//                                                        Text("Cancel Download")
-//                                                        Image(systemName: "trash")
-//                                                    }
-//                                                }
+//                                                .opacity(0.3)
+//                                                .frame(height: 45)
+////                                            let downloadLocation: URL? = {
+////                                                return PM.currentData.downloadedVideoIds.first(where: {$0.videoId == video.videoId})?.storageLocation
+////                                            }()
+////                                            DownloadButtonView(video: video, videoThumbnailData: VPM.currentItem?.videoThumbnailData, downloadURL: downloadLocation)
+////                                                .foregroundStyle(.white)
+//                                        }
+//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
+//                                        .frame(width: 60)
+//                                        .padding(.horizontal, 10)
+////                                        .contextMenu(menuItems: {
+////                                            if DM.downloadings[video.videoId] != nil {
+////                                                Button(role: .destructive) {
+////                                                    DownloadingsModel.shared.cancelDownloadFor(videoId: video.videoId)
+////                                                } label: {
+////                                                    HStack {
+////                                                        Text("Cancel Download")
+////                                                        Image(systemName: "trash")
+////                                                    }
+////                                                }
+////                                            }
+////                                        })
+//                                    }
+//                                    AddToFavoriteWidgetView(video: video, imageData: VPM.currentItem?.videoThumbnailData)
+//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
+//                                        .frame(width: 60)
+//                                        .padding(.trailing, 10)
+//                                    Button {
+//                                        video.showShareSheet(thumbnailData: VPM.currentItem?.videoThumbnailData)
+//                                    } label: {
+//                                        ZStack {
+//                                            RoundedRectangle(cornerRadius: 8)
+//                                                .foregroundStyle(.white)
+//                                                .opacity(0.3)
+//                                                .frame(height: 45)
+//                                            Image(systemName: "square.and.arrow.up")
+//                                                .resizable()
+//                                                .scaledToFit()
+//                                                .frame(width: 18)
+//                                                .foregroundStyle(.white)
+//                                        }
+//                                    }
+//                                    .opacity(!(showQueue || showDescription) ? 1 : 0)
+//                                    .frame(width: 60)
+//                                    .padding(.trailing, 10)
+//                                    if NRM.connected {
+//                                        Button {
+//                                            CoordinationManager.shared.prepareToPlay(video)
+//                                        } label: {
+//                                            ZStack {
+//                                                RoundedRectangle(cornerRadius: 8)
+//                                                    .foregroundStyle(.white)
+//                                                    .opacity(0.3)
+//                                                    .frame(height: 45)
+//                                                Image(systemName: "shareplay")
+//                                                    .resizable()
+//                                                    .scaledToFit()
+//                                                    .frame(width: 30)
+//                                                    .foregroundStyle(.white)
 //                                            }
-//                                        })
-                                    }
-                                    AddToFavoriteWidgetView(video: video, imageData: VPM.currentItem?.videoThumbnailData)
-                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-                                        .frame(width: 60)
-                                        .padding(.trailing, 10)
-                                    Button {
-                                        video.showShareSheet(thumbnailData: VPM.currentItem?.videoThumbnailData)
-                                    } label: {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .foregroundStyle(.white)
-                                                .opacity(0.3)
-                                                .frame(height: 45)
-                                            Image(systemName: "square.and.arrow.up")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 18)
-                                                .foregroundStyle(.white)
-                                        }
-                                    }
-                                    .opacity(!(showQueue || showDescription) ? 1 : 0)
-                                    .frame(width: 60)
-                                    .padding(.trailing, 10)
-                                    if NRM.connected {
-                                        Button {
-                                            CoordinationManager.shared.prepareToPlay(video)
-                                        } label: {
-                                            ZStack {
-                                                RoundedRectangle(cornerRadius: 8)
-                                                    .foregroundStyle(.white)
-                                                    .opacity(0.3)
-                                                    .frame(height: 45)
-                                                Image(systemName: "shareplay")
-                                                    .resizable()
-                                                    .scaledToFit()
-                                                    .frame(width: 30)
-                                                    .foregroundStyle(.white)
-                                            }
-                                        }
-                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-                                        .frame(width: 60)
-                                        .padding(.trailing, 10)
-                                    }
-                                }
-                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
-                            }
-                        }
-                        .scrollIndicators(.hidden)
-                        .padding(.vertical, 15)
-                        .frame(height: !(showQueue || showDescription) ? 80 : 0)
-                        .mask(FadeInOutView(mode: .horizontal))
+//                                        }
+//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
+//                                        .frame(width: 60)
+//                                        .padding(.trailing, 10)
+//                                    }
+//                                }
+//                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
+//                            }
+//                        }
+//                        .scrollIndicators(.hidden)
+//                        .padding(.vertical, 15)
+//                        .frame(height: !(showQueue || showDescription) ? 80 : 0)
+//                        .mask(FadeInOutView(mode: .horizontal))
                         VStack {
                             ScrollView {
                                 Color.clear.frame(height: 15)
@@ -338,10 +318,12 @@ struct WatchVideoView: View {
                             .opacity(hasDescription ? 1 : 0.5)
                             .disabled(!hasDescription)
                             Spacer()
+#if !os(visionOS)
                             AirPlayButton()
                                 .scaledToFit()
                                 .blendMode(.screen)
                                 .frame(width: 50)
+#endif
                             Spacer()
                             Button {
                                 withAnimation(.interpolatingSpring(duration: 0.3)) {
@@ -785,6 +767,7 @@ extension CGImage {
     }
 }
 
+#if !os(visionOS)
 struct AirPlayButton: UIViewRepresentable {
     
     func makeUIView(context: Context) -> AVRoutePickerView {
@@ -814,3 +797,28 @@ extension View {
         return 0
     }
 }
+
+
+// Our custom view modifier to track rotation and
+// call our action
+
+struct DeviceRotationViewModifier: ViewModifier {
+    let action: (UIDeviceOrientation) -> Void
+    
+    func body(content: Content) -> some View {
+        content
+            .onAppear()
+            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                action(UIDevice.current.orientation)
+            }
+    }
+}
+
+// A View wrapper to make the modifier easier to use
+extension View {
+    func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
+        self.modifier(DeviceRotationViewModifier(action: action))
+    }
+}
+
+#endif

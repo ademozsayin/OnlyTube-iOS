@@ -5,7 +5,7 @@
 //  Created by Adem Özsayın on 20.06.2024.
 //
 
-
+#if !os(visionOS)
 import ActivityKit
 
 @available(iOS 16.1, *)
@@ -49,3 +49,4 @@ struct DownloadingsProgressActivity: BackgroundFetchActivity {
         LiveActivitesManager.shared.activitiesObservers.updateValue(observer, forKey: Self.activityType)
     }
 }
+#endif

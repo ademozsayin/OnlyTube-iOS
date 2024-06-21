@@ -7,7 +7,9 @@
 
 import SwiftUI
 import YouTubeKit
+#if !os(visionOS)
 import SwipeActions
+#endif
 
 struct DefaultElementsInfiniteScrollView: View {
     @Binding var items: [YTElementWithData]
@@ -46,6 +48,7 @@ struct DefaultElementsInfiniteScrollView: View {
                                     item.getView()
                                         .frame(width: geometry.size.width, height: 180, alignment: .center)
                                 case let item as YTPlaylist:
+                                    #if !os(visionOS)
                                     SwipeView {
                                         item.getView()
                                             .padding(.horizontal, 5)
@@ -72,6 +75,7 @@ struct DefaultElementsInfiniteScrollView: View {
                                     }
                                     .swipeMinimumDistance(50)
                                     .frame(width: geometry.size.width, height: 180, alignment: .center)
+                                    #endif
                                 case let rawVideo as YTVideo:
                                     if let state = PSM.propetriesState[.videoViewMode] as? PreferencesStorageModel.Properties.VideoViewModes, state == .halfThumbnail {
                                         VideoFromSearchView(videoWithData: rawVideo.withData(item.data))

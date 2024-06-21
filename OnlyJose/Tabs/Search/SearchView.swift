@@ -15,7 +15,9 @@ import Env
 import SwiftUI
 import InfiniteScrollViews
 import YouTubeKit
+#if !os(visionOS)
 import SwipeActions
+#endif
 import DesignSystem
 
 let YTM = YouTubeModel()
@@ -43,7 +45,7 @@ struct SearchView: View {
     @State private var hasToReloadPadding: Bool = true
     @State private var isShowingPaddedFirstVideo: Bool = false
     
-    @ObservedObject private var model = Model.shared
+    @State private var model = Model.shared
     @ObservedObject private var IUTM = IsUserTypingModel.shared
     @ObservedObject private var VPM = VideoPlayerModel.shared
     //    @ObservedObject private var NPM = NavigationPathModel.shared
@@ -67,89 +69,181 @@ struct SearchView: View {
     
     var body: some View {
         
-        ZStack{
+        ZStack {
             GeometryReader { geometry in
                 Image("bg")
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
                     .aspectRatio(contentMode: .fill)
                     .opacity(preferences.showBackgroundImage ? 1 : 0)
-                
-                VStack {
-                    if model.isFetching {
-                        LoadingView()
-                    } else if let error = model.error {
-                        VStack (alignment: .center) {
-                            Spacer()
-                            Image(systemName: "multiply.circle")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .foregroundColor(.red)
-                            Text(error)
-                                .foregroundColor(.red)
-                            Button {
-                                search = ""
-                                dismissSearch()
-                                model.getVideos(demo: false)
-                            } label: {
-                                Text("Go home")
+               
+                Group {
+                    switch model.state {
+                        case .loading:
+                            VStack(alignment: .center) {
+                                Spacer()
+                                LoadingView()
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                Spacer()
                             }
-                            .buttonStyle(.bordered)
-                            Spacer()
-                        }
-                    } else if model.items.isEmpty && model.error == nil {
-                        GeometryReader { geometry in
-                            ScrollView {
-                                VStack {
-                                    Text("No videos found...")
-                                        .foregroundColor(theme.labelColor)
-                                    Text("Search videos or pull up to refresh for the algorithm to fill this menu.")
-                                        .foregroundStyle(.gray)
-                                        .font(.caption)
+                           
+                        case .empty:
+                            
+                            GeometryReader { geometry in
+                                ScrollView {
+                                    VStack {
+                                        Text("No videos found...")
+                                            .foregroundColor(theme.labelColor)
+                                        Text("Search videos or pull up to refresh for the algorithm to fill this menu.")
+                                            .foregroundStyle(.gray)
+                                            .font(.caption)
+                                            .frame(maxWidth: .infinity, alignment: .center)
+                                            .fixedSize(horizontal: false, vertical: true)
+                                            .padding(.horizontal, 16)
+                                            .multilineTextAlignment(.center)
+
+
+                                    }
+                                    .frame(width: geometry.size.width, height: geometry.size.height)
+
                                 }
-                                .frame(width: geometry.size.width, height: geometry.size.height)
-                            }
-                            .scrollIndicators(.hidden)
-                            .refreshable(action: {
-                                if search.isEmpty {
-                                    model.getVideos(demo: false)
-                                } else {
-                                    model.getVideos(search, demo: false)
-                                }
-                            })
-                        }
-                    } else {
-                        let itemsBinding = Binding(get: {
-                            return model.items.map({YTElementWithData(element: $0, data: .init())})
-                        }, set: { newValue in
-                            model.items = newValue.map({$0.element})
-                        })
-                        ElementsInfiniteScrollView(
-                            items: itemsBinding,
-                            shouldReloadScrollView: $shouldReloadScrollView,
-                            refreshAction: { endAction in
-                                withAnimation(.easeOut(duration: 0.3)) {
-                                    endAction()
+                                .scrollIndicators(.hidden)
+                                .refreshable(action: {
                                     if search.isEmpty {
                                         model.getVideos(demo: false)
                                     } else {
                                         model.getVideos(search, demo: false)
                                     }
-                                }
-                            },
-                            fetchMoreResultsAction: {
-                                if !model.isFetchingContination {
-                                    model.getVideosContinuation({
-                                        self.shouldReloadScrollView = true
-                                    })
-                                }
+                                })
                             }
-                        )
+                            
+                        case .error:
+                            
+                            VStack (alignment: .center) {
+                                Spacer()
+                                Image(systemName: "multiply.circle")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(.red)
+                                Text("Something went wrong")
+                                    .foregroundColor(.red)
+                                Button {
+                                    search = ""
+                                    dismissSearch()
+                                    model.getVideos(demo: false)
+                                } label: {
+                                    Text("Retry")
+                                }
+                                .buttonStyle(.bordered)
+                                Spacer()
+                                
+                            }
+                            .frame(maxWidth: .infinity, alignment: .center)
+
+                        case .result:
+                            let itemsBinding = Binding(get: {
+                                return model.items.map({YTElementWithData(element: $0, data: .init())})
+                            }, set: { newValue in
+                                model.items = newValue.map({$0.element})
+                            })
+                            ElementsInfiniteScrollView(
+                                items: itemsBinding,
+                                shouldReloadScrollView: $shouldReloadScrollView,
+                                refreshAction: { endAction in
+                                    withAnimation(.easeOut(duration: 0.3)) {
+                                        endAction()
+                                        if search.isEmpty {
+                                            model.getVideos(demo: false)
+                                        } else {
+                                            model.getVideos(search, demo: false)
+                                        }
+                                    }
+                                },
+                                fetchMoreResultsAction: {
+                                    if !model.isFetchingContination {
+                                        model.getVideosContinuation({
+                                            self.shouldReloadScrollView = true
+                                        })
+                                    }
+                                }
+                            )
                     }
                 }
                 
+//                VStack {
+//                    if model.isFetching {
+//                        LoadingView()
+//                    } else if let error = model.error {
+//                        VStack (alignment: .center) {
+//                            Spacer()
+//                            Image(systemName: "multiply.circle")
+//                                .resizable()
+//                                .frame(width: 60, height: 60)
+//                                .foregroundColor(.red)
+//                            Text(error)
+//                                .foregroundColor(.red)
+//                            Button {
+//                                search = ""
+//                                dismissSearch()
+//                                model.getVideos(demo: false)
+//                            } label: {
+//                                Text("Go home")
+//                            }
+//                            .buttonStyle(.bordered)
+//                            Spacer()
+//                        }
+//                    } else if model.items.isEmpty && model.error == nil {
+//                        GeometryReader { geometry in
+//                            ScrollView {
+//                                VStack {
+//                                    Text("No videos found...")
+//                                        .foregroundColor(theme.labelColor)
+//                                    Text("Search videos or pull up to refresh for the algorithm to fill this menu.")
+//                                        .foregroundStyle(.gray)
+//                                        .font(.caption)
+//                                }
+//                                .frame(width: geometry.size.width, height: geometry.size.height)
+//                            }
+//                            .scrollIndicators(.hidden)
+//                            .refreshable(action: {
+//                                if search.isEmpty {
+//                                    model.getVideos(demo: false)
+//                                } else {
+//                                    model.getVideos(search, demo: false)
+//                                }
+//                            })
+//                        }
+//                    } else {
+//                        let itemsBinding = Binding(get: {
+//                            return model.items.map({YTElementWithData(element: $0, data: .init())})
+//                        }, set: { newValue in
+//                            model.items = newValue.map({$0.element})
+//                        })
+//                        ElementsInfiniteScrollView(
+//                            items: itemsBinding,
+//                            shouldReloadScrollView: $shouldReloadScrollView,
+//                            refreshAction: { endAction in
+//                                withAnimation(.easeOut(duration: 0.3)) {
+//                                    endAction()
+//                                    if search.isEmpty {
+//                                        model.getVideos(demo: false)
+//                                    } else {
+//                                        model.getVideos(search, demo: false)
+//                                    }
+//                                }
+//                            },
+//                            fetchMoreResultsAction: {
+//                                if !model.isFetchingContination {
+//                                    model.getVideosContinuation({
+//                                        self.shouldReloadScrollView = true
+//                                    })
+//                                }
+//                            }
+//                        )
+//                    }
+//                }
+//                
                 .task {
-                    
                     if needToReload {
                         if search.isEmpty {
                             model.getVideos(demo: false)
