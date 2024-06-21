@@ -144,7 +144,6 @@
 		B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F62C2492580038EDE1 /* YouTubeKit */; };
 		B7A5E8FD2C24964F0038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FC2C24964F0038EDE1 /* DesignSystem */; };
 		B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FE2C2496710038EDE1 /* DesignSystem */; };
-		B7A5E92C2C24976C0038EDE1 /* DesignSystem in Resources */ = {isa = PBXBuildFile; fileRef = B7A5E92B2C24976C0038EDE1 /* DesignSystem */; };
 		B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */; };
 		B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE522C221E41004E0C76 /* SupportAppView.swift */; };
 		B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = B7FCDE552C221EA8004E0C76 /* ReceiptParser */; };
@@ -227,6 +226,7 @@
 		B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		B733A6802C25D9C000E0BDC4 /* SwipeActions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwipeActions; path = Packages/SwipeActions; sourceTree = "<group>"; };
 		B733A6892C25F3A900E0BDC4 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
+		B733A68A2C25F42100E0BDC4 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -351,7 +351,6 @@
 		B7A5E8E42C24909A0038EDE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A5E8E62C24909A0038EDE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingsProgressAttributes.swift; sourceTree = "<group>"; };
-		B7A5E92B2C24976C0038EDE1 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappablePadding.swift; sourceTree = "<group>"; };
 		B7FCDE522C221E41004E0C76 /* SupportAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAppView.swift; sourceTree = "<group>"; };
 		B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = StoreKit.storekit; path = OnlyJose/Resources/StoreKit.storekit; sourceTree = "<group>"; };
@@ -627,6 +626,7 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
+				B733A68A2C25F42100E0BDC4 /* DesignSystem */,
 				B733A6892C25F3A900E0BDC4 /* Env */,
 				B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
@@ -635,7 +635,6 @@
 				B7FE95C92C10DC9A00402DE1 /* OnlyJoseTests */,
 				B7FE95D32C10DC9A00402DE1 /* OnlyJoseUITests */,
 				B733A6802C25D9C000E0BDC4 /* SwipeActions */,
-				B7A5E92B2C24976C0038EDE1 /* DesignSystem */,
 				B767944C2C171D2500A623BE /* Models */,
 				B7A5E8DD2C2490990038EDE1 /* OnlyJoseWidgets */,
 				B7FE95B52C10DC9900402DE1 /* Products */,
@@ -946,7 +945,6 @@
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
 				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
 				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
-				B7A5E92C2C24976C0038EDE1 /* DesignSystem in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
 				B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */,
 				B7FE96032C10E7A600402DE1 /* boost.wav in Resources */,
