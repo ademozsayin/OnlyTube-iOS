@@ -3,13 +3,13 @@ import Foundation
 import Network
 import Observation
 import SwiftUI
-import YouTubeKit
+//import YouTubeKit
 
 public enum RouterDestination: Hashable {
    
     case mutedAccounts
-    case usersPlaylists(playlists: [YTPlaylist])
-    case playlistDetails(playlist: YTPlaylist)
+//    case usersPlaylists(playlists: [YTPlaylist])
+//    case playlistDetails(playlist: YTPlaylist)
 }
 
 public enum WindowDestinationEditor: Hashable, Codable {

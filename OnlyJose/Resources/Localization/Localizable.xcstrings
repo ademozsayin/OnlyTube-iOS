@@ -265,6 +265,7 @@
 
     },
     "playlistDetails" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

@@ -67,7 +67,7 @@ struct PlaylistView: View {
             }
 //            .withAppRouter()
             .onTapGesture {
-                routerPath.navigate(to: RouterDestination.playlistDetails(playlist: playlist))
+//                routerPath.navigate(to: RouterDestination.playlistDetails(playlist: playlist))
 
             }
             .contextMenu {

@@ -15,13 +15,13 @@ extension View {
     func withAppRouter() -> some View {
         navigationDestination(for: RouterDestination.self) { destination in
             switch destination {
-                case .usersPlaylists(let playlists):
-                    UsersPlaylistsListView(playlists: playlists)
+//                case .usersPlaylists(let playlists):
+//                    UsersPlaylistsListView(playlists: playlists)
                 case .mutedAccounts:
 //                    AccountsListView(mode: .muted)
                     Text("AccountsListView")
-                case .playlistDetails(playlist: let playlist):
-                    Text("playlistDetails")
+//                case .playlistDetails(playlist: let playlist):
+//                    Text("playlistDetails")
             }
         }
     }

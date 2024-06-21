@@ -36,7 +36,7 @@ struct UsersPlaylistsListView: View {
                             .frame(width: geometry.size.width, height: 180)
                             .onTapGesture {
                                 print("navigate to playlist details")
-                                routerPath.navigate(to: .playlistDetails(playlist: playlist))
+                              // routerPath.navigate(to: .playlistDetails(playlist: playlist))
                             }
                     }
                     Color.clear.frame(width: 0, height: (VPM.currentItem != nil) ? 50 : 0)

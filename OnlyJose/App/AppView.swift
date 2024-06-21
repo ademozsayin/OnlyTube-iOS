@@ -7,6 +7,7 @@
 import DesignSystem
 import Env
 import SwiftUI
+import SwiftUIIntrospect
 
 @MainActor
 struct AppView: View {
@@ -125,7 +126,7 @@ struct AppView: View {
                             .tag(tab)
                     }
                 }
-                .introspect(.tabView, on: .iOS(.v17), .visionOS(.v1)) { (tabview: UITabBarController) in
+                .introspect(.tabView, on: .iOS(.v17)) { (tabview: UITabBarController) in
                     tabview.tabBar.isHidden = horizontalSizeClass == .regular
                     tabview.customizableViewControllers = []
                     tabview.moreNavigationController.isNavigationBarHidden = true
