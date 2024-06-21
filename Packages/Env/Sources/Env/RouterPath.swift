@@ -8,8 +8,7 @@ import SwiftUI
 public enum RouterDestination: Hashable {
    
     case mutedAccounts
-//    case usersPlaylists(playlists: [YTPlaylist])
-//    case playlistDetails(playlist: YTPlaylist)
+
 }
 
 public enum WindowDestinationEditor: Hashable, Codable {
@@ -17,7 +16,6 @@ public enum WindowDestinationEditor: Hashable, Codable {
 }
 
 public enum WindowDestinationMedia: Hashable, Codable {
-//    case mediaViewer(attachments: [MediaAttachment], selectedAttachment: MediaAttachment)
     case mediaViewer
 }
 
@@ -59,7 +57,7 @@ public enum SettingsStartingPoint {
 
 @MainActor
 @Observable public class RouterPath {
-//    public var client: Client?
+
     public var urlHandler: ((URL) -> OpenURLAction.Result)?
     
     public var path: [RouterDestination] = []
@@ -81,5 +79,22 @@ public enum SettingsStartingPoint {
         }
     }
     
+    public func handle(url: URL) -> OpenURLAction.Result {
+
+        return urlHandler?(url) ?? .systemAction
+    }
     
+    public func handleDeepLink(url: URL) -> OpenURLAction.Result {
+
+        guard let id = Int(url.lastPathComponent)
+        else {
+            return urlHandler?(url) ?? .systemAction
+        }
+   
+        Task {
+            handlerOrDefault(url: url)
+            return
+        }
+        return .handled
+    }
 }

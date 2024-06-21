@@ -34,8 +34,8 @@ private struct SafariRouter: ViewModifier {
             .environment(\.openURL, OpenURLAction { url in
                 // Open internal URL.
                 guard !isSecondaryColumn else { return .discarded }
-//                return routerPath.handle(url: url)
-                return .discarded
+                return routerPath.handle(url: url)
+
             })
             .onOpenURL { url in
                 // Open external URL (from onlyjoseapp://)

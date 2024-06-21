@@ -64,8 +64,10 @@ struct SettingsTabs: View {
                     SecondaryColumnToolbarItem()
                 }
             }
-            .withAppRouter()
-            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+//            .withAppRouter()
+//            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+//            .withSafariRouter()
+//            .environment(routerPath)
             .onAppear {
                 startingPoint = RouterPath.settingsStartingPoint
                 RouterPath.settingsStartingPoint = nil
@@ -76,6 +78,8 @@ struct SettingsTabs: View {
 //                        DisplaySettingsView()
 //                }
 //            }
+            .withAppRouter()
+            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
         }
         .onAppear {
 //            routerPath.client = client

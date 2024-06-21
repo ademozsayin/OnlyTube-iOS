@@ -24,7 +24,7 @@ struct IconSelectorView: View {
         }
         
         case primary = 0
-        case alt1, alt2, alt3, alt4
+        case alt1, alt2, alt3
 //        case alt1, alt2, alt3, alt4, alt5, alt6, alt7, alt8, alt9, alt10, alt11, alt12, alt13, alt14, alt15
 //        case alt16, alt17, alt18, alt19, alt20, alt21
 //        case alt22, alt23, alt24, alt25, alt26
@@ -52,7 +52,8 @@ struct IconSelectorView: View {
                 .alt1,
                 .alt2,
                 .alt3,
-                .alt4])
+                
+            ])
 //                .primary, .alt46, .alt1, .alt2, .alt3, .alt4,
 //                .alt5, .alt6, .alt7, .alt8,
 //                .alt9, .alt10, .alt11, .alt12, .alt13, .alt14, .alt15,

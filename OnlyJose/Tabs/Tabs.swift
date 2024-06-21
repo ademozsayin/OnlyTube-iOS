@@ -30,6 +30,8 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 Text("notifications")
             case .settings:
                 SettingsTabs(popToRootTab: popToRootTab, isModal: false)
+                    .withEnvironments()
+                    .preferredColorScheme(Theme.shared.selectedScheme == .dark ? .dark : .light)
             case .other:
                 Text("other")
         }

@@ -22,6 +22,7 @@
 		B733A68F2C25F57800E0BDC4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B733A68E2C25F57800E0BDC4 /* DesignSystem */; };
 		B733A6912C25F5A200E0BDC4 /* Env in Frameworks */ = {isa = PBXBuildFile; productRef = B733A6902C25F5A200E0BDC4 /* Env */; };
 		B746B0852C2613F4003D156E /* PRIVACY.MD in Resources */ = {isa = PBXBuildFile; fileRef = B746B0842C261363003D156E /* PRIVACY.MD */; };
+		B746B0892C2622C0003D156E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B746B0882C2622C0003D156E /* StoreKit.framework */; };
 		B76794472C15C20B00A623BE /* AppRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794462C15C20B00A623BE /* AppRegistry.swift */; };
 		B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794482C15C29500A623BE /* NavigationSheet.swift */; };
 		B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767944A2C171C6300A623BE /* SafariRouter.swift */; };
@@ -61,7 +62,6 @@
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
 		B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
-		B7A5E80B2C236D7E0038EDE1 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */; };
 		B7A5E80D2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */; };
 		B7A5E80F2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */; };
 		B7A5E8112C245F990038EDE1 /* ElementsInfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8102C245F990038EDE1 /* ElementsInfiniteScrollView.swift */; };
@@ -231,6 +231,7 @@
 		B733A68B2C25F51300E0BDC4 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B746B0842C261363003D156E /* PRIVACY.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.MD; sourceTree = "<group>"; };
 		B746B0862C261445003D156E /* Terms.MD */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Terms.MD; sourceTree = "<group>"; };
+		B746B0882C2622C0003D156E /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -268,7 +269,6 @@
 		B767949E2C1B8C0200A623BE /* SearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTab.swift; sourceTree = "<group>"; };
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
-		B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E8102C245F990038EDE1 /* ElementsInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsInfiniteScrollView.swift; sourceTree = "<group>"; };
@@ -413,6 +413,7 @@
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
 				B76794772C1730BD00A623BE /* InfiniteScrollViews in Frameworks */,
 				B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */,
+				B746B0892C2622C0003D156E /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +634,6 @@
 			children = (
 				B746B0862C261445003D156E /* Terms.MD */,
 				B746B0842C261363003D156E /* PRIVACY.MD */,
-				B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
 				B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */,
 				B7FE95B62C10DC9900402DE1 /* OnlyJose */,
@@ -715,6 +715,7 @@
 		B7FE95E42C10DF2900402DE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B746B0882C2622C0003D156E /* StoreKit.framework */,
 				B7A5E8D22C248E310038EDE1 /* AVKit.framework */,
 				B7A5E8D02C248E250038EDE1 /* CoreAudioTypes.framework */,
 				B7A5E8CE2C248DC40038EDE1 /* CoreAudio.framework */,
@@ -964,7 +965,6 @@
 				B76794512C17221500A623BE /* Localizable.xcstrings in Resources */,
 				B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */,
 				B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */,
-				B7A5E80B2C236D7E0038EDE1 /* Media.xcassets in Resources */,
 				B7FE96012C10E7A600402DE1 /* glass.wav in Resources */,
 				B746B0852C2613F4003D156E /* PRIVACY.MD in Resources */,
 			);
@@ -1359,9 +1359,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconAlternate3 AppIconAlternate2 AppIconAlternate1 AppIconAlternate0";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = OnlyJose/OnlyJose.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1398,9 +1399,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconAlternate3 AppIconAlternate2 AppIconAlternate1 AppIconAlternate0";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = OnlyJose/OnlyJose.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
