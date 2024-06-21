@@ -1,5 +1,5 @@
 Terms of Use
-Use of Ice Cubes is governed by Apple’s Standard EULA for apps.
+Use of OnlyJose is governed by Apple’s Standard EULA for apps.
 
 Tips provided in OnlyJose do no unlock any additional content in the app.
 
