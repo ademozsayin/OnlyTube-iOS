@@ -18,6 +18,7 @@
 		B733A67C2C24EFA900E0BDC4 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */; };
 		B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */; };
 		B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = B733A6812C25DA3200E0BDC4 /* SwipeActions */; };
+		B733A6852C25F04E00E0BDC4 /* Env in Frameworks */ = {isa = PBXBuildFile; productRef = B733A6842C25F04E00E0BDC4 /* Env */; };
 		B76794472C15C20B00A623BE /* AppRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794462C15C20B00A623BE /* AppRegistry.swift */; };
 		B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794482C15C29500A623BE /* NavigationSheet.swift */; };
 		B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767944A2C171C6300A623BE /* SafariRouter.swift */; };
@@ -162,7 +163,6 @@
 		B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */; };
 		B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95EA2C10DFEA00402DE1 /* AppView.swift */; };
 		B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95ED2C10E08F00402DE1 /* Tabs.swift */; };
-		B7FE95F12C10E30900402DE1 /* Env in Frameworks */ = {isa = PBXBuildFile; productRef = B7FE95F02C10E30900402DE1 /* Env */; };
 		B7FE96002C10E7A600402DE1 /* tabSelection.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F42C10E7A600402DE1 /* tabSelection.wav */; };
 		B7FE96012C10E7A600402DE1 /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F52C10E7A600402DE1 /* glass.wav */; };
 		B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95F62C10E7A600402DE1 /* favorite.wav */; };
@@ -227,6 +227,7 @@
 		B733A6712C249A8600E0BDC4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		B733A6802C25D9C000E0BDC4 /* SwipeActions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwipeActions; path = Packages/SwipeActions; sourceTree = "<group>"; };
+		B733A6832C25F02100E0BDC4 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -369,7 +370,6 @@
 		B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnlyJoseApp+Scene.swift"; sourceTree = "<group>"; };
 		B7FE95EA2C10DFEA00402DE1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B7FE95ED2C10E08F00402DE1 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
-		B7FE95EF2C10E2DF00402DE1 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
 		B7FE95F42C10E7A600402DE1 /* tabSelection.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tabSelection.wav; sourceTree = "<group>"; };
 		B7FE95F52C10E7A600402DE1 /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		B7FE95F62C10E7A600402DE1 /* favorite.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = favorite.wav; sourceTree = "<group>"; };
@@ -403,7 +403,7 @@
 			files = (
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
-				B7FE95F12C10E30900402DE1 /* Env in Frameworks */,
+				B733A6852C25F04E00E0BDC4 /* Env in Frameworks */,
 				B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */,
 				B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
@@ -637,7 +637,7 @@
 				B7FE95D32C10DC9A00402DE1 /* OnlyJoseUITests */,
 				B733A6802C25D9C000E0BDC4 /* SwipeActions */,
 				B7A5E92B2C24976C0038EDE1 /* DesignSystem */,
-				B7FE95EF2C10E2DF00402DE1 /* Env */,
+				B733A6832C25F02100E0BDC4 /* Env */,
 				B767944C2C171D2500A623BE /* Models */,
 				B7A5E8DD2C2490990038EDE1 /* OnlyJoseWidgets */,
 				B7FE95B52C10DC9900402DE1 /* Products */,
@@ -827,7 +827,6 @@
 			);
 			name = OnlyJose;
 			packageProductDependencies = (
-				B7FE95F02C10E30900402DE1 /* Env */,
 				B767944D2C171E7800A623BE /* Models */,
 				B76794762C1730BD00A623BE /* InfiniteScrollViews */,
 				B7FCDE552C221EA8004E0C76 /* ReceiptParser */,
@@ -837,6 +836,7 @@
 				B7A5E8FE2C2496710038EDE1 /* DesignSystem */,
 				B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */,
 				B733A6812C25DA3200E0BDC4 /* SwipeActions */,
+				B733A6842C25F04E00E0BDC4 /* Env */,
 			);
 			productName = OnlyJose;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnlyJose.app */;
@@ -1598,6 +1598,10 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = SwipeActions;
 		};
+		B733A6842C25F04E00E0BDC4 /* Env */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Env;
+		};
 		B767944D2C171E7800A623BE /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
@@ -1639,10 +1643,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCatUI;
-		};
-		B7FE95F02C10E30900402DE1 /* Env */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Env;
 		};
 /* End XCSwiftPackageProductDependency section */
 
