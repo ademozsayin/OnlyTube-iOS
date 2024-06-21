@@ -258,7 +258,7 @@ struct SupportAppView: View {
                 }
                 .buttonStyle(.borderless)
                 Button {
-                    openURL(URL(string: "https://github.com/Dimillian/IceCubesApp/blob/main/TERMS.MD")!)
+                    openURL(URL(string: "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Terms.MD")!)
                 } label: {
                     Text("settings.support.terms-of-use")
                 }
