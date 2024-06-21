@@ -142,8 +142,6 @@
 		B7A5E8F02C2491800038EDE1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8862C2483B70038EDE1 /* CircularProgressView.swift */; };
 		B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F42C2492470038EDE1 /* YouTubeKit */; };
 		B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F62C2492580038EDE1 /* YouTubeKit */; };
-		B7A5E8FD2C24964F0038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FC2C24964F0038EDE1 /* DesignSystem */; };
-		B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FE2C2496710038EDE1 /* DesignSystem */; };
 		B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */; };
 		B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE522C221E41004E0C76 /* SupportAppView.swift */; };
 		B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = B7FCDE552C221EA8004E0C76 /* ReceiptParser */; };
@@ -226,7 +224,6 @@
 		B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		B733A6802C25D9C000E0BDC4 /* SwipeActions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwipeActions; path = Packages/SwipeActions; sourceTree = "<group>"; };
 		B733A6892C25F3A900E0BDC4 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
-		B733A68A2C25F42100E0BDC4 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -391,7 +388,6 @@
 				B7A5E8DC2C2490990038EDE1 /* SwiftUI.framework in Frameworks */,
 				B7A5E8DB2C2490990038EDE1 /* WidgetKit.framework in Frameworks */,
 				B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */,
-				B7A5E8FD2C24964F0038EDE1 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +398,6 @@
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
 				B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */,
-				B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
 				B7FCDE582C221EA8004E0C76 /* RevenueCat in Frameworks */,
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
@@ -626,14 +621,13 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
-				B733A68A2C25F42100E0BDC4 /* DesignSystem */,
-				B733A6892C25F3A900E0BDC4 /* Env */,
 				B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
 				B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */,
 				B7FE95B62C10DC9900402DE1 /* OnlyJose */,
 				B7FE95C92C10DC9A00402DE1 /* OnlyJoseTests */,
 				B7FE95D32C10DC9A00402DE1 /* OnlyJoseUITests */,
+				B733A6892C25F3A900E0BDC4 /* Env */,
 				B733A6802C25D9C000E0BDC4 /* SwipeActions */,
 				B767944C2C171D2500A623BE /* Models */,
 				B7A5E8DD2C2490990038EDE1 /* OnlyJoseWidgets */,
@@ -802,7 +796,6 @@
 			name = OnlyJoseWidgetsExtension;
 			packageProductDependencies = (
 				B7A5E8F62C2492580038EDE1 /* YouTubeKit */,
-				B7A5E8FC2C24964F0038EDE1 /* DesignSystem */,
 			);
 			productName = OnlyJoseWidgetsExtension;
 			productReference = B7A5E8DA2C2490990038EDE1 /* OnlyJoseWidgetsExtension.appex */;
@@ -830,7 +823,6 @@
 				B7FCDE572C221EA8004E0C76 /* RevenueCat */,
 				B7FCDE592C221EA8004E0C76 /* RevenueCatUI */,
 				B7A5E8F42C2492470038EDE1 /* YouTubeKit */,
-				B7A5E8FE2C2496710038EDE1 /* DesignSystem */,
 				B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */,
 				B733A6812C25DA3200E0BDC4 /* SwipeActions */,
 			);
@@ -1611,14 +1603,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
 			productName = YouTubeKit;
-		};
-		B7A5E8FC2C24964F0038EDE1 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
-		};
-		B7A5E8FE2C2496710038EDE1 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
 		};
 		B7FCDE552C221EA8004E0C76 /* ReceiptParser */ = {
 			isa = XCSwiftPackageProductDependency;
