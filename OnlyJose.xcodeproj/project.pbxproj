@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B733A6732C249A8600E0BDC4 /* AVButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A6692C249A8600E0BDC4 /* AVButton.swift */; };
+		B733A6742C249A8600E0BDC4 /* AVMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A66A2C249A8600E0BDC4 /* AVMenuButton.swift */; };
+		B733A6752C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A66B2C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift */; };
+		B733A6762C249A8600E0BDC4 /* AVMobileAuxiliaryControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A66C2C249A8600E0BDC4 /* AVMobileAuxiliaryControlsView.swift */; };
+		B733A6772C249A8600E0BDC4 /* CustomAVButtonsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A66D2C249A8600E0BDC4 /* CustomAVButtonsManager.swift */; };
+		B733A6782C249A8600E0BDC4 /* CustomAVControlOverflowButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A66E2C249A8600E0BDC4 /* CustomAVControlOverflowButtonDelegate.swift */; };
+		B733A6792C249A8600E0BDC4 /* PrivateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A6702C249A8600E0BDC4 /* PrivateManager.swift */; };
+		B733A67A2C249A8600E0BDC4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A6712C249A8600E0BDC4 /* Utils.swift */; };
+		B733A67C2C24EFA900E0BDC4 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */; };
+		B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */; };
 		B76794472C15C20B00A623BE /* AppRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794462C15C20B00A623BE /* AppRegistry.swift */; };
 		B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794482C15C29500A623BE /* NavigationSheet.swift */; };
 		B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767944A2C171C6300A623BE /* SafariRouter.swift */; };
@@ -130,9 +140,11 @@
 		B7A5E8EE2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */; };
 		B7A5E8EF2C2491570038EDE1 /* DownloadingsProgressAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */; };
 		B7A5E8F02C2491800038EDE1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8862C2483B70038EDE1 /* CircularProgressView.swift */; };
-		B7A5E8F22C2491FB0038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F12C2491FB0038EDE1 /* DesignSystem */; };
 		B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F42C2492470038EDE1 /* YouTubeKit */; };
 		B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F62C2492580038EDE1 /* YouTubeKit */; };
+		B7A5E8FD2C24964F0038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FC2C24964F0038EDE1 /* DesignSystem */; };
+		B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8FE2C2496710038EDE1 /* DesignSystem */; };
+		B7A5E92C2C24976C0038EDE1 /* DesignSystem in Resources */ = {isa = PBXBuildFile; fileRef = B7A5E92B2C24976C0038EDE1 /* DesignSystem */; };
 		B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */; };
 		B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE522C221E41004E0C76 /* SupportAppView.swift */; };
 		B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = B7FCDE552C221EA8004E0C76 /* ReceiptParser */; };
@@ -147,7 +159,6 @@
 		B7FE95CB2C10DC9A00402DE1 /* OnlyJoseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95CA2C10DC9A00402DE1 /* OnlyJoseTests.swift */; };
 		B7FE95D52C10DC9A00402DE1 /* OnlyJoseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95D42C10DC9A00402DE1 /* OnlyJoseUITests.swift */; };
 		B7FE95D72C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95D62C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift */; };
-		B7FE95E62C10DF2900402DE1 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B7FE95E52C10DF2900402DE1 /* DesignSystem */; };
 		B7FE95E92C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */; };
 		B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95EA2C10DFEA00402DE1 /* AppView.swift */; };
 		B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95ED2C10E08F00402DE1 /* Tabs.swift */; };
@@ -206,6 +217,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B733A6692C249A8600E0BDC4 /* AVButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVButton.swift; sourceTree = "<group>"; };
+		B733A66A2C249A8600E0BDC4 /* AVMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVMenuButton.swift; sourceTree = "<group>"; };
+		B733A66B2C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVMobileAuxiliaryControl.swift; sourceTree = "<group>"; };
+		B733A66C2C249A8600E0BDC4 /* AVMobileAuxiliaryControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVMobileAuxiliaryControlsView.swift; sourceTree = "<group>"; };
+		B733A66D2C249A8600E0BDC4 /* CustomAVButtonsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAVButtonsManager.swift; sourceTree = "<group>"; };
+		B733A66E2C249A8600E0BDC4 /* CustomAVControlOverflowButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAVControlOverflowButtonDelegate.swift; sourceTree = "<group>"; };
+		B733A6702C249A8600E0BDC4 /* PrivateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateManager.swift; sourceTree = "<group>"; };
+		B733A6712C249A8600E0BDC4 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -330,6 +350,7 @@
 		B7A5E8E42C24909A0038EDE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A5E8E62C24909A0038EDE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingsProgressAttributes.swift; sourceTree = "<group>"; };
+		B7A5E92B2C24976C0038EDE1 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappablePadding.swift; sourceTree = "<group>"; };
 		B7FCDE522C221E41004E0C76 /* SupportAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAppView.swift; sourceTree = "<group>"; };
 		B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = StoreKit.storekit; path = OnlyJose/Resources/StoreKit.storekit; sourceTree = "<group>"; };
@@ -344,7 +365,6 @@
 		B7FE95D02C10DC9A00402DE1 /* OnlyJoseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnlyJoseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FE95D42C10DC9A00402DE1 /* OnlyJoseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseUITests.swift; sourceTree = "<group>"; };
 		B7FE95D62C10DC9A00402DE1 /* OnlyJoseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyJoseUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B7FE95E32C10DE7300402DE1 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B7FE95E82C10DF9D00402DE1 /* OnlyJoseApp+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnlyJoseApp+Scene.swift"; sourceTree = "<group>"; };
 		B7FE95EA2C10DFEA00402DE1 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		B7FE95ED2C10E08F00402DE1 /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
@@ -369,10 +389,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7A5E8F22C2491FB0038EDE1 /* DesignSystem in Frameworks */,
 				B7A5E8DC2C2490990038EDE1 /* SwiftUI.framework in Frameworks */,
 				B7A5E8DB2C2490990038EDE1 /* WidgetKit.framework in Frameworks */,
 				B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */,
+				B7A5E8FD2C24964F0038EDE1 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +403,11 @@
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B767947A2C1730F800A623BE /* SwipeActions in Frameworks */,
 				B7FE95F12C10E30900402DE1 /* Env in Frameworks */,
+				B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */,
+				B7A5E8FF2C2496710038EDE1 /* DesignSystem in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
 				B7FCDE582C221EA8004E0C76 /* RevenueCat in Frameworks */,
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
-				B7FE95E62C10DF2900402DE1 /* DesignSystem in Frameworks */,
 				B76794772C1730BD00A623BE /* InfiniteScrollViews in Frameworks */,
 				B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */,
 			);
@@ -409,6 +430,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B733A66F2C249A8600E0BDC4 /* CustomAVButtons */ = {
+			isa = PBXGroup;
+			children = (
+				B733A6692C249A8600E0BDC4 /* AVButton.swift */,
+				B733A66A2C249A8600E0BDC4 /* AVMenuButton.swift */,
+				B733A66B2C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift */,
+				B733A66C2C249A8600E0BDC4 /* AVMobileAuxiliaryControlsView.swift */,
+				B733A66D2C249A8600E0BDC4 /* CustomAVButtonsManager.swift */,
+				B733A66E2C249A8600E0BDC4 /* CustomAVControlOverflowButtonDelegate.swift */,
+			);
+			path = CustomAVButtons;
+			sourceTree = "<group>";
+		};
+		B733A6722C249A8600E0BDC4 /* PrivateAPIs */ = {
+			isa = PBXGroup;
+			children = (
+				B733A66F2C249A8600E0BDC4 /* CustomAVButtons */,
+				B733A6702C249A8600E0BDC4 /* PrivateManager.swift */,
+				B733A6712C249A8600E0BDC4 /* Utils.swift */,
+			);
+			path = PrivateAPIs;
+			sourceTree = "<group>";
+		};
 		B767944F2C1721F900A623BE /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,7 +634,7 @@
 				B7FE95B62C10DC9900402DE1 /* OnlyJose */,
 				B7FE95C92C10DC9A00402DE1 /* OnlyJoseTests */,
 				B7FE95D32C10DC9A00402DE1 /* OnlyJoseUITests */,
-				B7FE95E32C10DE7300402DE1 /* DesignSystem */,
+				B7A5E92B2C24976C0038EDE1 /* DesignSystem */,
 				B7FE95EF2C10E2DF00402DE1 /* Env */,
 				B767944C2C171D2500A623BE /* Models */,
 				B7A5E8DD2C2490990038EDE1 /* OnlyJoseWidgets */,
@@ -613,6 +657,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnlyJose */ = {
 			isa = PBXGroup;
 			children = (
+				B733A6722C249A8600E0BDC4 /* PrivateAPIs */,
 				B7A5E8A32C2486110038EDE1 /* VideoViews */,
 				B7A5E8632C2471220038EDE1 /* Info.plist */,
 				B7A5E8622C2470480038EDE1 /* OnlyJose.entitlements */,
@@ -681,6 +726,7 @@
 				B7FE95EA2C10DFEA00402DE1 /* AppView.swift */,
 				B76794462C15C20B00A623BE /* AppRegistry.swift */,
 				B767944A2C171C6300A623BE /* SafariRouter.swift */,
+				B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -756,8 +802,8 @@
 			);
 			name = OnlyJoseWidgetsExtension;
 			packageProductDependencies = (
-				B7A5E8F12C2491FB0038EDE1 /* DesignSystem */,
 				B7A5E8F62C2492580038EDE1 /* YouTubeKit */,
+				B7A5E8FC2C24964F0038EDE1 /* DesignSystem */,
 			);
 			productName = OnlyJoseWidgetsExtension;
 			productReference = B7A5E8DA2C2490990038EDE1 /* OnlyJoseWidgetsExtension.appex */;
@@ -779,7 +825,6 @@
 			);
 			name = OnlyJose;
 			packageProductDependencies = (
-				B7FE95E52C10DF2900402DE1 /* DesignSystem */,
 				B7FE95F02C10E30900402DE1 /* Env */,
 				B767944D2C171E7800A623BE /* Models */,
 				B76794762C1730BD00A623BE /* InfiniteScrollViews */,
@@ -788,6 +833,8 @@
 				B7FCDE572C221EA8004E0C76 /* RevenueCat */,
 				B7FCDE592C221EA8004E0C76 /* RevenueCatUI */,
 				B7A5E8F42C2492470038EDE1 /* YouTubeKit */,
+				B7A5E8FE2C2496710038EDE1 /* DesignSystem */,
+				B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */,
 			);
 			productName = OnlyJose;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnlyJose.app */;
@@ -869,6 +916,7 @@
 				B76794782C1730F800A623BE /* XCRemoteSwiftPackageReference "SwipeActions" */,
 				B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 				B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */,
+				B733A67D2C24F03200E0BDC4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 			);
 			productRefGroup = B7FE95B52C10DC9900402DE1 /* Products */;
 			projectDirPath = "";
@@ -900,6 +948,7 @@
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
 				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
 				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
+				B7A5E92C2C24976C0038EDE1 /* DesignSystem in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
 				B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */,
 				B7FE96032C10E7A600402DE1 /* boost.wav in Resources */,
@@ -950,9 +999,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */,
+				B733A6752C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift in Sources */,
 				B7FE960E2C11CCA800402DE1 /* SettingsTab.swift in Sources */,
 				B76794692C172FAF00A623BE /* SharePlayCoordinationManager.swift in Sources */,
 				B7A5E84F2C246F4A0038EDE1 /* OnlyJose.xcdatamodeld in Sources */,
+				B733A67A2C249A8600E0BDC4 /* Utils.swift in Sources */,
 				B7A5E8592C246F4A0038EDE1 /* FavoriteVideo+CoreDataClass.swift in Sources */,
 				B7FCDE602C2318FA004E0C76 /* IconSelectorView.swift in Sources */,
 				B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */,
@@ -969,6 +1020,7 @@
 				B7A5E8C22C24890A0038EDE1 /* BackgroundFetchActivity.swift in Sources */,
 				B7A5E83B2C246DF90038EDE1 /* AddToFavoriteWidgetView.swift in Sources */,
 				B7A5E8CA2C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift in Sources */,
+				B733A6742C249A8600E0BDC4 /* AVMenuButton.swift in Sources */,
 				B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */,
 				B7A5E8612C246FB60038EDE1 /* YTVideoShareSource.swift in Sources */,
 				B7A5E8502C246F4A0038EDE1 /* DownloadedChannel+CoreDataClass.swift in Sources */,
@@ -1005,6 +1057,7 @@
 				B7A5E8B42C2486110038EDE1 /* GoToChannelContextMenuButtonView.swift in Sources */,
 				B7A5E8A92C2486110038EDE1 /* AddToQueueContextMenuButtonView.swift in Sources */,
 				B76794892C17364F00A623BE /* AvatarCircleView.swift in Sources */,
+				B733A6732C249A8600E0BDC4 /* AVButton.swift in Sources */,
 				B7A5E8572C246F4A0038EDE1 /* DownloadedVideoChapter+CoreDataProperties.swift in Sources */,
 				B76794642C172FAF00A623BE /* DownloadingsModel.swift in Sources */,
 				B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */,
@@ -1020,16 +1073,19 @@
 				B7A5E8BA2C2486110038EDE1 /* VideoFromSearchView.swift in Sources */,
 				B7A5E85B2C246F4A0038EDE1 /* FavoriteVideo+matchesQuery.swift in Sources */,
 				B7A5E8B02C2486110038EDE1 /* DownloadStateView.swift in Sources */,
+				B733A67C2C24EFA900E0BDC4 /* SideBarView.swift in Sources */,
 				B7A5E8C02C24888F0038EDE1 /* DownloadingsProgressActivity.swift in Sources */,
 				B7A5E8B62C2486110038EDE1 /* RemoveDownloadContextMenuButtonView.swift in Sources */,
 				B76794632C172FAF00A623BE /* APIKeyModel.swift in Sources */,
 				B7A5E8542C246F4A0038EDE1 /* DownloadedVideo+matchesQuery.swift in Sources */,
 				B7A5E8EE2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift in Sources */,
 				B76794992C1762A400A623BE /* AVPlayer+Extension.swift in Sources */,
+				B733A6782C249A8600E0BDC4 /* CustomAVControlOverflowButtonDelegate.swift in Sources */,
 				B7A5E8212C2460560038EDE1 /* DefaultElementsInfiniteScrollView.swift in Sources */,
 				B767946C2C172FAF00A623BE /* VideoPlayerModel.swift in Sources */,
 				B7A5E8562C246F4A0038EDE1 /* DownloadedVideoChapter+CoreDataClass.swift in Sources */,
 				B7A5E8A62C2486110038EDE1 /* AddToPlaylistContextMenuButtonView.swift in Sources */,
+				B733A6792C249A8600E0BDC4 /* PrivateManager.swift in Sources */,
 				B7A5E8392C246CF10038EDE1 /* View+OnReceive.swift in Sources */,
 				B7A5E8AB2C2486110038EDE1 /* CancelDownloadContextMenuView.swift in Sources */,
 				B7FE95B82C10DC9900402DE1 /* OnlyJoseApp.swift in Sources */,
@@ -1057,9 +1113,11 @@
 				B7A5E81F2C2460360038EDE1 /* YTPlaylist+.swift in Sources */,
 				B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */,
 				B7A5E8532C246F4A0038EDE1 /* DownloadedVideo+CoreDataProperties.swift in Sources */,
+				B733A6762C249A8600E0BDC4 /* AVMobileAuxiliaryControlsView.swift in Sources */,
 				B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */,
 				B767946A2C172FAF00A623BE /* SheetsModel.swift in Sources */,
 				B7A5E8A42C2486110038EDE1 /* AddToFavoritesButtonView.swift in Sources */,
+				B733A6772C249A8600E0BDC4 /* CustomAVButtonsManager.swift in Sources */,
 				B7A5E8D52C248F7A0038EDE1 /* PrivacyIconView.swift in Sources */,
 				B7A5E85D2C246F4A0038EDE1 /* FileManagerModel.swift in Sources */,
 				B7A5E85C2C246F4A0038EDE1 /* FavoriteVideo+toYTVideo.swift in Sources */,
@@ -1485,6 +1543,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B733A67D2C24F03200E0BDC4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/swiftui-introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/b5i/InfiniteScrollViews.git";
@@ -1520,6 +1586,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B733A67D2C24F03200E0BDC4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */;
+			productName = SwiftUIIntrospect;
+		};
 		B767944D2C171E7800A623BE /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
@@ -1534,10 +1605,6 @@
 			package = B76794782C1730F800A623BE /* XCRemoteSwiftPackageReference "SwipeActions" */;
 			productName = SwipeActions;
 		};
-		B7A5E8F12C2491FB0038EDE1 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
-		};
 		B7A5E8F42C2492470038EDE1 /* YouTubeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
@@ -1547,6 +1614,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
 			productName = YouTubeKit;
+		};
+		B7A5E8FC2C24964F0038EDE1 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		B7A5E8FE2C2496710038EDE1 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 		B7FCDE552C221EA8004E0C76 /* ReceiptParser */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1562,10 +1637,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCatUI;
-		};
-		B7FE95E52C10DF2900402DE1 /* DesignSystem */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = DesignSystem;
 		};
 		B7FE95F02C10E30900402DE1 /* Env */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -35,8 +35,10 @@ struct AppView: View {
 
     var body: some View {
 #if os(visionOS)
+        tabBarView
 #else
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
+            sidebarView
         } else {
             tabBarView
         }
@@ -44,7 +46,15 @@ struct AppView: View {
     }
     
     var availableTabs: [Tab] {
-        return Tab.loggedOutTab()
+//        guard appAccountsManager.currentClient.isAuth else {
+//            return Tab.loggedOutTab()
+//        }
+        if UIDevice.current.userInterfaceIdiom == .phone || horizontalSizeClass == .compact {
+            return Tab.loggedOutTab()//iosTabs.tabs
+        } else if UIDevice.current.userInterfaceIdiom == .vision {
+            return Tab.loggedOutTab()//Tab.visionOSTab()
+        }
+        return sidebarTabs.tabs.map { $0.tab }
     }
     
     var tabBarView: some View {
@@ -98,8 +108,78 @@ struct AppView: View {
 
     }
     
+#if !os(visionOS)
+    var sidebarView: some View {
+        SideBarView(selectedTab: $selectedTab,
+                    popToRootTab: $popToRootTab,
+                    tabs: availableTabs)
+        {
+            HStack(spacing: 0) {
+                TabView(selection: $selectedTab) {
+                    ForEach(availableTabs) { tab in
+                        tab
+                            .makeContentView(selectedTab: $selectedTab, popToRootTab: $popToRootTab)
+                            .tabItem {
+                                tab.label
+                            }
+                            .tag(tab)
+                    }
+                }
+                .introspect(.tabView, on: .iOS(.v17)) { (tabview: UITabBarController) in
+                    tabview.tabBar.isHidden = horizontalSizeClass == .regular
+                    tabview.customizableViewControllers = []
+                    tabview.moreNavigationController.isNavigationBarHidden = true
+                }
+                if horizontalSizeClass == .regular,
+//                   appAccountsManager.currentClient.isAuth,
+                   userPreferences.showiPadSecondaryColumn
+                {
+                    Divider().edgesIgnoringSafeArea(.all)
+//                    notificationsSecondaryColumn
+                }
+            }
+        }
+        .environment(appRouterPath)
+        .safeAreaInset(edge: .bottom, content: {
+            HStack(spacing: 0) {
+                if  VPM.currentItem != nil {
+                    NowPlayingBarView(
+                        sheetAnimation: sheetAnimation,
+                        isSheetPresented: watchVideoBinding,
+                        isSettingsSheetPresented: settingsSheetBinding.wrappedValue
+                    )
+                    .frame(height: 70)
+                    .padding(.top, 40)
+                    .padding(.leading, userPreferences.isSidebarExpanded ? 18 : 0)
+//                    .offset(x: 0, y: 50)
+                }
+                
+          
+            }
+            .background(.thinMaterial)
+            .padding(.leading, .sidebarWidth)
+//            .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth)
+        })
+        .sheet(isPresented: watchVideoBinding, content: {
+            WatchVideoView()
+                .presentationDragIndicator(.hidden)
+        })
+        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+    }
+#endif
+    
     private func badgeFor(tab: Tab) -> Int {
         return 0
+    }
+    
+    
+    var notificationsSecondaryColumn: some View {
+        Text("Notifs")
+//        NotificationsTab(selectedTab: .constant(.notifications),
+//                         popToRootTab: $popToRootTab, lockedType: nil)
+//        .environment(\.isSecondaryColumn, true)
+//        .frame(maxWidth: .secondaryColumnWidth)
+//        .id(appAccountsManager.currentAccount.id)
     }
 }
 

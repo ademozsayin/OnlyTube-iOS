@@ -5,8 +5,6 @@
 //  Created by Antoine Bollengier on 24.11.22.
 //
 
-
-
 import Foundation
 import AVKit
 import SwiftUI
@@ -28,12 +26,12 @@ struct PlayerViewController: UIViewControllerRepresentable {
     @ObservedObject private var PSM = PreferencesStorageModel.shared
     
     class Model: NSObject, AVPlayerViewControllerDelegate {
-        private var isFullScreen: Bool = true
-                
+        private var isFullScreen: Bool = false
+        
         private var mainPlayer: AVPlayerViewController? = nil
         
         private var backgroundObserver: NSObjectProtocol? = nil
-                        
+        
         override init() {
             super.init()
             self.backgroundObserver = NotificationCenter.default.addObserver(forName:             UIApplication.didEnterBackgroundNotification, object: nil, queue: nil, using: { [weak self] _ in
@@ -67,7 +65,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
         
         func playerViewController(_ playerViewController: AVPlayerViewController, willBeginFullScreenPresentationWithAnimationCoordinator coordinator: any UIViewControllerTransitionCoordinator) {
             self.mainPlayer = playerViewController
-
+            
             self.isFullScreen = true
         }
         
@@ -89,23 +87,23 @@ struct PlayerViewController: UIViewControllerRepresentable {
     func makeCoordinator() -> Model {
         return Model()
     }
-        
+    
     func makeUIViewController(context: Context) -> AVPlayerViewController {
-//        NotificationCenter.default.addObserver(
-//            forName: UIApplication.didEnterBackgroundNotification,
-//            object: nil,
-//            queue: nil,
-//            using: { _ in
-//                controller.player = nil
-//            })
-//        
-//        NotificationCenter.default.addObserver(
-//            forName: UIApplication.didBecomeActiveNotification,
-//            object: nil,
-//            queue: nil,
-//            using: { _ in
-//                controller.player = player
-//            })
+        //        NotificationCenter.default.addObserver(
+        //            forName: UIApplication.didEnterBackgroundNotification,
+        //            object: nil,
+        //            queue: nil,
+        //            using: { _ in
+        //                controller.player = nil
+        //            })
+        //
+        //        NotificationCenter.default.addObserver(
+        //            forName: UIApplication.didBecomeActiveNotification,
+        //            object: nil,
+        //            queue: nil,
+        //            using: { _ in
+        //                controller.player = player
+        //            })
         
         NotificationCenter.default.addObserver(
             forName: .atwyStopPlayer,
@@ -115,7 +113,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
                 stopPlayer()
             })
         
-
+        
         player.allowsExternalPlayback = true
         player.audiovisualBackgroundPlaybackPolicy = ((PSM.propetriesState[.backgroundPlayback] as? Bool) ?? true) ? .continuesIfPossible : .pauses
         player.preventsDisplaySleepDuringVideoPlayback = true
@@ -132,71 +130,69 @@ struct PlayerViewController: UIViewControllerRepresentable {
         controller.player = player
         controller.delegate = context.coordinator
         
-//        PrivateManager.shared.avButtonsManager?.controlsView.menuState = .automatic // initialize it
+        PrivateManager.shared.avButtonsManager?.controlsView.menuState = .automatic // initialize it
         
         return controller
     }
-
+    
     private func stopPlayer() {
         controller.player?.replaceCurrentItem(with: nil)
     }
-
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
-        uiViewController.player = player
-        uiViewController.videoGravity = .resizeAspectFill // Ensures video scales properly
-    }
+    
+    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {}
 }
 #else
 
 struct PlayerViewController: View {
     var player: CustomAVPlayer?
     var infos: TrackInformations?
-//    @State private var entireTime: Double = 0.0
-//    @State private var currentTime: Double = 0.0 {
-//        didSet {
-//            self.player?.seek(to: CMTime(seconds: currentTime, preferredTimescale: 1000), toleranceBefore: CMTime(seconds: 1, preferredTimescale: 1000), toleranceAfter: CMTime(seconds: 1, preferredTimescale: 1000))
-//        }
-//    }
+    //    @State private var entireTime: Double = 0.0
+    //    @State private var currentTime: Double = 0.0 {
+    //        didSet {
+    //            self.player?.seek(to: CMTime(seconds: currentTime, preferredTimescale: 1000), toleranceBefore: CMTime(seconds: 1, preferredTimescale: 1000), toleranceAfter: CMTime(seconds: 1, preferredTimescale: 1000))
+    //        }
+    //    }
     
     init(player: CustomAVPlayer?, infos: TrackInformations? = nil) {
         self.player = player
         self.infos = infos
-//        self.entireTime = self.player?.currentItem?.duration.seconds ?? 0.0
-//        self.player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 1000), queue: .main, using: { [self] time in
-//            self.currentTime = time.seconds
-//        })
-//        NotificationCenter.default.addObserver(
-//            forName: UIApplication.didEnterBackgroundNotification,
-//            object: nil,
-//            queue: nil,
-//            using: { [self] _ in
-//                self.player = nil
-//            })
-//
-//        NotificationCenter.default.addObserver(
-//            forName: UIApplication.didBecomeActiveNotification,
-//            object: nil,
-//            queue: nil,
-//            using: { [self] _ in
-//                print("djamy1")
-//                self.player = player
-//            })
-//
-//        NotificationCenter.default.addObserver(
-//            forName: .atwyStopPlayer,
-//            object: nil,
-//            queue: nil,
-//            using: { [self] _ in
-//                self.player?.replaceCurrentItem(with: nil)
-//            })
+        //        self.entireTime = self.player?.currentItem?.duration.seconds ?? 0.0
+        //        self.player?.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.1, preferredTimescale: 1000), queue: .main, using: { [self] time in
+        //            self.currentTime = time.seconds
+        //        })
+        //        NotificationCenter.default.addObserver(
+        //            forName: UIApplication.didEnterBackgroundNotification,
+        //            object: nil,
+        //            queue: nil,
+        //            using: { [self] _ in
+        //                self.player = nil
+        //            })
+        //
+        //        NotificationCenter.default.addObserver(
+        //            forName: UIApplication.didBecomeActiveNotification,
+        //            object: nil,
+        //            queue: nil,
+        //            using: { [self] _ in
+        //                print("djamy1")
+        //                self.player = player
+        //            })
+        //
+        //        NotificationCenter.default.addObserver(
+        //            forName: .atwyStopPlayer,
+        //            object: nil,
+        //            queue: nil,
+        //            using: { [self] _ in
+        //                self.player?.replaceCurrentItem(with: nil)
+        //            })
     }
-
+    
     var body: some View {
         ZStack {
             VideoPlayer(player: player)
-//            Slider(value: $currentTime, in: 0...entireTime)
+            //            Slider(value: $currentTime, in: 0...entireTime)
         }
     }
 }
 
 #endif
+

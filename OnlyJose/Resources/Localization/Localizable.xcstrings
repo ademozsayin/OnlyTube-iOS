@@ -207,6 +207,9 @@
     "Loading other options..." : {
 
     },
+    "menu.new-post" : {
+
+    },
     "Next up" : {
 
     },
@@ -228,6 +231,9 @@
           }
         }
       }
+    },
+    "Notifs" : {
+
     },
     "OK" : {
 
