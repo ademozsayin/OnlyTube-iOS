@@ -18,6 +18,8 @@
 		B733A67C2C24EFA900E0BDC4 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */; };
 		B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */ = {isa = PBXBuildFile; productRef = B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */; };
 		B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */ = {isa = PBXBuildFile; productRef = B733A6812C25DA3200E0BDC4 /* SwipeActions */; };
+		B733A68D2C25F57200E0BDC4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B733A68C2C25F57200E0BDC4 /* DesignSystem */; };
+		B733A68F2C25F57800E0BDC4 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = B733A68E2C25F57800E0BDC4 /* DesignSystem */; };
 		B76794472C15C20B00A623BE /* AppRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794462C15C20B00A623BE /* AppRegistry.swift */; };
 		B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794482C15C29500A623BE /* NavigationSheet.swift */; };
 		B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767944A2C171C6300A623BE /* SafariRouter.swift */; };
@@ -389,6 +391,7 @@
 				B7A5E8DC2C2490990038EDE1 /* SwiftUI.framework in Frameworks */,
 				B7A5E8DB2C2490990038EDE1 /* WidgetKit.framework in Frameworks */,
 				B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */,
+				B733A68D2C25F57200E0BDC4 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +402,7 @@
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
 				B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */,
+				B733A68F2C25F57800E0BDC4 /* DesignSystem in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
 				B7FCDE582C221EA8004E0C76 /* RevenueCat in Frameworks */,
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
@@ -798,6 +802,7 @@
 			name = OnlyJoseWidgetsExtension;
 			packageProductDependencies = (
 				B7A5E8F62C2492580038EDE1 /* YouTubeKit */,
+				B733A68C2C25F57200E0BDC4 /* DesignSystem */,
 			);
 			productName = OnlyJoseWidgetsExtension;
 			productReference = B7A5E8DA2C2490990038EDE1 /* OnlyJoseWidgetsExtension.appex */;
@@ -827,6 +832,7 @@
 				B7A5E8F42C2492470038EDE1 /* YouTubeKit */,
 				B733A67E2C24F03200E0BDC4 /* SwiftUIIntrospect */,
 				B733A6812C25DA3200E0BDC4 /* SwipeActions */,
+				B733A68E2C25F57800E0BDC4 /* DesignSystem */,
 			);
 			productName = OnlyJose;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnlyJose.app */;
@@ -1586,6 +1592,14 @@
 		B733A6812C25DA3200E0BDC4 /* SwipeActions */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwipeActions;
+		};
+		B733A68C2C25F57200E0BDC4 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		B733A68E2C25F57800E0BDC4 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
 		};
 		B767944D2C171E7800A623BE /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
