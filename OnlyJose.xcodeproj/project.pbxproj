@@ -224,6 +224,7 @@
 		B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
 		B733A6802C25D9C000E0BDC4 /* SwipeActions */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwipeActions; path = Packages/SwipeActions; sourceTree = "<group>"; };
 		B733A6892C25F3A900E0BDC4 /* Env */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Env; path = Packages/Env; sourceTree = "<group>"; };
+		B733A68B2C25F51300E0BDC4 /* DesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DesignSystem; path = Packages/DesignSystem; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -621,6 +622,7 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
+				B733A68B2C25F51300E0BDC4 /* DesignSystem */,
 				B7A5E80A2C236D7E0038EDE1 /* Media.xcassets */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
 				B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */,
