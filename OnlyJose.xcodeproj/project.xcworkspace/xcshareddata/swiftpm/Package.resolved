@@ -10,15 +10,6 @@
       }
     },
     {
-      "identity" : "keychain-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/evgenyneu/keychain-swift",
-      "state" : {
-        "branch" : "master",
-        "revision" : "5e1b02b6a9dac2a759a1d5dbc175c86bd192a608"
-      }
-    },
-    {
       "identity" : "nuke",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke",
