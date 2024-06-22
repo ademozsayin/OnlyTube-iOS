@@ -18,7 +18,7 @@ struct DownloadingsProgressActivity: BackgroundFetchActivity {
     
     static let activityType: LiveActivitesManager.ActivityType = .downloadingsProgress
     
-    static let identifier: String = "Antoine-Bollengier.Atwy.DownloadingsProgressUpdate"
+    static let identifier: String = "agency.fiable.OnlyJose.DownloadingsProgressUpdate"
     
     static let fetchInterval: Double = 5
     

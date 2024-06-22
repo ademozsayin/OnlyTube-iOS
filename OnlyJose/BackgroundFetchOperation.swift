@@ -12,7 +12,7 @@ import BackgroundTasks
 /// A protocol describing an operation that should regularly be done while the app is in background.
 @available(iOS 16.1, *)
 protocol BackgroundFetchOperation {
-    /// The identifier of the fetch operation, for example `Antoine-Bollengier.Atwy.DownloadingsProgressUpdate`.
+    /// The identifier of the fetch operation, for example `agency.fiable.OnlyJose.DownloadingsProgressUpdate`.
     static var identifier: String { get }
     
     /// A boolean indicating whether a task of with the same identifier is already scheduled in the `BGTaskScheduler`.

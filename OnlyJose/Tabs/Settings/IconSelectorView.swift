@@ -7,6 +7,7 @@
 
 import DesignSystem
 import SwiftUI
+import Env
 
 @MainActor
 struct IconSelectorView: View {
@@ -25,16 +26,6 @@ struct IconSelectorView: View {
         
         case primary = 0
         case alt1, alt2, alt3
-//        case alt1, alt2, alt3, alt4, alt5, alt6, alt7, alt8, alt9, alt10, alt11, alt12, alt13, alt14, alt15
-//        case alt16, alt17, alt18, alt19, alt20, alt21
-//        case alt22, alt23, alt24, alt25, alt26
-//        case alt27, alt28, alt29
-//        case alt30, alt31, alt32, alt33, alt34, alt35, alt36
-//        case alt37
-//        case alt38
-//        case alt39, alt40, alt41, alt42, alt43
-//        case alt44, alt45
-//        case alt46
         
         var appIconName: String {
             return "AppIconAlternate\(rawValue)"
@@ -54,23 +45,13 @@ struct IconSelectorView: View {
                 .alt3,
                 
             ])
-//                .primary, .alt46, .alt1, .alt2, .alt3, .alt4,
-//                .alt5, .alt6, .alt7, .alt8,
-//                .alt9, .alt10, .alt11, .alt12, .alt13, .alt14, .alt15,
-//                .alt16, .alt17, .alt18, .alt19, .alt20, .alt21]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) Albert Kinng", icons: [.alt22, .alt23, .alt24, .alt25, .alt26]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) Dan van Moll", icons: [.alt27, .alt28, .alt29]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) Chanhwi Joo (GitHub @te6-in)", icons: [.alt30, .alt31, .alt32, .alt33, .alt34, .alt35, .alt36]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) W. Kovács Ágnes (@wildgica)", icons: [.alt37]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) Duncan Horne", icons: [.alt38]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) BeAware@social.beaware.live", icons: [.alt39, .alt40, .alt41, .alt42, .alt43]),
-//            IconSelector(title: "\("settings.app.icon.designed-by".localized) Simone Margio", icons: [.alt44, .alt45]),
         ]
     }
     
     @Environment(Theme.self) private var theme
     @State private var currentIcon = UIApplication.shared.alternateIconName ?? Icon.primary.appIconName
-    
+    @Environment(UserPreferences.self) private var preferences
+
     private let columns = [GridItem(.adaptive(minimum: 125, maximum: 1024))]
     
     var body: some View {
@@ -98,6 +79,7 @@ struct IconSelectorView: View {
             ForEach(icons) { icon in
                 Button {
                     currentIcon = icon.appIconName
+                    preferences.appIcon = currentIcon
                     if icon.rawValue == Icon.primary.rawValue {
                         UIApplication.shared.setAlternateIconName(nil)
                     } else {

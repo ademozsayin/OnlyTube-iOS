@@ -256,7 +256,8 @@ extension View {
 struct BouncyJose: View {
     
     @State var bounceHeight: BounceHeight? = nil
-    
+    @Environment(UserPreferences.self) private var userPreferences
+
     func bounceAnimation() {
         withAnimation(Animation.easeOut(duration: 0.3).delay(0)) {
             bounceHeight = .up100
@@ -283,7 +284,8 @@ struct BouncyJose: View {
     
     var body: some View {
         VStack {
-            let icon = IconSelectorView.Icon(string: UIApplication.shared.alternateIconName ?? "AppIcon")
+//            let icon = IconSelectorView.Icon(string: UIApplication.shared.alternateIconName ?? "AppIcon")
+            let icon =  IconSelectorView.Icon(string: userPreferences.appIcon)
             Image(uiImage: .init(named: icon.appIconName)!)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

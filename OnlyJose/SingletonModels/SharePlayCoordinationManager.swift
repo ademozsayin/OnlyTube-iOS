@@ -12,7 +12,7 @@ import YouTubeKit
 import Combine
 
 struct WatchInGroupActivity: GroupActivity {
-    static var activityIdentifier = "Antoine-Bollengier.Atwy.shareplay"
+    static var activityIdentifier = "agency.fiable.OnlyJose.shareplay"
     var metadata: GroupActivityMetadata {
         var metadata = GroupActivityMetadata()
         metadata.type = .watchTogether

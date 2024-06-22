@@ -22,6 +22,8 @@ import SwiftUI
        
         @AppStorage("sidebar_expanded") public var isSidebarExpanded: Bool = false
 
+        @AppStorage("appicon") public var appIcon: String = "AppIcon"
+
         init() {
             prepareTranslationType()
         }
@@ -101,6 +103,12 @@ import SwiftUI
             storage.isSidebarExpanded = isSidebarExpanded
         }
     }
+    
+    public var appIcon: String {
+        didSet {
+            storage.appIcon = appIcon
+        }
+    }
 
     
     private init() {
@@ -122,6 +130,7 @@ import SwiftUI
         
         isSidebarExpanded = storage.isSidebarExpanded
 
+        appIcon = storage.appIcon
     }
 }
 

@@ -7,6 +7,7 @@ let package = Package(
     name: "SwipeActions",
     platforms: [
         .iOS(.v17),
+        .macOS(.v14),
         .visionOS(.v1),
     ],
     products: [

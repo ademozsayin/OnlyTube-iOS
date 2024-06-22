@@ -388,7 +388,7 @@ class PersistenceModel: ObservableObject {
 
 class YTSpotlightDelegate: NSCoreDataCoreSpotlightDelegate {
     override func domainIdentifier() -> String {
-        return "Antoine-Bollengier.Atwy.spotlightData"
+        return "agency.fiable.OnlyJose.spotlightData"
     }
 
     override func indexName() -> String? {
