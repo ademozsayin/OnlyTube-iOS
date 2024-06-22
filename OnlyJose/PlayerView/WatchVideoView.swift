@@ -161,70 +161,21 @@ struct WatchVideoView: View {
                             .offset(y: geometry.size.height * 0.17)
                         }
                         .ignoresSafeArea()
-//                        ScrollView(.horizontal) {
-//                            HStack {
-//                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
-//                                Group {
-//                                    if let currentItem = VPM.currentItem {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
+                                Group {
+                                    if let currentItem = VPM.currentItem {
 //                                        VideoAppreciationView(currentItem: currentItem)
-//                                    }
-//                                }
-//                                .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                if let video = VPM.currentItem?.video ?? VPM.loadingVideo {
-//                                    if NRM.connected {
-//                                        ZStack {
-//                                            RoundedRectangle(cornerRadius: 8)
-//                                                .foregroundStyle(.white)
-//                                                .opacity(0.3)
-//                                                .frame(height: 45)
-////                                            let downloadLocation: URL? = {
-////                                                return PM.currentData.downloadedVideoIds.first(where: {$0.videoId == video.videoId})?.storageLocation
-////                                            }()
-////                                            DownloadButtonView(video: video, videoThumbnailData: VPM.currentItem?.videoThumbnailData, downloadURL: downloadLocation)
-////                                                .foregroundStyle(.white)
-//                                        }
-//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                        .frame(width: 60)
-//                                        .padding(.horizontal, 10)
-////                                        .contextMenu(menuItems: {
-////                                            if DM.downloadings[video.videoId] != nil {
-////                                                Button(role: .destructive) {
-////                                                    DownloadingsModel.shared.cancelDownloadFor(videoId: video.videoId)
-////                                                } label: {
-////                                                    HStack {
-////                                                        Text("Cancel Download")
-////                                                        Image(systemName: "trash")
-////                                                    }
-////                                                }
-////                                            }
-////                                        })
-//                                    }
-//                                    AddToFavoriteWidgetView(video: video, imageData: VPM.currentItem?.videoThumbnailData)
-//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                        .frame(width: 60)
-//                                        .padding(.trailing, 10)
-//                                    Button {
-//                                        video.showShareSheet(thumbnailData: VPM.currentItem?.videoThumbnailData)
-//                                    } label: {
-//                                        ZStack {
-//                                            RoundedRectangle(cornerRadius: 8)
-//                                                .foregroundStyle(.white)
-//                                                .opacity(0.3)
-//                                                .frame(height: 45)
-//                                            Image(systemName: "square.and.arrow.up")
-//                                                .resizable()
-//                                                .scaledToFit()
-//                                                .frame(width: 18)
-//                                                .foregroundStyle(.white)
-//                                        }
-//                                    }
-//                                    .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                    .frame(width: 60)
-//                                    .padding(.trailing, 10)
-//                                    if NRM.connected {
-//                                        Button {
-//                                            CoordinationManager.shared.prepareToPlay(video)
-//                                        } label: {
+                                    }
+                                }
+                                .opacity(!(showQueue || showDescription) ? 1 : 0)
+                                if let video = VPM.currentItem?.video ?? VPM.loadingVideo {
+              
+                                    if NRM.connected {
+                                        Button {
+                                            CoordinationManager.shared.prepareToPlay(video)
+                                        } label: {
 //                                            ZStack {
 //                                                RoundedRectangle(cornerRadius: 8)
 //                                                    .foregroundStyle(.white)
@@ -236,35 +187,23 @@ struct WatchVideoView: View {
 //                                                    .frame(width: 30)
 //                                                    .foregroundStyle(.white)
 //                                            }
-//                                        }
-//                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
-//                                        .frame(width: 60)
-//                                        .padding(.trailing, 10)
-//                                    }
-//                                }
-//                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
-//                            }
-//                        }
-//                        .scrollIndicators(.hidden)
-//                        .padding(.vertical, 15)
-//                        .frame(height: !(showQueue || showDescription) ? 80 : 0)
-//                        .mask(FadeInOutView(mode: .horizontal))
+                                        }
+                                        .opacity(!(showQueue || showDescription) ? 1 : 0)
+                                        .frame(width: 60)
+                                        .padding(.trailing, 10)
+                                    }
+                                }
+                                Color.clear.frame(width: 10, height: !(showQueue || showDescription) ? 50 : 0)
+                            }
+                        }
+                        .scrollIndicators(.hidden)
+                        .padding(.vertical, 15)
+                        .frame(height: !(showQueue || showDescription) ? 80 : 0)
+                        .mask(FadeInOutView(mode: .horizontal))
                         VStack {
                             ScrollView {
                                 Color.clear.frame(height: 15)
-                                //                                if let videoDescriptionParts = VPM.moreVideoInfos?.videoDescription {
-                                //                                    HStack {
-                                //                                        ForEach(Array(videoDescriptionParts.enumerated()), id: \.offset) { (index: Int, descriptionPart: YouTubeDescriptionPart) in
-                                //                                            switch descriptionPart.role {
-                                //                                            case .link(let linkURL):
-                                //                                                Link(descriptionPart.text, destination: linkURL)
-                                //                                            case .video:
-                                //                                            default:
-                                //                                                Color.clear.frame(width: 0, height: 0)
-                                //                                            }
-                                //                                        }
-                                //                                    }
-                                //                            }
+    
                                 if let videoDescription = VPM.currentItem?.videoDescription {
                                     ChaptersView(geometry: geometry, chapterAction: { clickedChapter in
                                         VPM.player.seek(to: CMTime(seconds: Double(clickedChapter.time), preferredTimescale: 600))
@@ -319,12 +258,12 @@ struct WatchVideoView: View {
                             .disabled(!hasDescription)
                             Spacer()
 #if !os(visionOS)
-                            AirPlayButton()
-                                .scaledToFit()
-                                .blendMode(.screen)
-                                .frame(width: 50)
+//                            AirPlayButton()
+//                                .scaledToFit()
+//                                .blendMode(.screen)
+//                                .frame(width: 50)
 #endif
-                            Spacer()
+//                            Spacer()
                             Button {
                                 withAnimation(.interpolatingSpring(duration: 0.3)) {
                                     if showDescription {

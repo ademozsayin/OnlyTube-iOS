@@ -99,6 +99,7 @@ struct PlayingQueueView: View {
             }
             .listStyle(.inset)
             .frame(width: geometry.size.width, height: geometry.size.height * 0.85)
+            
         }
     }
 }
