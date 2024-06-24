@@ -20,6 +20,7 @@ let package = Package(
         .package(name: "Models", path: "../Models"),
 //        .package(name: "Network", path: "../Network"),
         .package(url: "https://github.com/evgenyneu/keychain-swift", branch: "master"),
+        .package(url: "https://github.com/b5i/YouTubeKit", branch: "main")
     ],
     targets: [
         .target(
@@ -28,6 +29,7 @@ let package = Package(
                 .product(name: "Models", package: "Models"),
 //                .product(name: "Network", package: "Network"),
                 .product(name: "KeychainSwift", package: "keychain-swift"),
+                .product(name: "YouTubeKit", package: "YouTubeKit"),
             ],
             swiftSettings: [
                 .enableExperimentalFeature("StrictConcurrency"),
