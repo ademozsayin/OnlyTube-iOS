@@ -230,7 +230,7 @@ public struct ThirdJerseyDark: ColorSet {
     public init() {}
 }
 
-extension Color {
+public extension Color {
     static let fenerbahceDarkBlue = Color(red: 0/255, green: 34/255, blue: 68/255)  // Example dark blue
     static let fenerbahceYellow = Color(red: 255/255, green: 223/255, blue: 0/255)   // Example yellow
     static let fenerbahceWhite = Color.white

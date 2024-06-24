@@ -52,7 +52,7 @@ struct ThemeBoxView: View {
                     .padding()
                     .background(color.primaryBackgroundColor)
                 
-                Text("#onlyjose, #specialone")
+                Text("#onsatube, #specialone")
                     .foregroundColor(color.tintColor)
                 if isSelected {
                     HStack {

@@ -33,7 +33,7 @@ import SwiftUI
         }
     }
     
-    public static let sharedDefault = UserDefaults(suiteName: "group.agency.fiable.OnlyJose")
+    public static let sharedDefault = UserDefaults(suiteName: "group.agency.fiable.OnsaTube")
     public static let shared = UserPreferences()
     private let storage = Storage()
     
