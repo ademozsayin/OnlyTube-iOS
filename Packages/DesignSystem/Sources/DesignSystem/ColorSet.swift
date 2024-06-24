@@ -25,10 +25,10 @@ public enum ColorScheme: String {
 }
 
 public enum ColorSetName: String {
-    case iceCubeDark = "Only Jose - Home Dark"
-    case iceCubeLight = "Only Jose - Away Light"
-    case iceCubeNeonDark = "Only Jose Neon - Dark"
-    case iceCubeNeonLight = "Only Jose Neon - Light"
+    case iceCubeDark = "OnlyTube - Home Dark"
+    case iceCubeLight = "OnlyTube - Away Light"
+    case iceCubeNeonDark = "OnlyTube Neon - Dark"
+    case iceCubeNeonLight = "OnlyTube Neon - Light"
     case desertDark = "Desert - Dark"
     case desertLight = "Desert - Light"
     case nemesisDark = "Nemesis - Dark"

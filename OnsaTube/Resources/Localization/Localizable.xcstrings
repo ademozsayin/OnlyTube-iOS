@@ -149,6 +149,9 @@
     "Create" : {
 
     },
+    "Dashboard" : {
+
+    },
     "DBView" : {
 
     },
@@ -190,9 +193,6 @@
 
     },
     "Go to channel" : {
-
-    },
-    "Home" : {
 
     },
     "It will play The Special One song at startup" : {

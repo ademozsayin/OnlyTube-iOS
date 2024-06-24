@@ -234,7 +234,7 @@ struct SearchView: View {
                     }
 //                }
             }
-            .navigationTitle("Home")
+            .navigationTitle("Dashboard")
             .navigationBarTitleDisplayMode(.automatic)
             .environment(routerPath)
             .onChange(of: scrollToTopSignal) {
