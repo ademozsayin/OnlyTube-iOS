@@ -31,7 +31,7 @@ public enum SheetDestination: Identifiable, Hashable {
     case settings
     case about
     case miniPlayer
- 
+    case disclaimer
     
     public var id: String {
         switch self {
@@ -39,6 +39,8 @@ public enum SheetDestination: Identifiable, Hashable {
                 "settings"
             case .miniPlayer:
                 "miniPlayer"
+            case .disclaimer:
+                "disclaimer"
         }
     }
 }

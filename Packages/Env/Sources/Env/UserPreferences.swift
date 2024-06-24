@@ -24,6 +24,8 @@ import SwiftUI
 
         @AppStorage("appicon") public var appIcon: String = "AppIcon"
 
+        @AppStorage("hasAcceptedDisclaimer") var hasAcceptedDisclaimer: Bool = false
+        
         init() {
             prepareTranslationType()
         }
@@ -109,7 +111,12 @@ import SwiftUI
             storage.appIcon = appIcon
         }
     }
-
+    
+    public var hasAcceptedDisclaimer: Bool {
+        didSet {
+            storage.hasAcceptedDisclaimer = hasAcceptedDisclaimer
+        }
+    }
     
     private init() {
         preferredBrowser = storage.preferredBrowser
@@ -131,6 +138,8 @@ import SwiftUI
         isSidebarExpanded = storage.isSidebarExpanded
 
         appIcon = storage.appIcon
+        
+        hasAcceptedDisclaimer = storage.hasAcceptedDisclaimer
     }
 }
 

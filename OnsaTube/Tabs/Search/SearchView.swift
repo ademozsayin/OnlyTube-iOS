@@ -216,7 +216,7 @@ struct SearchView: View {
                                         thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
                                     )
                                     
-                                    if preferences.enableAutoPlayAtStart {
+                                    if preferences.enableAutoPlayAtStart && preferences.hasAcceptedDisclaimer  {
                                         VideoPlayerModel.shared.loadVideo(video: ytVideo, thumbnailData: nil, channelAvatarImageData: nil)
                                     }
                                     

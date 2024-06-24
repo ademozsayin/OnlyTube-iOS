@@ -49,6 +49,9 @@ extension View {
 
 //                    }
                    
+                case .disclaimer:
+                    DisclaimerView()
+                    
                 
             }
         }

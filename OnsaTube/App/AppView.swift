@@ -33,7 +33,10 @@ struct AppView: View {
     var watchVideoBinding = SheetsModel.shared.makeSheetBinding(.watchVideo)
 
     @State private var SM = SheetsModel.shared
+    
+    @State private var disclaimerPresented = false
 
+    
     var body: some View {
 #if os(visionOS)
         tabBarView
@@ -41,7 +44,15 @@ struct AppView: View {
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
             sidebarView
         } else {
-            tabBarView
+           
+            ZStack(alignment: .bottom) {
+                tabBarView
+                if !userPreferences.hasAcceptedDisclaimer {
+                    DisclaimerView()
+                        .background(Color.fenerbahceWhite)
+                }
+            }
+            
         }
 #endif
     }
@@ -105,7 +116,11 @@ struct AppView: View {
             WatchVideoView()
                 .presentationDragIndicator(.hidden)
         })
+     
         .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+        .fullScreenCover(isPresented: $disclaimerPresented, content: {
+            DisclaimerView()
+        })
 
     }
     

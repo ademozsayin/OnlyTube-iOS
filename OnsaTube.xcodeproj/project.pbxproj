@@ -65,6 +65,7 @@
 		B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767949E2C1B8C0200A623BE /* SearchTab.swift */; };
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
+		B79B71B22C29C8E600108D6E /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71B12C29C8E600108D6E /* DisclaimerView.swift */; };
 		B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7A5E80D2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */; };
 		B7A5E80F2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */; };
@@ -277,6 +278,7 @@
 		B767949E2C1B8C0200A623BE /* SearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTab.swift; sourceTree = "<group>"; };
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
+		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E8102C245F990038EDE1 /* ElementsInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsInfiniteScrollView.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				B7A5E8C72C2489800038EDE1 /* BackgroundFetchOperation+defaultImplementations.swift */,
 				B7A5E8C92C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift */,
 				B7A5E8D42C248F7A0038EDE1 /* PrivacyIconView.swift */,
+				B79B71B12C29C8E600108D6E /* DisclaimerView.swift */,
 			);
 			path = OnsaTube;
 			sourceTree = "<group>";
@@ -1025,6 +1028,7 @@
 				B7FCDE602C2318FA004E0C76 /* IconSelectorView.swift in Sources */,
 				B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */,
 				B7A5E80F2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift in Sources */,
+				B79B71B22C29C8E600108D6E /* DisclaimerView.swift in Sources */,
 				B7A5E8142C245FB60038EDE1 /* YTElementWithData.swift in Sources */,
 				B767946D2C172FAF00A623BE /* VideoThumbnailsManager.swift in Sources */,
 				B7A5E8AF2C2486110038EDE1 /* DownloadOptionsView.swift in Sources */,

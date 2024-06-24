@@ -66,6 +66,15 @@
         }
       }
     },
+    "• Apple App Store Review Guidelines:" : {
+
+    },
+    "• YouTube API Services Terms of Service:" : {
+
+    },
+    "• YouTube Terms of Service" : {
+
+    },
     "AboutView" : {
 
     },
@@ -137,6 +146,9 @@
     "bell" : {
 
     },
+    "By using this app, you agree to comply with YouTube's Terms of Service and acknowledge that you have read and understood YouTube's API Services Terms of Service." : {
+
+    },
     "Cancel download" : {
 
     },
@@ -183,6 +195,9 @@
         }
       }
     },
+    "Disclaimer" : {
+
+    },
     "Download" : {
 
     },
@@ -192,7 +207,13 @@
     "En Direct" : {
 
     },
+    "For more information, please review the following:" : {
+
+    },
     "Go to channel" : {
+
+    },
+    "I Agree" : {
 
     },
     "It will play The Special One song at startup" : {
@@ -943,6 +964,9 @@
         }
       }
     },
+    "This app uses the YouTube API to display videos and other content. The content provided is available publicly on YouTube. We do not claim ownership of any of the content displayed in this app. All rights are reserved by their respective owners." : {
+
+    },
     "Tips" : {
 
     },
@@ -953,6 +977,9 @@
 
     },
     "Video formats" : {
+
+    },
+    "We are not responsible for any issues or risks associated with the use of this app. If you have any concerns or questions regarding the content, please contact YouTube or the content owner directly." : {
 
     }
   },
