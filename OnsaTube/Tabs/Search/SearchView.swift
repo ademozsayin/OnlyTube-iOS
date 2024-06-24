@@ -28,8 +28,9 @@ struct SearchView: View {
     @Environment(UserPreferences.self) private var preferences
     
     @State private var autoCompletion: [String] = []
-    @State private var search: String = "jose mourinho" {
+    @State private var search: String = "" {
         didSet {
+            callSearching()
             refreshAutoCompletionEntries()
         }
     }
@@ -65,7 +66,6 @@ struct SearchView: View {
     @Binding var scrollToTopSignal: Int
     
     @State private var viewModel = SearchViewModel()
-
     
     public init(scrollToTopSignal: Binding<Int>) {
         _scrollToTopSignal = scrollToTopSignal
@@ -75,115 +75,28 @@ struct SearchView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .top) {
-//                List {
-                    scrollToTopView
-                    GeometryReader { geometry in
-                        Image("bg")
-                            .resizable()
-                            .edgesIgnoringSafeArea(.all)
-                            .aspectRatio(contentMode: .fill)
-                            .opacity(preferences.showBackgroundImage ? 1 : 0)
+                scrollToTopView
+                GeometryReader { geometry in
+                    Image("bg")
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                        .aspectRatio(contentMode: .fill)
+                        .opacity(preferences.showBackgroundImage ? 1 : 0)
+                    
+                    Group {
                         
-                        Group {
-                            switch model.state {
-                                case .loading:
-                                    VStack(alignment: .center) {
-                                        Spacer()
-                                        LoadingView()
-                                            .frame(maxWidth: .infinity, alignment: .center)
-                                        Spacer()
-                                    }
-                                    
-                                case .empty:
-                                    
-                                    GeometryReader { geometry in
-                                        ScrollView {
-                                            VStack {
-                                                Text("No videos found...")
-                                                    .foregroundColor(theme.labelColor)
-                                                Text("Search videos or pull up to refresh for the algorithm to fill this menu.")
-                                                    .foregroundStyle(.gray)
-                                                    .font(.caption)
-                                                    .frame(maxWidth: .infinity, alignment: .center)
-                                                    .fixedSize(horizontal: false, vertical: true)
-                                                    .padding(.horizontal, 16)
-                                                    .multilineTextAlignment(.center)
-                                                
-                                                
-                                            }
-                                            .frame(width: geometry.size.width, height: geometry.size.height)
-                                            
-                                        }
-                                        .scrollIndicators(.hidden)
-                                        .refreshable(action: {
-                                            if search.isEmpty {
-                                                model.getVideos(demo: false)
-                                            } else {
-                                                model.getVideos(search, demo: false)
-                                            }
-                                        })
-                                        .introspect(.list, on: .iOS(.v17)) { (collectionView: UICollectionView) in
-                                            DispatchQueue.main.async {
-                                                self.collectionView = collectionView
-                                            }
-                                            //                                        prefetcher.viewModel = viewModel
-                                            collectionView.isPrefetchingEnabled = true
-                                            //                                        collectionView.prefetchDataSource = prefetcher
-                                        }
-                                    }
-                                    
-                                case .error:
-                                    
-                                    VStack (alignment: .center) {
-                                        Spacer()
-                                        Image(systemName: "multiply.circle")
-                                            .resizable()
-                                            .frame(width: 60, height: 60)
-                                            .foregroundColor(.red)
-                                        Text("Something went wrong")
-                                            .foregroundColor(.red)
-                                        Button {
-                                            search = ""
-                                            dismissSearch()
-                                            model.getVideos(demo: false)
-                                        } label: {
-                                            Text("Retry")
-                                        }
-                                        .buttonStyle(.bordered)
-                                        Spacer()
-                                        
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                                    
-                                case .result:
-                                    let itemsBinding = Binding(get: {
-                                        return model.items.map({YTElementWithData(element: $0, data: .init())})
-                                    }, set: { newValue in
-                                        model.items = newValue.map({$0.element})
-                                    })
-                                    
-                                    ElementsInfiniteScrollView(
-                                        items: itemsBinding,
-                                        shouldReloadScrollView: $shouldReloadScrollView,
-                                        refreshAction: { endAction in
-                                            withAnimation(.easeOut(duration: 0.3)) {
-                                                endAction()
-                                                if search.isEmpty {
-                                                    model.getVideos(demo: false)
-                                                } else {
-                                                    model.getVideos(search, demo: false)
-                                                }
-                                            }
-                                        },
-                                        fetchMoreResultsAction: {
-                                            if !model.isFetchingContination {
-                                                model.getVideosContinuation({
-                                                    self.shouldReloadScrollView = true
-                                                })
-                                            }
-                                        }
-                                    )
-                                    
+                        switch model.state {
+                            case .loading:
+                                loadingView
+                                
+                            case .empty:
+                                emptyView
+                                
+                            case .error:
+                                errorView
+                                
+                            case .result:
+                                resultView
                                     .onChange(of: viewModel.scrollToIndex) { _, newValue in
                                         if let collectionView,
                                            let newValue,
@@ -202,37 +115,20 @@ struct SearchView: View {
                                             proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
                                         }
                                     }
-                            }
-                        }
-                        .task {
-                            if needToReload {
-                                if search.isEmpty {
-                                    model.getVideos(demo: false)
-                                } else {
-                                    model.getVideos(search,demo: false)
-                                    let ytVideo = YTVideo(
-                                        videoId: "gO70C5Q_f6Y",
-                                        title: "The special One",
-                                        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
-                                    )
-                                    
-                                    if preferences.enableAutoPlayAtStart && preferences.hasAcceptedDisclaimer  {
-                                        VideoPlayerModel.shared.loadVideo(video: ytVideo, thumbnailData: nil, channelAvatarImageData: nil)
-                                    }
-                                    
-                                    model.getVideos(searchDemoData, demo: true)
-                                    //
-                                }
-                                needToReload = false
                                 
-                                
-                            }
                         }
-                        .onAppear {
-                            
-                        }
+                        
                     }
-//                }
+                }
+            }
+            .onChange(of: viewModel.search) { oldValue, newValue in
+                print("oldValue: \(oldValue)")
+                print("newValue: \(newValue)")
+                if oldValue != newValue {
+                    search = newValue
+                    needToReload = true
+                    callSearching()
+                }
             }
             .navigationTitle("Dashboard")
             .navigationBarTitleDisplayMode(.automatic)
@@ -242,6 +138,130 @@ struct SearchView: View {
                     proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
                 }
             }
+        }
+    }
+    
+    private var loadingView: some View {
+        VStack(alignment: .center) {
+            Spacer()
+            LoadingView()
+                .frame(maxWidth: .infinity, alignment: .center)
+            Spacer()
+        }
+    }
+    
+    private var emptyView: some View {
+        
+        GeometryReader { geometry in
+            ScrollView {
+                VStack {
+                    Text("No videos found...")
+                        .foregroundColor(theme.labelColor)
+                    Text("Search videos or pull up to refresh for the algorithm to fill this menu.")
+                        .foregroundStyle(.gray)
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.horizontal, 16)
+                        .multilineTextAlignment(.center)
+                    
+                    
+                }
+                .frame(width: geometry.size.width, height: geometry.size.height)
+                
+            }
+            .scrollIndicators(.hidden)
+            .refreshable(action: {
+                if search.isEmpty {
+                    model.getVideos(demo: false)
+                } else {
+                    model.getVideos(search, demo: false)
+                }
+            })
+            .introspect(.list, on: .iOS(.v17)) { (collectionView: UICollectionView) in
+                DispatchQueue.main.async {
+                    self.collectionView = collectionView
+                }
+                //                                        prefetcher.viewModel = viewModel
+                collectionView.isPrefetchingEnabled = true
+                //                                        collectionView.prefetchDataSource = prefetcher
+            }
+        }
+    }
+    
+    private var errorView: some View {
+        
+        VStack (alignment: .center) {
+            Spacer()
+            Image(systemName: "multiply.circle")
+                .resizable()
+                .frame(width: 60, height: 60)
+                .foregroundColor(.red)
+            Text("Something went wrong")
+                .foregroundColor(.red)
+            Button {
+                search = ""
+                dismissSearch()
+                model.getVideos(demo: false)
+            } label: {
+                Text("Retry")
+            }
+            .buttonStyle(.bordered)
+            Spacer()
+            
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+    }
+    
+    private var resultView: some View {
+        let itemsBinding = Binding(get: {
+            return model.items.map({YTElementWithData(element: $0, data: .init())})
+        }, set: { newValue in
+            model.items = newValue.map({$0.element})
+        })
+        
+        return ElementsInfiniteScrollView(
+            items: itemsBinding,
+            shouldReloadScrollView: $shouldReloadScrollView,
+            refreshAction: { endAction in
+                withAnimation(.easeOut(duration: 0.3)) {
+                    endAction()
+                    if search.isEmpty {
+                        model.getVideos(demo: false)
+                    } else {
+                        model.getVideos(search, demo: false)
+                    }
+                }
+            },
+            fetchMoreResultsAction: {
+                if !model.isFetchingContination {
+                    model.getVideosContinuation({
+                        self.shouldReloadScrollView = true
+                    })
+                }
+            }
+        )
+    }
+    
+    func callSearching() {
+        if needToReload {
+            if search.isEmpty {
+                model.getVideos(demo: false)
+            } else {
+                model.getVideos(search, demo: false)
+                let ytVideo = YTVideo(
+                    videoId: "gO70C5Q_f6Y",
+                    title: "The special One",
+                    thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
+                )
+                
+                if preferences.enableAutoPlayAtStart && preferences.hasAcceptedDisclaimer  {
+                    VideoPlayerModel.shared.loadVideo(video: ytVideo, thumbnailData: nil, channelAvatarImageData: nil)
+                }
+                
+                model.getVideos(searchDemoData, demo: true)
+            }
+            needToReload = false
         }
     }
     
@@ -257,13 +277,13 @@ struct SearchView: View {
     private var scrollToTopView: some View {
         ScrollToView()
         //      .frame(height: pinnedFilters.isEmpty ? .layoutPadding : 0)
-        .frame(height: .layoutPadding )
-        .onAppear {
-            viewModel.scrollToTopVisible = true
-        }
-        .onDisappear {
-            viewModel.scrollToTopVisible = false
-        }
+            .frame(height: .layoutPadding )
+            .onAppear {
+                viewModel.scrollToTopVisible = true
+            }
+            .onDisappear {
+                viewModel.scrollToTopVisible = false
+            }
     }
 }
 

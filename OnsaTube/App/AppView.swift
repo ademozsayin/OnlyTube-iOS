@@ -42,7 +42,13 @@ struct AppView: View {
         tabBarView
 #else
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
-            sidebarView
+            ZStack(alignment: .bottom) {
+                sidebarView
+                if !userPreferences.hasAcceptedDisclaimer {
+                    DisclaimerView()
+                        .background(Color.fenerbahceWhite)
+                }
+            }
         } else {
            
             ZStack(alignment: .bottom) {

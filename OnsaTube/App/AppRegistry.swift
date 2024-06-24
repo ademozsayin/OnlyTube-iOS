@@ -22,6 +22,11 @@ extension View {
                     Text("AccountsListView")
 //                case .playlistDetails(playlist: let playlist):
 //                    Text("playlistDetails")
+                case .channelDetails(channel: let channel):
+                    ChannelDetailsView(channel: channel)
+                    
+                case .playlistDetails(let playlist):
+                    PlaylistDetailsView(playlist: playlist)
             }
         }
     }

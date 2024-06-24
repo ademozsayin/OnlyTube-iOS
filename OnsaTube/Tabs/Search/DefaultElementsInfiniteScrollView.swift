@@ -51,7 +51,7 @@ struct DefaultElementsInfiniteScrollView: View {
                                     #if !os(visionOS)
                                     SwipeView {
                                         item.getView()
-                                            .padding(.horizontal, 5)
+                                            .padding(.horizontal, 15)
                                     } trailingActions: { context in
                                         if NRM.connected {
                                             if let channel = item.channel {

@@ -16,9 +16,9 @@ import SwiftUI
         @AppStorage("show_tab_label_iphone") public var showiPhoneTabLabel = true
 
         @AppStorage("inAppBrowserReaderView") public var inAppBrowserReaderView = false
-        @AppStorage("enableAutoPlayAtStart") public var enableAutoPlayAtStart = true
+        @AppStorage("enableAutoPlayAtStart") public var enableAutoPlayAtStart = false
 
-        @AppStorage("showBackgroundImage") public var showBackgroundImage = true
+        @AppStorage("showBackgroundImage") public var showBackgroundImage = false
        
         @AppStorage("sidebar_expanded") public var isSidebarExpanded: Bool = false
 

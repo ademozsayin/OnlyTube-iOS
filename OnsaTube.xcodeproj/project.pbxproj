@@ -66,6 +66,18 @@
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
 		B79B71B22C29C8E600108D6E /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71B12C29C8E600108D6E /* DisclaimerView.swift */; };
+		B79B71B72C29D6CA00108D6E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71B62C29D6CA00108D6E /* FirebaseAnalytics */; };
+		B79B71B92C29D6CA00108D6E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71B82C29D6CA00108D6E /* FirebaseAnalyticsSwift */; };
+		B79B71BB2C29D6CA00108D6E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71BA2C29D6CA00108D6E /* FirebaseCrashlytics */; };
+		B79B71BD2C29D6CA00108D6E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71BC2C29D6CA00108D6E /* FirebaseDatabase */; };
+		B79B71BF2C29D6CA00108D6E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71BE2C29D6CA00108D6E /* FirebaseDatabaseSwift */; };
+		B79B71C12C29D6CA00108D6E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71C02C29D6CA00108D6E /* FirebaseStorage */; };
+		B79B71C32C29D97D00108D6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B79B71C22C29D97D00108D6E /* GoogleService-Info.plist */; };
+		B79B71C52C2A028600108D6E /* ChannelDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71C42C2A028600108D6E /* ChannelDetailsView.swift */; };
+		B79B71C82C2A031B00108D6E /* ChannelBannerRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71C72C2A031B00108D6E /* ChannelBannerRectangleView.swift */; };
+		B79B71CB2C2A107C00108D6E /* PlaylistDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CA2C2A107C00108D6E /* PlaylistDetailsView.swift */; };
+		B79B71CD2C2A11F000108D6E /* CustomNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CC2C2A11F000108D6E /* CustomNavigationTitleView.swift */; };
+		B79B71CF2C2A136D00108D6E /* CustomNavigationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CE2C2A136D00108D6E /* CustomNavigationHeaderView.swift */; };
 		B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7A5E80D2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */; };
 		B7A5E80F2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */; };
@@ -279,6 +291,12 @@
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		B79B71C22C29D97D00108D6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B79B71C42C2A028600108D6E /* ChannelDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailsView.swift; sourceTree = "<group>"; };
+		B79B71C72C2A031B00108D6E /* ChannelBannerRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelBannerRectangleView.swift; sourceTree = "<group>"; };
+		B79B71CA2C2A107C00108D6E /* PlaylistDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsView.swift; sourceTree = "<group>"; };
+		B79B71CC2C2A11F000108D6E /* CustomNavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationTitleView.swift; sourceTree = "<group>"; };
+		B79B71CE2C2A136D00108D6E /* CustomNavigationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationHeaderView.swift; sourceTree = "<group>"; };
 		B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEntriesSettingsView.swift; sourceTree = "<group>"; };
 		B7A5E8102C245F990038EDE1 /* ElementsInfiniteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsInfiniteScrollView.swift; sourceTree = "<group>"; };
@@ -413,14 +431,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79B71BD2C29D6CA00108D6E /* FirebaseDatabase in Frameworks */,
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
+				B79B71B72C29D6CA00108D6E /* FirebaseAnalytics in Frameworks */,
+				B79B71BB2C29D6CA00108D6E /* FirebaseCrashlytics in Frameworks */,
 				B733A6912C25F5A200E0BDC4 /* Env in Frameworks */,
 				B733A67F2C24F03200E0BDC4 /* SwiftUIIntrospect in Frameworks */,
 				B733A68F2C25F57800E0BDC4 /* DesignSystem in Frameworks */,
+				B79B71BF2C29D6CA00108D6E /* FirebaseDatabaseSwift in Frameworks */,
 				B7FCDE562C221EA8004E0C76 /* ReceiptParser in Frameworks */,
 				B7FCDE582C221EA8004E0C76 /* RevenueCat in Frameworks */,
 				B7FCDE5A2C221EA8004E0C76 /* RevenueCatUI in Frameworks */,
+				B79B71C12C29D6CA00108D6E /* FirebaseStorage in Frameworks */,
+				B79B71B92C29D6CA00108D6E /* FirebaseAnalyticsSwift in Frameworks */,
 				B76794772C1730BD00A623BE /* InfiniteScrollViews in Frameworks */,
 				B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */,
 				B746B0892C2622C0003D156E /* StoreKit.framework in Frameworks */,
@@ -552,6 +576,23 @@
 			path = PlayerView;
 			sourceTree = "<group>";
 		};
+		B79B71C62C2A031300108D6E /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				B79B71C42C2A028600108D6E /* ChannelDetailsView.swift */,
+				B79B71C72C2A031B00108D6E /* ChannelBannerRectangleView.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		B79B71C92C2A106B00108D6E /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				B79B71CA2C2A107C00108D6E /* PlaylistDetailsView.swift */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
 		B7A5E8122C245FB10038EDE1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +690,7 @@
 				B746B0842C261363003D156E /* PRIVACY.MD */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
 				B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */,
+				B79B71C22C29D97D00108D6E /* GoogleService-Info.plist */,
 				B7FE95B62C10DC9900402DE1 /* OnsaTube */,
 				B7FE95C92C10DC9A00402DE1 /* OnsaTubeTests */,
 				B7FE95D32C10DC9A00402DE1 /* OnsaTubeUITests */,
@@ -676,6 +718,8 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B79B71C92C2A106B00108D6E /* Playlist */,
+				B79B71C62C2A031300108D6E /* Channel */,
 				B733A6722C249A8600E0BDC4 /* PrivateAPIs */,
 				B7A5E8A32C2486110038EDE1 /* VideoViews */,
 				B7A5E8632C2471220038EDE1 /* Info.plist */,
@@ -697,6 +741,8 @@
 				B7A5E8C92C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift */,
 				B7A5E8D42C248F7A0038EDE1 /* PrivacyIconView.swift */,
 				B79B71B12C29C8E600108D6E /* DisclaimerView.swift */,
+				B79B71CC2C2A11F000108D6E /* CustomNavigationTitleView.swift */,
+				B79B71CE2C2A136D00108D6E /* CustomNavigationHeaderView.swift */,
 			);
 			path = OnsaTube;
 			sourceTree = "<group>";
@@ -857,6 +903,12 @@
 				B733A6812C25DA3200E0BDC4 /* SwipeActions */,
 				B733A68E2C25F57800E0BDC4 /* DesignSystem */,
 				B733A6902C25F5A200E0BDC4 /* Env */,
+				B79B71B62C29D6CA00108D6E /* FirebaseAnalytics */,
+				B79B71B82C29D6CA00108D6E /* FirebaseAnalyticsSwift */,
+				B79B71BA2C29D6CA00108D6E /* FirebaseCrashlytics */,
+				B79B71BC2C29D6CA00108D6E /* FirebaseDatabase */,
+				B79B71BE2C29D6CA00108D6E /* FirebaseDatabaseSwift */,
+				B79B71C02C29D6CA00108D6E /* FirebaseStorage */,
 			);
 			productName = OnsaTube;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnsaTube.app */;
@@ -938,6 +990,7 @@
 				B7FCDE542C221EA8004E0C76 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 				B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 				B733A67D2C24F03200E0BDC4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
+				B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B7FE95B52C10DC9900402DE1 /* Products */;
 			projectDirPath = "";
@@ -970,6 +1023,7 @@
 				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
 				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
+				B79B71C32C29D97D00108D6E /* GoogleService-Info.plist in Resources */,
 				B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */,
 				B7FE96032C10E7A600402DE1 /* boost.wav in Resources */,
 				B7FE96072C10E7A600402DE1 /* glass.caf in Resources */,
@@ -1033,6 +1087,7 @@
 				B767946D2C172FAF00A623BE /* VideoThumbnailsManager.swift in Sources */,
 				B7A5E8AF2C2486110038EDE1 /* DownloadOptionsView.swift in Sources */,
 				B7A5E8512C246F4A0038EDE1 /* DownloadedChannel+CoreDataProperties.swift in Sources */,
+				B79B71C82C2A031B00108D6E /* ChannelBannerRectangleView.swift in Sources */,
 				B7A5E81A2C245FFD0038EDE1 /* YTPlaylistWithData.swift in Sources */,
 				B7A5E8B12C2486110038EDE1 /* DownloadSwipeActionsView.swift in Sources */,
 				B7A5E81D2C2460260038EDE1 /* YTVideo+.swift in Sources */,
@@ -1072,6 +1127,7 @@
 				B7A5E82F2C2462090038EDE1 /* LoadingView.swift in Sources */,
 				B7A5E8BC2C2486110038EDE1 /* VideoView.swift in Sources */,
 				B7A5E8582C246F4A0038EDE1 /* DownloadImageOperation.swift in Sources */,
+				B79B71CB2C2A107C00108D6E /* PlaylistDetailsView.swift in Sources */,
 				B7A5E8182C245FEA0038EDE1 /* YTVideoWithData.swift in Sources */,
 				B7A5E8B82C2486110038EDE1 /* VideoContextMenuView.swift in Sources */,
 				B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */,
@@ -1084,6 +1140,7 @@
 				B76794642C172FAF00A623BE /* DownloadingsModel.swift in Sources */,
 				B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */,
 				B7334BF42C28BFFD00D60C60 /* ChannelView.swift in Sources */,
+				B79B71CF2C2A136D00108D6E /* CustomNavigationHeaderView.swift in Sources */,
 				B76794742C17306F00A623BE /* SearchView.swift in Sources */,
 				B767948C2C17364F00A623BE /* OptionalItemChannelAvatarView.swift in Sources */,
 				B7A5E85A2C246F4A0038EDE1 /* FavoriteVideo+CoreDataProperties.swift in Sources */,
@@ -1109,6 +1166,7 @@
 				B7A5E8562C246F4A0038EDE1 /* DownloadedVideoChapter+CoreDataClass.swift in Sources */,
 				B7A5E8A62C2486110038EDE1 /* AddToPlaylistContextMenuButtonView.swift in Sources */,
 				B733A6792C249A8600E0BDC4 /* PrivateManager.swift in Sources */,
+				B79B71CD2C2A11F000108D6E /* CustomNavigationTitleView.swift in Sources */,
 				B7A5E8392C246CF10038EDE1 /* View+OnReceive.swift in Sources */,
 				B7A5E8AB2C2486110038EDE1 /* CancelDownloadContextMenuView.swift in Sources */,
 				B7FE95B82C10DC9900402DE1 /* OnsaTubeApp.swift in Sources */,
@@ -1131,6 +1189,7 @@
 				B767949B2C1762CA00A623BE /* CustomAVPlayer.swift in Sources */,
 				B767948D2C17364F00A623BE /* SubscribeButtonOverlayView.swift in Sources */,
 				B767948E2C17364F00A623BE /* VideoPlayer.swift in Sources */,
+				B79B71C52C2A028600108D6E /* ChannelDetailsView.swift in Sources */,
 				B76794672C172FAF00A623BE /* NetworkReachabilityModel.swift in Sources */,
 				B7A5E8332C246B760038EDE1 /* VideoAppreciationView.swift in Sources */,
 				B76794972C17628300A623BE /* Notification+OnsaTubeApp.swift in Sources */,
@@ -1598,6 +1657,14 @@
 				kind = branch;
 			};
 		};
+		B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
 		B7A5E8F32C2492470038EDE1 /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/b5i/YouTubeKit";
@@ -1646,6 +1713,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */;
 			productName = InfiniteScrollViews;
+		};
+		B79B71B62C29D6CA00108D6E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B79B71B82C29D6CA00108D6E /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		B79B71BA2C29D6CA00108D6E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		B79B71BC2C29D6CA00108D6E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B79B71BE2C29D6CA00108D6E /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		B79B71C02C29D6CA00108D6E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		B7A5E8F42C2492470038EDE1 /* YouTubeKit */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -11,6 +11,7 @@ import AVFoundation
 import DesignSystem
 import Env
 import RevenueCat
+import FirebaseCore
 
 @main
 struct OnsaTubeApp: App {
@@ -33,7 +34,7 @@ struct OnsaTubeApp: App {
     }
     
     func setupRevenueCat() {
-        Purchases.logLevel = .debug
+        Purchases.logLevel = .error
         Purchases.configure(withAPIKey: "appl_UoVNogcNbQvbVhJdPtMSJJffSiF")
         Purchases.shared.getCustomerInfo { info, _ in
             if info?.entitlements["Supporter"]?.isActive == true {
@@ -48,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication,
                      didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
     {
+        
+        FirebaseApp.configure()
+        
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
         try? AVAudioSession.sharedInstance().setActive(true)
         return true

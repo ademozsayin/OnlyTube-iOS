@@ -25,7 +25,11 @@ class Model {
         case empty
     }
     
-    var state: State = .loading
+    var state: State = .loading {
+        didSet {
+            print("State: \(state)")
+        }
+    }
     
     private var homeResponse: HomeScreenResponse?
     private var searchResponse: SearchResponse?
@@ -140,17 +144,27 @@ class Model {
             guard let self else { return }
             switch result {
                 case .success(let response):
+                    print(response)
                     self.searchResponse = response
                     DispatchQueue.main.async {
-                        self.isFetching = false
                       
                         if demo {
+                            self.isFetching = false
                             self.demoSearchResponse = response
+                            end?()
                         } else {
+                            self.isFetching = false
                             self.items = response.results
-                            self.state = self.items.isEmpty ? .empty : .result
+//                            self.state = self.items.isEmpty ? .empty : .result
+                            if response.results.isEmpty {
+                                self.state = .empty
+                            } else {
+                                self.state = .result
+                            }
                         }
+                        
                         end?()
+                       
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
@@ -168,6 +182,7 @@ class Model {
         if let searchResponse = searchResponse, let continuationToken = searchResponse.continuationToken, let visitorData = searchResponse.visitorData {
             DispatchQueue.main.async {
                 self.isFetchingContination = true
+//                self.state = .loading
             }
             
             SearchResponse.Continuation.sendNonThrowingRequest(youtubeModel: YTM, data: [.continuation: continuationToken, .visitorData: visitorData], result: { result in

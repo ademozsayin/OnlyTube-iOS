@@ -12,7 +12,7 @@ import Env
 
 struct PlaylistView: View {
 //    @Environment(\.colorScheme) private var colorScheme
-//    @Environment(Theme.self) private var theme
+    @Environment(Theme.self) private var theme
     @Environment(RouterPath.self) private var routerPath
 
     let playlist: YTPlaylist
@@ -26,7 +26,7 @@ struct PlaylistView: View {
                     VStack {
                         if let videoCount = playlist.videoCount {
                             Text(videoCount)
-//                                .foregroundColor(theme.labelColor)
+                                .foregroundColor(theme.labelColor)
                                 .font((playlist.timePosted != nil) ? .system(size: 10) : .footnote)
                                 .bold((playlist.timePosted != nil))
                                 .opacity(0.5)
@@ -37,7 +37,7 @@ struct PlaylistView: View {
                             }
                             if let timePosted = playlist.timePosted {
                                 Text(timePosted)
-//                                    .foregroundColor(theme.labelColor)
+                                    .foregroundColor(theme.labelColor)
                                     .font(.system(size: 10))
                                     .bold()
                                     .opacity(0.5)
@@ -51,13 +51,13 @@ struct PlaylistView: View {
                     VStack {
                         Text(playlist.title ?? "")
                     }
-//                    .foregroundColor(theme.labelColor)
+                    .foregroundColor(theme.labelColor)
                     .truncationMode(.tail)
                     .frame(height: geometry.size.height * 0.7)
                     if let channelName = playlist.channel?.name {
                         Divider()
                         Text(channelName)
-//                            .foregroundColor(theme.labelColor)
+                            .foregroundColor(theme.labelColor)
                             .bold()
                             .font(.footnote)
                             .opacity(0.5)
@@ -65,10 +65,9 @@ struct PlaylistView: View {
                 }
                 .frame(width: geometry.size.width * 0.475, height: geometry.size.height)
             }
-//            .withAppRouter()
+            .withAppRouter()
             .onTapGesture {
-//                routerPath.navigate(to: RouterDestination.playlistDetails(playlist: playlist))
-
+                routerPath.navigate(to: .playlistDetails(playlist: playlist))
             }
             .contextMenu {
                 if let channel = playlist.channel {
@@ -87,7 +86,6 @@ struct PlaylistView: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
 //            .routeTo(.playlistDetails(playlist: playlist))
-           
 
         }
        

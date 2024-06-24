@@ -7,6 +7,9 @@
     "\n• [YouTubeKit](https://github.com/b5i/YouTubeKit)\n\n• [KeychainSwift](https://github.com/evgenyneu/keychain-swift)\n\n• [Nuke](https://github.com/kean/Nuke)\n\n• [SwiftUI-Introspect](https://github.com/siteline/SwiftUI-Introspect)\n\n• [RevenueCat](https://github.com/RevenueCat/purchases-ios)\n\n• [SFSafeSymbols](https://github.com/SFSafeSymbols/SFSafeSymbols)" : {
 
     },
+    " • " : {
+
+    },
     "%@ - %@" : {
       "localizations" : {
         "en" : {
@@ -195,6 +198,9 @@
         }
       }
     },
+    "Directs" : {
+
+    },
     "Disclaimer" : {
 
     },
@@ -238,6 +244,9 @@
 
     },
     "Next up" : {
+
+    },
+    "No items in this category." : {
 
     },
     "No playlist available." : {
@@ -939,7 +948,16 @@
         }
       }
     },
+    "Shorts" : {
+
+    },
     "Something went wrong" : {
+
+    },
+    "Subscribe" : {
+
+    },
+    "Subscribed" : {
 
     },
     "tab.settings" : {
@@ -977,6 +995,9 @@
 
     },
     "Video formats" : {
+
+    },
+    "Videos" : {
 
     },
     "We are not responsible for any issues or risks associated with the use of this app. If you have any concerns or questions regarding the content, please contact YouTube or the content owner directly." : {

@@ -8,10 +8,12 @@
 import SwiftUI
 import YouTubeKit
 import DesignSystem
+import Env
 
 struct ChannelView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(Theme.self) private var theme
+    @Environment(RouterPath.self) private var routerPath: RouterPath
 
     let channel: YTChannel
     var body: some View {
@@ -53,6 +55,10 @@ struct ChannelView: View {
                 .frame(width: geometry.size.width * 0.475, height: geometry.size.height)
                 Spacer()
             }
+            .onTapGesture {
+                routerPath.navigate(to: .channelDetails(channel: .init(channelId: channel.channelId, name: channel.name, thumbnails: channel.thumbnails)))
+            }
+       
 //            .routeTo(.channelDetails(channel: .init(channelId: channel.channelId, name: channel.name, thumbnails: channel.thumbnails)))
         }
         .contextMenu {
