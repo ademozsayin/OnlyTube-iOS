@@ -12,6 +12,7 @@ import DesignSystem
 import Env
 import RevenueCat
 import FirebaseCore
+import FLEX
 
 @main
 struct OnsaTubeApp: App {
@@ -19,14 +20,11 @@ struct OnsaTubeApp: App {
     
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.openWindow) var openWindow
-    
  
     @State var userPreferences = UserPreferences.shared
     @State var theme = Theme.shared
-    
     @State var selectedTab: Tab = .timeline
     @State var appRouterPath = RouterPath()
-    
     @State var isSupporter: Bool = false
     
     var body: some Scene {
@@ -44,7 +42,6 @@ struct OnsaTubeApp: App {
     }
 }
 
-
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_: UIApplication,
                      didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
@@ -54,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
         try? AVAudioSession.sharedInstance().setActive(true)
+        
+        FLEXManager.shared.isNetworkDebuggingEnabled = true
+
+        
         return true
     }
     

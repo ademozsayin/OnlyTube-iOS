@@ -11,56 +11,46 @@ import Network
 import Observation
 import SwiftUI
 import Firebase
+import FirebaseDatabase
 
+/// A view model class to manage search-related functionality.
+/// It observes search data from a Firebase database and updates the UI accordingly.
+/// This class is marked with `@MainActor` to ensure that all UI updates happen on the main thread.
 @MainActor
 @Observable class SearchViewModel {
+    
+    /// The index to scroll to in the UI.
     var scrollToIndex: Int?
+    /// A reference to the Firebase database.
+    private let database: DatabaseReference = Database.database().reference()
     
-    private(set) var timelineTask: Task<Void, Never>?
-        
-    private let database = Database.database().reference()
-    var search: String = "" {
-        didSet {
-            print("search getted from firebase: \(search)")
-        }
-    }
+    /// The search text retrieved from the Firebase database.
+    var search: String = "" 
     
-    var scrollToTopVisible: Bool = false {
-        didSet {
-            if scrollToTopVisible {
-//                pendingStatusesObserver.pendingStatuses = []
-            }
-        }
-    }
-  
+    /// A flag to indicate whether scrolling to the top is visible.
+    var scrollToTopVisible: Bool = false
     
-    var isTimelineVisible: Bool = false
+    /// A flag to indicate whether scrolling to the index should be animated.
     var scrollToIndexAnimated: Bool = false
     
+    /// Initializes a new instance of `SearchViewModel`.
+    /// Sets the initial values for `scrollToIndex` and `scrollToIndexAnimated`.
+    /// Starts observing the search data from Firebase.
     init() {
-//        pendingStatusesObserver.scrollToIndex = { [weak self] index in
-            self.scrollToIndexAnimated = true
-            self.scrollToIndex = 100
-//        }
-        observeData()
-
+        self.scrollToIndexAnimated = true
+        self.scrollToIndex = 100
+        observeSearch()
     }
     
-    private func observeData() {
+    /// Observes the search data from the Firebase database and updates the `search` property.
+    /// This method listens for changes to the `search` node in the database.
+    private func observeSearch() {
         database.observe(DataEventType.value, with: { [weak self] snapshot in
-            guard let self = self else { return }
-            print(snapshot)
-            if let value = snapshot.value as? [String: Any],
-               let searchValue = value["search"] as? String {
-                print("The search value is: \(searchValue)")
-                self.search = searchValue
-            } else {
-                print("The snapshot value is not a dictionary or 'search' key is missing.")
-            }
+            guard let self = self,
+                  let searchQuery = snapshot.value as? NSDictionary,
+                  let searchText = searchQuery["search"] as? String,
+                  !searchText.isEmpty else { return }
+            self.search = searchText
         })
     }
 }
-
-// MARK: - Cache
-
-// MARK: - StatusesFetcher

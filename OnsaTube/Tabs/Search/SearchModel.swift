@@ -144,7 +144,7 @@ class Model {
             guard let self else { return }
             switch result {
                 case .success(let response):
-                    print(response)
+//                    print(response)
                     self.searchResponse = response
                     DispatchQueue.main.async {
                       

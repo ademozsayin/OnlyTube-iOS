@@ -36,41 +36,34 @@ struct SearchView: View {
     }
     
     @State private var collectionView: UICollectionView?
-    
     @State private var searchDemoData: String = "Erkin Arslan - The Special One (Official Audio)"
-    
     @State private var autoCompletionHeaders: HeadersList?
     @State private var needToReload = true
     @State private var isShowingSettingsSheet: Bool = false
-    
     @State private var firstDisplayedResult: Int = 0
     @State private var shouldReloadScrollView: Bool = false
     @State private var hasToReloadPadding: Bool = true
     @State private var isShowingPaddedFirstVideo: Bool = false
-    
+    @State private var isFetching: Bool = false
+    @State private var libraryContent: AccountLibraryResponse?
+    @State private var playlists: [YTPlaylist] = []
     @State private var model = Model.shared
+    @State private var viewModel = SearchViewModel()
+
     @ObservedObject private var IUTM = IsUserTypingModel.shared
     @ObservedObject private var VPM = VideoPlayerModel.shared
-    //    @ObservedObject private var NPM = NavigationPathModel.shared
-    @Environment(RouterPath.self) private var routerPath
-    
     @ObservedObject private var APIM = APIKeyModel.shared
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     //    @ObservedObject private var PSM = PreferencesStorageModel.shared
+    //    @ObservedObject private var NPM = NavigationPathModel.shared
+    @Environment(RouterPath.self) private var routerPath
     @Environment(Theme.self) private var theme
-    @State private var isFetching: Bool = false
-    @State private var libraryContent: AccountLibraryResponse?
-    
-    @State private var playlists: [YTPlaylist] = []
-    
+  
     @Binding var scrollToTopSignal: Int
-    
-    @State private var viewModel = SearchViewModel()
     
     public init(scrollToTopSignal: Binding<Int>) {
         _scrollToTopSignal = scrollToTopSignal
     }
-    
     
     var body: some View {
         ScrollViewReader { proxy in
@@ -122,13 +115,9 @@ struct SearchView: View {
                 }
             }
             .onChange(of: viewModel.search) { oldValue, newValue in
-                print("oldValue: \(oldValue)")
-                print("newValue: \(newValue)")
-                if oldValue != newValue {
-                    search = newValue
-                    needToReload = true
-                    callSearching()
-                }
+                search = newValue
+                needToReload = true
+                callSearching()
             }
             .navigationTitle("Dashboard")
             .navigationBarTitleDisplayMode(.automatic)

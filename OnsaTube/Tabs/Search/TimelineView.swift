@@ -59,7 +59,7 @@ struct TimelineView: View {
     
     @Binding var scrollToTopSignal: Int
     
-    @State private var viewModel = SearchViewModel()
+//    @State private var viewModel = SearchViewModel()
     
     
     public init(scrollToTopSignal: Binding<Int>) {
@@ -129,10 +129,10 @@ struct TimelineView: View {
         //      .frame(height: pinnedFilters.isEmpty ? .layoutPadding : 0)
             .frame(height: .layoutPadding )
             .onAppear {
-                viewModel.scrollToTopVisible = true
+//                viewModel.scrollToTopVisible = true
             }
             .onDisappear {
-                viewModel.scrollToTopVisible = false
+//                viewModel.scrollToTopVisible = false
             }
     }
 }
