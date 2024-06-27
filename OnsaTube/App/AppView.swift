@@ -68,7 +68,7 @@ struct AppView: View {
 //            return Tab.loggedOutTab()
 //        }
         if UIDevice.current.userInterfaceIdiom == .phone || horizontalSizeClass == .compact {
-            return Tab.loggedOutTab()//iosTabs.tabs
+            return iosTabs.tabs
         } else if UIDevice.current.userInterfaceIdiom == .vision {
             return Tab.loggedOutTab()//Tab.visionOSTab()
         }

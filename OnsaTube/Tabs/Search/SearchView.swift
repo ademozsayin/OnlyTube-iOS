@@ -70,7 +70,7 @@ struct SearchView: View {
             ZStack(alignment: .top) {
                 scrollToTopView
                 GeometryReader { geometry in
-                    Image("bg")
+                    Image("bg2")
                         .resizable()
                         .edgesIgnoringSafeArea(.all)
                         .aspectRatio(contentMode: .fill)

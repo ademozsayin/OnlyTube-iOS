@@ -51,11 +51,12 @@ struct AboutView: View {
                     Spacer()
                 }
 #endif
-                Link(destination: URL(string: "https://github.com/ademozsayin/OnsaTube-iOS/blob/main/PRIVACY.MD")!) {
+                
+                Link(destination: URL(string: "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/PRIVACY.MD")!) {
                     Label("settings.support.privacy-policy", systemImage: "lock")
                 }
                 
-                Link(destination: URL(string: "https://github.com/ademozsayin/OnsaTube-iOS/blob/main/Terms.MD")!) {
+                Link(destination: URL(string: "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Terms.MD")!) {
                     Label("settings.support.terms-of-use", systemImage: "checkmark.shield")
                 }
             } footer: {

@@ -213,6 +213,9 @@
     "En Direct" : {
 
     },
+    "FavoriteTab" : {
+
+    },
     "For more information, please review the following:" : {
 
     },
@@ -726,6 +729,7 @@
       }
     },
     "settings.support.five.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -736,6 +740,7 @@
       }
     },
     "settings.support.five.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -848,6 +853,7 @@
       }
     },
     "settings.support.six.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -858,6 +864,7 @@
       }
     },
     "settings.support.six.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -959,6 +966,16 @@
     },
     "Subscribed" : {
 
+    },
+    "tab.favorites" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
     },
     "tab.settings" : {
       "extractionState" : "manual",

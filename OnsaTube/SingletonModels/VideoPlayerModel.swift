@@ -54,10 +54,17 @@ class VideoPlayerModel: NSObject, ObservableObject {
     }
 
     var sampleVideo = YTVideo(
-        videoId: "gO70C5Q_f6Y",
-        title: "The special One",
+        videoId: "xW7aKp0CL7M",
+        title: "Title",
         viewCount: "5k",
-        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
+        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/RREQxm6OeI4/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBSzC9c0RZPW3L80YWeqClcW51ihw")!)]
+    )
+    
+    var sampleVideo2 = YTVideo(
+        videoId: "RREQxm6OeI4",
+        title: "Video Title",
+        viewCount: "5k",
+        thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/sgayxDJsWEI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCbvgjDm9JyIoHS5JfpjcBylHDvVg")!)]
     )
     
     override init() {

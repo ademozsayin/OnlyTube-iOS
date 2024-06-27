@@ -12,7 +12,6 @@ import DesignSystem
 import Env
 import RevenueCat
 import FirebaseCore
-import FLEX
 
 @main
 struct OnsaTubeApp: App {
@@ -52,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
         try? AVAudioSession.sharedInstance().setActive(true)
         
-        FLEXManager.shared.isNetworkDebuggingEnabled = true
+//        FLEXManager.shared.isNetworkDebuggingEnabled = true
 
         
         return true

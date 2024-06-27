@@ -17,7 +17,7 @@ public extension Color {
 @MainActor
 struct SupportAppView: View {
     enum Tip: String, CaseIterable {
-        case protector, four, five, six
+        case protector, ten
         
         init(productId: String) {
             self = .init(rawValue: String(productId.split(separator: ".")[2]))!
@@ -28,12 +28,12 @@ struct SupportAppView: View {
         }
         var title: LocalizedStringKey {
             switch self {
-                case .four:
+                case .ten:
                     "settings.support.four.title"
-                case .five:
-                    "settings.support.five.title"
-                case .six:
-                    "settings.support.six.title"
+//                case .five:
+//                    "settings.support.five.title"
+//                case .ten:
+//                    "settings.support.six.title"
                 case .protector:
                     "settings.support.supporter.title"
             }
@@ -41,12 +41,12 @@ struct SupportAppView: View {
         
         var subtitle: LocalizedStringKey {
             switch self {
-                case .four:
+                case .ten:
                     "settings.support.four.subtitle"
-                case .five:
-                    "settings.support.five.subtitle"
-                case .six:
-                    "settings.support.six.subtitle"
+//                case .five:
+//                    "settings.support.five.subtitle"
+//                case .ten:
+//                    "settings.support.six.subtitle"
                 case .protector:
                     "settings.support.supporter.subtitle"
             }

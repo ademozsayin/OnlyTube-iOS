@@ -42,7 +42,7 @@ struct DisplaySettingsView: View {
         ZStack(alignment: .top) {
             Form {
 #if !os(visionOS)
-                VideoFromSearchView(videoWithData: VideoPlayerModel.shared.sampleVideo.withData())
+                VideoFromSearchView(videoWithData: VideoPlayerModel.shared.sampleVideo2.withData())
                     .frame( height: 250 * 9/16 + 90, alignment: .center)
                     .allowsHitTesting(false)
                     .background(Color.pink)
@@ -93,7 +93,7 @@ struct DisplaySettingsView: View {
     
     private var examplePost: some View {
         VStack(spacing: 0) {
-            VideoFromSearchView(videoWithData: VideoPlayerModel.shared.sampleVideo.withData())
+            VideoFromSearchView(videoWithData: VideoPlayerModel.shared.sampleVideo2.withData())
                 .frame( height: 250 * 9/16 + 90, alignment: .center)
                 .allowsHitTesting(false)
                 .padding(.layoutPadding)

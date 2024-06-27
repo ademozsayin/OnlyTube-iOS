@@ -35,7 +35,31 @@ struct WatchVideoView: View {
         ZStack {
             GeometryReader { geometry in
                 ZStack {
-
+                    Rectangle()
+                        .fill(Gradient(stops: [
+                            .init(color: (colorScheme == .light ? Color.black.opacity(0.15) : Color.white.opacity(0.85)), location: 0),
+                            .init(color: (colorScheme == .light ? Color.black.opacity(0.25) : Color.white.opacity(0.75)), location: 0.7),
+                            .init(color: (colorScheme == .light ? Color.black.opacity(0.65) : Color.white.opacity(0.35)), location: 1)
+                        ]))
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: self.screenCornerRadius,
+                                bottomTrailingRadius: self.screenCornerRadius,
+                                topTrailingRadius: 0
+                            )
+                        )
+                    Rectangle()
+                        .fill(LinearGradient(colors: usedAnimationColors, startPoint: animateStartPoint, endPoint: animateEndPoint).shadow(.inner(radius: 5)))
+                        .blendMode(.multiply)
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: self.screenCornerRadius,
+                                bottomTrailingRadius: self.screenCornerRadius,
+                                topTrailingRadius: 0
+                            )
+                        )
                 }
                 .ignoresSafeArea(.all)
                 .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top)

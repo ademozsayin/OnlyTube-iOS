@@ -6,13 +6,13 @@ import SwiftUI
 @MainActor
 enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
     case timeline, notifications, settings, other
-    
+    case favorite
     nonisolated var id: Int {
         rawValue
     }
     
     static func loggedOutTab() -> [Tab] {
-        [.timeline, .settings]
+        [.timeline, .favorite,.settings]
     }
     
     static func visionOSTab() -> [Tab] {
@@ -31,6 +31,8 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 SettingsTabs(popToRootTab: popToRootTab, isModal: false)
                     .withEnvironments()
                     .preferredColorScheme(Theme.shared.selectedScheme == .dark ? .dark : .light)
+            case .favorite:
+                FavoriteTab(popToRootTab: popToRootTab)
             case .other:
                 Text("other")
         }
@@ -53,6 +55,9 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
           
             case .settings:
                 "tab.settings"
+                
+            case .favorite:
+                "tab.favorites"
            
             case .other:
                 ""
@@ -63,19 +68,21 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
         switch self {
             case .timeline:
                 "rectangle.stack"
-           
+                
             case .notifications:
                 "bell"
             
             case .settings:
                 "gear"
+                
+            case .favorite:
+                "heart"
            
             case .other:
                 ""
         }
     }
 }
-
 
 @MainActor
 @Observable
@@ -89,7 +96,7 @@ class SidebarTabs {
         @AppStorage("sidebar_tabs") var tabs: [SidedebarTab] = [
             .init(tab: .timeline, enabled: true),
           
-//            .init(tab: .notifications, enabled: true),
+            .init(tab: .favorite, enabled: true),
           
             .init(tab: .settings, enabled: true)
         ]
@@ -117,12 +124,13 @@ class SidebarTabs {
 @Observable
 class iOSTabs {
     enum TabEntries: String {
-        case first, second
+        case first, second, third
     }
     
     class Storage {
         @AppStorage(TabEntries.first.rawValue) var firstTab = Tab.timeline
-        @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.notifications
+        @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.favorite
+        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.settings
 
     }
     
@@ -130,7 +138,7 @@ class iOSTabs {
     public static let shared = iOSTabs()
     
     var tabs: [Tab] {
-        [firstTab, secondTab]
+        [firstTab, secondTab, thirdTab]
     }
     
     var firstTab: Tab {
@@ -145,8 +153,15 @@ class iOSTabs {
         }
     }
     
+    var thirdTab: Tab {
+        didSet {
+            storage.thirdTab = thirdTab
+        }
+    }
+    
     private init() {
         firstTab = storage.firstTab
         secondTab = storage.secondTab
+        thirdTab = storage.thirdTab
     }
 }

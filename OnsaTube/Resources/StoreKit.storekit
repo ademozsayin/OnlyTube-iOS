@@ -5,36 +5,6 @@
   ],
   "products" : [
     {
-      "displayPrice" : "0.99",
-      "familyShareable" : false,
-      "internalID" : "6504541190",
-      "localizations" : [
-        {
-          "description" : "Dominate with ultimate support power!",
-          "displayName" : "Big Boss",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "onlyjose.tip.five",
-      "referenceName" : "Big Boss",
-      "type" : "Consumable"
-    },
-    {
-      "displayPrice" : "1.19",
-      "familyShareable" : false,
-      "internalID" : "6504584415",
-      "localizations" : [
-        {
-          "description" : "Lead with unmatched perks and honor!",
-          "displayName" : "Champion Leader",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "onlyjose.tip.six",
-      "referenceName" : "Champion Leader",
-      "type" : "Consumable"
-    },
-    {
       "displayPrice" : "4.99",
       "familyShareable" : false,
       "internalID" : "6504539928",
@@ -93,6 +63,21 @@
       "productID" : "onlyjose.tip.one",
       "referenceName" : "Thoughtful Giver",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6504873338",
+      "localizations" : [
+        {
+          "description" : "tip 10 ",
+          "displayName" : "Tip 10",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "onlyjose.tip.ten",
+      "referenceName" : "Tip 10",
+      "type" : "Consumable"
     }
   ],
   "settings" : {
@@ -101,7 +86,7 @@
     "_billingGracePeriodEnabled" : false,
     "_developerTeamID" : "7PX72NXP7V",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 740911530.63422,
+    "_lastSynchronizedDate" : 741105090.85017204,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -186,56 +171,6 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "2.99",
-          "familyShareable" : false,
-          "groupNumber" : 3,
-          "internalID" : "6504540058",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "Your legendary support!",
-              "displayName" : "Legend",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "onlyjose.tip.legend",
-          "recurringSubscriptionPeriod" : "P6M",
-          "referenceName" : "Legend",
-          "subscriptionGroupID" : "21501127",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "1.99",
-          "familyShareable" : false,
-          "groupNumber" : 2,
-          "internalID" : "6504539882",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "Power the team!",
-              "displayName" : "Patron",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "onlyjose.tip.patron",
-          "recurringSubscriptionPeriod" : "P3M",
-          "referenceName" : "Patron",
-          "subscriptionGroupID" : "21501127",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
           "displayPrice" : "0.99",
           "familyShareable" : false,
           "groupNumber" : 1,
@@ -244,7 +179,7 @@
           "localizations" : [
             {
               "description" : "Guard our victory with unmatched support!",
-              "displayName" : "Protector",
+              "displayName" : "Supporter",
               "locale" : "en_US"
             }
           ],
