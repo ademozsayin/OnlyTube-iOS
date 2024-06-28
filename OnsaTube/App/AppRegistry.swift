@@ -74,6 +74,10 @@ extension View {
 //            Draft.self,
         ])
     }
+    
+    func withCoreDataContext() -> some View {
+        environment(\.managedObjectContext, PersistenceModel.shared.context)
+    }
 }
 
 struct ActivityView: UIViewControllerRepresentable {

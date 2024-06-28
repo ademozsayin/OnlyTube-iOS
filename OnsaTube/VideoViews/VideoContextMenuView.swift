@@ -42,14 +42,14 @@ struct VideoContextMenuView: View {
                 AddToQueueContextMenuButtonView(video: self.videoWithData.video, videoThumbnailData: self.videoWithData.data.thumbnailData)
             }
             Section {
-//                if isFavorite {
-//                    DeleteFromFavoritesView(video: self.videoWithData.video)
-//                } else {
-//                    AddToFavoritesContextButtonView(
-//                        video: self.videoWithData.video,
-//                        imageData: self.videoWithData.data.thumbnailData
-//                    )
-//                }
+                if isFavorite {
+                    DeleteFromFavoritesView(video: self.videoWithData.video)
+                } else {
+                    AddToFavoritesContextButtonView(
+                        video: self.videoWithData.video,
+                        imageData: self.videoWithData.data.thumbnailData
+                    )
+                }
                 //            if let downloadURL = downloadURL {
 //                if isDownloaded {
 //                    RemoveDownloadContextMenuButtonView(video: self.videoWithData.video)

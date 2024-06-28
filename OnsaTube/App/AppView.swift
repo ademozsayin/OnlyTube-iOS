@@ -36,6 +36,8 @@ struct AppView: View {
     
     @State private var disclaimerPresented = false
 
+    @ObservedObject var PM = PopupsModel.shared
+
     
     var body: some View {
 #if os(visionOS)
@@ -127,7 +129,33 @@ struct AppView: View {
         .fullScreenCover(isPresented: $disclaimerPresented, content: {
             DisclaimerView()
         })
-
+        .overlay(alignment: .center, content: {
+            ZStack {
+                let imageData = PM.shownPopup?.data as? Data
+                switch PM.shownPopup?.type {
+                    case .addedToFavorites:
+                        AddedFavoritesAlertView(imageData: imageData)
+                    case .addedToPlaylist:
+                        AddedToPlaylistAlertView(imageData: imageData)
+                    case .cancelledDownload:
+                        CancelledDownloadAlertView(imageData: imageData)
+                    case .deletedDownload:
+                        DeletedDownloadAlertView(imageData: imageData)
+                    case .pausedDownload:
+                        PausedDownloadAlertView(imageData: imageData)
+                    case .playLater:
+                        PlayLaterAlertView(imageData: imageData)
+                    case .playNext:
+                        PlayNextAlertView(imageData: imageData)
+                    case .resumedDownload:
+                        ResumedDownloadAlertView(imageData: imageData)
+                    case .none:
+                        Color.clear.frame(width: 0, height: 0)
+                            .hidden()
+                }
+            }
+//            .padding(.bottom, 200)
+        })
     }
     
 #if !os(visionOS)
@@ -187,6 +215,32 @@ struct AppView: View {
                 .presentationDragIndicator(.hidden)
         })
         .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+        .overlay(alignment: .center, content: {
+            ZStack {
+                let imageData = PM.shownPopup?.data as? Data
+                switch PM.shownPopup?.type {
+                    case .addedToFavorites:
+                        AddedFavoritesAlertView(imageData: imageData)
+                    case .addedToPlaylist:
+                        AddedToPlaylistAlertView(imageData: imageData)
+                    case .cancelledDownload:
+                        CancelledDownloadAlertView(imageData: imageData)
+                    case .deletedDownload:
+                        DeletedDownloadAlertView(imageData: imageData)
+                    case .pausedDownload:
+                        PausedDownloadAlertView(imageData: imageData)
+                    case .playLater:
+                        PlayLaterAlertView(imageData: imageData)
+                    case .playNext:
+                        PlayNextAlertView(imageData: imageData)
+                    case .resumedDownload:
+                        ResumedDownloadAlertView(imageData: imageData)
+                    case .none:
+                        Color.clear.frame(width: 0, height: 0)
+                            .hidden()
+                }
+            }
+        })
     }
 #endif
     
@@ -197,11 +251,6 @@ struct AppView: View {
     
     var notificationsSecondaryColumn: some View {
         Text("Notifs")
-//        NotificationsTab(selectedTab: .constant(.notifications),
-//                         popToRootTab: $popToRootTab, lockedType: nil)
-//        .environment(\.isSecondaryColumn, true)
-//        .frame(maxWidth: .secondaryColumnWidth)
-//        .id(appAccountsManager.currentAccount.id)
     }
 }
 

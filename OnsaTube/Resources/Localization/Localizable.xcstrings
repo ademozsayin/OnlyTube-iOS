@@ -158,6 +158,9 @@
     "chanel" : {
 
     },
+    "Channel" : {
+
+    },
     "Chapters" : {
 
     },
@@ -213,8 +216,19 @@
     "En Direct" : {
 
     },
-    "FavoriteTab" : {
+    "Favorites" : {
 
+    },
+    "favorites.navigation-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
     },
     "For more information, please review the following:" : {
 
@@ -246,6 +260,9 @@
     "Monthly" : {
 
     },
+    "Newest" : {
+
+    },
     "Next up" : {
 
     },
@@ -271,10 +288,53 @@
         }
       }
     },
+    "notifications.empty.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications? What notifications? Your notification inbox is looking so empty. Keep on being awesome! 📱😎"
+          }
+        }
+      }
+    },
+    "notifications.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No notifications"
+          }
+        }
+      }
+    },
+    "notifications.navigation-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Notifications"
+          }
+        }
+      }
+    },
     "Notifs" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
     },
     "OK" : {
+
+    },
+    "Oldest" : {
 
     },
     "other" : {
@@ -1006,6 +1066,9 @@
 
     },
     "Tips provided in app do no unlock any additional content." : {
+
+    },
+    "Title" : {
 
     },
     "Unlisted" : {

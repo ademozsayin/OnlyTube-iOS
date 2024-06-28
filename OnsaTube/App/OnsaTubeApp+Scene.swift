@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import DesignSystem
+import Env
 
 extension OnsaTubeApp {
     var appScene: some Scene {
@@ -14,9 +16,18 @@ extension OnsaTubeApp {
                 .applyTheme(theme)
                 .environment(userPreferences)
                 .environment(theme)
+                .environment(pushNotificationsService)
                 .onAppear {
                     setupRevenueCat()
+                    refreshPushSubs()
                 }
+                .onChange(of: pushNotificationsService.handledNotification) { _, newValue in
+                    if newValue != nil {
+                        pushNotificationsService.handledNotification = nil
+                    }
+                }
+    
         }
     }
 }
+
