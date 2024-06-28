@@ -37,7 +37,7 @@ struct SortingModeSelectionModifier: ViewModifier {
                                 Label("Newest", systemImage: "arrow.up.to.line.compact").tag(PreferencesStorageModel.Properties.SortingModes.newest)
                                 Label("Oldest", systemImage: "arrow.down.to.line.compact").tag(PreferencesStorageModel.Properties.SortingModes.oldest)
                                 Label("Title", systemImage: "play.rectangle").tag(PreferencesStorageModel.Properties.SortingModes.title)
-                                Label("Channel", systemImage: "person").tag(PreferencesStorageModel.Properties.SortingModes.channelName)
+//                                Label("Channel", systemImage: "person").tag(PreferencesStorageModel.Properties.SortingModes.channelName)
                             }
                         } label: {
                             ZStack {

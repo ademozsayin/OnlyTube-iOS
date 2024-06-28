@@ -51,7 +51,7 @@ class PreferencesStorageModel: ObservableObject {
         public enum SortingModes: String, Codable, CaseIterable {
             case newest, oldest
             case title
-            case channelName
+//            case channelName
         }
         
         case videoViewMode

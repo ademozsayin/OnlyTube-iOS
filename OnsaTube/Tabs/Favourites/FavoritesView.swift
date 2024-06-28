@@ -82,8 +82,8 @@ struct FavoritesView: View {
                         return $0.timestamp < $1.timestamp
                     case .title:
                         return ($0.title ?? "") < ($1.title ?? "")
-                    case .channelName:
-                        return ($0.channel?.name ?? "") < ($1.channel?.name ?? "")
+//                    case .channelName:
+//                        return ($0.channel?.name ?? "") < ($1.channel?.name ?? "")
                 }
             })
     }
