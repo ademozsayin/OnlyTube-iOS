@@ -26,7 +26,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
             case .timeline:
                 SearchTab(popToRootTab: popToRootTab)
             case .notifications:
-                Text("notifications")
+                NotificationsTab(selectedTab: selectedTab, popToRootTab: popToRootTab)
             case .settings:
                 SettingsTabs(popToRootTab: popToRootTab, isModal: false)
                     .withEnvironments()
@@ -52,7 +52,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 "tab.timeline"
            
             case .notifications:
-                "bell"
+                "notifications"
           
             case .settings:
                 "tab.settings"
@@ -96,9 +96,8 @@ class SidebarTabs {
     class Storage {
         @AppStorage("sidebar_tabs") var tabs: [SidedebarTab] = [
             .init(tab: .timeline, enabled: true),
-          
+            .init(tab: .notifications, enabled: true),
             .init(tab: .favorite, enabled: true),
-          
             .init(tab: .settings, enabled: true)
         ]
     }
@@ -125,13 +124,14 @@ class SidebarTabs {
 @Observable
 class iOSTabs {
     enum TabEntries: String {
-        case first, second, third
+        case first, second, third, four
     }
     
     class Storage {
         @AppStorage(TabEntries.first.rawValue) var firstTab = Tab.timeline
-        @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.favorite
-        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.settings
+        @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.notifications
+        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.favorite
+        @AppStorage(TabEntries.four.rawValue) var fourTab = Tab.settings
 
     }
     
@@ -139,7 +139,7 @@ class iOSTabs {
     public static let shared = iOSTabs()
     
     var tabs: [Tab] {
-        [firstTab, secondTab, thirdTab]
+        [firstTab, secondTab, thirdTab, fourTab]
     }
     
     var firstTab: Tab {
@@ -160,9 +160,17 @@ class iOSTabs {
         }
     }
     
+    var fourTab: Tab {
+        didSet {
+            storage.fourTab = fourTab
+        }
+    }
+    
     private init() {
         firstTab = storage.firstTab
         secondTab = storage.secondTab
         thirdTab = storage.thirdTab
+        fourTab = storage.fourTab
+
     }
 }

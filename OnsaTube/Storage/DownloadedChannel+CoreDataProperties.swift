@@ -34,7 +34,7 @@ extension DownloadedChannel {
         let set = favorites as? Set<FavoriteVideo> ?? []
         
         return set.sorted {
-            $0.timestamp < $1.timestamp
+            $0.timestamp ?? Date() < $1.timestamp ?? Date()
         }
     }
     

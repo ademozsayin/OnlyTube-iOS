@@ -222,8 +222,8 @@
             filePath = "OnsaTube/App/OnsaTubeApp.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "setupRevenueCat()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1233,6 +1233,38 @@
             startingLineNumber = "82"
             endingLineNumber = "82"
             landmarkName = "sortedVideos"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BE00C6C9-15E9-47F4-ADDB-CAB4C74B7829"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Notifications/Sources/Notifications/NotificationsListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "notificationsView"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5CDE7258-0E8E-4A69-B669-74ED1ACC4923"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Notifications/Sources/Notifications/NotificationsListView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "notificationsView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

@@ -288,8 +288,48 @@
         }
       }
     },
+    "notifications.empty.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications? What notifications? Your notification inbox is looking so empty. Keep on being awesome! 📱😎"
+          }
+        }
+      }
+    },
+    "notifications.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No notifications"
+          }
+        }
+      }
+    },
+    "notifications.navigation-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Notifications"
+          }
+        }
+      }
+    },
     "Notifs" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
     },
     "OK" : {
 
