@@ -367,35 +367,37 @@ struct VideoView2: View {
                     .padding(.leading, 10)
                     .frame(width: geometry.size.width * 0.75, alignment: .leading)
                     Spacer()
-//                    VStack {
+                    VStack {
                         // TODO: - Enable for premium users after added faeture fav and downloads
 //                        if video.timeLength != "live" {
-//                            DownloadButtonView(video: video, videoThumbnailData: self.videoWithData.data.thumbnailData, downloadURL: downloadLocation)
-//                                .foregroundStyle(theme.labelColor)
+//                            DownloadButtonView(video: video, videoThumbnailData: self.videoWithData.data.thumbnailData, downloadURL: downloadLocation)                             .foregroundStyle(theme.labelColor)
 //                        }
-                        /* to be reinstated later
-                        Menu {
-                            VideoContextMenuView(video: video, videoThumbnailData: thumbnailData, isFavorite: isFavorite, isDownloaded: (downloadLocation != nil))
-                        } label: {
-                            Image(systemName: "ellipsis")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 18, height: 18)
-                                .foregroundStyle(colorScheme.textColor)
-                                .contentShape(Rectangle())
-                                .padding(.top, 10)
-                        }
-                        .frame(width: 20, height: 20)
-                         */
-//                        AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
-//                            .foregroundStyle(theme.labelColor)
-//                        Spacer()
-//                    }
-//                    .frame(alignment: .top)
-//                    .padding(.trailing, 5)
-//                    if !(video.channel?.thumbnails.isEmpty ?? true) && self.videoWithData.data.channelAvatarData != nil {
-//                        Spacer()
-//                    }
+//                      
+//                        Menu {
+//                            VideoContextMenuView(video: video, 
+//                                                 videoThumbnailData: thumbnailData,
+//                                                 isFavorite: isFavorite,
+//                                                 isDownloaded: (downloadLocation != nil))
+//                        } label: {
+//                            Image(systemName: "ellipsis")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 18, height: 18)
+//                                .foregroundStyle(colorScheme.textColor)
+//                                .contentShape(Rectangle())
+//                                .padding(.top, 10)
+//                        }
+//                        .frame(width: 20, height: 20)
+                         
+                        AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
+                            .foregroundStyle(theme.labelColor)
+                        Spacer()
+                    }
+                    .frame(alignment: .top)
+                    .padding(.trailing, 5)
+                    if !(video.channel?.thumbnails.isEmpty ?? true) && self.videoWithData.data.channelAvatarData != nil {
+                        Spacer()
+                    }
                 }
                 .padding(.horizontal, 5)
                 .padding(.top, 10)

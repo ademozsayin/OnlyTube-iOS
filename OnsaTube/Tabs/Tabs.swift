@@ -32,7 +32,8 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                     .withEnvironments()
                     .preferredColorScheme(Theme.shared.selectedScheme == .dark ? .dark : .light)
             case .favorite:
-                FavoriteTab(popToRootTab: popToRootTab)
+                FavoriteTab(popToRootTab: popToRootTab, selectedTab: selectedTab, lockedType: nil)
+
             case .other:
                 Text("other")
         }

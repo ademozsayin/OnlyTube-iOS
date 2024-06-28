@@ -25,11 +25,7 @@ class Model {
         case empty
     }
     
-    var state: State = .loading {
-        didSet {
-            print("State: \(state)")
-        }
-    }
+    var state: State = .loading
     
     private var homeResponse: HomeScreenResponse?
     private var searchResponse: SearchResponse?
@@ -144,7 +140,7 @@ class Model {
             guard let self else { return }
             switch result {
                 case .success(let response):
-                    print(response)
+//                    print(response)
                     self.searchResponse = response
                     DispatchQueue.main.async {
                       
@@ -155,12 +151,12 @@ class Model {
                         } else {
                             self.isFetching = false
                             self.items = response.results
-//                            self.state = self.items.isEmpty ? .empty : .result
-                            if response.results.isEmpty {
-                                self.state = .empty
-                            } else {
-                                self.state = .result
-                            }
+                            self.state = self.items.isEmpty ? .empty : .result
+//                            if response.results.isEmpty {
+//                                self.state = .empty
+//                            } else {
+//                                self.state = .result
+//                            }
                         }
                         
                         end?()

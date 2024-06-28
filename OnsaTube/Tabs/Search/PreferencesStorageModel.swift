@@ -48,7 +48,7 @@ class PreferencesStorageModel: ObservableObject {
     public enum Properties: String, CaseIterable {
         case favoritesSortingMode
         case downloadsSortingMode
-        public enum SortingModes: Codable {
+        public enum SortingModes: String, Codable, CaseIterable {
             case newest, oldest
             case title
             case channelName

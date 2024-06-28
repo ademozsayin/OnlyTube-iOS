@@ -24,12 +24,34 @@ struct FavoriteTab: View {
     @Environment(Theme.self) private var theme
     
     @State private var routerPath = RouterPath()
-    @Binding var popToRootTab: Tab
+    @State private var scrollToTopSignal: Int = 0
     
-        
+    @Binding var popToRootTab: Tab
+    @Binding var selectedTab: Tab
+    let lockedType: PreferencesStorageModel.Properties.SortingModes?
+  
     var body: some View {
         NavigationStack(path: $routerPath.path) {
-         Text("FavoriteTab")
+            FavoritesView()
+                .withAppRouter()
+                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+                .withCoreDataContext()
+                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
+        }
+        .onAppear {
+        }
+        .withSafariRouter()
+        .environment(routerPath)
+        .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
+            if newValue == .notifications {
+                if routerPath.path.isEmpty {
+                    scrollToTopSignal += 1
+                } else {
+                    routerPath.path = []
+                }
+            }
+        }
+        .onChange(of: selectedTab) { _, _ in
         }
     }
    
