@@ -8,14 +8,16 @@
 
 import SwiftUI
 import YouTubeKit
+import TipKit
 
 struct AddToFavoritesButtonView: View {
     let video: YTVideo
     let imageData: Data?
     @ObservedObject private var PM = PersistenceModel.shared
+    private let tip = TapToSelectImageTip()
     var body: some View {
-        let isFavorite = PM.checkIfFavorite(video: video)
         
+        let isFavorite = PM.checkIfFavorite(video: video)
         Button {
             if isFavorite {
                 PersistenceModel.shared.removeFromFavorites(video: video)
@@ -23,10 +25,14 @@ struct AddToFavoritesButtonView: View {
                 PersistenceModel.shared.addToFavorites(video: video, imageData: imageData)
             }
         } label: {
+            
             Image(systemName: isFavorite ? "star.fill" : "star")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20)
+                .popoverTip(tip)
+            
         }
     }
 }
+

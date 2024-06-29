@@ -19,6 +19,7 @@ import YouTubeKit
 import SwipeActions
 #endif
 import DesignSystem
+import TipKit
 
 let YTM = YouTubeModel()
 
@@ -61,6 +62,7 @@ struct SearchView: View {
   
     @Binding var scrollToTopSignal: Int
     
+    
     public init(scrollToTopSignal: Binding<Int>) {
         _scrollToTopSignal = scrollToTopSignal
     }
@@ -90,6 +92,7 @@ struct SearchView: View {
                                 
                             case .result:
                                 resultView
+                                   
                                     .onChange(of: viewModel.scrollToIndex) { _, newValue in
                                         if let collectionView,
                                            let newValue,
@@ -283,10 +286,16 @@ protocol ViewRepresentable {
 }
 
 
-
-
-
-
-
-
-
+struct TapToSelectImageTip: Tip {
+    var id = UUID()
+    
+    var title: Text {
+        Text("Tap to Add")
+    }
+    var message: Text? {
+        Text("You can add to favorites by tapping here")
+    }
+    var asset: Image? {
+        Image(systemName: "star")
+    }
+}

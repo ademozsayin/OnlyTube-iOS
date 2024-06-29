@@ -1059,6 +1059,9 @@
         }
       }
     },
+    "Tap to Add" : {
+
+    },
     "This app uses the YouTube API to display videos and other content. The content provided is available publicly on YouTube. We do not claim ownership of any of the content displayed in this app. All rights are reserved by their respective owners." : {
 
     },
@@ -1081,6 +1084,9 @@
 
     },
     "We are not responsible for any issues or risks associated with the use of this app. If you have any concerns or questions regarding the content, please contact YouTube or the content owner directly." : {
+
+    },
+    "You can add to favorites by tapping here" : {
 
     }
   },

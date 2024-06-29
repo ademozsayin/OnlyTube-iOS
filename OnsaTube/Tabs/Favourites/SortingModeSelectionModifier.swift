@@ -51,10 +51,13 @@ struct SortingModeSelectionModifier: ViewModifier {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 18)
+                                
                             }
                         }
+                      
                     })
                 }
+               
                 .onAppear {
                     self.sortingMode = (PreferencesStorageModel.shared.propetriesState[sortingSubject] as? PreferencesStorageModel.Properties.SortingModes) ?? .oldest
                 }

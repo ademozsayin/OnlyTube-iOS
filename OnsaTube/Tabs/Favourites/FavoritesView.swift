@@ -23,7 +23,7 @@ struct FavoritesView: View {
     @ObservedObject private var PSM = PreferencesStorageModel.shared
     
     @State private var routerPath = RouterPath()
-    
+
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -61,13 +61,11 @@ struct FavoritesView: View {
 #else
         .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always))
 #endif
-        
+
         .autocorrectionDisabled(true)
         .navigationTitle("Favorites")
         .sortingModeSelectorButton(forPropertyType: .favoritesSortingMode)
-//        .customNavigationTitleWithRightIcon {
-//            ShowSettingsButtonView()
-//        }
+        
     }
     
     var sortedVideos: [FavoriteVideo] {
@@ -121,3 +119,5 @@ extension Collection {
         }
     }
 }
+
+

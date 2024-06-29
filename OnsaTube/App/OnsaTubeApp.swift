@@ -13,6 +13,7 @@ import Env
 import RevenueCat
 import FirebaseCore
 import FirebaseMessaging
+import TipKit
 
 @main
 struct OnsaTubeApp: App {
@@ -29,6 +30,17 @@ struct OnsaTubeApp: App {
     @State var isSupporter: Bool = false
     @State var pushNotificationsService = PushNotificationsService.shared
 
+    init() {
+        do {
+            try Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        } catch {
+            print("Error configuring TipKit: \(error)")
+        }
+    }
+    
     var body: some Scene {
         appScene
     }

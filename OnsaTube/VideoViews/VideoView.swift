@@ -14,6 +14,7 @@
 import SwiftUI
 import YouTubeKit
 import DesignSystem
+import TipKit
 
 struct VideoView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -22,7 +23,6 @@ struct VideoView: View {
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     @Environment(Theme.self) private var theme
     @ObservedObject private var PM = PersistenceModel.shared
-    
     var body: some View {
         let video = videoWithData.video
         let isFavorite: Bool = {
@@ -120,6 +120,8 @@ struct VideoView: View {
                     }
                 }
                 .frame(width: geometry.size.width * 0.475, height: geometry.size.height)
+              
+
             }
             .contextMenu {
                 VideoContextMenuView(
@@ -152,6 +154,7 @@ struct VideoView: View {
                         Image(uiImage: image)
                             .resizable()
                             .scaledToFit()
+                        
                     } else {
                         Rectangle()
                             .foregroundColor(.gray)
@@ -213,6 +216,7 @@ struct VideoView: View {
                 }
             }
             .clipShape(RoundedRectangle(cornerRadius: 10))
+           
         }
         
         // Inspired from https://developer.apple.com/documentation/coregraphics/cgimage/1454683-cropping
@@ -260,7 +264,7 @@ struct VideoView2: View {
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     @ObservedObject private var PM = PersistenceModel.shared
     @Environment(Theme.self) private var theme
-
+    private let tip = TapToSelectImageTip()
     var body: some View {
         let video = videoWithData.video
         
@@ -276,6 +280,7 @@ struct VideoView2: View {
             VStack(spacing: 0) {
                 Spacer()
                 VideoView.ImageOfVideoView(videoWithData: self.videoWithData, hqImage: true)
+                   
                     .overlay(alignment: .bottomTrailing, content: {
                         if let timeLenght = video.timeLength {
                             if timeLenght == "live" {
@@ -364,35 +369,17 @@ struct VideoView2: View {
                             .font(.caption)
                         Spacer()
                     }
+                   
                     .padding(.leading, 10)
                     .frame(width: geometry.size.width * 0.75, alignment: .leading)
                     Spacer()
                     VStack {
-                        // TODO: - Enable for premium users after added faeture fav and downloads
-//                        if video.timeLength != "live" {
-//                            DownloadButtonView(video: video, videoThumbnailData: self.videoWithData.data.thumbnailData, downloadURL: downloadLocation)                             .foregroundStyle(theme.labelColor)
-//                        }
-//                      
-//                        Menu {
-//                            VideoContextMenuView(video: video, 
-//                                                 videoThumbnailData: thumbnailData,
-//                                                 isFavorite: isFavorite,
-//                                                 isDownloaded: (downloadLocation != nil))
-//                        } label: {
-//                            Image(systemName: "ellipsis")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(width: 18, height: 18)
-//                                .foregroundStyle(colorScheme.textColor)
-//                                .contentShape(Rectangle())
-//                                .padding(.top, 10)
-//                        }
-//                        .frame(width: 20, height: 20)
-                         
                         AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
                             .foregroundStyle(theme.labelColor)
+                            .popoverTip(tip)
                         Spacer()
                     }
+                    
                     .frame(alignment: .top)
                     .padding(.trailing, 5)
                     if !(video.channel?.thumbnails.isEmpty ?? true) && self.videoWithData.data.channelAvatarData != nil {
@@ -408,17 +395,8 @@ struct VideoView2: View {
             .contextMenu {
                 VideoContextMenuView(videoWithData: self.videoWithData, isFavorite: isFavorite, isDownloaded: (downloadLocation != nil))
             }
-//            .contextMenuWrapper(menuItems: [
-//                UIDeferredMenuElement({ result in
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-//                        result([UIAction(title: "+", handler: {_ in})])
-//                    })
-//                })
-//            ], previewProvider: {
-//                VideoView2(video: video, thumbnailData: thumbnailData, ownerThumbnailData: ownerThumbnailData)
-//                    .frame(width: geometry.size.width, height: geometry.size.height)
-//            })
-//           /* .videoSwipeActions(video: video, thumbnailData: self.videoWithData.data.thumbnailData, isConnectedToNetwork: self.NRM.connected, disableChannelNavigation: !self.videoWithData.dat*/a.allowChannelLinking, isConnectedToGoogle: APIKeyModel.shared.userAccount != nil && APIM.googleCookies != "")
         }
+       
     }
 }
+

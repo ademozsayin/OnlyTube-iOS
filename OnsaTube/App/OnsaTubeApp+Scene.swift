@@ -8,6 +8,7 @@
 import SwiftUI
 import DesignSystem
 import Env
+import TipKit
 
 extension OnsaTubeApp {
     var appScene: some Scene {
