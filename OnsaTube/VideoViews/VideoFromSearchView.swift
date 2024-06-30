@@ -26,7 +26,7 @@ struct VideoFromSearchView: View {
                 VideoPlayerModel.shared.loadVideo(video: videoWithData.video, thumbnailData: self.videoWithData.data.thumbnailData, channelAvatarImageData: self.videoWithData.data.channelAvatarData)
             }
             //                SheetsModel.shared.showSheet(.watchVideo)
-            routerPath.presentedSheet = .miniPlayer
+            routerPath.presentedSheet = .miniPlayer(videoId: videoWithData.video.videoId)
             
         } label: {
             if let state = PSM.propetriesState[.videoViewMode] as? PreferencesStorageModel.Properties.VideoViewModes, state == .halfThumbnail {

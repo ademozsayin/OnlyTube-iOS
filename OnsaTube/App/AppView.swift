@@ -121,7 +121,7 @@ struct AppView: View {
             }
         })
         .sheet(isPresented: watchVideoBinding, content: {
-            WatchVideoView()
+            WatchVideoView(videoId: nil)
                 .presentationDragIndicator(.hidden)
         })
      
@@ -211,7 +211,7 @@ struct AppView: View {
 //            .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth)
         })
         .sheet(isPresented: watchVideoBinding, content: {
-            WatchVideoView()
+            WatchVideoView(videoId: nil)
                 .presentationDragIndicator(.hidden)
         })
         .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)

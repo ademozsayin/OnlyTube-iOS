@@ -32,7 +32,7 @@ public enum SheetDestination: Identifiable, Hashable {
  
     case settings
     case about
-    case miniPlayer
+    case miniPlayer(videoId:String?)
     case disclaimer
     
     public var id: String {
@@ -88,17 +88,56 @@ public enum SettingsStartingPoint {
         return urlHandler?(url) ?? .systemAction
     }
     
+//    public func handleDeepLink(url: URL) -> OpenURLAction.Result {
+//        let component = url.lastPathComponent
+//        switch url.host {
+//            case "watch":
+//               
+//                if case .success(let sanitizedVideoId) = ParameterValidator.videoIdValidator.handler(component),
+//                   let sanitizedVideoId = sanitizedVideoId {
+//                    presentedSheet = .miniPlayer(videoId: sanitizedVideoId)
+//                    break
+//                }
+//            case "channel":
+//                handlerOrDefault(url: url)
+//                break
+//            default:
+//                handlerOrDefault(url: url)
+//                break
+//        }
+//   
+//        Task {
+//            handlerOrDefault(url: url)
+//            return
+//        }
+//        return .handled
+//    }
+    
     public func handleDeepLink(url: URL) -> OpenURLAction.Result {
-
-        guard let id = Int(url.lastPathComponent)
-        else {
-            return urlHandler?(url) ?? .systemAction
+        let component = url.lastPathComponent
+        
+        switch url.host {
+            case "watch":
+                if case .success(let sanitizedVideoId) = ParameterValidator.videoIdValidator.handler(component),
+                   let sanitizedVideoId = sanitizedVideoId {
+                    presentedSheet = .miniPlayer(videoId: sanitizedVideoId)
+                    return .handled
+                } else {
+                    Task {
+                        handlerOrDefault(url: url)
+                    }
+                    return .handled
+                }
+            case "channel":
+                Task {
+                    handlerOrDefault(url: url)
+                }
+                return .handled
+            default:
+                Task {
+                    handlerOrDefault(url: url)
+                }
+                return .handled
         }
-   
-        Task {
-            handlerOrDefault(url: url)
-            return
-        }
-        return .handled
     }
 }

@@ -31,6 +31,30 @@ struct WatchVideoView: View {
     @ObservedObject private var APIM = APIKeyModel.shared
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     
+    @State private var videoId: String?
+    
+    public init(videoId: String?) {
+        self.videoId = videoId
+        if let videoId, !videoId.isEmpty {
+             VideoInfosResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query : videoId], result: { result in
+                 switch result {
+                     case .success(let res):
+                         let ytVideo = YTVideo(
+                            videoId: res.videoId ?? videoId, title: res.title,
+                            thumbnails: res.thumbnails
+                         )
+                       
+                         VideoPlayerModel.shared.loadVideo(video: ytVideo)
+                     case .failure(let err):
+                         print(err)
+                 }
+             })
+      
+        } else {
+            print("asdasd")
+        }
+    }
+    
     var body: some View {
         ZStack {
             GeometryReader { geometry in

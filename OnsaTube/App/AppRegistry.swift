@@ -46,9 +46,9 @@ extension View {
                         Text("AboutView")
                     }
                         .withEnvironments()
-                case .miniPlayer:
+                case .miniPlayer(let videoId):
 //                    NavigationSheet {
-                        WatchVideoView()
+                    WatchVideoView(videoId: videoId)
                             .withEnvironments()
                             .presentationDragIndicator(.hidden)
 

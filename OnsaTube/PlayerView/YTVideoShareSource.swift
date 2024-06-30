@@ -15,8 +15,9 @@ class YTVideoShareSource: NSObject, UIActivityItemSource {
     let video: YTVideo
     let thumbnailData: Data?
     
-    var videoURL: URL { URL(string: "https://youtu.be/\(video.videoId)")! }
-    
+//    var videoURL: URL { URL(string: "https://youtu.be/\(video.videoId)")! }
+    var videoURL: URL { URL(string: "onsatubeapp://watch/\(video.videoId)")! }
+
     init(video: YTVideo, thumbnailData: Data? = nil) {
         self.video = video
         self.thumbnailData = thumbnailData
