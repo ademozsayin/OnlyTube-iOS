@@ -15,6 +15,7 @@ extension OnsaTubeApp {
         WindowGroup(id: "MainWindow") {
             AppView(selectedTab: $selectedTab, appRouterPath: $appRouterPath)
                 .applyTheme(theme)
+                .environment(authenticationManager)
                 .environment(userPreferences)
                 .environment(theme)
                 .environment(pushNotificationsService)

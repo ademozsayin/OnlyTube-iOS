@@ -78,7 +78,13 @@
     "• YouTube Terms of Service" : {
 
     },
-    "AboutView" : {
+    "accessibility.app-account.selector.accounts" : {
+
+    },
+    "accessibility.app-account.selector.accounts.hint" : {
+
+    },
+    "accessibility.tabs.timeline.add-account" : {
 
     },
     "account.action.logout" : {
@@ -87,6 +93,67 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Logout"
+          }
+        }
+      }
+    },
+    "account.edit.avatar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatar"
+          }
+        }
+      }
+    },
+    "account.edit.display-name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display Name"
+          }
+        }
+      }
+    },
+    "account.edit.error.save.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Message"
+          }
+        }
+      }
+    },
+    "account.edit.error.save.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error while saving your profile"
+          }
+        }
+      }
+    },
+    "account.edit.header" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Header"
+          }
+        }
+      }
+    },
+    "account.edit.navigation-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
           }
         }
       }
@@ -105,6 +172,7 @@
       }
     },
     "Add Account" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -140,6 +208,12 @@
         }
       }
     },
+    "Already have an account? " : {
+
+    },
+    "app-account.button.add" : {
+
+    },
     "Audio formats" : {
 
     },
@@ -148,6 +222,9 @@
     },
     "bell" : {
 
+    },
+    "By tapping the Log in button, you agree to our %1$@ and to %2$@." : {
+      "comment" : "Content of the label at the end of the Wrong Account screen. Reads like: By tapping the Connect Jetpack button, you agree to our Terms of Service and to share details with WordPress.com."
     },
     "By using this app, you agree to comply with YouTube's Terms of Service and acknowledge that you have read and understood YouTube's API Services Terms of Service." : {
 
@@ -163,6 +240,9 @@
     },
     "Chapters" : {
 
+    },
+    "Connect Jetpack" : {
+      "comment" : "Title for the WPCom email login screen when Jetpack is not connected yet"
     },
     "Create" : {
 
@@ -207,13 +287,31 @@
     "Disclaimer" : {
 
     },
+    "Don't have an account? " : {
+
+    },
     "Download" : {
 
     },
     "Downloads" : {
 
     },
+    "Edit Info" : {
+
+    },
+    "Email" : {
+
+    },
+    "Email Address or Username" : {
+      "comment" : "Label for the email field on the WPCom email login screen of the Jetpack setup flow."
+    },
     "En Direct" : {
+
+    },
+    "Enter email or username" : {
+      "comment" : "Placeholder text for the email field on the WPCom email login screen of the Jetpack setup flow."
+    },
+    "Error signing in with email link: %@" : {
 
     },
     "Favorites" : {
@@ -250,6 +348,12 @@
     },
     "Loading other options..." : {
 
+    },
+    "Log in with your WordPress.com account to connect Jetpack" : {
+      "comment" : "Subtitle for the WPCom email login screen when Jetpack is not connected yet"
+    },
+    "Login" : {
+      "comment" : "Title for the WPCom email login screen when Jetpack is not installed yet"
     },
     "Menu" : {
 
@@ -334,6 +438,9 @@
     "OK" : {
 
     },
+    "Okay" : {
+
+    },
     "Oldest" : {
 
     },
@@ -346,6 +453,12 @@
           }
         }
       }
+    },
+    "Password" : {
+
+    },
+    "placeholder" : {
+
     },
     "placeholder.loading.short" : {
       "localizations" : {
@@ -380,10 +493,19 @@
     "Playlists" : {
 
     },
+    "Please wait while signin in." : {
+
+    },
     "Private" : {
 
     },
+    "Profile" : {
+
+    },
     "Public" : {
+
+    },
+    "Register" : {
 
     },
     "remaining" : {
@@ -399,6 +521,9 @@
 
     },
     "Retry" : {
+
+    },
+    "Save" : {
 
     },
     "Search videos or pull up to refresh for the algorithm to fill this menu." : {
@@ -508,6 +633,7 @@
       }
     },
     "settings.cache-media.clear" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -647,6 +773,16 @@
         }
       }
     },
+    "settings.general.push-notifications" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Push Notifications"
+          }
+        }
+      }
+    },
     "settings.general.sidebarEntries" : {
       "localizations" : {
         "en" : {
@@ -687,6 +823,66 @@
         }
       }
     },
+    "settings.push.duplicate.button.fix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🪄 Fix It"
+          }
+        }
+      }
+    },
+    "settings.push.duplicate.footer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receiving duplicate notifications? Try this magic button in order to fix it"
+          }
+        }
+      }
+    },
+    "settings.push.duplicate.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate Notifications Fixer"
+          }
+        }
+      }
+    },
+    "settings.push.main-toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Push Notifications"
+          }
+        }
+      }
+    },
+    "settings.push.main-toggle.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receive push notifications on new activities"
+          }
+        }
+      }
+    },
+    "settings.push.navigation-title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Push Notifications"
+          }
+        }
+      }
+    },
     "settings.section.accounts" : {
       "localizations" : {
         "en" : {
@@ -718,6 +914,7 @@
       }
     },
     "settings.section.cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1015,10 +1212,16 @@
         }
       }
     },
+    "share details" : {
+      "comment" : "The action to be agreed upon when tapping the Connect Jetpack button on the Wrong Account screen."
+    },
     "Shazam" : {
 
     },
     "Shorts" : {
+
+    },
+    "Sign up" : {
 
     },
     "Something went wrong" : {
@@ -1065,6 +1268,15 @@
     "Tap to Add" : {
 
     },
+    "Tap to Cancel" : {
+
+    },
+    "Tap to Shazam" : {
+
+    },
+    "Terms of Service" : {
+      "comment" : "The terms to be agreed upon when tapping the Connect Jetpack button on the Wrong Account screen."
+    },
     "This app uses the YouTube API to display videos and other content. The content provided is available publicly on YouTube. We do not claim ownership of any of the content displayed in this app. All rights are reserved by their respective owners." : {
 
     },
@@ -1089,7 +1301,13 @@
     "We are not responsible for any issues or risks associated with the use of this app. If you have any concerns or questions regarding the content, please contact YouTube or the content owner directly." : {
 
     },
+    "We will send instructions to your email address. Check your e-mail." : {
+
+    },
     "You can add to favorites by tapping here" : {
+
+    },
+    "You have signed in." : {
 
     }
   },

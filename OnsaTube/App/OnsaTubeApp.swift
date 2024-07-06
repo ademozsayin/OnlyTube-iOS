@@ -14,6 +14,8 @@ import RevenueCat
 import FirebaseCore
 import FirebaseMessaging
 import TipKit
+import FirebaseDynamicLinks
+import FirebaseAuth
 
 @main
 struct OnsaTubeApp: App {
@@ -22,13 +24,13 @@ struct OnsaTubeApp: App {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.openWindow) var openWindow
    
-    
     @State var userPreferences = UserPreferences.shared
     @State var theme = Theme.shared
     @State var selectedTab: Tab = .timeline
     @State var appRouterPath = RouterPath()
     @State var isSupporter: Bool = false
     @State var pushNotificationsService = PushNotificationsService.shared
+    @State var authenticationManager = AuthenticationManager.shared
 
     init() {
         do {
@@ -86,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         Messaging.messaging().delegate = self
         try? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
         try? AVAudioSession.sharedInstance().setActive(true)
-//        PushNotificationsService.shared.setAccounts(accounts: AppAccountsManager.shared.pushAccounts)
+        PushNotificationsService.shared.setUser(user:AuthenticationManager.shared.currentAccount)
         return true
     }
     
@@ -96,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         PushNotificationsService.shared.pushToken = deviceToken
         Messaging.messaging().apnsToken = deviceToken
         Task {
-//            PushNotificationsService.shared.setAccounts(accounts: AppAccountsManager.shared.pushAccounts)
+            PushNotificationsService.shared.setUser(user:AuthenticationManager.shared.currentAccount)
             await PushNotificationsService.shared.updateSubscriptions(forceCreate: false)
         }
     }
@@ -128,4 +130,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
             print("fcm", fcm)
         }
     }
+}
+
+extension SceneDelegate {
+    public func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        
+        if let incomingURL = userActivity.webpageURL {
+            
+            print("\n \nIncoming URL is \(incomingURL)")
+            
+            _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
+                
+                guard error == nil else {
+                    print("\n \nError with handling incoming URL: \(error!.localizedDescription)")
+                    return
+                }
+                
+                if let dynamicLink = dynamicLink {
+                    
+                    guard let url = dynamicLink.url else {
+                        print("\n \nDynamic link object has no url")
+                        return
+                    }
+                    
+                    print("\n \nIncoming link parameter is \(url.absoluteString)")
+                    
+                    let link = url.absoluteString
+                    
+                    if Auth.auth().isSignIn(withEmailLink: link) {
+                        
+                        // Send notification to trigger the rest of the sign in sequence
+                        NotificationCenter.default.post(name: Notification.Name("Success"), object: nil, userInfo: ["link": link])
+                        
+                    } else {
+                        
+                        // Send error notification
+                        NotificationCenter.default.post(name: Notification.Name("Error"), object: nil, userInfo: nil)
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+    }
+
 }

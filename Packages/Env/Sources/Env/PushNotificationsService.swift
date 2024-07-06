@@ -14,6 +14,7 @@ import Network
 import Observation
 import SwiftUI
 import UserNotifications
+import FirebaseAuth
 
 extension UNNotificationResponse: @unchecked Sendable {}
 extension UNUserNotificationCenter: @unchecked Sendable {}
@@ -76,12 +77,24 @@ public struct HandledNotification: Equatable {
     public func setAccounts(accounts: [PushAccount]) {
         subscriptions = []
         for account in accounts {
-            let sub = PushNotificationSubscriptionSettings(account: account,
+            let sub = PushNotificationSubscriptionSettings(account: account, user: nil,
                                                            key: notificationsPrivateKeyAsKey.publicKey.x963Representation,
                                                            authKey: notificationsAuthKeyAsKey,
                                                            pushToken: pushToken)
             subscriptions.append(sub)
         }
+    }
+    
+    public func setUser(user: User?) {
+        subscriptions = []
+        guard let user else { return }
+        let sub = PushNotificationSubscriptionSettings(account: nil,
+                                                       user: user,
+                                                       key: notificationsPrivateKeyAsKey.publicKey.x963Representation,
+                                                       authKey: notificationsAuthKeyAsKey,
+                                                       pushToken: pushToken)
+        subscriptions.append(sub)
+        
     }
     
     public func updateSubscriptions(forceCreate: Bool) async {
@@ -162,8 +175,9 @@ extension Data {
 @Observable public class PushNotificationSubscriptionSettings {
     public var isEnabled: Bool = true
    
-    public let account: PushAccount
-    
+    public let account: PushAccount?
+    public let user: User?
+
     private let key: Data
     private let authKey: Data
     
@@ -171,8 +185,9 @@ extension Data {
     
     public private(set) var subscription: PushSubscription?
     
-    public init(account: PushAccount, key: Data, authKey: Data, pushToken: Data?) {
+    public init(account: PushAccount?, user: User?, key: Data, authKey: Data, pushToken: Data?) {
         self.account = account
+        self.user = user
         self.key = key
         self.authKey = authKey
         self.pushToken = pushToken

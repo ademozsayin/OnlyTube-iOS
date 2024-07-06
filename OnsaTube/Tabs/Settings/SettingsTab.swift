@@ -22,7 +22,8 @@ struct SettingsTabs: View {
     
     @Environment(UserPreferences.self) private var preferences
     @Environment(Theme.self) private var theme
-    
+    @Environment(AuthenticationManager.self) private var authenticationManager
+
     @State private var routerPath = RouterPath()
     @State private var addAccountSheetPresented = false
     @State private var isEditingAccount = false
@@ -33,15 +34,14 @@ struct SettingsTabs: View {
     let isModal: Bool
        
     @State private var startingPoint: SettingsStartingPoint? = nil
-
+    
     var body: some View {
         NavigationStack(path: $routerPath.path) {
             Form {
                 appSection
-//                accountsSection
+                accountsSection
                 generalSection
                 otherSections
-//                cacheSection
             }
             .scrollContentBackground(.hidden)
 #if !os(visionOS)
@@ -64,48 +64,21 @@ struct SettingsTabs: View {
                     SecondaryColumnToolbarItem()
                 }
             }
-//            .withAppRouter()
-//            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-//            .withSafariRouter()
-//            .environment(routerPath)
+            .withAppRouter()
+            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
             .onAppear {
                 startingPoint = RouterPath.settingsStartingPoint
                 RouterPath.settingsStartingPoint = nil
             }
-//            .navigationDestination(item: $startingPoint) { targetView in
-//                switch targetView {
-//                    case .display:
-//                        DisplaySettingsView()
-//                }
-//            }
-            .withAppRouter()
-            .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-        }
-        .onAppear {
-//            routerPath.client = client
-        }
-        .task {
-//            if appAccountsManager.currentAccount.oauthToken != nil {
-//                await currentInstance.fetchCurrentInstance()
-//            }
+           
         }
         .withSafariRouter()
         .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
-            if newValue == .notifications {
+            if newValue == .settings {
                 routerPath.path = []
             }
         }
-    }
-    
-    private var accountsSection: some View {
-        Section("settings.section.accounts") {
-      
-            addAccountButton
-        }
-#if !os(visionOS)
-        .listRowBackground(theme.primaryBackgroundColor)
-#endif
     }
     
     @ViewBuilder
@@ -132,6 +105,42 @@ struct SettingsTabs: View {
 //            }
 //            .tint(theme.labelColor)
 #endif
+        }
+#if !os(visionOS)
+        .listRowBackground(theme.primaryBackgroundColor)
+#endif
+    }
+    
+    private var accountsSection: some View {
+        Section("settings.section.accounts") {
+            if let account = authenticationManager.currentAccount {
+                HStack {
+                    if isEditingAccount {
+                        Button {
+                            Task {
+                                try await authenticationManager.signOut()
+                                dismiss()
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                                .renderingMode(.template)
+                                .tint(.red)
+                        }
+                    }
+                  
+                    AppAccountView(
+                        viewModel: .init(
+                            appAccount: account,
+                            authenticationManager: AuthenticationManager.shared),
+                        isParentPresented: .constant(false)
+                    )
+                }
+                
+                editAccountButton
+            } else {
+                addAccountButton
+            }
+
         }
 #if !os(visionOS)
         .listRowBackground(theme.primaryBackgroundColor)
@@ -187,7 +196,6 @@ struct SettingsTabs: View {
                 }
             }
 #endif
-           
             
             NavigationLink(destination: SupportAppView()) {
                 Label("settings.app.support", systemImage: "wand.and.stars")
@@ -196,18 +204,6 @@ struct SettingsTabs: View {
             NavigationLink(destination: AboutView()) {
                 Label("settings.app.about", systemImage: "info.circle")
             }
-//
-//            if let reviewURL = URL(string: "https://apps.apple.com/app/id\(AppInfo.appStoreAppId)?action=write-review") {
-//                Link(destination: reviewURL) {
-//                    Label("settings.rate", systemImage: "link")
-//                }
-//                .accessibilityRemoveTraits(.isButton)
-//                .tint(theme.labelColor)
-//            }
-//            
-//            NavigationLink(destination: AboutView()) {
-//                Label("settings.app.about", systemImage: "info.circle")
-//            }
             
         } header: {
             Text("settings.section.app")
@@ -228,8 +224,7 @@ struct SettingsTabs: View {
             Text("settings.account.add")
         }
         .sheet(isPresented: $addAccountSheetPresented) {
-//            AddAccountView()
-            Text("Add Account")
+            LoginView(siteUrl: "Adem")
         }
     }
     
@@ -243,26 +238,8 @@ struct SettingsTabs: View {
                 Text("action.done")
             } else {
                 Text("account.action.logout")
+                
             }
         }
-    }
-    
-    private var cacheSection: some View {
-        Section("settings.section.cache") {
-            if cachedRemoved {
-                Text("action.done")
-                    .transition(.move(edge: .leading))
-            } else {
-                Button("settings.cache-media.clear", role: .destructive) {
-                    ImagePipeline.shared.cache.removeAll()
-                    withAnimation {
-                        cachedRemoved = true
-                    }
-                }
-            }
-        }
-#if !os(visionOS)
-        .listRowBackground(theme.primaryBackgroundColor)
-#endif
     }
 }

@@ -25,14 +25,14 @@ struct ToolbarTab: ToolbarContent {
                 if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
                     Button {
                         withAnimation {
-//                            userPreferences.isSidebarExpanded.toggle()
+                            userPreferences.isSidebarExpanded.toggle()
                         }
                     } label: {
-//                        if userPreferences.isSidebarExpanded {
-//                            Image(systemName: "sidebar.squares.left")
-//                        } else {
-//                            Image(systemName: "sidebar.left")
-//                        }
+                        if userPreferences.isSidebarExpanded {
+                            Image(systemName: "sidebar.squares.left")
+                        } else {
+                            Image(systemName: "sidebar.left")
+                        }
                     }
                 }
             }
@@ -42,7 +42,7 @@ struct ToolbarTab: ToolbarContent {
                 (UIDevice.current.userInterfaceIdiom == .pad && horizontalSizeClass == .compact)
             {
                 ToolbarItem(placement: .navigationBarLeading) {
-//                    AppAccountsSelectorView(routerPath: routerPath)
+                    AppAccountsSelectorView(routerPath: routerPath)
                 }
             }
         }

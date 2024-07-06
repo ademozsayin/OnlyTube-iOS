@@ -23,6 +23,7 @@ import TipKit
 
 let YTM = YouTubeModel()
 
+@MainActor
 struct SearchView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismissSearch) private var dismissSearch
@@ -123,7 +124,6 @@ struct SearchView: View {
                 callSearching()
             }
             .navigationTitle("Dashboard")
-            .navigationBarTitleDisplayMode(.automatic)
             .environment(routerPath)
             .onChange(of: scrollToTopSignal) {
                 withAnimation {

@@ -376,7 +376,6 @@ struct VideoView2: View {
                     VStack {
                         AddToFavoritesButtonView(video: video, imageData: self.videoWithData.data.thumbnailData)
                             .foregroundStyle(theme.labelColor)
-                            .popoverTip(tip)
                         Spacer()
                     }
                     

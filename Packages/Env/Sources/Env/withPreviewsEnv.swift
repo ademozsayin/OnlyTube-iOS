@@ -6,5 +6,6 @@ import SwiftUI
 public extension View {
     func withPreviewsEnv() -> some View {
             environment(UserPreferences.shared)
+        
     }
 }

@@ -12,6 +12,7 @@ import SwiftUIIntrospect
 @MainActor
 struct AppView: View {
     
+    @Environment(AuthenticationManager.self) private var authenticationManager
     @Environment(UserPreferences.self) private var userPreferences
     @Environment(Theme.self) private var theme
 
@@ -64,15 +65,14 @@ struct AppView: View {
         }
 #endif
     }
-    
     var availableTabs: [Tab] {
-//        guard appAccountsManager.currentClient.isAuth else {
-//            return Tab.loggedOutTab()
-//        }
+        guard authenticationManager.isAuth else {
+            return Tab.loggedOutTab()
+        }
         if UIDevice.current.userInterfaceIdiom == .phone || horizontalSizeClass == .compact {
             return iosTabs.tabs
         } else if UIDevice.current.userInterfaceIdiom == .vision {
-            return Tab.loggedOutTab()//Tab.visionOSTab()
+            return Tab.visionOSTab()
         }
         return sidebarTabs.tabs.map { $0.tab }
     }

@@ -4,13 +4,17 @@ import Network
 import Observation
 import SwiftUI
 import YouTubeKit
+import FirebaseAuth
+
 
 public enum RouterDestination: Hashable {
    
     case mutedAccounts
     case channelDetails(channel: YTLittleChannelInfos)
     case playlistDetails(playlist: YTPlaylist)
-
+    case register
+    case accountSettingsWithAccount(account: User, appAccount: User)
+    case accountDetailWithAccount(account: User)
 }
 
 public enum WindowDestinationEditor: Hashable, Codable {
@@ -34,6 +38,11 @@ public enum SheetDestination: Identifiable, Hashable {
     case about
     case miniPlayer(videoId:String?)
     case disclaimer
+    case login
+    case loggingIn(url: URL)
+    case support
+    case accountEditInfo
+    case accountPushNotficationsSettings
     
     public var id: String {
         switch self {
@@ -43,6 +52,16 @@ public enum SheetDestination: Identifiable, Hashable {
                 "miniPlayer"
             case .disclaimer:
                 "disclaimer"
+            case .login:
+                "login"
+            case .loggingIn:
+                "loggingIn"
+            case .support:
+                "support"
+            case .accountEditInfo:
+                "accountEditInfo"
+            case .accountPushNotficationsSettings:
+                "accountPushNotficationsSettings"
         }
     }
 }
@@ -132,6 +151,10 @@ public enum SettingsStartingPoint {
                 Task {
                     handlerOrDefault(url: url)
                 }
+                return .handled
+                
+            case "onlyjose.page.link":
+                presentedSheet = .loggingIn(url: url)
                 return .handled
             default:
                 Task {

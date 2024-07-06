@@ -15,18 +15,22 @@ extension View {
     func withAppRouter() -> some View {
         navigationDestination(for: RouterDestination.self) { destination in
             switch destination {
-//                case .usersPlaylists(let playlists):
-//                    UsersPlaylistsListView(playlists: playlists)
+
                 case .mutedAccounts:
-//                    AccountsListView(mode: .muted)
                     Text("AccountsListView")
-//                case .playlistDetails(playlist: let playlist):
-//                    Text("playlistDetails")
                 case .channelDetails(channel: let channel):
                     ChannelDetailsView(channel: channel)
                     
                 case .playlistDetails(let playlist):
                     PlaylistDetailsView(playlist: playlist)
+                    
+                case .register:
+                    RegisterView()
+                case .accountSettingsWithAccount(account: let account, appAccount: let appAccount):
+                    AccountSettingsView(account: account, appAccount: appAccount)
+                case .accountDetailWithAccount(let account):
+                    AccountSettingsView(account: account, appAccount: account)
+
             }
         }
     }
@@ -41,11 +45,9 @@ extension View {
                         .preferredColorScheme(Theme.shared.selectedScheme == .dark ? .dark : .light)
                 
                 case .about:
-                    NavigationSheet {
-//                        AboutView()
-                        Text("AboutView")
-                    }
+                    NavigationSheet { AboutView() }
                         .withEnvironments()
+                    
                 case .miniPlayer(let videoId):
 //                    NavigationSheet {
                     WatchVideoView(videoId: videoId)
@@ -57,7 +59,32 @@ extension View {
                 case .disclaimer:
                     DisclaimerView()
                     
+                case .login:
+                    LoginView(siteUrl: "asdasd")
+                        .withEnvironments()
+                    
+                case .loggingIn(let url):
+                    LogInWithEmailView(url: url)
+                        .withEnvironments()
+  
+                case .support:
+                    NavigationSheet { SupportAppView() }
+                        .withEnvironments()
+                    
+                      
                 
+                case .accountEditInfo:
+                    EditAccountView()
+                        .withEnvironments()
+                    
+                case .accountPushNotficationsSettings:
+                    if let subscription = PushNotificationsService.shared.subscriptions.first {
+                        NavigationSheet { PushNotificationsView(subscription: subscription) }
+                            .withEnvironments()
+                    } else {
+                        EmptyView()
+                    }
+//                   
             }
         }
     }
@@ -66,6 +93,7 @@ extension View {
 //        environment(CurrentAccount.shared)
             environment(UserPreferences.shared)
             .environment(Theme.shared)
+            .environment(AuthenticationManager.shared)
         
     }
     

@@ -16,6 +16,8 @@ struct SearchTab: View {
    
     @Environment(Theme.self) private var theme
     @Environment(UserPreferences.self) private var preferences
+    @Environment(AuthenticationManager.self) private var authenticationManager
+
     @State private var routerPath = RouterPath()
     @State private var scrollToTopSignal: Int = 0
     @Binding var popToRootTab: Tab
@@ -27,13 +29,13 @@ struct SearchTab: View {
     var body: some View {
         NavigationStack(path: $routerPath.path) {
             SearchView(scrollToTopSignal: $scrollToTopSignal)
-//            TimelineView(scrollToTopSignal: $scrollToTopSignal)
-                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
                 .toolbar {
-                    ToolbarTab(routerPath: $routerPath)
+                    toolbarView
                 }
+                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
+                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+                .withAppRouter()
         }
-        .withAppRouter()
         .withSafariRouter()
         .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { oldValue, newValue in
@@ -45,6 +47,25 @@ struct SearchTab: View {
                 }
             }
         }
-        .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbarView: some ToolbarContent {
+        if authenticationManager.isAuth {
+            ToolbarTab(routerPath: $routerPath)
+        } else {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                addAccountButton
+            }
+        }
+    }
+    
+    private var addAccountButton: some View {
+        Button {
+            routerPath.presentedSheet = .login
+        } label: {
+            Image(systemName: "person.badge.plus")
+        }
+        .accessibilityLabel("accessibility.tabs.timeline.add-account")
     }
 }
