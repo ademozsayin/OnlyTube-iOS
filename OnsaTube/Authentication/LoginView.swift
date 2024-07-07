@@ -100,7 +100,7 @@ struct LoginView: View {
             .navigationTitle("Login")
             .navigationBarTitleDisplayMode(.inline)
 #if !os(visionOS)
-            .scrollContentBackground(.hidden)
+            .scrollIndicators(.hidden) // Hide scroll indicators
             .background(theme.primaryBackgroundColor)
 #endif
             .toolbar {
@@ -120,7 +120,6 @@ struct LoginView: View {
                     .buttonStyle(PrimaryLoadingButtonStyle(isLoading: viewModel.isLoggingIn))
                     .disabled(viewModel.primaryButtonDisabled)
                     .padding(.top, Constants.contentVerticalSpacing)
-                    .background(Color(UIColor.systemBackground))
                     
                     NavigationLink(destination:RegisterView()) {
                         Text("Don't have an account? ")
@@ -131,6 +130,7 @@ struct LoginView: View {
                     }
                     
                 }
+                .background(theme.primaryBackgroundColor)
                 .padding()
 
             })
@@ -140,7 +140,6 @@ struct LoginView: View {
                     viewModel.shouldShowErrorAlert.toggle()
                 }
             }
-          
 
         }
     }

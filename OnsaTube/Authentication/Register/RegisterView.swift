@@ -25,7 +25,7 @@ struct RegisterView: View {
     
     @FocusState private var focusedField: Field?
  
-    let termsAttributedString: NSAttributedString = createTermsAttributedString(siteURL: "https://github.com/ademozsayin/OnlyTube-iOS")
+    let termsAttributedString: NSAttributedString = createTermsAttributedString(siteURL: "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Terms.MD")
     
     
     private static func createTermsAttributedString(siteURL: String) -> NSAttributedString {
@@ -41,9 +41,9 @@ struct RegisterView: View {
         )
         
         mutableAttributedText.setAsLink(textToFind: Localization.termsOfService,
-                                        linkURL: Constants.jetpackTermsURL + siteURL)
+                                        linkURL: Constants.jetpackTermsURL )
         mutableAttributedText.setAsLink(textToFind: Localization.shareDetails,
-                                        linkURL: Constants.jetpackShareDetailsURL + siteURL)
+                                        linkURL: Constants.jetpackShareDetailsURL )
         return mutableAttributedText
     }
     
@@ -136,6 +136,8 @@ struct RegisterView: View {
                 
             }
         }
+        .scrollIndicators(.hidden) // Hide scroll indicators
+        .padding(.horizontal, 16)
         .safeAreaInset(edge: .bottom, content: {
             VStack {
                 Button {
@@ -151,7 +153,6 @@ struct RegisterView: View {
                 .buttonStyle(PrimaryLoadingButtonStyle(isLoading: viewModel.isRegistering))
                 .disabled(viewModel.primaryButtonDisabled)
                 .padding(.top, Constants.contentVerticalSpacing)
-                .background(Color(UIColor.systemBackground))
                 
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -163,9 +164,13 @@ struct RegisterView: View {
                         .fontWeight(.bold)
                 }
                 
+                
                 // Terms label
                 AttributedText(termsAttributedString)
             }
+            .background(theme.primaryBackgroundColor)
+            .padding(16)
+
             
         })
         .alert(viewModel.errorMessage, isPresented: $viewModel.shouldShowErrorAlert) {
@@ -173,7 +178,7 @@ struct RegisterView: View {
                 viewModel.shouldShowErrorAlert.toggle()
             }
         }
-        .padding()
+        
         .background(theme.primaryBackgroundColor)
         .navigationTitle("Register")
         .navigationBarTitleDisplayMode(.inline)
@@ -187,8 +192,8 @@ private extension RegisterView {
         static let contentPadding: CGFloat = 16
         
         static let fieldDebounceDuration = 0.3
-        static let jetpackTermsURL = "https://jetpack.com/redirect/?source=wpcom-tos&site="
-        static let jetpackShareDetailsURL = "https://jetpack.com/redirect/?source=jetpack-support-what-data-does-jetpack-sync&site="
+        static let jetpackTermsURL = "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Terms.MD"
+        static let jetpackShareDetailsURL = "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Share.MD"
         static let wpcomErrorCodeKey = "WordPressComRestApiErrorCodeKey"
     }
     

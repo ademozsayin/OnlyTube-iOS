@@ -176,6 +176,7 @@ private struct BaseButton: View {
     }
 }
 
+@MainActor
 private struct PrimaryButton: View {
     @Environment(\.isEnabled) var isEnabled
     

@@ -16,8 +16,6 @@
 		B711499B2C38FBD600108228 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499A2C38FBD600108228 /* EditAccountView.swift */; };
 		B711499D2C38FBEC00108228 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */; };
 		B711499F2C390B2E00108228 /* PushNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499E2C390B2E00108228 /* PushNotificationsView.swift */; };
-		B71149A32C3A0A0300108228 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71149A22C3A0A0300108228 /* NetworkManager.swift */; };
-		B71149A52C3A0B8100108228 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71149A42C3A0B8100108228 /* OpenAIClient.swift */; };
 		B7334BF22C287BD800D60C60 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF12C287BD800D60C60 /* AboutView.swift */; };
 		B7334BF42C28BFFD00D60C60 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF32C28BFFD00D60C60 /* ChannelView.swift */; };
 		B7334BF62C28C6D800D60C60 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF52C28C6D800D60C60 /* SearchViewModel.swift */; };
@@ -281,8 +279,6 @@
 		B711499A2C38FBD600108228 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
 		B711499E2C390B2E00108228 /* PushNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsView.swift; sourceTree = "<group>"; };
-		B71149A22C3A0A0300108228 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		B71149A42C3A0B8100108228 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
 		B7334BF12C287BD800D60C60 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B7334BF32C28BFFD00D60C60 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		B7334BF52C28C6D800D60C60 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +305,7 @@
 		B74C7A872C346B1600A1CA9C /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		B74E96E02C2F11B9003D9D6E /* SortingModeSelectionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingModeSelectionModifier.swift; sourceTree = "<group>"; };
 		B74E96E32C2F21B3003D9D6E /* NotificationsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTab.swift; sourceTree = "<group>"; };
+		B74EEB412C3B609800EADCEC /* Share.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Share.md; sourceTree = "<group>"; };
 		B7588F642C35E25F002E29AE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7588F662C35E57B002E29AE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B7588F682C35E5B4002E29AE /* AuthenticationFormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFormFieldView.swift; sourceTree = "<group>"; };
@@ -558,15 +555,6 @@
 				B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */,
 			);
 			path = AppAccount;
-			sourceTree = "<group>";
-		};
-		B71149A12C3A09FC00108228 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				B71149A22C3A0A0300108228 /* NetworkManager.swift */,
-				B71149A42C3A0B8100108228 /* OpenAIClient.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		B733A66F2C249A8600E0BDC4 /* CustomAVButtons */ = {
@@ -853,6 +841,7 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
+				B74EEB412C3B609800EADCEC /* Share.md */,
 				B746B0862C261445003D156E /* Terms.MD */,
 				B746B0842C261363003D156E /* PRIVACY.MD */,
 				B7FCDE5B2C222800004E0C76 /* StoreKit.storekit */,
@@ -886,7 +875,6 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
-				B71149A12C3A09FC00108228 /* Network */,
 				B74C7A862C346B0500A1CA9C /* Authentication */,
 				B79B71C92C2A106B00108D6E /* Playlist */,
 				B79B71C62C2A031300108D6E /* Channel */,
@@ -1336,7 +1324,6 @@
 				B74C7A812C3338F100A1CA9C /* ShazamView.swift in Sources */,
 				B767949D2C1762E200A623BE /* UIView+Extension.swift in Sources */,
 				B7334BF22C287BD800D60C60 /* AboutView.swift in Sources */,
-				B71149A52C3A0B8100108228 /* OpenAIClient.swift in Sources */,
 				B767947C2C1734CB00A623BE /* CachedAsyncImage.swift in Sources */,
 				B7A5E8AA2C2486110038EDE1 /* AddToQueueSwipeActionButtonsView.swift in Sources */,
 				B76794952C1743C000A623BE /* UsersPlaylistsListView.swift in Sources */,
@@ -1415,7 +1402,6 @@
 				B7588F6B2C35E5D7002E29AE /* Style+Modifiers.swift in Sources */,
 				B7A5E8552C246F4A0038EDE1 /* DownloadedVideo+toYTVideo.swift in Sources */,
 				B7334BF82C28CE0000D60C60 /* TimelineView.swift in Sources */,
-				B71149A32C3A0A0300108228 /* NetworkManager.swift in Sources */,
 				B7A5E8A82C2486110038EDE1 /* AddToPlaylistView.swift in Sources */,
 				B7A5E8312C2462290038EDE1 /* SearchModel.swift in Sources */,
 				B7A5E8BE2C2487540038EDE1 /* SwipeActionViewModifier.swift in Sources */,
