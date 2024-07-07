@@ -43,6 +43,7 @@ public enum SheetDestination: Identifiable, Hashable {
     case support
     case accountEditInfo
     case accountPushNotficationsSettings
+    case categorySelection
     
     public var id: String {
         switch self {
@@ -62,6 +63,8 @@ public enum SheetDestination: Identifiable, Hashable {
                 "accountEditInfo"
             case .accountPushNotficationsSettings:
                 "accountPushNotficationsSettings"
+            case .categorySelection:
+                "categorySelection"
         }
     }
 }

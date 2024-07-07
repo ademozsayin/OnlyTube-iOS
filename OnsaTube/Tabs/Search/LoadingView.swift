@@ -15,10 +15,13 @@ struct LoadingView: View {
             ProgressView()
                 .foregroundColor(.gray)
                 .padding(.bottom, 0.3)
-            Text("LOADING" + ((customText == nil) ? "" : " ") + (customText?.uppercased() ?? ""))
+            Text(((customText == nil) ? "" : " ") + (customText?.uppercased() ?? ""))
                 .foregroundColor(.gray)
                 .font(.caption2)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
         }
-        .frame(width: 160, height: 50)
+//        .frame(width: 160, height: 50)
+        .frame(maxWidth: .infinity)
     }
 }

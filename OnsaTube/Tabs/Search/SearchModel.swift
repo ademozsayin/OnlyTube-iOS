@@ -136,6 +136,7 @@ class Model {
             self.isFetching = true
             self.error = nil
         }
+        
         SearchResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query: search], result: { [weak self] result in
             guard let self else { return }
             switch result {

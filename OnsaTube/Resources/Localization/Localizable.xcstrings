@@ -241,8 +241,17 @@
     "Chapters" : {
 
     },
+    "Congratulations" : {
+
+    },
+    "Congratulations!" : {
+
+    },
     "Connect Jetpack" : {
       "comment" : "Title for the WPCom email login screen when Jetpack is not connected yet"
+    },
+    "Content Selection" : {
+
     },
     "Create" : {
 
@@ -376,6 +385,9 @@
     "No playlist available." : {
 
     },
+    "No subcategories available." : {
+
+    },
     "No title" : {
 
     },
@@ -499,9 +511,6 @@
     "Private" : {
 
     },
-    "Profile" : {
-
-    },
     "Public" : {
 
     },
@@ -529,6 +538,9 @@
     "Search videos or pull up to refresh for the algorithm to fill this menu." : {
 
     },
+    "Select a Category" : {
+
+    },
     "Select an item" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -539,6 +551,9 @@
           }
         }
       }
+    },
+    "Selected Items:" : {
+
     },
     "settings.about.built-with" : {
       "localizations" : {
@@ -1227,10 +1242,10 @@
     "Something went wrong" : {
 
     },
-    "Subscribe" : {
+    "Start Again" : {
 
     },
-    "Subscribed" : {
+    "Subcategories" : {
 
     },
     "tab.favorites" : {
@@ -1308,6 +1323,9 @@
 
     },
     "You have signed in." : {
+
+    },
+    "You have successfully selected all relevant categories." : {
 
     }
   },

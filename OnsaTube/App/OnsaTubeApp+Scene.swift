@@ -28,6 +28,7 @@ extension OnsaTubeApp {
                         pushNotificationsService.handledNotification = nil
                     }
                 }
+                .withModelContainer()
     
         }
     }

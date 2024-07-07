@@ -9,6 +9,8 @@ import DesignSystem
 import Env
 import LinkPresentation
 import SwiftUI
+import Models
+import SwiftData
 
 @MainActor
 extension View {
@@ -20,7 +22,6 @@ extension View {
                     Text("AccountsListView")
                 case .channelDetails(channel: let channel):
                     ChannelDetailsView(channel: channel)
-                    
                 case .playlistDetails(let playlist):
                     PlaylistDetailsView(playlist: playlist)
                     
@@ -84,7 +85,10 @@ extension View {
                     } else {
                         EmptyView()
                     }
-//                   
+                    
+                case .categorySelection:
+                    CategorySelectionView()
+//
             }
         }
     }
@@ -99,7 +103,8 @@ extension View {
     
     func withModelContainer() -> some View {
         modelContainer(for: [
-//            Draft.self,
+            TagGroup.self,
+            Draft.self
         ])
     }
     

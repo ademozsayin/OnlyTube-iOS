@@ -76,7 +76,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
             case .other:
                 ""
             case .profile:
-                "Profile"
+                "Favorites"
         }
     }
     
@@ -152,7 +152,7 @@ class iOSTabs {
     class Storage {
         @AppStorage(TabEntries.first.rawValue) var firstTab = Tab.timeline
         @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.notifications
-        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.shazam
+//        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.shazam
 //        @AppStorage(TabEntries.four.rawValue) var fourTab = Tab.favorite
         @AppStorage(TabEntries.five.rawValue) var fiveTab = Tab.profile
     }
@@ -161,7 +161,7 @@ class iOSTabs {
     public static let shared = iOSTabs()
     
     var tabs: [Tab] {
-        [firstTab, secondTab, thirdTab, fiveTab]
+        [firstTab, secondTab, fiveTab]
     }
     
     var firstTab: Tab {
@@ -176,11 +176,11 @@ class iOSTabs {
         }
     }
     
-    var thirdTab: Tab {
-        didSet {
-            storage.thirdTab = thirdTab
-        }
-    }
+//    var thirdTab: Tab {
+//        didSet {
+//            storage.thirdTab = thirdTab
+//        }
+//    }
     
 //    var fourTab: Tab {
 //        didSet {
@@ -197,7 +197,7 @@ class iOSTabs {
     private init() {
         firstTab = storage.firstTab
         secondTab = storage.secondTab
-        thirdTab = storage.thirdTab
+//        thirdTab = storage.thirdTab
 //        fourTab = storage.fourTab
         fiveTab = storage.fiveTab
     }

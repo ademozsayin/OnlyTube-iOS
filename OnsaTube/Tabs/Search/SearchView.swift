@@ -20,6 +20,8 @@ import SwipeActions
 #endif
 import DesignSystem
 import TipKit
+import Models
+import SwiftData
 
 let YTM = YouTubeModel()
 
@@ -63,6 +65,9 @@ struct SearchView: View {
   
     @Binding var scrollToTopSignal: Int
     
+    @Environment(\.modelContext) private var context
+    @Query(sort: \Draft.creationDate, order: .reverse) var drafts: [Draft]
+
     
     public init(scrollToTopSignal: Binding<Int>) {
         _scrollToTopSignal = scrollToTopSignal
@@ -93,7 +98,7 @@ struct SearchView: View {
                                 
                             case .result:
                                 resultView
-                                   
+                                
                                     .onChange(of: viewModel.scrollToIndex) { _, newValue in
                                         if let collectionView,
                                            let newValue,
@@ -130,6 +135,43 @@ struct SearchView: View {
                     proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
                 }
             }
+            .onAppear {
+                if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
+                    routerPath.presentedSheet = .categorySelection
+                } else {
+                    
+                    search = drafts.map { $0.content }.joined(separator: ", ")
+                    
+                    if search != viewModel.search {
+                        
+                        viewModel.search = search
+                        
+                        // Set flag to indicate reload needed
+                        needToReload = true
+                        
+                        // Call your search function
+                        callSearching()
+                        
+                        // Print each draft's content
+                        for draft in drafts {
+                            print("Draft content: \(draft.content)")
+                        }
+                    }
+                
+                }
+                
+            }.onChange(of: drafts) { oldValue, newValue in
+                search = newValue.map { $0.content }.joined(separator: ", ")
+                needToReload = true
+                viewModel.search = search
+                callSearching()
+            }
+            .onChange(of: preferences.hasAcceptedDisclaimer) { oldValue, newValue in
+                if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
+                    routerPath.presentedSheet = .categorySelection
+                }
+            }
+            
         }
     }
     
@@ -270,12 +312,12 @@ struct SearchView: View {
         ScrollToView()
         //      .frame(height: pinnedFilters.isEmpty ? .layoutPadding : 0)
             .frame(height: .layoutPadding )
-            .onAppear {
-                viewModel.scrollToTopVisible = true
-            }
-            .onDisappear {
-                viewModel.scrollToTopVisible = false
-            }
+//            .onAppear {
+//                viewModel.scrollToTopVisible = true
+//            }
+//            .onDisappear {
+//                viewModel.scrollToTopVisible = false
+//            }
     }
 }
 

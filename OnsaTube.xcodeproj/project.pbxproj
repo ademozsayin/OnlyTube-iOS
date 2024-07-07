@@ -16,6 +16,8 @@
 		B711499B2C38FBD600108228 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499A2C38FBD600108228 /* EditAccountView.swift */; };
 		B711499D2C38FBEC00108228 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */; };
 		B711499F2C390B2E00108228 /* PushNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B711499E2C390B2E00108228 /* PushNotificationsView.swift */; };
+		B71149A32C3A0A0300108228 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71149A22C3A0A0300108228 /* NetworkManager.swift */; };
+		B71149A52C3A0B8100108228 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71149A42C3A0B8100108228 /* OpenAIClient.swift */; };
 		B7334BF22C287BD800D60C60 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF12C287BD800D60C60 /* AboutView.swift */; };
 		B7334BF42C28BFFD00D60C60 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF32C28BFFD00D60C60 /* ChannelView.swift */; };
 		B7334BF62C28C6D800D60C60 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7334BF52C28C6D800D60C60 /* SearchViewModel.swift */; };
@@ -50,6 +52,9 @@
 		B7588F6B2C35E5D7002E29AE /* Style+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7588F6A2C35E5D7002E29AE /* Style+Modifiers.swift */; };
 		B7588F6D2C35EAC3002E29AE /* AttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7588F6C2C35EAC3002E29AE /* AttributedText.swift */; };
 		B7588F6F2C35EAE1002E29AE /* PrimaryLoadingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7588F6E2C35EAE1002E29AE /* PrimaryLoadingButtonStyle.swift */; };
+		B760F0E12C3A1CA200EECB80 /* CategorySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760F0E02C3A1CA200EECB80 /* CategorySelectionView.swift */; };
+		B760F0E32C3A2A2400EECB80 /* YouTubeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760F0E22C3A2A2400EECB80 /* YouTubeCategory.swift */; };
+		B760F0E52C3A30B400EECB80 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B760F0E42C3A30B400EECB80 /* CategoryListView.swift */; };
 		B76794472C15C20B00A623BE /* AppRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794462C15C20B00A623BE /* AppRegistry.swift */; };
 		B76794492C15C29500A623BE /* NavigationSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794482C15C29500A623BE /* NavigationSheet.swift */; };
 		B767944B2C171C6300A623BE /* SafariRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767944A2C171C6300A623BE /* SafariRouter.swift */; };
@@ -91,7 +96,6 @@
 		B79367722C2F2521003AA6E1 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = B79367712C2F2521003AA6E1 /* Notifications */; };
 		B79367752C2F265A003AA6E1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79367742C2F265A003AA6E1 /* KeychainSwift */; };
 		B79367772C2F3495003AA6E1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B79367762C2F3495003AA6E1 /* FirebaseMessaging */; };
-		B79367792C2F661A003AA6E1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79367782C2F661A003AA6E1 /* CloudKit.framework */; };
 		B793677B2C2F6C09003AA6E1 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793677A2C2F6C09003AA6E1 /* AlertView.swift */; };
 		B79B71B22C29C8E600108D6E /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71B12C29C8E600108D6E /* DisclaimerView.swift */; };
 		B79B71B72C29D6CA00108D6E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71B62C29D6CA00108D6E /* FirebaseAnalytics */; };
@@ -277,6 +281,8 @@
 		B711499A2C38FBD600108228 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 		B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
 		B711499E2C390B2E00108228 /* PushNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsView.swift; sourceTree = "<group>"; };
+		B71149A22C3A0A0300108228 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B71149A42C3A0B8100108228 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
 		B7334BF12C287BD800D60C60 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		B7334BF32C28BFFD00D60C60 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		B7334BF52C28C6D800D60C60 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +315,9 @@
 		B7588F6A2C35E5D7002E29AE /* Style+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Style+Modifiers.swift"; sourceTree = "<group>"; };
 		B7588F6C2C35EAC3002E29AE /* AttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedText.swift; sourceTree = "<group>"; };
 		B7588F6E2C35EAE1002E29AE /* PrimaryLoadingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryLoadingButtonStyle.swift; sourceTree = "<group>"; };
+		B760F0E02C3A1CA200EECB80 /* CategorySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionView.swift; sourceTree = "<group>"; };
+		B760F0E22C3A2A2400EECB80 /* YouTubeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeCategory.swift; sourceTree = "<group>"; };
+		B760F0E42C3A30B400EECB80 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		B76794462C15C20B00A623BE /* AppRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRegistry.swift; sourceTree = "<group>"; };
 		B76794482C15C29500A623BE /* NavigationSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationSheet.swift; sourceTree = "<group>"; };
 		B767944A2C171C6300A623BE /* SafariRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRouter.swift; sourceTree = "<group>"; };
@@ -495,7 +504,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B79367792C2F661A003AA6E1 /* CloudKit.framework in Frameworks */,
 				B79B71BD2C29D6CA00108D6E /* FirebaseDatabase in Frameworks */,
 				B767944E2C171E7800A623BE /* Models in Frameworks */,
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
@@ -550,6 +558,15 @@
 				B711499C2C38FBEC00108228 /* EditAccountViewModel.swift */,
 			);
 			path = AppAccount;
+			sourceTree = "<group>";
+		};
+		B71149A12C3A09FC00108228 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B71149A22C3A0A0300108228 /* NetworkManager.swift */,
+				B71149A42C3A0B8100108228 /* OpenAIClient.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		B733A66F2C249A8600E0BDC4 /* CustomAVButtons */ = {
@@ -610,6 +627,16 @@
 				B74E96E32C2F21B3003D9D6E /* NotificationsTab.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		B760F0DF2C3A1C9500EECB80 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B760F0E02C3A1CA200EECB80 /* CategorySelectionView.swift */,
+				B760F0E22C3A2A2400EECB80 /* YouTubeCategory.swift */,
+				B760F0E42C3A30B400EECB80 /* CategoryListView.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		B767944F2C1721F900A623BE /* Localization */ = {
@@ -859,6 +886,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B71149A12C3A09FC00108228 /* Network */,
 				B74C7A862C346B0500A1CA9C /* Authentication */,
 				B79B71C92C2A106B00108D6E /* Playlist */,
 				B79B71C62C2A031300108D6E /* Channel */,
@@ -945,6 +973,7 @@
 		B7FE95EC2C10E03400402DE1 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				B760F0DF2C3A1C9500EECB80 /* Category */,
 				B74C7A7E2C33307400A1CA9C /* Shazam */,
 				B74E96E22C2F21AC003D9D6E /* Notifications */,
 				B7E7121C2C2DFACA0049A802 /* Favourites */,
@@ -1290,6 +1319,7 @@
 				B7FE95E92C10DF9D00402DE1 /* OnsaTubeApp+Scene.swift in Sources */,
 				B7A5E8162C245FCA0038EDE1 /* YTElementDataSet.swift in Sources */,
 				B7A5E8872C2483B70038EDE1 /* CircularProgressView.swift in Sources */,
+				B760F0E32C3A2A2400EECB80 /* YouTubeCategory.swift in Sources */,
 				B71149922C38B82700108228 /* AppAccountView.swift in Sources */,
 				B767948B2C17364F00A623BE /* NoAvatarCircleView.swift in Sources */,
 				B7588F652C35E25F002E29AE /* LoginViewModel.swift in Sources */,
@@ -1306,6 +1336,7 @@
 				B74C7A812C3338F100A1CA9C /* ShazamView.swift in Sources */,
 				B767949D2C1762E200A623BE /* UIView+Extension.swift in Sources */,
 				B7334BF22C287BD800D60C60 /* AboutView.swift in Sources */,
+				B71149A52C3A0B8100108228 /* OpenAIClient.swift in Sources */,
 				B767947C2C1734CB00A623BE /* CachedAsyncImage.swift in Sources */,
 				B7A5E8AA2C2486110038EDE1 /* AddToQueueSwipeActionButtonsView.swift in Sources */,
 				B76794952C1743C000A623BE /* UsersPlaylistsListView.swift in Sources */,
@@ -1319,6 +1350,7 @@
 				B79B71CB2C2A107C00108D6E /* PlaylistDetailsView.swift in Sources */,
 				B7A5E8182C245FEA0038EDE1 /* YTVideoWithData.swift in Sources */,
 				B7A5E8B82C2486110038EDE1 /* VideoContextMenuView.swift in Sources */,
+				B760F0E12C3A1CA200EECB80 /* CategorySelectionView.swift in Sources */,
 				B71149902C38B7C700108228 /* AppAccountsSelectorView.swift in Sources */,
 				B7FE95EE2C10E08F00402DE1 /* Tabs.swift in Sources */,
 				B76794912C17366900A623BE /* YTAVPlayerItem.swift in Sources */,
@@ -1383,12 +1415,14 @@
 				B7588F6B2C35E5D7002E29AE /* Style+Modifiers.swift in Sources */,
 				B7A5E8552C246F4A0038EDE1 /* DownloadedVideo+toYTVideo.swift in Sources */,
 				B7334BF82C28CE0000D60C60 /* TimelineView.swift in Sources */,
+				B71149A32C3A0A0300108228 /* NetworkManager.swift in Sources */,
 				B7A5E8A82C2486110038EDE1 /* AddToPlaylistView.swift in Sources */,
 				B7A5E8312C2462290038EDE1 /* SearchModel.swift in Sources */,
 				B7A5E8BE2C2487540038EDE1 /* SwipeActionViewModifier.swift in Sources */,
 				B76794932C173A7F00A623BE /* PlaylistView.swift in Sources */,
 				B7A5E8232C2460840038EDE1 /* CustomElementsInfiniteScrollView.swift in Sources */,
 				B767949B2C1762CA00A623BE /* CustomAVPlayer.swift in Sources */,
+				B760F0E52C3A30B400EECB80 /* CategoryListView.swift in Sources */,
 				B767948D2C17364F00A623BE /* SubscribeButtonOverlayView.swift in Sources */,
 				B7588F6F2C35EAE1002E29AE /* PrimaryLoadingButtonStyle.swift in Sources */,
 				B767948E2C17364F00A623BE /* VideoPlayer.swift in Sources */,

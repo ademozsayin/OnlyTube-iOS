@@ -10,10 +10,13 @@ import Env
 import Models
 import Network
 import SwiftUI
+import SwiftData
 
 @MainActor
 struct SearchTab: View {
    
+    @Environment(\.modelContext) private var context
+
     @Environment(Theme.self) private var theme
     @Environment(UserPreferences.self) private var preferences
     @Environment(AuthenticationManager.self) private var authenticationManager

@@ -113,6 +113,15 @@ public struct AppAccountsSelectorView: View {
                 .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
 #endif
                 
+                Section {
+                    contentSettingsButton
+                }
+#if os(visionOS)
+                .foregroundStyle(theme.labelColor)
+#else
+                .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
+#endif
+                
                 if accountCreationEnabled {
                     Section {
                         settingsButton
@@ -189,6 +198,18 @@ public struct AppAccountsSelectorView: View {
             }
         } label: {
             Label("settings.app.about", systemImage: "info.circle")
+        }
+    }
+    
+    private var contentSettingsButton: some View {
+        Button {
+            isPresented = false
+            HapticManager.shared.fireHaptic(.buttonPress)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                routerPath.presentedSheet = .categorySelection
+            }
+        } label: {
+            Label("Content Selection", systemImage: "video.and.waveform")
         }
     }
     
