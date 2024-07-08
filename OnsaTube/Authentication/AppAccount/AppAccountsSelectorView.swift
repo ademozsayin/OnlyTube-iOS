@@ -19,7 +19,7 @@ public struct AppAccountsSelectorView: View {
     private var authenticationManager = AuthenticationManager.shared
 
     private var preferredHeight: CGFloat {
-        var baseHeight: CGFloat = 310
+        var baseHeight: CGFloat = 336
         baseHeight += CGFloat(60)
         return baseHeight
     }

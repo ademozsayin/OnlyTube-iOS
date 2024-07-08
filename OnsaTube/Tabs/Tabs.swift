@@ -117,10 +117,11 @@ class SidebarTabs {
         @AppStorage("sidebar_tabs") var tabs: [SidedebarTab] = [
             .init(tab: .timeline, enabled: true),
             .init(tab: .notifications, enabled: true),
-            .init(tab: .shazam, enabled: true),
+            .init(tab: .shazam, enabled: false),
             .init(tab: .favorite, enabled: true),
+            .init(tab: .profile, enabled: false),
             .init(tab: .settings, enabled: true),
-            .init(tab: .profile, enabled: true)
+
         ]
     }
     

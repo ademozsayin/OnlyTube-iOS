@@ -10,6 +10,7 @@ import Env
 import Models
 import SwiftUI
 import SwiftUIIntrospect
+import FirebaseAuth
 
 @MainActor
 struct SideBarView<Content: View>: View {
@@ -20,7 +21,8 @@ struct SideBarView<Content: View>: View {
 //    @Environment(StreamWatcher.self) private var watcher
     @Environment(UserPreferences.self) private var userPreferences
     @Environment(RouterPath.self) private var routerPath
-    
+    @Environment(AuthenticationManager.self) private var authenticationManager
+
     @Binding var selectedTab: Tab
     @Binding var popToRootTab: Tab
     var tabs: [Tab]
@@ -76,7 +78,7 @@ struct SideBarView<Content: View>: View {
 #if targetEnvironment(macCatalyst) || os(visionOS)
 //            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
 #else
-//            routerPath.presentedSheet = .newStatusEditor(visibility: userPreferences.postVisibility)
+            routerPath.presentedSheet = .categorySelection
 #endif
         } label: {
 //            Image(systemName: "square.and.pencil")
@@ -93,61 +95,57 @@ struct SideBarView<Content: View>: View {
 //        .help(Tab.post.title)
     }
     
-//    private func makeAccountButton(account: AppAccount, showBadge: Bool) -> some View {
-//        Button {
-//            if account.id == appAccounts.currentAccount.id {
-//                selectedTab = .profile
-//                SoundEffectManager.shared.playSound(.tabSelection)
-//            } else {
-//                var transation = Transaction()
-//                transation.disablesAnimations = true
-//                withTransaction(transation) {
-//                    appAccounts.currentAccount = account
-//                }
-//            }
-//        } label: {
-//            ZStack(alignment: .topTrailing) {
-//                if userPreferences.isSidebarExpanded {
-//                    AppAccountView(viewModel: .init(appAccount: account,
-//                                                    isCompact: false,
-//                                                    isInSettings: false),
-//                                   isParentPresented: .constant(false))
-//                } else {
-//                    AppAccountView(viewModel: .init(appAccount: account,
-//                                                    isCompact: true,
-//                                                    isInSettings: false),
-//                                   isParentPresented: .constant(false))
-//                }
-//                if !userPreferences.isSidebarExpanded,
-//                   showBadge,
-//                   let token = account.oauthToken,
-//                   let notificationsCount = userPreferences.notificationsCount[token],
-//                   notificationsCount > 0
-//                {
-//                    makeBadgeView(count: notificationsCount)
-//                }
-//            }
-//            .padding(.leading, userPreferences.isSidebarExpanded ? 16 : 0)
-//        }
-//        .help(accountButtonTitle(accountName: account.accountName))
-//        .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth, height: 50)
-//        .padding(.vertical, 8)
-//        .background(selectedTab == .profile && account.id == appAccounts.currentAccount.id ?
-//                    theme.secondaryBackgroundColor : .clear)
-//    }
+    private func makeAccountButton(account:User, showBadge: Bool) -> some View {
+        Button {
+            
+                selectedTab = .favorite
+                SoundEffectManager.shared.playSound(.tabSelection)
+         
+        } label: {
+            ZStack(alignment: .topTrailing) {
+                if userPreferences.isSidebarExpanded {
+                    AppAccountView(viewModel: .init(
+                        appAccount: account,
+                        isInSettings: false,
+                        authenticationManager: AuthenticationManager.shared),
+                                   isParentPresented: .constant(false))
+                    
+                
+                    
+                } else {
+                    AppAccountView(viewModel: .init(appAccount: account,
+                                                    isCompact: false,
+                                                    isInSettings: false,
+                                                    authenticationManager: authenticationManager),
+                                   isParentPresented: .constant(false))
+                }
+                
+             
+            }
+            .padding(.leading, userPreferences.isSidebarExpanded ? 16 : 0)
+            .onTapGesture {
+                routerPath.presentedSheet = .accountEditInfo
+            }
+        }
+        .help(accountButtonTitle(accountName: account.displayName ?? account.email))
+        .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth, height: 50)
+        .padding(.vertical, 8)
+        .background(selectedTab == .favorite  ?
+                    theme.secondaryBackgroundColor : .clear)
+    }
     
-//    private func accountButtonTitle(accountName: String?) -> LocalizedStringKey {
-//        if let accountName {
-//            "tab.profile-account-\(accountName)"
-//        } else {
-//            Tab.profile.title
-//        }
-//    }
+    private func accountButtonTitle(accountName: String?) -> LocalizedStringKey {
+        if let accountName {
+            "tab.profile-account-\(accountName)"
+        } else {
+            Tab.profile.title
+        }
+    }
     
     private var tabsView: some View {
         ForEach(tabs) { tab in
-//            if tab != .profile && sidebarTabs.isEnabled(tab) {
-            if sidebarTabs.isEnabled(tab) {
+            if tab != .favorite && sidebarTabs.isEnabled(tab) {
+//            if sidebarTabs.isEnabled(tab) {
                 Button {
                     // ensure keyboard is always dismissed when selecting a tab
                     hideKeyboard()
@@ -180,17 +178,16 @@ struct SideBarView<Content: View>: View {
             if horizontalSizeClass == .regular {
                 ScrollView {
                     VStack(alignment: .center) {
-//                        if appAccounts.availableAccounts.isEmpty {
+                        if let account = authenticationManager.currentAccount, authenticationManager.isAuth {
+                            makeAccountButton(account:account,
+                                              showBadge: false)
+                            .onTapGesture {
+                                selectedTab = .profile
+                            }
                             tabsView
-//                        } else {
-//                            ForEach(appAccounts.availableAccounts) { account in
-//                                makeAccountButton(account: account,
-//                                                  showBadge: account.id != appAccounts.currentAccount.id)
-//                                if account.id == appAccounts.currentAccount.id {
-//                                    tabsView
-//                                }
-//                            }
-//                        }
+                        } else {
+                            tabsView
+                        }
                     }
                 }
                 .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth)
@@ -218,6 +215,7 @@ struct SideBarView<Content: View>: View {
         .background(.thinMaterial)
         .edgesIgnoringSafeArea(.bottom)
         .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+        .withAppRouter()
     }
 }
 
@@ -281,7 +279,8 @@ struct BouncyJose: View {
             bounceHeight = .none
         }
     }
-    
+    @Environment(RouterPath.self) private var routerPath
+
     var body: some View {
         VStack {
 //            let icon = IconSelectorView.Icon(string: UIApplication.shared.alternateIconName ?? "AppIcon")
@@ -295,6 +294,11 @@ struct BouncyJose: View {
         .offset(y: bounceHeight?.associatedOffset ?? 0)
         .onTapGesture {
             bounceAnimation()
+#if targetEnvironment(macCatalyst) || os(visionOS)
+            //            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
+#else
+            routerPath.presentedSheet = .categorySelection
+#endif
         }
     }
 }

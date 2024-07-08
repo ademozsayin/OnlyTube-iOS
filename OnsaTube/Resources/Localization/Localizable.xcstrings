@@ -368,7 +368,14 @@
 
     },
     "menu.new-post" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content"
+          }
+        }
+      }
     },
     "Monthly" : {
 
@@ -1257,6 +1264,9 @@
           }
         }
       }
+    },
+    "tab.profile-account-%@" : {
+
     },
     "tab.settings" : {
       "extractionState" : "manual",

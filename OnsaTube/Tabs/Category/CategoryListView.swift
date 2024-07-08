@@ -72,20 +72,19 @@ struct CategoryListView: View {
                 VStack(spacing: 16) {
                     ForEach(categories.indices, id: \.self) { index in
                         let category = categories[index]
-                        
-                        CategoryItemView(
-                            categoryName: subcategoryName(for: category),
-                            action: {
-                                handleSelection(category)
-                            }
-                        )
-                        
+                        VStack {
+                            CategoryItemView(
+                                categoryName: subcategoryName(for: category)
+                            )
+                        }
                         .frame(maxWidth: .infinity)
                         .background(category == selectedCategory ? theme.tintColor : theme.secondaryBackgroundColor)
                         .cornerRadius(20)
                         .shadow(radius: 5)
                         .scaleEffect(category == selectedCategory ? selectedCategoryScale : 1)
-                        
+                        .onTapGesture {
+                            handleSelection(category)
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -220,7 +219,7 @@ struct CongratulationView: View {
 @MainActor
 struct CategoryItemView: View {
     let categoryName: String
-    let action: () -> Void
+   
     @Environment(Theme.self) private var theme
 
     var body: some View {
@@ -230,9 +229,6 @@ struct CategoryItemView: View {
                 .padding()
                 .foregroundColor(theme.labelColor)
                 .padding(.horizontal, 10)
-        }
-        .onTapGesture {
-            action()
         }
     }
 }

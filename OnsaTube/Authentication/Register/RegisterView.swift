@@ -52,7 +52,7 @@ struct RegisterView: View {
         let font: UIFont = .body
         let boldFont: UIFont = .preferredFont(forTextStyle: .body)
         let siteName = "Site Name"
-        let description = "Description"
+        let description = "Your customized video tube"
         
         let attributedString = NSMutableAttributedString(
             string: String(format: description, siteName),
@@ -193,7 +193,7 @@ private extension RegisterView {
         
         static let fieldDebounceDuration = 0.3
         static let jetpackTermsURL = "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Terms.MD"
-        static let jetpackShareDetailsURL = "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Share.MD"
+        static let jetpackShareDetailsURL = "https://github.com/ademozsayin/OnlyJose-iOS/blob/main/Share.md"
         static let wpcomErrorCodeKey = "WordPressComRestApiErrorCodeKey"
     }
     

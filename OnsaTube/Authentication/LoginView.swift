@@ -38,7 +38,7 @@ struct LoginView: View {
         let font: UIFont = .body
         let boldFont: UIFont = .preferredFont(forTextStyle: .body)
         let siteName = "Site Name"
-        let description = "Description"
+        let description = "Your customized video tube"
         
         let attributedString = NSMutableAttributedString(
             string: String(format: description, siteName),
