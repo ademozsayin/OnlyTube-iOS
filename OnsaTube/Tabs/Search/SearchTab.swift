@@ -60,6 +60,9 @@ struct SearchTab: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 addAccountButton
             }
+            ToolbarItem(placement: .navigationBarLeading) {
+                contentSettingsButton
+            }
         }
     }
     
@@ -70,5 +73,15 @@ struct SearchTab: View {
             Image(systemName: "person.badge.plus")
         }
         .accessibilityLabel("accessibility.tabs.timeline.add-account")
+    }
+    
+    private var contentSettingsButton: some View {
+        Button {
+            HapticManager.shared.fireHaptic(.buttonPress)
+            routerPath.presentedSheet = .categorySelection
+            
+        } label: {
+            Label("Content Selection", systemImage: "filemenu.and.selection")
+        }
     }
 }

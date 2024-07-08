@@ -265,6 +265,9 @@
     "Default" : {
 
     },
+    "Delete Account" : {
+
+    },
     "Description" : {
 
     },
@@ -294,6 +297,9 @@
 
     },
     "Disclaimer" : {
+
+    },
+    "Do you want to delete your account?" : {
 
     },
     "Don't have an account? " : {
@@ -384,6 +390,9 @@
 
     },
     "Next up" : {
+
+    },
+    "No" : {
 
     },
     "No items in this category." : {
@@ -543,6 +552,9 @@
 
     },
     "Search videos or pull up to refresh for the algorithm to fill this menu." : {
+
+    },
+    "Select" : {
 
     },
     "Select a Category" : {
@@ -1302,6 +1314,9 @@
     "Terms of Service" : {
       "comment" : "The terms to be agreed upon when tapping the Connect Jetpack button on the Wrong Account screen."
     },
+    "This action can not be undone." : {
+
+    },
     "This app uses the YouTube API to display videos and other content. The content provided is available publicly on YouTube. We do not claim ownership of any of the content displayed in this app. All rights are reserved by their respective owners." : {
 
     },
@@ -1327,6 +1342,9 @@
 
     },
     "We will send instructions to your email address. Check your e-mail." : {
+
+    },
+    "Yes" : {
 
     },
     "You can add to favorites by tapping here" : {

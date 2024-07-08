@@ -39,18 +39,18 @@ import FirebaseDatabase
     init() {
         self.scrollToIndexAnimated = true
         self.scrollToIndex = 100
-        observeSearch()
+//        observeSearch()
     }
     
     /// Observes the search data from the Firebase database and updates the `search` property.
     /// This method listens for changes to the `search` node in the database.
     private func observeSearch() {
-        database.observe(DataEventType.value, with: { [weak self] snapshot in
-            guard let self = self,
-                  let searchQuery = snapshot.value as? NSDictionary,
-                  let searchText = searchQuery["search"] as? String,
-                  !searchText.isEmpty else { return }
-            self.search = searchText
-        })
+//        database.observe(DataEventType.value, with: { [weak self] snapshot in
+//            guard let self = self,
+//                  let searchQuery = snapshot.value as? NSDictionary,
+//                  let searchText = searchQuery["search"] as? String,
+//                  !searchText.isEmpty else { return }
+//            self.search = searchText
+//        })
     }
 }

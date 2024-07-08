@@ -44,12 +44,25 @@ struct ToolbarTab: ToolbarContent {
                 ToolbarItem(placement: .navigationBarLeading) {
                     AppAccountsSelectorView(routerPath: routerPath)
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    contentSettingsButton
+                }
             }
         }
         if UIDevice.current.userInterfaceIdiom == .pad && horizontalSizeClass == .regular {
             if (!isSecondaryColumn && !userPreferences.showiPadSecondaryColumn) || isSecondaryColumn {
                 SecondaryColumnToolbarItem()
             }
+        }
+    }
+    
+    private var contentSettingsButton: some View {
+        Button {
+            HapticManager.shared.fireHaptic(.buttonPress)
+            routerPath.presentedSheet = .categorySelection
+            
+        } label: {
+            Label("Content Selection", systemImage: "filemenu.and.selection")
         }
     }
 }

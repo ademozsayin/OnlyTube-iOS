@@ -39,4 +39,4 @@ struct ElementsInfiniteScrollView: View {
             )
         }
     }
-    }
+}

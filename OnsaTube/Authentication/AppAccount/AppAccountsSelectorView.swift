@@ -1,6 +1,8 @@
 import DesignSystem
 import Env
 import SwiftUI
+import SwiftData
+import Models
 
 @MainActor
 public struct AppAccountsSelectorView: View {
@@ -17,12 +19,15 @@ public struct AppAccountsSelectorView: View {
     private let avatarConfig: AvatarView.FrameConfig
     
     private var authenticationManager = AuthenticationManager.shared
-
+    @State private var showAlert = false
+    
     private var preferredHeight: CGFloat {
-        var baseHeight: CGFloat = 336
+        var baseHeight: CGFloat = 480
         baseHeight += CGFloat(60)
         return baseHeight
     }
+    
+    @Query(sort: \Draft.creationDate, order: .reverse) var drafts: [Draft]
     
     public init(routerPath: RouterPath,
                 accountCreationEnabled: Bool = true,
@@ -39,7 +44,6 @@ public struct AppAccountsSelectorView: View {
             authenticationManager: authenticationManager
         )
         self.accountsViewModel = viewModel
-        
     }
     
     public var body: some View {
@@ -115,6 +119,20 @@ public struct AppAccountsSelectorView: View {
                 
                 Section {
                     contentSettingsButton
+                    if !drafts.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false){
+                            HStack {
+                                ForEach(drafts, id:\.self) { draft in
+                                    Button {
+                                        
+                                    } label: {
+                                        Text(draft.content)
+                                    }
+                                    .buttonStyle(SecondaryButtonStyle())
+                                }
+                            }
+                        }
+                    }
                 }
 #if os(visionOS)
                 .foregroundStyle(theme.labelColor)
@@ -134,6 +152,23 @@ public struct AppAccountsSelectorView: View {
                     .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
 #endif
                 }
+                
+                Section {
+                    Button {
+                        print("dlete acc")
+                        showAlert.toggle()
+                    } label: {
+                        Text("Delete Account")
+                            .foregroundStyle(.red)
+                            .multilineTextAlignment(.center)
+                    }
+                    .clipShape(.rect(cornerRadius: 12))
+                }
+#if os(visionOS)
+                .foregroundStyle(theme.labelColor)
+#else
+                .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
+#endif
             }
             .listStyle(.insetGrouped)
             .scrollContentBackground(.hidden)
@@ -150,6 +185,27 @@ public struct AppAccountsSelectorView: View {
                 }
             }
             .environment(routerPath)
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Do you want to delete your account?"),
+                message: Text("This action can not be undone."),
+                primaryButton: .destructive(Text("Yes"), action: {
+                    deleteAccount()
+                }),
+                secondaryButton: .default(Text("No"))
+            )
+        }
+    }
+    
+    private func deleteAccount () {
+        guard let account = authenticationManager.currentAccount else { return }
+        Task {
+            do {
+                try await account.delete()
+            } catch {
+                print(error)
+            }
         }
     }
     
@@ -209,7 +265,7 @@ public struct AppAccountsSelectorView: View {
                 routerPath.presentedSheet = .categorySelection
             }
         } label: {
-            Label("Content Selection", systemImage: "video.and.waveform")
+            Label("Content Selection", systemImage: "filemenu.and.selection")
         }
     }
     

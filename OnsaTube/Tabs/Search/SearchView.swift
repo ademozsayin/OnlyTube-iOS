@@ -178,8 +178,18 @@ struct SearchView: View {
     private var loadingView: some View {
         VStack(alignment: .center) {
             Spacer()
-            LoadingView()
+            LoadingView(customText: drafts.isEmpty ? "Waiting for your selection" : "Preparing")
                 .frame(maxWidth: .infinity, alignment: .center)
+            if drafts.isEmpty {
+                Button {
+                    routerPath.presentedSheet = .categorySelection
+                } label: {
+                    Text("Select")
+                }
+                .buttonStyle(SecondaryButtonStyle())
+                .padding()
+
+            }
             Spacer()
         }
     }
