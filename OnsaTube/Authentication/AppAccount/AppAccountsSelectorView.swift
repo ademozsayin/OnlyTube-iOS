@@ -105,18 +105,16 @@ public struct AppAccountsSelectorView: View {
             List {
                 Section {
                     if let currentAccount = accountsViewModel.appAccount {
-                       
                         AppAccountView(viewModel: accountsViewModel , isParentPresented: $isPresented)
-                    }
-//                    addAccountButton
+                        
 #if os(visionOS)
-                        .foregroundStyle(theme.labelColor)
+                            .foregroundStyle(theme.labelColor)
 #endif
+                    }
                 }
 #if !os(visionOS)
                 .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
 #endif
-                
                 Section {
                     contentSettingsButton
                     if !drafts.isEmpty {

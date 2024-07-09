@@ -18,7 +18,7 @@ import FirebaseAuth
         case statuses, favorites, bookmarks, replies, boosts, media
         
         static var currentAccountTabs: [Tab] {
-            [.favorites, .bookmarks]
+            [.favorites]
         }
         
         static var accountTabs: [Tab] {

@@ -157,9 +157,6 @@
         }
       }
     },
-    "account.detail.featured-tags-n-posts %lld" : {
-
-    },
     "account.edit.avatar" : {
       "localizations" : {
         "en" : {

@@ -185,9 +185,11 @@ struct JetpackInstallHeaderView: View {
     
     var body: some View {
         HStack(spacing: Constants.headerContentSpacing) {
+#if !os(visionOS)
             Image(uiImage: UIImage(named: "AppIcon")!)
                 .resizable()
                 .frame(width: Constants.logoSize * scale, height: Constants.logoSize * scale)
+#endif
             Image(uiImage: .iconConnection)
                 .resizable()
                 .flipsForRightToLeftLayoutDirection(true)

@@ -17,21 +17,18 @@ extension View {
     func withAppRouter() -> some View {
         navigationDestination(for: RouterDestination.self) { destination in
             switch destination {
-
                 case .mutedAccounts:
                     Text("AccountsListView")
                 case .channelDetails(channel: let channel):
                     ChannelDetailsView(channel: channel)
                 case .playlistDetails(let playlist):
                     PlaylistDetailsView(playlist: playlist)
-                    
                 case .register:
                     RegisterView()
                 case .accountSettingsWithAccount(account: let account, appAccount: let appAccount):
                     AccountSettingsView(account: account, appAccount: appAccount)
                 case .accountDetailWithAccount(let account):
                     AccountSettingsView(account: account, appAccount: account)
-
             }
         }
     }

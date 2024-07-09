@@ -71,15 +71,15 @@ struct SettingsTabs: View {
                 startingPoint = RouterPath.settingsStartingPoint
                 RouterPath.settingsStartingPoint = nil
             }
-            .navigationDestination(item: $startingPoint) { targetView in
-                switch targetView {
-                    case .display:
-                        DisplaySettingsView()
-                    case .tabAndSidebarEntries:
-                        EmptyView()
-                    
-                }
-            }
+//            .navigationDestination(item: $startingPoint) { targetView in
+//                switch targetView {
+//                    case .display:
+//                        DisplaySettingsView()
+//                    case .tabAndSidebarEntries:
+//                        EmptyView()
+//                    
+//                }
+//            }
            
         }
         .withSafariRouter()
@@ -130,14 +130,12 @@ struct SettingsTabs: View {
                             Task {
                                 do {
                                     try await authenticationManager.signOut()
-                                    popToRootTab = .timeline
                                 } catch {
                                     print(error)
                                 }
-                               
-//                                if isModal {
-//                                    dismiss()
-//                                }
+                                if isModal {
+                                    dismiss()
+                                }
                             }
                         } label: {
                             Image(systemName: "trash")

@@ -68,27 +68,27 @@ struct AccountDetailView: View {
                         .applyAccountDetailsRowStyle(theme: theme)
                         .padding(.bottom, -20)
                     
-                    Picker("", selection: $viewModel.selectedTab) {
-                        ForEach(isCurrentUser ? AccountDetailViewModel.Tab.currentAccountTabs : AccountDetailViewModel.Tab.accountTabs,
-                                id: \.self)
-                        { tab in
-                            if tab == .boosts {
-                                Image("Rocket")
-                                    .tag(tab)
-                                    .accessibilityLabel(tab.accessibilityLabel)
-                            } else {
-                                Image(systemName: tab.iconName)
-                                    .tag(tab)
-                                    .accessibilityLabel(tab.accessibilityLabel)
-                            }
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .padding(.layoutPadding)
-                    .applyAccountDetailsRowStyle(theme: theme)
-                    .id("status")
+//                    Picker("", selection: $viewModel.selectedTab) {
+//                        ForEach(isCurrentUser ? AccountDetailViewModel.Tab.currentAccountTabs : AccountDetailViewModel.Tab.accountTabs,
+//                                id: \.self)
+//                        { tab in
+//                            if tab == .boosts {
+//                                Image("Rocket")
+//                                    .tag(tab)
+//                                    .accessibilityLabel(tab.accessibilityLabel)
+//                            } else {
+//                                Image(systemName: tab.iconName)
+//                                    .tag(tab)
+//                                    .accessibilityLabel(tab.accessibilityLabel)
+//                            }
+//                        }
+//                    }
+//                    .pickerStyle(.segmented)
+//                    .padding(.layoutPadding)
+//                    .applyAccountDetailsRowStyle(theme: theme)
+//                    .id("status")
                     
-                    LazyVStack {
+//                    LazyVStack {
                         let propertyState = PSM.propetriesState[.videoViewMode] as? PreferencesStorageModel.Properties.VideoViewModes
                         let videoViewHeight = propertyState == .halfThumbnail ? 180 : geometry.size.width * 9/16 + 90
                         
@@ -107,17 +107,17 @@ struct AccountDetailView: View {
                             }
                             .listRowSeparator(.hidden)
                         }
-                        Color.clear
-                            .frame(height: 30)
-                    }
+//                        Color.clear
+//                            .frame(height: 30)
+//                    }
                     
                 }
-                .environment(\.defaultMinListRowHeight, 1)
+                .environment(\.defaultMinListRowHeight, 0)
                 .listStyle(.plain)
-#if !os(visionOS)
+//#if !os(visionOS)
                 .scrollContentBackground(.hidden)
                 .background(theme.primaryBackgroundColor)
-#endif
+//#endif
                 .onChange(of: scrollToTopSignal) {
                     withAnimation {
                         proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
@@ -164,6 +164,7 @@ struct AccountDetailView: View {
         .toolbar {
             toolbarContent
         }
+        .withCoreDataContext()
     }
     
     @ViewBuilder
@@ -185,8 +186,8 @@ struct AccountDetailView: View {
         ToolbarItem(placement: .principal) {
             if let account = viewModel.account, displayTitle {
                 VStack {
-                    Text(account.displayName ?? "").font(.headline)
-                    Text("account.detail.featured-tags-n-posts \(favorites.count)")
+                    Text(account.displayName ?? "Profile").font(.headline)
+//                    Text("Favorites \(favorites.count)")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }

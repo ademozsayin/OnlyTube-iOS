@@ -43,7 +43,7 @@ struct FavoriteTab: View {
         .withSafariRouter()
         .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
-            if newValue == .notifications {
+            if newValue == .favorite {
                 if routerPath.path.isEmpty {
                     scrollToTopSignal += 1
                 } else {

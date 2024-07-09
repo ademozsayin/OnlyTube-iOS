@@ -310,6 +310,7 @@
 		B74E96E02C2F11B9003D9D6E /* SortingModeSelectionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingModeSelectionModifier.swift; sourceTree = "<group>"; };
 		B74E96E32C2F21B3003D9D6E /* NotificationsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTab.swift; sourceTree = "<group>"; };
 		B74EEB412C3B609800EADCEC /* Share.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Share.md; sourceTree = "<group>"; };
+		B75035022C3D55E7002E077E /* RealityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealityKit.framework; path = System/Library/Frameworks/RealityKit.framework; sourceTree = SDKROOT; };
 		B7588F642C35E25F002E29AE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B7588F662C35E57B002E29AE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B7588F682C35E5B4002E29AE /* AuthenticationFormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFormFieldView.swift; sourceTree = "<group>"; };
@@ -953,6 +954,7 @@
 		B7FE95E42C10DF2900402DE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B75035022C3D55E7002E077E /* RealityKit.framework */,
 				B79367782C2F661A003AA6E1 /* CloudKit.framework */,
 				B746B0882C2622C0003D156E /* StoreKit.framework */,
 				B7A5E8D22C248E310038EDE1 /* AVKit.framework */,

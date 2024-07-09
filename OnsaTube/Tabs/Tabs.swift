@@ -34,15 +34,12 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 SettingsTabs(popToRootTab: popToRootTab, isModal: false)
             case .favorite:
                 FavoriteTab(popToRootTab: popToRootTab, selectedTab: selectedTab, lockedType: nil)
-
             case .shazam:
                 ShazamTab(selectedTab: selectedTab, popToRootTab: popToRootTab)
             case .other:
                 Text("other")
             case .profile:
                 ProfileTab(popToRootTab: popToRootTab, lockedType: nil)
-
-
         }
     }
     
@@ -151,15 +148,15 @@ class iOSTabs {
         @AppStorage(TabEntries.first.rawValue) var firstTab = Tab.timeline
         @AppStorage(TabEntries.second.rawValue) var secondTab = Tab.notifications
 //        @AppStorage(TabEntries.third.rawValue) var thirdTab = Tab.shazam
-//        @AppStorage(TabEntries.four.rawValue) var fourTab = Tab.favorite
-        @AppStorage(TabEntries.five.rawValue) var fiveTab = Tab.profile
+        @AppStorage(TabEntries.four.rawValue) var fourTab = Tab.favorite
+//        @AppStorage(TabEntries.five.rawValue) var fiveTab = Tab.profile
     }
     
     private let storage = Storage()
     public static let shared = iOSTabs()
     
     var tabs: [Tab] {
-        [firstTab, secondTab, fiveTab]
+        [firstTab, secondTab, fourTab]
     }
     
     var firstTab: Tab {
@@ -180,23 +177,23 @@ class iOSTabs {
 //        }
 //    }
     
-//    var fourTab: Tab {
-//        didSet {
-//            storage.fourTab = fourTab
-//        }
-//    }
-    
-    var fiveTab: Tab {
+    var fourTab: Tab {
         didSet {
-            storage.fiveTab = fiveTab
+            storage.fourTab = fourTab
         }
     }
+    
+//    var fiveTab: Tab {
+//        didSet {
+//            storage.fiveTab = fiveTab
+//        }
+//    }
     
     private init() {
         firstTab = storage.firstTab
         secondTab = storage.secondTab
 //        thirdTab = storage.thirdTab
-//        fourTab = storage.fourTab
-        fiveTab = storage.fiveTab
+        fourTab = storage.fourTab
+//        fiveTab = storage.fiveTab
     }
 }

@@ -47,10 +47,10 @@ struct AppView: View {
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
             ZStack(alignment: .bottom) {
                 sidebarView
-//                if !userPreferences.hasAcceptedDisclaimer {
-//                    DisclaimerView()
-//                        .background(Color.fenerbahceWhite)
-//                }
+                if !userPreferences.hasAcceptedDisclaimer {
+                    DisclaimerView()
+                        .background(Color.fenerbahceWhite)
+                }
             }
         } else {
             ZStack(alignment: .bottom) {
@@ -107,6 +107,7 @@ struct AppView: View {
                     .tag(tab)
                     .badge(badgeFor(tab: tab))
                     .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .tabBar)
+//                    .id(availableTabs.count) // <——Here
                 
             }
         }
@@ -117,11 +118,19 @@ struct AppView: View {
                     isSheetPresented: watchVideoBinding,
                     isSettingsSheetPresented: settingsSheetBinding.wrappedValue
                 )
+
             }
         })
         .sheet(isPresented: watchVideoBinding, content: {
             WatchVideoView(videoId: nil)
+#if os(visionOS)
+                .onTapGesture {
+                    watchVideoBinding.wrappedValue.toggle()
+                }
+#endif
+#if !os(visionOS)
                 .presentationDragIndicator(.hidden)
+#endif
         })
      
         .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
@@ -178,7 +187,7 @@ struct AppView: View {
                 .introspect(.tabView, on: .iOS(.v17)) { (tabview: UITabBarController) in
                     tabview.tabBar.isHidden = horizontalSizeClass == .regular
                     tabview.customizableViewControllers = []
-                    tabview.moreNavigationController.isNavigationBarHidden = false
+                    tabview.moreNavigationController.isNavigationBarHidden = true
                 }
                 if horizontalSizeClass == .regular,
                   let _ = authenticationManager.currentAccount,
@@ -259,9 +268,3 @@ struct AppView: View {
     }
 }
 
-
-extension UINavigationBar {
-    override open func layoutSubviews() {
-        // Nothing to do
-    }
-}

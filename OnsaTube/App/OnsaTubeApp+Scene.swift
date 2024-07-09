@@ -32,5 +32,48 @@ extension OnsaTubeApp {
     
         }
     }
+    
+//    @SceneBuilder
+//    var otherScenes: some Scene {
+//        WindowGroup(for: WindowDestinationEditor.self) { destination in
+//            Group {
+//                switch destination.wrappedValue {
+//                    case .login:
+//                        LoginView(siteUrl: "")
+//                    case .miniPlayer(let videoId):
+//                        WatchVideoView(videoId: videoId)
+//                            .withEnvironments()
+//                    default:
+//                        EmptyView()
+//                }
+//            }
+//            .withEnvironments()
+//            .environment(RouterPath())
+//            .withModelContainer()
+//            .applyTheme(theme)
+//            .withCoreDataContext()
+//            .frame(minWidth: 300, minHeight: 400)
+//        }
+//        .defaultSize(width: 600, height: 800)
+//        .windowResizability(.contentMinSize)
+        
+//        WindowGroup(for: WindowDestinationMedia.self) { destination in
+//            Group {
+//                switch destination.wrappedValue {
+//                    case let .mediaViewer(attachments, selectedAttachment):
+//                        MediaUIView(selectedAttachment: selectedAttachment,
+//                                    attachments: attachments)
+//                    case .none:
+//                        EmptyView()
+//                }
+//            }
+//            .withEnvironments()
+//            .withModelContainer()
+//            .applyTheme(theme)
+//            .frame(minWidth: 300, minHeight: 400)
+//        }
+//        .defaultSize(width: 1200, height: 1000)
+//        .windowResizability(.contentMinSize)
+//    }
 }
 

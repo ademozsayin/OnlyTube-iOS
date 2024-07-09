@@ -54,7 +54,7 @@ struct SearchTab: View {
     
     @ToolbarContentBuilder
     private var toolbarView: some ToolbarContent {
-        if authenticationManager.isAuth {
+        if let _ = authenticationManager.currentAccount {
             ToolbarTab(routerPath: $routerPath)
         } else {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -14,7 +14,10 @@ import RevenueCat
 import FirebaseCore
 import FirebaseMessaging
 import TipKit
+#if !os(visionOS)
 import FirebaseDynamicLinks
+#endif
+
 import FirebaseAuth
 
 @main
@@ -45,6 +48,7 @@ struct OnsaTubeApp: App {
     
     var body: some Scene {
         appScene
+//        otherScenes
     }
     
     func handleScenePhase(scenePhase: ScenePhase) {
@@ -138,7 +142,8 @@ extension SceneDelegate {
         if let incomingURL = userActivity.webpageURL {
             
             print("\n \nIncoming URL is \(incomingURL)")
-            
+#if !os(visionOS)
+
             _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
                 
                 guard error == nil else {
@@ -172,7 +177,7 @@ extension SceneDelegate {
                 }
                 
             }
+#endif
         }
     }
-
 }
