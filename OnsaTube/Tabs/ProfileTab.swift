@@ -2,6 +2,7 @@ import DesignSystem
 import Env
 import Network
 import SwiftUI
+import FirebaseAuth
 
 @MainActor
 struct ProfileTab: View {
@@ -16,28 +17,23 @@ struct ProfileTab: View {
     
     @Environment(UserPreferences.self) private var preferences
     
-    
-    @Binding var selectedTab: Tab
+//    @Binding var selectedTab: Tab
     let lockedType: PreferencesStorageModel.Properties.SortingModes?
     
     var body: some View {
         NavigationStack(path: $routerPath.path) {
-            FavoritesView()
-                .withAppRouter()
-                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-                .withCoreDataContext()
-                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
-                .background(theme.primaryBackgroundColor)
-                .toolbar {
-                    toolbarView
-                }
+            if let account = authenticationManager.currentAccount {
+                AccountDetailView(account: account, scrollToTopSignal: $scrollToTopSignal)
+                    .withAppRouter()
+                    .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+                    .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
+                    .id(account.uid)
+            } else {
+                LoadingView()
+            }
         }
-        .onAppear {
-        }
-        .withSafariRouter()
-        .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
-            if newValue == .notifications {
+            if newValue == .profile {
                 if routerPath.path.isEmpty {
                     scrollToTopSignal += 1
                 } else {
@@ -45,43 +41,10 @@ struct ProfileTab: View {
                 }
             }
         }
-        .onChange(of: selectedTab) { _, _ in
-        }
+        .withSafariRouter()
+        .environment(routerPath)
+        .withCoreDataContext()
     }
-//    var body: some View {
-//        NavigationStack(path: $routerPath.path) {
-//            Text(authenticationManager.currentAccount?.email ?? "")
-//                .withAppRouter()
-//                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-//                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
-//                .toolbar {
-//                    toolbarView
-//                }
-              
-//            if let account = authenticationManager.currentAccount {
-//                AccountDetailView(account: account, scrollToTopSignal: $scrollToTopSignal)
-//                    .withAppRouter()
-//                    .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-//                    .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
-//                    .id(account.id)
-//            } else {
-//                AccountDetailView(account: .placeholder(), scrollToTopSignal: $scrollToTopSignal)
-//                    .redacted(reason: .placeholder)
-//                    .allowsHitTesting(false)
-//            }
-//        }
-//        .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
-//            if newValue == .profile {
-//                if routerPath.path.isEmpty {
-//                    scrollToTopSignal += 1
-//                } else {
-//                    routerPath.path = []
-//                }
-//            }
-//        }
-//        .withSafariRouter()
-//        .environment(routerPath)
-//    }
     
     @ToolbarContentBuilder
     private var toolbarView: some ToolbarContent {
@@ -103,4 +66,11 @@ struct ProfileTab: View {
         }
         .accessibilityLabel("accessibility.tabs.timeline.add-account")
     }
+}
+
+#Preview {
+    ProfileTab(popToRootTab: .constant(.profile), lockedType: nil)
+        .withPreviewsEnv()
+        .environment(Theme.shared)
+        .environment(AuthenticationManager.shared)
 }

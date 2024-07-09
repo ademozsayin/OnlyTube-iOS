@@ -32,8 +32,6 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
                 NotificationsTab(selectedTab: selectedTab, popToRootTab: popToRootTab)
             case .settings:
                 SettingsTabs(popToRootTab: popToRootTab, isModal: false)
-//                    .withEnvironments()
-//                    .preferredColorScheme(Theme.shared.selectedScheme == .dark ? .dark : .light)
             case .favorite:
                 FavoriteTab(popToRootTab: popToRootTab, selectedTab: selectedTab, lockedType: nil)
 
@@ -42,8 +40,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
             case .other:
                 Text("other")
             case .profile:
-//                ProfileTab(popToRootTab: popToRootTab)
-                ProfileTab(popToRootTab: popToRootTab, selectedTab: selectedTab, lockedType: nil)
+                ProfileTab(popToRootTab: popToRootTab, lockedType: nil)
 
 
         }
@@ -76,7 +73,7 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
             case .other:
                 ""
             case .profile:
-                "Favorites"
+                "Profile"
         }
     }
     
@@ -118,9 +115,9 @@ class SidebarTabs {
             .init(tab: .timeline, enabled: true),
             .init(tab: .notifications, enabled: true),
             .init(tab: .shazam, enabled: false),
-            .init(tab: .favorite, enabled: true),
-            .init(tab: .profile, enabled: false),
+            .init(tab: .favorite, enabled: false),
             .init(tab: .settings, enabled: true),
+            .init(tab: .profile, enabled: true)
 
         ]
     }

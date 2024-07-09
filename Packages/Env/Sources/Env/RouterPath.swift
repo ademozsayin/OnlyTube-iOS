@@ -71,14 +71,14 @@ public enum SheetDestination: Identifiable, Hashable {
 
 public enum SettingsStartingPoint {
     case display
-    case haptic
-    case remoteTimelines
-    case tagGroups
-    case recentTags
-    case content
-    case swipeActions
+//    case haptic
+//    case remoteTimelines
+//    case tagGroups
+//    case recentTags
+//    case content
+//    case swipeActions
     case tabAndSidebarEntries
-    case translation
+//    case translation
 }
 
 @MainActor

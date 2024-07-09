@@ -10,6 +10,9 @@
     " • " : {
 
     },
+    "@%@" : {
+
+    },
     "%@ - %@" : {
       "localizations" : {
         "en" : {
@@ -41,6 +44,9 @@
       }
     },
     "%@© 2024 Adem Özsayın" : {
+
+    },
+    "%lld" : {
 
     },
     "%lld video%@ remaining" : {
@@ -84,7 +90,61 @@
     "accessibility.app-account.selector.accounts.hint" : {
 
     },
+    "accessibility.tabs.profile.follower-count.hint" : {
+
+    },
+    "accessibility.tabs.profile.following-count.hint" : {
+
+    },
+    "accessibility.tabs.profile.header-image.hint" : {
+
+    },
+    "accessibility.tabs.profile.header-image.label" : {
+
+    },
+    "accessibility.tabs.profile.options.inputLabel1" : {
+
+    },
+    "accessibility.tabs.profile.options.inputLabel2" : {
+
+    },
+    "accessibility.tabs.profile.options.label" : {
+
+    },
+    "accessibility.tabs.profile.picker.bookmarks" : {
+
+    },
+    "accessibility.tabs.profile.picker.boosts" : {
+
+    },
+    "accessibility.tabs.profile.picker.favorites" : {
+
+    },
+    "accessibility.tabs.profile.picker.media" : {
+
+    },
+    "accessibility.tabs.profile.picker.posts-and-replies" : {
+
+    },
+    "accessibility.tabs.profile.picker.statuses" : {
+
+    },
+    "accessibility.tabs.profile.post-count.hint" : {
+
+    },
+    "accessibility.tabs.profile.user-avatar.hint" : {
+
+    },
+    "accessibility.tabs.profile.user-avatar.label" : {
+
+    },
+    "accessibility.tabs.profile.user-avatar.supporter.label" : {
+
+    },
     "accessibility.tabs.timeline.add-account" : {
+
+    },
+    "account.action.edit-info" : {
 
     },
     "account.action.logout" : {
@@ -96,6 +156,9 @@
           }
         }
       }
+    },
+    "account.detail.featured-tags-n-posts %lld" : {
+
     },
     "account.edit.avatar" : {
       "localizations" : {
@@ -157,6 +220,9 @@
           }
         }
       }
+    },
+    "account.relation.note.edit" : {
+
     },
     "AccountsListView" : {
 
@@ -329,6 +395,9 @@
     "Error signing in with email link: %@" : {
 
     },
+    "Error: %@" : {
+
+    },
     "Favorites" : {
 
     },
@@ -374,6 +443,7 @@
 
     },
     "menu.new-post" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -454,6 +524,7 @@
       }
     },
     "Notifs" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -525,6 +596,9 @@
 
     },
     "Private" : {
+
+    },
+    "Profile" : {
 
     },
     "Public" : {
@@ -1216,7 +1290,6 @@
       }
     },
     "settings.system" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1263,6 +1336,19 @@
     },
     "Start Again" : {
 
+    },
+    "status.action.translate" : {
+
+    },
+    "status.action.translated-label-from-%@-%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "status.action.translated-label-from-%1$@-%2$@"
+          }
+        }
+      }
     },
     "Subcategories" : {
 

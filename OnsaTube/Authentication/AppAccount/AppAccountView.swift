@@ -57,7 +57,6 @@ public struct AppAccountView: View {
 
         } label: {
             HStack {
-               
                 ZStack(alignment: .topTrailing) {
                     AvatarView(viewModel.account?.photoURL)
                    

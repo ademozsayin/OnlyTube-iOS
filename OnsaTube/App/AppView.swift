@@ -47,13 +47,12 @@ struct AppView: View {
         if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
             ZStack(alignment: .bottom) {
                 sidebarView
-                if !userPreferences.hasAcceptedDisclaimer {
-                    DisclaimerView()
-                        .background(Color.fenerbahceWhite)
-                }
+//                if !userPreferences.hasAcceptedDisclaimer {
+//                    DisclaimerView()
+//                        .background(Color.fenerbahceWhite)
+//                }
             }
         } else {
-           
             ZStack(alignment: .bottom) {
                 tabBarView
                 if !userPreferences.hasAcceptedDisclaimer {
@@ -66,7 +65,7 @@ struct AppView: View {
 #endif
     }
     var availableTabs: [Tab] {
-        guard authenticationManager.isAuth else {
+        guard let _ = authenticationManager.currentAccount else {
             return Tab.loggedOutTab()
         }
         if UIDevice.current.userInterfaceIdiom == .phone || horizontalSizeClass == .compact {
@@ -175,21 +174,22 @@ struct AppView: View {
                             .tag(tab)
                     }
                 }
+                .id(availableTabs.count) // <——Here
                 .introspect(.tabView, on: .iOS(.v17)) { (tabview: UITabBarController) in
                     tabview.tabBar.isHidden = horizontalSizeClass == .regular
                     tabview.customizableViewControllers = []
-                    tabview.moreNavigationController.isNavigationBarHidden = true
+                    tabview.moreNavigationController.isNavigationBarHidden = false
                 }
                 if horizontalSizeClass == .regular,
-//                   appAccountsManager.currentClient.isAuth,
+                  let _ = authenticationManager.currentAccount,
                    userPreferences.showiPadSecondaryColumn
                 {
                     Divider().edgesIgnoringSafeArea(.all)
 //                    notificationsSecondaryColumn
                 }
+                
             }
         }
-        .environment(appRouterPath)
         .safeAreaInset(edge: .bottom, content: {
             HStack(spacing: 0) {
                 if  VPM.currentItem != nil {
@@ -214,7 +214,6 @@ struct AppView: View {
             WatchVideoView(videoId: nil)
                 .presentationDragIndicator(.hidden)
         })
-        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
         .overlay(alignment: .center, content: {
             ZStack {
                 let imageData = PM.shownPopup?.data as? Data
@@ -241,6 +240,8 @@ struct AppView: View {
                 }
             }
         })
+//        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+        .environment(appRouterPath)
     }
 #endif
     
@@ -250,7 +251,17 @@ struct AppView: View {
     
     
     var notificationsSecondaryColumn: some View {
-        Text("Notifs")
+        NotificationsTab(selectedTab: .constant(.notifications),
+                         popToRootTab: $popToRootTab)
+        .environment(\.isSecondaryColumn, true)
+        .frame(maxWidth: .secondaryColumnWidth)
+        .id(authenticationManager.currentAccount?.uid)
     }
 }
 
+
+extension UINavigationBar {
+    override open func layoutSubviews() {
+        // Nothing to do
+    }
+}

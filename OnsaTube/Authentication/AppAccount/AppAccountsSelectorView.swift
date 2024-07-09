@@ -18,7 +18,8 @@ public struct AppAccountsSelectorView: View {
     private let accountCreationEnabled: Bool
     private let avatarConfig: AvatarView.FrameConfig
     
-    private var authenticationManager = AuthenticationManager.shared
+    @Environment(AuthenticationManager.self) private var authenticationManager
+
     @State private var showAlert = false
     
     private var preferredHeight: CGFloat {
@@ -37,14 +38,13 @@ public struct AppAccountsSelectorView: View {
         self.accountCreationEnabled = accountCreationEnabled
         self.avatarConfig = avatarConfig ?? .badge
 
-        let viewModel: AppAccountViewModel = .init(
-            appAccount: authenticationManager.currentAccount,
+        _accountsViewModel = State(initialValue: AppAccountViewModel(
+            appAccount: AuthenticationManager.shared.currentAccount,
             isInSettings: false,
-            showBadge: true,
-            authenticationManager: authenticationManager
-        )
-        self.accountsViewModel = viewModel
+            showBadge: true
+        ))
     }
+    
     
     public var body: some View {
         Button {
@@ -276,8 +276,7 @@ public struct AppAccountsSelectorView: View {
         let viewModel: AppAccountViewModel = .init(
             appAccount: authenticationManager.currentAccount,
             isInSettings: false,
-            showBadge: true,
-            authenticationManager: authenticationManager
+            showBadge: true
         )
         self.accountsViewModel = viewModel
     }

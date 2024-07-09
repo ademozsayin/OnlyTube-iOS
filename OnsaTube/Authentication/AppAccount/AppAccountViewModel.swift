@@ -11,8 +11,6 @@ import FirebaseAuth
     private static var avatarsCache: [String: UIImage] = [:]
     private static var accountsCache: [String: User] = [:]
     
-    private var authenticationManager: AuthenticationManager
-
     var appAccount: User?
     let isCompact: Bool
     let isInSettings: Bool
@@ -38,14 +36,12 @@ import FirebaseAuth
     public init(appAccount: User?,
                 isCompact: Bool = false,
                 isInSettings: Bool = true,
-                showBadge: Bool = false,
-                authenticationManager: AuthenticationManager
+                showBadge: Bool = false
     ) {
         self.appAccount = appAccount
         self.isCompact = isCompact
         self.isInSettings = isInSettings
         self.showBadge = showBadge
-        self.authenticationManager = authenticationManager
 
     }
     
@@ -53,7 +49,7 @@ import FirebaseAuth
         do {
             account = Self.accountsCache[appAccount?.uid ?? ""]
             
-            account = authenticationManager.currentAccount
+            account = AuthenticationManager.shared.currentAccount
             Self.accountsCache[appAccount?.uid ?? ""] = account
         } catch {}
     }

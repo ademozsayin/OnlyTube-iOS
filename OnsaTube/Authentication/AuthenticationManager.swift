@@ -48,10 +48,9 @@ extension User: @unchecked  Sendable {}
         Task {
             Auth.auth().addStateDidChangeListener { [weak self] auth, user in
                 guard let self else { return }
-                print(user as Any)
                 currentAccount = user ?? nil
                 PushNotificationsService.shared.setUser(user:AuthenticationManager.shared.currentAccount)
-
+                print(user?.email)
             }
         }
     }
@@ -86,10 +85,15 @@ extension User: @unchecked  Sendable {}
         do {
             try Auth.auth().signOut()
             self.currentAccount = nil
+            print("signed out")
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
     }
     
+    func fetchAccount() async -> User? {
+        guard let currentAccount else { return nil }
+        return currentAccount
+    }
     
 }

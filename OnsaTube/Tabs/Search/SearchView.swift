@@ -122,53 +122,53 @@ struct SearchView: View {
                         
                     }
                 }
-            }
-            .onChange(of: viewModel.search) { oldValue, newValue in
-                search = newValue
-                needToReload = true
-                callSearching()
-            }
-            .navigationTitle("Dashboard")
-            .environment(routerPath)
-            .onChange(of: scrollToTopSignal) {
-                withAnimation {
-                    proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
+                .onChange(of: viewModel.search) { oldValue, newValue in
+                    search = newValue
+                    needToReload = true
+                    callSearching()
                 }
-            }
-            .onAppear {
-                if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
-                    routerPath.presentedSheet = .categorySelection
-                } else {
-                    
-                    search = drafts.map { $0.content }.joined(separator: ", ")
-                    
-                    if search != viewModel.search {
-                        
-                        viewModel.search = search
-                        
-                        // Set flag to indicate reload needed
-                        needToReload = true
-                        
-                        // Call your search function
-                        callSearching()
-                        
-                        // Print each draft's content
-                        for draft in drafts {
-                            print("Draft content: \(draft.content)")
-                        }
+                .navigationTitle("Dashboard")
+                .environment(routerPath)
+                .onChange(of: scrollToTopSignal) {
+                    withAnimation {
+                        proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
                     }
-                
                 }
-                
-            }.onChange(of: drafts) { oldValue, newValue in
-                search = newValue.map { $0.content }.joined(separator: ", ")
-                needToReload = true
-                viewModel.search = search
-                callSearching()
-            }
-            .onChange(of: preferences.hasAcceptedDisclaimer) { oldValue, newValue in
-                if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
-                    routerPath.presentedSheet = .categorySelection
+                .onAppear {
+                    if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
+                        routerPath.presentedSheet = .categorySelection
+                    } else {
+                        
+                        search = drafts.map { $0.content }.joined(separator: ", ")
+                        
+                        if search != viewModel.search {
+                            
+                            viewModel.search = search
+                            
+                            // Set flag to indicate reload needed
+                            needToReload = true
+                            
+                            // Call your search function
+                            callSearching()
+                            
+                            // Print each draft's content
+                            for draft in drafts {
+                                print("Draft content: \(draft.content)")
+                            }
+                        }
+                        
+                    }
+                    
+                }.onChange(of: drafts) { oldValue, newValue in
+                    search = newValue.map { $0.content }.joined(separator: ", ")
+                    needToReload = true
+                    viewModel.search = search
+                    callSearching()
+                }
+                .onChange(of: preferences.hasAcceptedDisclaimer) { oldValue, newValue in
+                    if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
+                        routerPath.presentedSheet = .categorySelection
+                    }
                 }
             }
             

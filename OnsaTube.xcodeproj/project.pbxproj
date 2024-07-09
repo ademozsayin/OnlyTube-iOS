@@ -91,6 +91,10 @@
 		B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767949E2C1B8C0200A623BE /* SearchTab.swift */; };
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
+		B7804CA32C3C0D1C001192B4 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */; };
+		B7804CA62C3C0F53001192B4 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */; };
+		B7804CA82C3C18B2001192B4 /* AccountDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */; };
+		B7804CAA2C3C1F7E001192B4 /* AccountDetailContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */; };
 		B79367722C2F2521003AA6E1 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = B79367712C2F2521003AA6E1 /* Notifications */; };
 		B79367752C2F265A003AA6E1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79367742C2F265A003AA6E1 /* KeychainSwift */; };
 		B79367772C2F3495003AA6E1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B79367762C2F3495003AA6E1 /* FirebaseMessaging */; };
@@ -353,6 +357,10 @@
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		B77D78B82C2F22BC0020EB96 /* Notifications */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Notifications; sourceTree = "<group>"; };
+		B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
+		B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailHeaderView.swift; sourceTree = "<group>"; };
+		B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailContextMenu.swift; sourceTree = "<group>"; };
 		B79367782C2F661A003AA6E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B793677A2C2F6C09003AA6E1 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
@@ -594,6 +602,7 @@
 		B74C7A862C346B0500A1CA9C /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B7804CA42C3C0F42001192B4 /* AccountDetail */,
 				B71149932C38B8BA00108228 /* AppAccount */,
 				B7B884422C3776250031C523 /* Register */,
 				B74C7A872C346B1600A1CA9C /* AuthenticationManager.swift */,
@@ -710,6 +719,17 @@
 				B7334BF32C28BFFD00D60C60 /* ChannelView.swift */,
 			);
 			path = PlayerView;
+			sourceTree = "<group>";
+		};
+		B7804CA42C3C0F42001192B4 /* AccountDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */,
+				B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */,
+				B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */,
+				B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */,
+			);
+			path = AccountDetail;
 			sourceTree = "<group>";
 		};
 		B79B71C62C2A031300108D6E /* Channel */ = {
@@ -1274,6 +1294,7 @@
 				B733A6752C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift in Sources */,
 				B74C7A832C3339E300A1CA9C /* GradientBackgroundAnimation.swift in Sources */,
 				B7FE960E2C11CCA800402DE1 /* SettingsTab.swift in Sources */,
+				B7804CA82C3C18B2001192B4 /* AccountDetailHeaderView.swift in Sources */,
 				B76794692C172FAF00A623BE /* SharePlayCoordinationManager.swift in Sources */,
 				B7A5E84F2C246F4A0038EDE1 /* OnsaTube.xcdatamodeld in Sources */,
 				B733A67A2C249A8600E0BDC4 /* Utils.swift in Sources */,
@@ -1298,6 +1319,7 @@
 				B7588F6D2C35EAC3002E29AE /* AttributedText.swift in Sources */,
 				B7A5E8CA2C2489B60038EDE1 /* HLSDownloader+AVAssetDownloadDelegate.swift in Sources */,
 				B733A6742C249A8600E0BDC4 /* AVMenuButton.swift in Sources */,
+				B7804CAA2C3C1F7E001192B4 /* AccountDetailContextMenu.swift in Sources */,
 				B7FE95EB2C10DFEA00402DE1 /* AppView.swift in Sources */,
 				B7A5E8612C246FB60038EDE1 /* YTVideoShareSource.swift in Sources */,
 				B7A5E8502C246F4A0038EDE1 /* DownloadedChannel+CoreDataClass.swift in Sources */,
@@ -1410,6 +1432,7 @@
 				B767949B2C1762CA00A623BE /* CustomAVPlayer.swift in Sources */,
 				B760F0E52C3A30B400EECB80 /* CategoryListView.swift in Sources */,
 				B767948D2C17364F00A623BE /* SubscribeButtonOverlayView.swift in Sources */,
+				B7804CA62C3C0F53001192B4 /* AccountDetailViewModel.swift in Sources */,
 				B7588F6F2C35EAE1002E29AE /* PrimaryLoadingButtonStyle.swift in Sources */,
 				B767948E2C17364F00A623BE /* VideoPlayer.swift in Sources */,
 				B79B71C52C2A028600108D6E /* ChannelDetailsView.swift in Sources */,
@@ -1435,6 +1458,7 @@
 				B7A5E85C2C246F4A0038EDE1 /* FavoriteVideo+toYTVideo.swift in Sources */,
 				B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */,
 				B7A5E8B22C2486110038EDE1 /* DownloadVideoButtonView.swift in Sources */,
+				B7804CA32C3C0D1C001192B4 /* AccountDetailView.swift in Sources */,
 				B71149992C38CA0C00108228 /* AppAccountViewModel.swift in Sources */,
 				B7A5E8C42C2489330038EDE1 /* BackgroundFetchActivity+defaultImplementations.swift in Sources */,
 			);

@@ -64,18 +64,28 @@ struct SettingsTabs: View {
                     SecondaryColumnToolbarItem()
                 }
             }
+            
             .withAppRouter()
             .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
             .onAppear {
                 startingPoint = RouterPath.settingsStartingPoint
                 RouterPath.settingsStartingPoint = nil
             }
+            .navigationDestination(item: $startingPoint) { targetView in
+                switch targetView {
+                    case .display:
+                        DisplaySettingsView()
+                    case .tabAndSidebarEntries:
+                        EmptyView()
+                    
+                }
+            }
            
         }
         .withSafariRouter()
         .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { _, newValue in
-            if newValue == .settings {
+            if newValue == .notifications {
                 routerPath.path = []
             }
         }
@@ -100,10 +110,10 @@ struct SettingsTabs: View {
             }
             
 #if !targetEnvironment(macCatalyst)
-//            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
-//                Label("settings.system", systemImage: "gear")
-//            }
-//            .tint(theme.labelColor)
+            Link(destination: URL(string: UIApplication.openSettingsURLString)!) {
+                Label("settings.system", systemImage: "gear")
+            }
+            .tint(theme.labelColor)
 #endif
         }
 #if !os(visionOS)
@@ -118,8 +128,16 @@ struct SettingsTabs: View {
                     if isEditingAccount {
                         Button {
                             Task {
-                                try await authenticationManager.signOut()
-                                dismiss()
+                                do {
+                                    try await authenticationManager.signOut()
+                                    popToRootTab = .timeline
+                                } catch {
+                                    print(error)
+                                }
+                               
+//                                if isModal {
+//                                    dismiss()
+//                                }
                             }
                         } label: {
                             Image(systemName: "trash")
@@ -130,8 +148,7 @@ struct SettingsTabs: View {
                   
                     AppAccountView(
                         viewModel: .init(
-                            appAccount: account,
-                            authenticationManager: AuthenticationManager.shared),
+                            appAccount: account),
                         isParentPresented: .constant(false)
                     )
                 }

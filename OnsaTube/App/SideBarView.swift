@@ -81,56 +81,65 @@ struct SideBarView<Content: View>: View {
             routerPath.presentedSheet = .categorySelection
 #endif
         } label: {
-//            Image(systemName: "square.and.pencil")
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 20, height: 30)
-//                .offset(x: 2, y: -2)
-            
-            BouncyJose()
-                
-            
-        }
-//        .buttonStyle(.borderedProminent)
-//        .help(Tab.post.title)
+            Image(systemName: "video.and.waveform")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 40, height: 60)
+                .offset(x: 2, y: -2)
+
+            }
     }
     
-    private func makeAccountButton(account:User, showBadge: Bool) -> some View {
+    private func makeAccountButton(account: User, showBadge: Bool) -> some View {
         Button {
+//            if account.uid == authenticationManager.currentAccount?.uid {
+////                selectedTab = .profile
+//                SoundEffectManager.shared.playSound(.tabSelection)
+//                routerPath.presentedSheet = .accountPushNotficationsSettings
+//            } else {
+//                var transation = Transaction()
+//                transation.disablesAnimations = true
+//                withTransaction(transation) {
+////                    appAccounts.currentAccount = account
+//                    authenticationManager.currentAccount = account
+//                }
+//            }
             
-                selectedTab = .favorite
-                SoundEffectManager.shared.playSound(.tabSelection)
-         
+           
         } label: {
-            ZStack(alignment: .topTrailing) {
-                if userPreferences.isSidebarExpanded {
-                    AppAccountView(viewModel: .init(
-                        appAccount: account,
-                        isInSettings: false,
-                        authenticationManager: AuthenticationManager.shared),
-                                   isParentPresented: .constant(false))
-                    
-                
-                    
-                } else {
-                    AppAccountView(viewModel: .init(appAccount: account,
-                                                    isCompact: false,
-                                                    isInSettings: false,
-                                                    authenticationManager: authenticationManager),
-                                   isParentPresented: .constant(false))
-                }
-                
-             
-            }
+            AppAccountsSelectorView(routerPath: routerPath)
+//            ZStack(alignment: .topTrailing) {
+//                
+//                HStack {
+//                    ZStack(alignment: .topTrailing) {
+//                        AvatarView(account.photoURL)
+//                        
+//                        Image(systemName: "checkmark.circle.fill")
+//                            .foregroundStyle(.white, .green)
+//                            .offset(x: 5, y: -5)
+//                        
+//                    }
+//                    VStack(alignment: .leading) {
+//                        
+//                        
+//                        Text((account.displayName ?? "@noname") )
+//                            .font(.scaledSubheadline)
+//                            .foregroundStyle(Color.secondary)
+//                        
+//                        Text(account.email ?? "-")
+//                            .font(.scaledSubheadline)
+//                            .foregroundStyle(Color.secondary)
+//                        
+//                        
+//                    }
+//                }
+//            }
             .padding(.leading, userPreferences.isSidebarExpanded ? 16 : 0)
-            .onTapGesture {
-                routerPath.presentedSheet = .accountEditInfo
-            }
         }
-        .help(accountButtonTitle(accountName: account.displayName ?? account.email))
+        .help(accountButtonTitle(accountName: account.displayName))
         .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth, height: 50)
         .padding(.vertical, 8)
-        .background(selectedTab == .favorite  ?
+        .background(selectedTab == .profile && account.uid == authenticationManager.currentAccount?.uid ?
                     theme.secondaryBackgroundColor : .clear)
     }
     
@@ -144,8 +153,7 @@ struct SideBarView<Content: View>: View {
     
     private var tabsView: some View {
         ForEach(tabs) { tab in
-            if tab != .favorite && sidebarTabs.isEnabled(tab) {
-//            if sidebarTabs.isEnabled(tab) {
+            if tab != .profile && sidebarTabs.isEnabled(tab) {
                 Button {
                     // ensure keyboard is always dismissed when selecting a tab
                     hideKeyboard()
@@ -158,12 +166,7 @@ struct SideBarView<Content: View>: View {
                     }
                     selectedTab = tab
                     SoundEffectManager.shared.playSound(.tabSelection)
-//                    if tab == .notifications {
-//                        if let token = appAccounts.currentAccount.oauthToken {
-//                            userPreferences.notificationsCount[token] = 0
-//                        }
-//                        watcher.unreadNotificationsCount = 0
-//                    }
+
                 } label: {
                     makeIconForTab(tab: tab)
                 }
@@ -178,13 +181,14 @@ struct SideBarView<Content: View>: View {
             if horizontalSizeClass == .regular {
                 ScrollView {
                     VStack(alignment: .center) {
-                        if let account = authenticationManager.currentAccount, authenticationManager.isAuth {
-                            makeAccountButton(account:account,
-                                              showBadge: false)
-                            .onTapGesture {
-                                selectedTab = .profile
+                       
+                        if let account = authenticationManager.currentAccount {
+                            makeAccountButton(account: account,
+                                              showBadge: account.uid != authenticationManager.currentAccount?.uid)
+                            if account.uid == authenticationManager.currentAccount?.uid {
+                                tabsView
                             }
-                            tabsView
+                            
                         } else {
                             tabsView
                         }
@@ -198,12 +202,12 @@ struct SideBarView<Content: View>: View {
                         postButton
                             .padding(.vertical, 24)
                             .padding(.leading, userPreferences.isSidebarExpanded ? 18 : 0)
-                        if userPreferences.isSidebarExpanded {
-                            Text("menu.new-post")
-                                .font(.subheadline)
-                                .foregroundColor(theme.labelColor)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                        }
+//                        if userPreferences.isSidebarExpanded {
+//                            Text("menu.new-post")
+//                                .font(.subheadline)
+//                                .foregroundColor(theme.labelColor)
+//                                .frame(maxWidth: .infinity, alignment: .leading)
+//                        }
                     }
                     .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth)
                     .background(.thinMaterial)
@@ -215,7 +219,6 @@ struct SideBarView<Content: View>: View {
         .background(.thinMaterial)
         .edgesIgnoringSafeArea(.bottom)
         .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-        .withAppRouter()
     }
 }
 
