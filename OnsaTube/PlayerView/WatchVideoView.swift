@@ -65,6 +65,7 @@ struct WatchVideoView: View {
                             .init(color: (colorScheme == .light ? Color.black.opacity(0.25) : Color.white.opacity(0.75)), location: 0.7),
                             .init(color: (colorScheme == .light ? Color.black.opacity(0.65) : Color.white.opacity(0.35)), location: 1)
                         ]))
+                    #if !os(visionOS)
                         .clipShape(
                             .rect(
                                 topLeadingRadius: 0,
@@ -73,6 +74,17 @@ struct WatchVideoView: View {
                                 topTrailingRadius: 0
                             )
                         )
+                    #else
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: 12,
+                                bottomTrailingRadius: 12,
+                                topTrailingRadius: 0
+                            )
+                        )
+                    #endif
+#if !os(visionOS)
                     Rectangle()
                         .fill(LinearGradient(colors: usedAnimationColors, startPoint: animateStartPoint, endPoint: animateEndPoint).shadow(.inner(radius: 5)))
                         .blendMode(.multiply)
@@ -84,6 +96,7 @@ struct WatchVideoView: View {
                                 topTrailingRadius: 0
                             )
                         )
+#endif
                 }
                 .ignoresSafeArea(.all)
                 .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top)

@@ -6,7 +6,6 @@ import SwiftUI
 import YouTubeKit
 import FirebaseAuth
 
-
 public enum RouterDestination: Hashable {
    
     case mutedAccounts
