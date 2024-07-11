@@ -84,6 +84,11 @@ struct SupportAppView: View {
         }, message: {
             Text("settings.support.alert.error.message")
         })
+        .alert("Restore Purchases", isPresented: $bindableInAppPurchaseManager.restorePurchaseDisplayed, actions: {
+            Button { inAppPurchaseManager.restorePurchaseDisplayed = false } label: { Text("alert.button.ok") }
+        }, message: {
+            Text("Your purchases have been successfully restored. All your previous purchases are now available.")
+        })
         .onAppear {
             inAppPurchaseManager.loadingProducts = true
             Task {

@@ -1,7 +1,7 @@
 Terms of Use
 Use of OnsaTube is governed by Apple’s Standard EULA for apps.
 
-Tips provided in OnsaTube do no unlock any additional content in the app.
+Tips provided in OnsaTube do no unlock any additional content in the app but an icon.
 
 Subscriptions will automatically renew unless canceled within 24-hours before the end of the current period. You can cancel anytime with your iTunes account settings. Any unused portion of a free trial will be forfeited if you purchase a subscription. Auto-renewal may be turned off by the user, by going to the user’s Account Settings after purchase. The duration and price of each subscription is displayed on the purchase screen, and updated at the time of purchase.
 

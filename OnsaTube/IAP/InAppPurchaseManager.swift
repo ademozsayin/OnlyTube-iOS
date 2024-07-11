@@ -29,6 +29,7 @@ import RevenueCat
     var isProcessingPurchase: Bool = false
     var purchaseSuccessDisplayed: Bool = false
     var purchaseErrorDisplayed: Bool = false
+    var restorePurchaseDisplayed: Bool = false
     private(set) var availablePackages: [Package] = []
     
     init() {
@@ -95,6 +96,7 @@ import RevenueCat
         do {
             let info = try await Purchases.shared.restorePurchases()
             self.customerInfo = info
+            restorePurchaseDisplayed = true
         } catch {
             print(error)
         }

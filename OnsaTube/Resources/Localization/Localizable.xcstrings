@@ -616,6 +616,9 @@
     "Remove from playlist" : {
 
     },
+    "Restore Purchases" : {
+
+    },
     "Retry" : {
 
     },
@@ -1407,7 +1410,14 @@
 
     },
     "Tips provided in app do no unlock any additional content." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips provided in app do no unlock any additional content but an icon."
+          }
+        }
+      }
     },
     "Title" : {
 
@@ -1437,6 +1447,9 @@
 
     },
     "You have successfully selected all relevant categories." : {
+
+    },
+    "Your purchases have been successfully restored. All your previous purchases are now available." : {
 
     }
   },

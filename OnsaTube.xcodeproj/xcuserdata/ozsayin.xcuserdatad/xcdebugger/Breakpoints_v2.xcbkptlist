@@ -126,8 +126,8 @@
             filePath = "OnsaTube/Tabs/Settings/SupportAppView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "subscriptionSection"
             landmarkType = "24">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "OnsaTube/Tabs/Settings/SupportAppView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "tipsSection"
             landmarkType = "24">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "OnsaTube/Tabs/Settings/SupportAppView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "tipsSection"
             landmarkType = "24">
          </BreakpointContent>
@@ -290,36 +290,6 @@
             endingLineNumber = "105"
             landmarkName = "open(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B042C6C5-71FF-4063-B4FC-BFC6A56EE1E6 - 1cf326bc73bbb5bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OnsaTube.InAppSafariManager.open(Foundation.URL) -&gt; SwiftUI.OpenURLAction.Result"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/App/SafariRouter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106">
-               </Location>
-               <Location
-                  uuid = "B042C6C5-71FF-4063-B4FC-BFC6A56EE1E6 - 3a3214032d89d988"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Swift.MainActor @Sendable () -&gt; () in OnsaTube.InAppSafariManager.open(Foundation.URL) -&gt; SwiftUI.OpenURLAction.Result"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/App/SafariRouter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -832,36 +802,6 @@
             endingLineNumber = "26"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "F8DE8A8E-23CA-4137-8D69-C978F535B5FC - cf5a92c105a11507"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OnsaTube.PlaylistDetailsView.body.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Playlist/PlaylistDetailsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26">
-               </Location>
-               <Location
-                  uuid = "F8DE8A8E-23CA-4137-8D69-C978F535B5FC - ddb0165d5b6980b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in OnsaTube.PlaylistDetailsView.body.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Playlist/PlaylistDetailsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -894,36 +834,6 @@
             endingLineNumber = "23"
             landmarkName = "PlaylistDetailsView"
             landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "A03BF60C-9FE0-4412-86F5-214FE9A9548D - e25f6240b846fd9b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "property wrapper backing initializer of OnsaTube.PlaylistDetailsView.network : OnsaTube.NetworkReachabilityModel"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Playlist/PlaylistDetailsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0">
-               </Location>
-               <Location
-                  uuid = "A03BF60C-9FE0-4412-86F5-214FE9A9548D - 2db984632192f0b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OnsaTube.PlaylistDetailsView.init(playlist: YouTubeKit.YTPlaylist) -&gt; OnsaTube.PlaylistDetailsView"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Playlist/PlaylistDetailsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1708,36 +1618,6 @@
             endingLineNumber = "144"
             landmarkName = "scene(_:continue:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "A7365110-A55A-4536-8615-69A064C887C9 - 75d9e561f8dbd3c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DesignSystem.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/App/OnsaTubeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144">
-               </Location>
-               <Location
-                  uuid = "A7365110-A55A-4536-8615-69A064C887C9 - 75d9e561f8dbd3c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DesignSystem.SceneDelegate.scene(_: __C.UIScene, continue: __C.NSUserActivity) -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/App/OnsaTubeApp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1994,36 +1874,6 @@
             endingLineNumber = "54"
             landmarkName = "register()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "0ECB61A2-3432-44A3-AB31-23AAAE66E7DE - d31936235847ece2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OnsaTube.RegisterViewModel.register() async -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/Register/RegisterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54">
-               </Location>
-               <Location
-                  uuid = "0ECB61A2-3432-44A3-AB31-23AAAE66E7DE - 5087710145e145e3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OnsaTube.RegisterViewModel.register() async -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/Register/RegisterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2040,50 +1890,6 @@
             endingLineNumber = "58"
             landmarkName = "register()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "573563DD-89AA-4CEA-A144-A1098DF5AFFF - ca15a06f90b95da6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OnsaTube.RegisterViewModel.register() async -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/Register/RegisterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-               <Location
-                  uuid = "573563DD-89AA-4CEA-A144-A1098DF5AFFF - d31936235847efa8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for OnsaTube.RegisterViewModel.register() async -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/Register/RegisterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-               <Location
-                  uuid = "573563DD-89AA-4CEA-A144-A1098DF5AFFF - 5087710145e146a9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for OnsaTube.RegisterViewModel.register() async -&gt; ()"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/Register/RegisterViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2532,36 +2338,6 @@
             endingLineNumber = "116"
             landmarkName = "uploadAvatar(data:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "EF9E76E8-E709-40CD-8F93-9C6C68928871 - 1a9b7627717d57c0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116">
-               </Location>
-               <Location
-                  uuid = "EF9E76E8-E709-40CD-8F93-9C6C68928871 - 1a9b7627717d57c0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "116"
-                  endingLineNumber = "116">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2578,36 +2354,6 @@
             endingLineNumber = "125"
             landmarkName = "uploadAvatar(data:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "4D46C9BF-4EDD-4D26-A10E-91EC1553AE79 - 8db5e53e6edd8096"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125">
-               </Location>
-               <Location
-                  uuid = "4D46C9BF-4EDD-4D26-A10E-91EC1553AE79 - 57f2fb4da3e16297"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "125"
-                  endingLineNumber = "125">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2640,36 +2386,6 @@
             endingLineNumber = "123"
             landmarkName = "uploadAvatar(data:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BD51FFA9-5A62-465D-B7B6-4219158E3477 - 8db5e53e6edd80d0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123">
-               </Location>
-               <Location
-                  uuid = "BD51FFA9-5A62-465D-B7B6-4219158E3477 - 57f2fb4da3e162d1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for OnsaTube.EditAccountViewModel.uploadAvatar(data: Foundation.Data) async -&gt; Swift.Bool"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/EditAccountViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "123"
-                  endingLineNumber = "123">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2686,36 +2402,6 @@
             endingLineNumber = "45"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "C6499552-BC19-4BD9-856E-F29D30EE0928 - 2fc37d8b7b33200c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, Swift.Optional&lt;SwiftUI.NavigationLink&lt;SwiftUI.Label&lt;SwiftUI.Text, SwiftUI.Image&gt;, OnsaTube.PushNotificationsView&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0)&gt; in OnsaTube.AccountSettingsView.body.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/AccountSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45">
-               </Location>
-               <Location
-                  uuid = "C6499552-BC19-4BD9-856E-F29D30EE0928 - 2fc37d8b7b33200c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.buttonStyle&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.PrimitiveButtonStyle&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, Swift.Optional&lt;SwiftUI.NavigationLink&lt;SwiftUI.Label&lt;SwiftUI.Text, SwiftUI.Image&gt;, OnsaTube.PushNotificationsView&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.listRowBackground&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(Swift.Optional&lt;&#x3c4;_1_0&gt;) -&gt; some&gt;&gt;.0)&gt; in OnsaTube.AccountSettingsView.body.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Authentication/AppAccount/AccountSettingsView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3106,7 +2792,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "89D88C80-E862-460E-B11B-F051D88280CD"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OnsaTube/App/SideBarView.swift"
@@ -3708,64 +3394,6 @@
             endingLineNumber = "132"
             landmarkName = "accountsSection"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "079BA515-8C89-4213-A64C-AB28E0E51C86 - bce1a075723e68ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132">
-               </Location>
-               <Location
-                  uuid = "079BA515-8C89-4213-A64C-AB28E0E51C86 - 8596babb813fd3b5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132">
-               </Location>
-               <Location
-                  uuid = "079BA515-8C89-4213-A64C-AB28E0E51C86 - 4f7f983e06cde0b7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132">
-               </Location>
-               <Location
-                  uuid = "079BA515-8C89-4213-A64C-AB28E0E51C86 - 37c4941b60b2a4b5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "132"
-                  endingLineNumber = "132">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3782,36 +3410,6 @@
             endingLineNumber = "135"
             landmarkName = "accountsSection"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "F4AD2E67-87B0-4F41-8688-2A3DAC59414A - 4f7f983e06cde02b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136">
-               </Location>
-               <Location
-                  uuid = "F4AD2E67-87B0-4F41-8688-2A3DAC59414A - 37c4941b60b2a429"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt; in closure #1 () -&gt; SwiftUI._ConditionalContent&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of SwiftUI.View.tint(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0&gt;&gt;, OnsaTube.AppAccountView)&gt;&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.editAccountButton : some&gt;&gt;.0)&gt;, &lt;&lt;opaque return type of OnsaTube.SettingsTabs.addAccountButton : some&gt;&gt;.0&gt; in OnsaTube.SettingsTabs.accountsSection.getter : some"
-                  moduleName = "OnsaTube"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ozsayin/Desktop/OnlyJose/OnsaTube/Tabs/Settings/SettingsTab.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4048,8 +3646,8 @@
             filePath = "OnsaTube/IAP/InAppPurchaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4064,8 +3662,8 @@
             filePath = "OnsaTube/IAP/InAppPurchaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4080,8 +3678,8 @@
             filePath = "OnsaTube/IAP/InAppPurchaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4176,10 +3774,42 @@
             filePath = "OnsaTube/IAP/InAppPurchaseManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "refreshUserInfo()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1255E9E2-B171-485C-B4B3-F58355B6B41C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnsaTube/App/SideBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "postButton"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7DFF076-E7DD-4D17-B2E6-B7116BC9125A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OnsaTube/App/SideBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "postButton"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
