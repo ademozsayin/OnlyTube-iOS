@@ -25,10 +25,19 @@ struct IconSelectorView: View {
         }
         
         case primary = 0
-        case alt1, alt2, alt3
+        case alt1, alt2, alt3, alt4, alt5, alt6, alt7
         
         var appIconName: String {
             return "AppIconAlternate\(rawValue)"
+        }
+        
+        var isPremium: Bool {
+            switch self {
+                case .alt4:
+                    return true
+                default:
+                    return false
+            }
         }
     }
     
@@ -43,7 +52,10 @@ struct IconSelectorView: View {
                 .alt1,
                 .alt2,
                 .alt3,
-                
+                .alt4,
+                .alt5,
+                .alt6,
+                .alt7
             ])
         ]
     }
@@ -51,11 +63,14 @@ struct IconSelectorView: View {
     @Environment(Theme.self) private var theme
     @State private var currentIcon = UIApplication.shared.alternateIconName ?? Icon.primary.appIconName
     @Environment(UserPreferences.self) private var preferences
+    @Environment(RouterPath.self) private var routerPath
 
     private let columns = [GridItem(.adaptive(minimum: 125, maximum: 1024))]
     
+    @Environment(InAppPurchaseManager.self) private var inAppPurchaseManager
+
     var body: some View {
-        ScrollView {
+        ScrollView (.vertical){
             VStack(alignment: .leading) {
                 ForEach(IconSelector.items) { item in
                     Section {
@@ -69,6 +84,9 @@ struct IconSelectorView: View {
             .padding(6)
             .navigationTitle("settings.app.icon.navigation-title")
         }
+        .onAppear {
+            print("inAppPurchaseManager.isSupporter : \(inAppPurchaseManager.isSupporter)")
+        }
 #if !os(visionOS)
         .background(theme.primaryBackgroundColor)
 #endif
@@ -78,16 +96,24 @@ struct IconSelectorView: View {
         LazyVGrid(columns: columns, spacing: 6) {
             ForEach(icons) { icon in
                 Button {
-                    currentIcon = icon.appIconName
-                    preferences.appIcon = currentIcon
-                    if icon.rawValue == Icon.primary.rawValue {
-                        UIApplication.shared.setAlternateIconName(nil)
+                    
+                    if !inAppPurchaseManager.isSupporter && icon.isPremium {
+                        routerPath.presentedSheet = .support
                     } else {
-                        UIApplication.shared.setAlternateIconName(icon.appIconName) { err in
-                            guard let err else { return }
-                            assertionFailure("\(err.localizedDescription) - Icon name: \(icon.appIconName)")
+                        
+                        currentIcon = icon.appIconName
+                        preferences.appIcon = currentIcon
+                        
+                        if icon.rawValue == Icon.primary.rawValue {
+                            UIApplication.shared.setAlternateIconName(nil)
+                        } else {
+                            UIApplication.shared.setAlternateIconName(icon.appIconName) { err in
+                                guard let err else { return }
+                                assertionFailure("\(err.localizedDescription) - Icon name: \(icon.appIconName)")
+                            }
                         }
                     }
+                 
                 } label: {
                     ZStack(alignment: .bottomTrailing) {
                         Image(uiImage: .init(named: icon.appIconName) ?? .init())
@@ -100,6 +126,17 @@ struct IconSelectorView: View {
                             Image(systemName: "checkmark.seal.fill")
                                 .padding(4)
                                 .tint(.green)
+                        }
+                        if icon.isPremium && !inAppPurchaseManager.isSupporter {
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Image(systemName: "lock.fill")
+                                        .padding(4)
+                                        .tint(theme.tintColor) // Set the color of the lock image
+                                }
+                                Spacer()
+                            }
                         }
                     }
                 }

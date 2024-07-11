@@ -34,7 +34,9 @@ struct OnsaTubeApp: App {
     @State var isSupporter: Bool = false
     @State var pushNotificationsService = PushNotificationsService.shared
     @State var authenticationManager = AuthenticationManager.shared
+    @State var inAppPurchaseManager = InAppPurchaseManager.shared
 
+    
     init() {
         do {
             try Tips.configure([
@@ -74,13 +76,13 @@ struct OnsaTubeApp: App {
 
     
     func setupRevenueCat() {
-        Purchases.logLevel = .error
-        Purchases.configure(withAPIKey: "appl_UoVNogcNbQvbVhJdPtMSJJffSiF")
-        Purchases.shared.getCustomerInfo { info, _ in
-            if info?.entitlements["Supporter"]?.isActive == true {
-                isSupporter = true
-            }
-        }
+//        Purchases.logLevel = .error
+//        Purchases.configure(withAPIKey: "appl_UoVNogcNbQvbVhJdPtMSJJffSiF")
+//        Purchases.shared.getCustomerInfo { info, _ in
+//            if info?.entitlements["Supporter"]?.isActive == true {
+//                isSupporter = true
+//            }
+//        }
     }
 }
 

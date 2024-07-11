@@ -19,6 +19,8 @@ extension OnsaTubeApp {
                 .environment(userPreferences)
                 .environment(theme)
                 .environment(pushNotificationsService)
+                .environment(\.isSupporter, isSupporter)
+                .environment(inAppPurchaseManager)
                 .onAppear {
                     setupRevenueCat()
                     refreshPushSubs()

@@ -95,6 +95,7 @@
 		B7804CA62C3C0F53001192B4 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */; };
 		B7804CA82C3C18B2001192B4 /* AccountDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */; };
 		B7804CAA2C3C1F7E001192B4 /* AccountDetailContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */; };
+		B78754A52C3FB93900348DAC /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78754A42C3FB93900348DAC /* InAppPurchaseManager.swift */; };
 		B79367722C2F2521003AA6E1 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = B79367712C2F2521003AA6E1 /* Notifications */; };
 		B79367752C2F265A003AA6E1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79367742C2F265A003AA6E1 /* KeychainSwift */; };
 		B79367772C2F3495003AA6E1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B79367762C2F3495003AA6E1 /* FirebaseMessaging */; };
@@ -112,7 +113,7 @@
 		B79B71CB2C2A107C00108D6E /* PlaylistDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CA2C2A107C00108D6E /* PlaylistDetailsView.swift */; };
 		B79B71CD2C2A11F000108D6E /* CustomNavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CC2C2A11F000108D6E /* CustomNavigationTitleView.swift */; };
 		B79B71CF2C2A136D00108D6E /* CustomNavigationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71CE2C2A136D00108D6E /* CustomNavigationHeaderView.swift */; };
-		B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
+		B79C3B592C3E786400EC01C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7A5E80D2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80C2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift */; };
 		B7A5E80F2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E80E2C2378CF0038EDE1 /* SidebarEntriesSettingsView.swift */; };
 		B7A5E8112C245F990038EDE1 /* ElementsInfiniteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8102C245F990038EDE1 /* ElementsInfiniteScrollView.swift */; };
@@ -212,7 +213,6 @@
 		B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = B7FCDE5D2C224A7B004E0C76 /* StoreKitTestCertificate.cer */; };
 		B7FCDE602C2318FA004E0C76 /* IconSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCDE5F2C2318FA004E0C76 /* IconSelectorView.swift */; };
 		B7FE95B82C10DC9900402DE1 /* OnsaTubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95B72C10DC9900402DE1 /* OnsaTubeApp.swift */; };
-		B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95BD2C10DC9A00402DE1 /* Assets.xcassets */; };
 		B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FE95C02C10DC9A00402DE1 /* Preview Assets.xcassets */; };
 		B7FE95CB2C10DC9A00402DE1 /* OnsaTubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95CA2C10DC9A00402DE1 /* OnsaTubeTests.swift */; };
 		B7FE95D52C10DC9A00402DE1 /* OnsaTubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FE95D42C10DC9A00402DE1 /* OnsaTubeUITests.swift */; };
@@ -362,6 +362,7 @@
 		B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
 		B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailHeaderView.swift; sourceTree = "<group>"; };
 		B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailContextMenu.swift; sourceTree = "<group>"; };
+		B78754A42C3FB93900348DAC /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
 		B79367782C2F661A003AA6E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B793677A2C2F6C09003AA6E1 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
@@ -733,6 +734,14 @@
 			path = AccountDetail;
 			sourceTree = "<group>";
 		};
+		B78754A32C3FB92600348DAC /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				B78754A42C3FB93900348DAC /* InAppPurchaseManager.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
 		B79B71C62C2A031300108D6E /* Channel */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +905,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B78754A32C3FB92600348DAC /* IAP */,
 				B74C7A862C346B0500A1CA9C /* Authentication */,
 				B79B71C92C2A106B00108D6E /* Playlist */,
 				B79B71C62C2A031300108D6E /* Channel */,
@@ -1214,6 +1224,7 @@
 				B7FE960A2C10E7A600402DE1 /* refresh.wav in Resources */,
 				B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */,
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
+				B79C3B592C3E786400EC01C1 /* Assets.xcassets in Resources */,
 				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
 				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
@@ -1226,7 +1237,6 @@
 				B7FE96062C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf in Resources */,
 				B7FE96092C10E7A600402DE1 /* OpenDyslexic-Regular.otf in Resources */,
 				B76794512C17221500A623BE /* Localizable.xcstrings in Resources */,
-				B7FE95BE2C10DC9A00402DE1 /* Assets.xcassets in Resources */,
 				B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */,
 				B7FE96012C10E7A600402DE1 /* glass.wav in Resources */,
 				B746B0852C2613F4003D156E /* PRIVACY.MD in Resources */,
@@ -1292,7 +1302,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7A5E8072C236C690038EDE1 /* Assets.xcassets in Sources */,
 				B733A6752C249A8600E0BDC4 /* AVMobileAuxiliaryControl.swift in Sources */,
 				B74C7A832C3339E300A1CA9C /* GradientBackgroundAnimation.swift in Sources */,
 				B7FE960E2C11CCA800402DE1 /* SettingsTab.swift in Sources */,
@@ -1424,6 +1433,7 @@
 				B7A5E8B72C2486110038EDE1 /* RemoveVideoFromPlaylistContextMenuButtonView.swift in Sources */,
 				B7A5E8112C245F990038EDE1 /* ElementsInfiniteScrollView.swift in Sources */,
 				B7588F6B2C35E5D7002E29AE /* Style+Modifiers.swift in Sources */,
+				B78754A52C3FB93900348DAC /* InAppPurchaseManager.swift in Sources */,
 				B7A5E8552C246F4A0038EDE1 /* DownloadedVideo+toYTVideo.swift in Sources */,
 				B7334BF82C28CE0000D60C60 /* TimelineView.swift in Sources */,
 				B7A5E8A82C2486110038EDE1 /* AddToPlaylistView.swift in Sources */,
@@ -1696,7 +1706,7 @@
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconAlternate3 AppIconAlternate2 AppIconAlternate1 AppIconAlternate0";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OnsaTube/OnsaTube.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1741,7 +1751,7 @@
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconAlternate3 AppIconAlternate2 AppIconAlternate1 AppIconAlternate0";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = OnsaTube/OnsaTube.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

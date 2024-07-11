@@ -48,6 +48,10 @@ struct AboutView: View {
                         .resizable()
                         .frame(width: 50, height: 50)
                         .cornerRadius(4)
+//                    Image(uiImage: .init(named: "AppIconAlternate4")!)
+//                        .resizable()
+//                        .frame(width: 50, height: 50)
+//                        .cornerRadius(4)
                     Spacer()
                 }
 #endif

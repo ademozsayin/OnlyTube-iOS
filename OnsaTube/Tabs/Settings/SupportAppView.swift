@@ -53,21 +53,15 @@ struct SupportAppView: View {
         }
     }
     
-    
-    @Environment(Theme.self) private var theme
     @Environment(\.openURL) private var openURL
-    
-    @State private var loadingProducts: Bool = false
-    @State private var products: [StoreProduct] = []
-    @State private var subscription: StoreProduct?
-    @State private var subscriptions: [StoreProduct] = []
-    @State private var customerInfo: CustomerInfo?
-    @State private var isProcessingPurchase: Bool = false
-    @State private var purchaseSuccessDisplayed: Bool = false
-    @State private var purchaseErrorDisplayed: Bool = false
-    @State private var availablePackages: [Package] = []
-    
+
+    @Environment(Theme.self) private var theme
+    @Environment(InAppPurchaseManager.self) private var inAppPurchaseManager
+   
     var body: some View {
+        
+        @Bindable var bindableInAppPurchaseManager = inAppPurchaseManager
+
         Form {
             aboutSection
             subscriptionSection
@@ -80,66 +74,35 @@ struct SupportAppView: View {
         .scrollContentBackground(.hidden)
         .background(theme.secondaryBackgroundColor)
 #endif
-        .alert("settings.support.alert.title", isPresented: $purchaseSuccessDisplayed, actions: {
-            Button { purchaseSuccessDisplayed = false } label: { Text("alert.button.ok") }
+        .alert("settings.support.alert.title", isPresented: $bindableInAppPurchaseManager.purchaseSuccessDisplayed, actions: {
+            Button { inAppPurchaseManager.purchaseSuccessDisplayed = false } label: { Text("alert.button.ok") }
         }, message: {
             Text("settings.support.alert.message")
         })
-        .alert("alert.error", isPresented: $purchaseErrorDisplayed, actions: {
-            Button { purchaseErrorDisplayed = false } label: { Text("alert.button.ok") }
+        .alert("alert.error", isPresented: $bindableInAppPurchaseManager.purchaseErrorDisplayed, actions: {
+            Button { inAppPurchaseManager.purchaseErrorDisplayed = false } label: { Text("alert.button.ok") }
         }, message: {
             Text("settings.support.alert.error.message")
         })
         .onAppear {
-            loadingProducts = true
-            fetchStoreProducts()
-            refreshUserInfo()
-        }
-    }
-    
-    private func purchase(product: StoreProduct) async {
-        if !isProcessingPurchase {
-            isProcessingPurchase = true
-            do {
-                let result = try await Purchases.shared.purchase(product: product)
-                print(result)
-                if !result.userCancelled {
-                    purchaseSuccessDisplayed = true
-                }
-            } catch {
-                purchaseErrorDisplayed = true
-            }
-            isProcessingPurchase = false
-        }
-    }
-    
-    private func fetchStoreProducts() {
-
-        Purchases.shared.getOfferings { offerings,  error in
-            self.subscriptions = offerings?.offering(identifier: "Supporter")?.availablePackages.map{$0.storeProduct} ?? []
-            self.subscription = offerings?.offering(identifier: "Supporter")?.availablePackages.map{$0.storeProduct}.first
-            self.products = offerings?.offering(identifier: "Tips")?.availablePackages.map{$0.storeProduct} ?? []
-            
-            withAnimation {
-                loadingProducts = false
+            inAppPurchaseManager.loadingProducts = true
+            Task {
+                await inAppPurchaseManager.fetchStoreProducts()
+                await inAppPurchaseManager.refreshUserInfo()
             }
         }
     }
     
-    private func refreshUserInfo() {
-        Purchases.shared.getCustomerInfo { info, _ in
-            customerInfo = info
-        }
-    }
+   
     
     private func makePurchaseButton(product: StoreProduct) -> some View {
         Button {
             Task {
-                await purchase(product: product)
-                refreshUserInfo()
+                await inAppPurchaseManager.purchase(product: product)
+                await inAppPurchaseManager.refreshUserInfo()
             }
         } label: {
-            if isProcessingPurchase {
+            if inAppPurchaseManager.isProcessingPurchase {
                 ProgressView()
             } else {
                 Text(product.localizedPriceString)
@@ -197,10 +160,11 @@ struct SupportAppView: View {
                     )
                 }
             
-            if loadingProducts {
+            if inAppPurchaseManager.loadingProducts {
                 loadingPlaceholder
             } else  {
-                    if customerInfo?.entitlements["Supporter"]?.isActive == true {
+                if inAppPurchaseManager.customerInfo?.entitlements["Supporter"]?.isActive == true {
+                       
                         Text(Image(systemName: "checkmark.seal.fill"))
                             .foregroundColor(theme.tintColor)
                             .baselineOffset(-1) +
@@ -208,7 +172,7 @@ struct SupportAppView: View {
                             .font(.scaledSubheadline)
                     } else {
                         HStack {
-                            if customerInfo?.entitlements["Supporter"]?.isActive == true {
+                            if inAppPurchaseManager.customerInfo?.entitlements["Supporter"]?.isActive == true {
                                 Text(Image(systemName: "checkmark.seal.fill"))
                                     .foregroundColor(theme.tintColor)
                                     .baselineOffset(-1) +
@@ -238,7 +202,7 @@ struct SupportAppView: View {
                                 
                                 }
                                 Spacer()
-                                if let subscription {
+                                if let subscription = inAppPurchaseManager.subscription {
                                     makePurchaseButton(product: subscription)
                                 }
                             }
@@ -248,7 +212,7 @@ struct SupportAppView: View {
                 }
             
         } footer: {
-            if customerInfo?.entitlements.active.isEmpty == true {
+            if inAppPurchaseManager.customerInfo?.entitlements.active.isEmpty == true {
                 Text("settings.support.supporter.subscription-info")
             }
         }
@@ -259,11 +223,11 @@ struct SupportAppView: View {
     
     private var tipsSection: some View {
         Section {
-            if loadingProducts {
+            if inAppPurchaseManager.loadingProducts {
                 loadingPlaceholder
             } else {
                 Text("Tips")
-                ForEach(products, id: \.productIdentifier) { product in
+                ForEach(inAppPurchaseManager.products, id: \.productIdentifier) { product in
                     let tip = Tip(productId: product.productIdentifier)
                     HStack {
                         VStack(alignment: .leading) {
@@ -290,8 +254,8 @@ struct SupportAppView: View {
             HStack {
                 Spacer()
                 Button {
-                    Purchases.shared.restorePurchases { info, _ in
-                        customerInfo = info
+                    Task {
+                        await inAppPurchaseManager.restorePurchases()
                     }
                 } label: {
                     Text("settings.support.restore-purchase.button")
@@ -344,9 +308,9 @@ struct SupportAppView: View {
     }
 }
 
-#Preview {
-    SupportAppView()
-}
+//#Preview {
+//    SupportAppView()
+//}
 
 extension View {
     /// Renders a view if the provided  `condition` is met.
