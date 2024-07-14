@@ -9,6 +9,7 @@ import SwiftUI
 import InfiniteScrollViews
 import YouTubeKit
 import DesignSystem
+import Env
 
 struct PlaylistDetailsView: View {
 //    @Environment(\.colorScheme) private var colorScheme
@@ -22,6 +23,10 @@ struct PlaylistDetailsView: View {
     @ObservedObject private var VPM = VideoPlayerModel.shared
     @ObservedObject private var network = NetworkReachabilityModel.shared
     private let changeIndex: Int = 0
+    
+    @Environment(RouterPath.self) private var router
+
+    
     var body: some View {
         GeometryReader { geometry in
             //    ScrollView {
@@ -65,7 +70,8 @@ struct PlaylistDetailsView: View {
                                 shouldReloadScrollView: $shouldReloadScrollView,
                                 fetchMoreResultsAction: {
                                     model.fetchPlaylistContinuation()
-                                }
+                                },
+                                routerPath: router
                             )
                         }
                     }

@@ -57,7 +57,10 @@ struct SupportAppView: View {
 
     @Environment(Theme.self) private var theme
     @Environment(InAppPurchaseManager.self) private var inAppPurchaseManager
-   
+//   
+//    @EnvironmentObject
+//    private var purchaseManager: PurchaseManager
+//    
     var body: some View {
         
         @Bindable var bindableInAppPurchaseManager = inAppPurchaseManager
@@ -94,7 +97,14 @@ struct SupportAppView: View {
             Task {
                 await inAppPurchaseManager.fetchStoreProducts()
                 await inAppPurchaseManager.refreshUserInfo()
+                
+//                do {
+//                    try await purchaseManager.loadProducts()
+//                } catch {
+//                    
+//                }
             }
+            
         }
     }
     

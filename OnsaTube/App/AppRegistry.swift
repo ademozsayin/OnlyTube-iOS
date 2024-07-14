@@ -85,6 +85,15 @@ extension View {
                     
                 case .categorySelection:
                     CategorySelectionView()
+                        .withEnvironments()
+                    
+                case .sleepTimer:
+                    SleepTimerView()
+                        .withEnvironments()
+                    
+                case .whatsNew:
+                    WhatsNewHosting()
+                        .withEnvironments()
 //
             }
         }

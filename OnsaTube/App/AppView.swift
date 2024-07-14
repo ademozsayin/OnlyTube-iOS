@@ -39,6 +39,7 @@ struct AppView: View {
 
     @ObservedObject var PM = PopupsModel.shared
 
+   
     
     var body: some View {
 #if os(visionOS)
@@ -111,6 +112,18 @@ struct AppView: View {
                 
             }
         }
+#if os(visionOS)
+        .ornament(attachmentAnchor: .scene(.center)) {
+            if  VPM.currentItem != nil {
+                NowPlayingBarView(
+                    sheetAnimation: sheetAnimation,
+                    isSheetPresented: watchVideoBinding,
+                    isSettingsSheetPresented: settingsSheetBinding.wrappedValue
+                )
+                
+            }
+        }
+#else
         .safeAreaInset(edge: .bottom, content: {
             if  VPM.currentItem != nil {
                 NowPlayingBarView(
@@ -118,22 +131,20 @@ struct AppView: View {
                     isSheetPresented: watchVideoBinding,
                     isSettingsSheetPresented: settingsSheetBinding.wrappedValue
                 )
-
             }
         })
+#endif
         .sheet(isPresented: watchVideoBinding, content: {
             WatchVideoView(videoId: nil)
 #if os(visionOS)
                 .onTapGesture {
-                    watchVideoBinding.wrappedValue.toggle()
+                    openWindow(value: WindowDestinationEditor.miniPlayer(videoId: nil))
                 }
 #endif
 #if !os(visionOS)
                 .presentationDragIndicator(.hidden)
 #endif
         })
-     
-        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
         .fullScreenCover(isPresented: $disclaimerPresented, content: {
             DisclaimerView()
         })
@@ -164,6 +175,9 @@ struct AppView: View {
             }
 //            .padding(.bottom, 200)
         })
+        .id(authenticationManager.currentAccount?.uid)
+        .withSheetDestinations(sheetDestinations: $appRouterPath.presentedSheet)
+
     }
     
 #if !os(visionOS)

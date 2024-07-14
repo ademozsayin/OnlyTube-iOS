@@ -142,7 +142,8 @@ class Model {
             switch result {
                 case .success(let response):
 //                    print(response)
-                    self.searchResponse = response
+                 
+                    
                     DispatchQueue.main.async {
                       
                         if demo {
@@ -150,14 +151,10 @@ class Model {
                             self.demoSearchResponse = response
                             end?()
                         } else {
+                            self.searchResponse = response
                             self.isFetching = false
                             self.items = response.results
                             self.state = self.items.isEmpty ? .empty : .result
-//                            if response.results.isEmpty {
-//                                self.state = .empty
-//                            } else {
-//                                self.state = .result
-//                            }
                         }
                         
                         end?()
@@ -165,6 +162,7 @@ class Model {
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
+                        print(error.localizedDescription)
                         self.error = error.localizedDescription
                         self.isFetching = false
                         self.state = .error

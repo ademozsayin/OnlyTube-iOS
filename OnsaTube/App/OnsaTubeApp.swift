@@ -29,13 +29,14 @@ struct OnsaTubeApp: App {
    
     @State var userPreferences = UserPreferences.shared
     @State var theme = Theme.shared
-    @State var selectedTab: Tab = .timeline
-    @State var appRouterPath = RouterPath()
-    @State var isSupporter: Bool = false
     @State var pushNotificationsService = PushNotificationsService.shared
     @State var authenticationManager = AuthenticationManager.shared
     @State var inAppPurchaseManager = InAppPurchaseManager.shared
-
+    
+    @State var selectedTab: Tab = .timeline
+    @State var appRouterPath = RouterPath()
+    
+    @State var isSupporter: Bool = false
     
     init() {
         do {

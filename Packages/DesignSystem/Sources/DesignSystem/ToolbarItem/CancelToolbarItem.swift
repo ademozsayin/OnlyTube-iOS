@@ -7,8 +7,17 @@ public struct CancelToolbarItem: ToolbarContent {
 
   public var body: some ToolbarContent {
     ToolbarItem(placement: .navigationBarLeading) {
-      Button("Cancel", role: .cancel, action: { dismiss() })
+        Button(CancelToolbarItem.cancel, role: .cancel, action: { dismiss() })
         .keyboardShortcut(.cancelAction)
     }
   }
+    
+}
+
+
+extension CancelToolbarItem {
+    static let cancel = NSLocalizedString(
+        "Cancel",
+        comment: "Cancel"
+    )
 }

@@ -9,6 +9,7 @@ import SwiftUI
 import Env
 import DesignSystem
 
+@MainActor
 struct DisclaimerView: View {
 //    @AppStorage("hasAcceptedDisclaimer") var hasAcceptedDisclaimer: Bool = false
     @Environment(UserPreferences.self) private var userPreferences

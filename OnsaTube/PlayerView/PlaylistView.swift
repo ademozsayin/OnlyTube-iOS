@@ -65,7 +65,6 @@ struct PlaylistView: View {
                 }
                 .frame(width: geometry.size.width * 0.475, height: geometry.size.height)
             }
-            .withAppRouter()
             .onTapGesture {
                 routerPath.navigate(to: .playlistDetails(playlist: playlist))
             }

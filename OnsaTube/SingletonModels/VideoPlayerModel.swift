@@ -17,6 +17,7 @@ import YouTubeKit
 
 class VideoPlayerModel: NSObject, ObservableObject {
 
+   
     static let shared = VideoPlayerModel()
 
     let player = CustomAVPlayer(playerItem: nil)
@@ -67,8 +68,31 @@ class VideoPlayerModel: NSObject, ObservableObject {
         thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/sgayxDJsWEI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCbvgjDm9JyIoHS5JfpjcBylHDvVg")!)]
     )
     
+    private var updateTimer: Timer?
+    
+    private var updateTimerInterval = 1 as TimeInterval {
+        didSet {
+            print("updateTimerInterval: \(updateTimerInterval)")
+        }
+    }
+    
+    @Published var sleepTimeRemaining = -1 as TimeInterval {
+        didSet {
+            print("sleepTimeRemaining: \(sleepTimeRemaining)")
+        }
+    }
+    
+    var sleepTimerOn:Bool =  false
+    
+    @Published var timeRemaining: String = "" {
+        didSet {
+            print("timeRemaining: \(timeRemaining)")
+        }
+    }
+    
     override init() {
         super.init()
+        
         player.publisher(for: \.currentItem)
             .receive(on: DispatchQueue.main)
             .map {
@@ -95,9 +119,16 @@ class VideoPlayerModel: NSObject, ObservableObject {
 
         player.publisher(for: \.timeControlStatus, options: [.initial])
             .receive(on: DispatchQueue.main)
-            .sink {
+            .sink {  [weak self] in
+                guard let self else { return }
                 if [.playing, .waitingToPlayAtSpecifiedRate].contains($0) {
 //                    Video is in pause mode
+                    print("mmmm")
+                        self.startUpdateTimer()
+                  
+                } else {
+                    print("asdasd")
+                    self.cancelUpdateTimer()
                 }
             }
             .store(in: &subscriptions)
@@ -116,8 +147,88 @@ class VideoPlayerModel: NSObject, ObservableObject {
                     self?.player.play()
                 }
             }.store(in: &subscriptions)
+        
+     
+        
+        $sleepTimeRemaining
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] time in
+                guard let self else { return }
+                self.timeRemaining = TimeFormatter.shared.playTimeFormat(time: time)
+            })
+            .store(in: &subscriptions)
+        
+        sleepTimerOn =  sleepTimeRemaining != -1
 #endif
         }
+    
+    func updateSleepRemainingTime() {
+        if sleepTimeRemaining >= 0 {
+            timeRemaining  = TimeFormatter.shared.playTimeFormat(time: VideoPlayerModel.shared.sleepTimeRemaining)
+        }
+    }
+    
+    func setSleepTimerInterval(_ stopIn: TimeInterval) {
+        sleepTimeRemaining = stopIn
+        NotificationCenter.postOnMainThread(notification: Constants.Notifications.sleepTimerChanged)
+    }
+    
+    private func startUpdateTimer() {
+        cancelUpdateTimer()
+        
+//         schedule the timer on a thread that has a run loop, the main thread being a good option
+        if Thread.isMainThread {
+            updateTimer = Timer.scheduledTimer(
+                timeInterval: updateTimerInterval,
+                target: self,
+                selector: #selector(progressTimerFired),
+                userInfo: nil,
+                repeats: true
+            )
+        } else {
+            DispatchQueue.main.sync { [weak self] in
+                guard let self else { return }
+                
+                self.updateTimer = Timer.scheduledTimer(
+                    timeInterval: self.updateTimerInterval,
+                    target: self,
+                    selector: #selector(self.progressTimerFired),
+                    userInfo: nil,
+                    repeats: true)
+            }
+        }
+    }
+    
+    private func cancelUpdateTimer() {
+        print(#function)
+//        sleepTimerOn = false
+        if Thread.isMainThread {
+            updateTimer?.invalidate()
+        } else {
+            DispatchQueue.main.sync { [weak self] in
+                self?.updateTimer?.invalidate()
+            }
+        }
+        updateTimer = nil
+    }
+    
+    @objc private func progressTimerFired() {
+        print(#function)
+        if player.currentItem == nil {
+            return
+        }
+        
+//        fireProgressNotification()
+        
+        // here (as above) we're assuming that in general the timer fires around once a second. Might have to investigate this though as it might not always be the case
+        if sleepTimeRemaining >= 0 {
+            sleepTimeRemaining = sleepTimeRemaining - updateTimerInterval
+            
+            if sleepTimeRemaining < 0 {
+                player.pause()
+            }
+        }
+    }
     
     func addVideoToBottomQueue(video: YTVideo) {
         if self.currentItem == nil, !self.isLoadingVideo {
@@ -259,14 +370,21 @@ class VideoPlayerModel: NSObject, ObservableObject {
     }
 
     public func deleteCurrentVideo() {
+        self.player.pause()
         self.loadingVideoTask?.cancel()
         self.loadingVideoTask = nil
         self.loadingVideo = nil
         self.player.removeAllItems()
         self.isFetchingAppreciation = false
+        
         DispatchQueue.main.async {
             self.objectWillChange.send()
         }
+    }
+    
+    public func resetSleepTimer() {
+        self.cancelUpdateTimer()
+        self.sleepTimeRemaining = -1
     }
 }
 #if !os(macOS)
@@ -290,5 +408,27 @@ struct InterruptionResult {
 extension VideoPlayerModel: AVPlayerPlaybackCoordinatorDelegate {
     func playbackCoordinator(_ coordinator: AVPlayerPlaybackCoordinator, identifierFor playerItem: AVPlayerItem) -> String {
         return self.currentItem?.videoId ?? ""
+    }
+}
+
+public extension NotificationCenter {
+    static func postOnMainThread(notification: Notification.Name, object: Any? = nil, userInfo: [AnyHashable: Any]? = nil) {
+        if Thread.isMainThread {
+            NotificationCenter.default.post(name: notification, object: object, userInfo: userInfo)
+            return
+        }
+        
+        // Force the notification to be posted on the main thread
+        DispatchQueue.main.sync {
+            Self.postOnMainThread(notification: notification, object: object, userInfo: userInfo)
+        }
+    }
+}
+
+
+struct Constants {
+    enum Notifications {
+        static let sleepTimerChanged = NSNotification.Name(rawValue: "SJSleepTimerChanged")
+
     }
 }

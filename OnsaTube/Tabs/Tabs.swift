@@ -24,7 +24,6 @@ enum Tab: Int, Identifiable, Hashable, CaseIterable, Codable {
     
     @ViewBuilder
     func makeContentView(selectedTab: Binding<Tab>, popToRootTab: Binding<Tab>) -> some View {
-        EmptyView()
         switch self {
             case .timeline:
                 SearchTab(popToRootTab: popToRootTab)

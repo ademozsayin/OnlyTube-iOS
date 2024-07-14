@@ -91,6 +91,13 @@
 		B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767949E2C1B8C0200A623BE /* SearchTab.swift */; };
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
+		B76EF1492C4062A70002A543 /* SleepTimerButtonRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1482C4062A70002A543 /* SleepTimerButtonRepresentable.swift */; };
+		B76EF14C2C4063440002A543 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B76EF14B2C4063440002A543 /* Lottie */; };
+		B76EF14E2C40635C0002A543 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF14D2C40635C0002A543 /* UIView+Extensions.swift */; };
+		B76EF1502C40636F0002A543 /* SleepTimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF14F2C40636F0002A543 /* SleepTimerButton.swift */; };
+		B76EF1522C40644A0002A543 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1512C40644A0002A543 /* UIColor+Extension.swift */; };
+		B76EF1542C4066240002A543 /* sleep_button.json in Resources */ = {isa = PBXBuildFile; fileRef = B76EF1532C4066240002A543 /* sleep_button.json */; };
+		B76EF1562C41047C0002A543 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1552C41047C0002A543 /* PurchaseManager.swift */; };
 		B7804CA32C3C0D1C001192B4 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */; };
 		B7804CA62C3C0F53001192B4 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */; };
 		B7804CA82C3C18B2001192B4 /* AccountDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */; };
@@ -198,6 +205,14 @@
 		B7A5E8F02C2491800038EDE1 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A5E8862C2483B70038EDE1 /* CircularProgressView.swift */; };
 		B7A5E8F52C2492470038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F42C2492470038EDE1 /* YouTubeKit */; };
 		B7A5E8F72C2492580038EDE1 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B7A5E8F62C2492580038EDE1 /* YouTubeKit */; };
+		B7B012592C42D68C005B1589 /* TimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012582C42D68C005B1589 /* TimeExtension.swift */; };
+		B7B0125B2C42D907005B1589 /* SleepTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0125A2C42D907005B1589 /* SleepTimerView.swift */; };
+		B7B0125E2C43058B005B1589 /* AutoplayWhatsNewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B0125D2C43058B005B1589 /* AutoplayWhatsNewHeader.swift */; };
+		B7B012602C4305E6005B1589 /* WhatsNew.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7B0125F2C4305E6005B1589 /* WhatsNew.xcassets */; };
+		B7B012622C430733005B1589 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012612C430733005B1589 /* WhatsNewView.swift */; };
+		B7B012642C4307B6005B1589 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012632C4307B6005B1589 /* WhatsNew.swift */; };
+		B7B012662C43082A005B1589 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012652C43082A005B1589 /* Announcements.swift */; };
+		B7B012682C4308E9005B1589 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012672C4308E9005B1589 /* Settings.swift */; };
 		B7B8843F2C371D5C0031C523 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = B7B8843E2C371D5C0031C523 /* FirebaseDynamicLinks */; };
 		B7B884412C372E740031C523 /* LogInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884402C372E740031C523 /* LogInWithEmailView.swift */; };
 		B7B884442C3776740031C523 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884432C3776740031C523 /* RegisterView.swift */; };
@@ -357,12 +372,19 @@
 		B767949E2C1B8C0200A623BE /* SearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTab.swift; sourceTree = "<group>"; };
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
+		B76EF1482C4062A70002A543 /* SleepTimerButtonRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerButtonRepresentable.swift; sourceTree = "<group>"; };
+		B76EF14D2C40635C0002A543 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		B76EF14F2C40636F0002A543 /* SleepTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerButton.swift; sourceTree = "<group>"; };
+		B76EF1512C40644A0002A543 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B76EF1532C4066240002A543 /* sleep_button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sleep_button.json; sourceTree = "<group>"; };
+		B76EF1552C41047C0002A543 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		B77D78B82C2F22BC0020EB96 /* Notifications */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Notifications; sourceTree = "<group>"; };
 		B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
 		B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailHeaderView.swift; sourceTree = "<group>"; };
 		B7804CA92C3C1F7E001192B4 /* AccountDetailContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailContextMenu.swift; sourceTree = "<group>"; };
 		B78754A42C3FB93900348DAC /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		B78F9E232C40334C00C5ECC4 /* OnsaStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OnsaStorage; path = Packages/OnsaStorage; sourceTree = "<group>"; };
 		B79367782C2F661A003AA6E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B793677A2C2F6C09003AA6E1 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
@@ -458,6 +480,14 @@
 		B7A5E8E42C24909A0038EDE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7A5E8E62C24909A0038EDE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7A5E8ED2C24914C0038EDE1 /* DownloadingsProgressAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadingsProgressAttributes.swift; sourceTree = "<group>"; };
+		B7B012582C42D68C005B1589 /* TimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExtension.swift; sourceTree = "<group>"; };
+		B7B0125A2C42D907005B1589 /* SleepTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerView.swift; sourceTree = "<group>"; };
+		B7B0125D2C43058B005B1589 /* AutoplayWhatsNewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoplayWhatsNewHeader.swift; sourceTree = "<group>"; };
+		B7B0125F2C4305E6005B1589 /* WhatsNew.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WhatsNew.xcassets; sourceTree = "<group>"; };
+		B7B012612C430733005B1589 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
+		B7B012632C4307B6005B1589 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
+		B7B012652C43082A005B1589 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
+		B7B012672C4308E9005B1589 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B7B884402C372E740031C523 /* LogInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInWithEmailView.swift; sourceTree = "<group>"; };
 		B7B884432C3776740031C523 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B7B884452C3781400031C523 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -516,6 +546,7 @@
 				B733A6822C25DA3200E0BDC4 /* SwipeActions in Frameworks */,
 				B79B71B72C29D6CA00108D6E /* FirebaseAnalytics in Frameworks */,
 				B79367752C2F265A003AA6E1 /* KeychainSwift in Frameworks */,
+				B76EF14C2C4063440002A543 /* Lottie in Frameworks */,
 				B79B71BB2C29D6CA00108D6E /* FirebaseCrashlytics in Frameworks */,
 				B74C7A8A2C346B5000A1CA9C /* FirebaseAuth in Frameworks */,
 				B733A6912C25F5A200E0BDC4 /* Env in Frameworks */,
@@ -723,6 +754,19 @@
 			path = PlayerView;
 			sourceTree = "<group>";
 		};
+		B76EF1472C4062990002A543 /* SleepTimer */ = {
+			isa = PBXGroup;
+			children = (
+				B76EF1532C4066240002A543 /* sleep_button.json */,
+				B76EF1482C4062A70002A543 /* SleepTimerButtonRepresentable.swift */,
+				B76EF14D2C40635C0002A543 /* UIView+Extensions.swift */,
+				B76EF14F2C40636F0002A543 /* SleepTimerButton.swift */,
+				B76EF1512C40644A0002A543 /* UIColor+Extension.swift */,
+				B7B0125A2C42D907005B1589 /* SleepTimerView.swift */,
+			);
+			path = SleepTimer;
+			sourceTree = "<group>";
+		};
 		B7804CA42C3C0F42001192B4 /* AccountDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				B78754A42C3FB93900348DAC /* InAppPurchaseManager.swift */,
+				B76EF1552C41047C0002A543 /* PurchaseManager.swift */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -849,6 +894,19 @@
 			path = OnsaTubeWidgets;
 			sourceTree = "<group>";
 		};
+		B7B0125C2C430581005B1589 /* WhatsNew */ = {
+			isa = PBXGroup;
+			children = (
+				B7B0125F2C4305E6005B1589 /* WhatsNew.xcassets */,
+				B7B0125D2C43058B005B1589 /* AutoplayWhatsNewHeader.swift */,
+				B7B012612C430733005B1589 /* WhatsNewView.swift */,
+				B7B012632C4307B6005B1589 /* WhatsNew.swift */,
+				B7B012652C43082A005B1589 /* Announcements.swift */,
+				B7B012672C4308E9005B1589 /* Settings.swift */,
+			);
+			path = WhatsNew;
+			sourceTree = "<group>";
+		};
 		B7B884422C3776250031C523 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,6 +929,7 @@
 		B7FE95AB2C10DC9900402DE1 = {
 			isa = PBXGroup;
 			children = (
+				B78F9E232C40334C00C5ECC4 /* OnsaStorage */,
 				B74EEB412C3B609800EADCEC /* Share.md */,
 				B746B0862C261445003D156E /* Terms.MD */,
 				B746B0842C261363003D156E /* PRIVACY.MD */,
@@ -905,6 +964,8 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B7B0125C2C430581005B1589 /* WhatsNew */,
+				B76EF1472C4062990002A543 /* SleepTimer */,
 				B78754A32C3FB92600348DAC /* IAP */,
 				B74C7A862C346B0500A1CA9C /* Authentication */,
 				B79B71C92C2A106B00108D6E /* Playlist */,
@@ -932,6 +993,7 @@
 				B79B71B12C29C8E600108D6E /* DisclaimerView.swift */,
 				B79B71CC2C2A11F000108D6E /* CustomNavigationTitleView.swift */,
 				B79B71CE2C2A136D00108D6E /* CustomNavigationHeaderView.swift */,
+				B7B012582C42D68C005B1589 /* TimeExtension.swift */,
 			);
 			path = OnsaTube;
 			sourceTree = "<group>";
@@ -1112,6 +1174,7 @@
 				B79367762C2F3495003AA6E1 /* FirebaseMessaging */,
 				B74C7A892C346B5000A1CA9C /* FirebaseAuth */,
 				B7B8843E2C371D5C0031C523 /* FirebaseDynamicLinks */,
+				B76EF14B2C4063440002A543 /* Lottie */,
 			);
 			productName = OnsaTube;
 			productReference = B7FE95B42C10DC9900402DE1 /* OnsaTube.app */;
@@ -1186,6 +1249,11 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
+				nl,
+				el,
+				it,
+				es,
 			);
 			mainGroup = B7FE95AB2C10DC9900402DE1;
 			packageReferences = (
@@ -1195,6 +1263,7 @@
 				B733A67D2C24F03200E0BDC4 /* XCRemoteSwiftPackageReference "swiftui-introspect" */,
 				B79B71B52C29D6CA00108D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B79367732C2F265A003AA6E1 /* XCRemoteSwiftPackageReference "keychain-swift" */,
+				B76EF14A2C4063440002A543 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = B7FE95B52C10DC9900402DE1 /* Products */;
 			projectDirPath = "";
@@ -1226,8 +1295,10 @@
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
 				B79C3B592C3E786400EC01C1 /* Assets.xcassets in Resources */,
 				B7FE96052C10E7A600402DE1 /* pull.wav in Resources */,
+				B76EF1542C4066240002A543 /* sleep_button.json in Resources */,
 				B7FE96042C10E7A600402DE1 /* share.wav in Resources */,
 				B7FE95C12C10DC9A00402DE1 /* Preview Assets.xcassets in Resources */,
+				B7B012602C4305E6005B1589 /* WhatsNew.xcassets in Resources */,
 				B79B71C32C29D97D00108D6E /* GoogleService-Info.plist in Resources */,
 				B7FCDE5E2C224A7B004E0C76 /* StoreKitTestCertificate.cer in Resources */,
 				B7FE96032C10E7A600402DE1 /* boost.wav in Resources */,
@@ -1339,9 +1410,11 @@
 				B767948A2C17364F00A623BE /* ChannelAvatarView.swift in Sources */,
 				B7FE95E92C10DF9D00402DE1 /* OnsaTubeApp+Scene.swift in Sources */,
 				B7A5E8162C245FCA0038EDE1 /* YTElementDataSet.swift in Sources */,
+				B76EF1492C4062A70002A543 /* SleepTimerButtonRepresentable.swift in Sources */,
 				B7A5E8872C2483B70038EDE1 /* CircularProgressView.swift in Sources */,
 				B760F0E32C3A2A2400EECB80 /* YouTubeCategory.swift in Sources */,
 				B71149922C38B82700108228 /* AppAccountView.swift in Sources */,
+				B7B012622C430733005B1589 /* WhatsNewView.swift in Sources */,
 				B767948B2C17364F00A623BE /* NoAvatarCircleView.swift in Sources */,
 				B7588F652C35E25F002E29AE /* LoginViewModel.swift in Sources */,
 				B7A5E8672C2482180038EDE1 /* HLSDownloader.swift in Sources */,
@@ -1354,6 +1427,7 @@
 				B7A5E85E2C246F4A0038EDE1 /* GetImage.swift in Sources */,
 				B711499B2C38FBD600108228 /* EditAccountView.swift in Sources */,
 				B7A5E8AC2C2486110038EDE1 /* DeleteFromFavoritesView.swift in Sources */,
+				B76EF1562C41047C0002A543 /* PurchaseManager.swift in Sources */,
 				B74C7A812C3338F100A1CA9C /* ShazamView.swift in Sources */,
 				B767949D2C1762E200A623BE /* UIView+Extension.swift in Sources */,
 				B7334BF22C287BD800D60C60 /* AboutView.swift in Sources */,
@@ -1385,20 +1459,25 @@
 				B7334BF42C28BFFD00D60C60 /* ChannelView.swift in Sources */,
 				B74E96E12C2F11B9003D9D6E /* SortingModeSelectionModifier.swift in Sources */,
 				B79B71CF2C2A136D00108D6E /* CustomNavigationHeaderView.swift in Sources */,
+				B76EF1522C40644A0002A543 /* UIColor+Extension.swift in Sources */,
+				B7B0125B2C42D907005B1589 /* SleepTimerView.swift in Sources */,
 				B76794742C17306F00A623BE /* SearchView.swift in Sources */,
 				B767948C2C17364F00A623BE /* OptionalItemChannelAvatarView.swift in Sources */,
 				B7A5E85A2C246F4A0038EDE1 /* FavoriteVideo+CoreDataProperties.swift in Sources */,
 				B7A5E8C62C2489600038EDE1 /* BackgroundFetchOperation.swift in Sources */,
 				B7A5E8BB2C2486110038EDE1 /* VideoSwipeActionsModifier.swift in Sources */,
 				B7E7121E2C2DFADB0049A802 /* FavoriteTab.swift in Sources */,
+				B7B012642C4307B6005B1589 /* WhatsNew.swift in Sources */,
 				B767946B2C172FAF00A623BE /* SheetsModel+makeSheetBinding.swift in Sources */,
 				B7A5E80D2C2378B00038EDE1 /* TabbarEntriesSettingsView.swift in Sources */,
 				B7588F692C35E5B4002E29AE /* AuthenticationFormFieldView.swift in Sources */,
 				B7A5E8352C246C0E0038EDE1 /* PlayingQueueView.swift in Sources */,
 				B7A5E8252C2460B60038EDE1 /* PreferencesStorageModel.swift in Sources */,
 				B7588F672C35E57B002E29AE /* LoginView.swift in Sources */,
+				B7B0125E2C43058B005B1589 /* AutoplayWhatsNewHeader.swift in Sources */,
 				B7A5E8BA2C2486110038EDE1 /* VideoFromSearchView.swift in Sources */,
 				B7E712202C2DFF650049A802 /* FavoritesView.swift in Sources */,
+				B7B012662C43082A005B1589 /* Announcements.swift in Sources */,
 				B74E96E42C2F21B3003D9D6E /* NotificationsTab.swift in Sources */,
 				B711499F2C390B2E00108228 /* PushNotificationsView.swift in Sources */,
 				B7A5E85B2C246F4A0038EDE1 /* FavoriteVideo+matchesQuery.swift in Sources */,
@@ -1429,6 +1508,7 @@
 				B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */,
 				B76794662C172FAF00A623BE /* LiveActivitesManager.swift in Sources */,
 				B767948F2C17364F00A623BE /* WatchVideoView.swift in Sources */,
+				B7B012682C4308E9005B1589 /* Settings.swift in Sources */,
 				B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */,
 				B7A5E8B72C2486110038EDE1 /* RemoveVideoFromPlaylistContextMenuButtonView.swift in Sources */,
 				B7A5E8112C245F990038EDE1 /* ElementsInfiniteScrollView.swift in Sources */,
@@ -1440,6 +1520,7 @@
 				B7A5E8312C2462290038EDE1 /* SearchModel.swift in Sources */,
 				B7A5E8BE2C2487540038EDE1 /* SwipeActionViewModifier.swift in Sources */,
 				B76794932C173A7F00A623BE /* PlaylistView.swift in Sources */,
+				B76EF14E2C40635C0002A543 /* UIView+Extensions.swift in Sources */,
 				B7A5E8232C2460840038EDE1 /* CustomElementsInfiniteScrollView.swift in Sources */,
 				B767949B2C1762CA00A623BE /* CustomAVPlayer.swift in Sources */,
 				B760F0E52C3A30B400EECB80 /* CategoryListView.swift in Sources */,
@@ -1453,6 +1534,7 @@
 				B711498E2C38B3DB00108228 /* ProfileTab.swift in Sources */,
 				B74C7A882C346B1600A1CA9C /* AuthenticationManager.swift in Sources */,
 				B7A5E8332C246B760038EDE1 /* VideoAppreciationView.swift in Sources */,
+				B7B012592C42D68C005B1589 /* TimeExtension.swift in Sources */,
 				B76794972C17628300A623BE /* Notification+OnsaTubeApp.swift in Sources */,
 				B7A5E81F2C2460360038EDE1 /* YTPlaylist+.swift in Sources */,
 				B7FCDE532C221E41004E0C76 /* SupportAppView.swift in Sources */,
@@ -1471,6 +1553,7 @@
 				B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */,
 				B7A5E8B22C2486110038EDE1 /* DownloadVideoButtonView.swift in Sources */,
 				B7804CA32C3C0D1C001192B4 /* AccountDetailView.swift in Sources */,
+				B76EF1502C40636F0002A543 /* SleepTimerButton.swift in Sources */,
 				B71149992C38CA0C00108228 /* AppAccountViewModel.swift in Sources */,
 				B7A5E8C42C2489330038EDE1 /* BackgroundFetchActivity+defaultImplementations.swift in Sources */,
 			);
@@ -1730,7 +1813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.OnlyJose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1775,7 +1858,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.OnlyJose;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1932,6 +2015,14 @@
 				kind = branch;
 			};
 		};
+		B76EF14A2C4063440002A543 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.0;
+			};
+		};
 		B79367732C2F265A003AA6E1 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
@@ -2001,6 +2092,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B76794752C1730BD00A623BE /* XCRemoteSwiftPackageReference "InfiniteScrollViews" */;
 			productName = InfiniteScrollViews;
+		};
+		B76EF14B2C4063440002A543 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B76EF14A2C4063440002A543 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
 		};
 		B79367712C2F2521003AA6E1 /* Notifications */ = {
 			isa = XCSwiftPackageProductDependency;

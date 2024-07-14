@@ -23,6 +23,7 @@ struct VideoView: View {
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     @Environment(Theme.self) private var theme
     @ObservedObject private var PM = PersistenceModel.shared
+    
     var body: some View {
         let video = videoWithData.video
         let isFavorite: Bool = {
@@ -265,6 +266,7 @@ struct VideoView2: View {
     @ObservedObject private var PM = PersistenceModel.shared
     @Environment(Theme.self) private var theme
     private let tip = TapToSelectImageTip()
+    
     var body: some View {
         let video = videoWithData.video
         

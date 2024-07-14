@@ -28,7 +28,7 @@ struct CategorySelectionView: View {
                 switch state {
                     case .loading:
                         VStack {
-                            LoadingView(customText: "We are preparing choices for you...")
+                            LoadingView(customText: Localization.preparingText)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                         }
@@ -57,7 +57,7 @@ struct CategorySelectionView: View {
                         }
                 }
             }
-            .navigationTitle(currentCategories.isEmpty ? "Select a Category" : "Subcategories")
+            .navigationTitle(currentCategories.isEmpty ? Localization.selectCategory : Localization.subcategories)
             .navigationBarTitleDisplayMode(.inline)
             .background(theme.secondaryBackgroundColor)
             .scrollContentBackground(.hidden)
@@ -87,5 +87,25 @@ struct CategorySelectionView: View {
     
     private func delay(seconds: Double) async {
         try? await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+    }
+}
+
+extension CategorySelectionView {
+    enum Localization {
+        static let preparingText = NSLocalizedString(
+            "We are preparing choices for you...",
+            comment: ""
+        )
+        
+        static let selectCategory = NSLocalizedString(
+            "Select a Category",
+            comment: ""
+        )
+        
+        static let subcategories = NSLocalizedString(
+            "Subcategories",
+            comment: ""
+        )
+      
     }
 }

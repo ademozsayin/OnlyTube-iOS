@@ -63,23 +63,28 @@ struct NowPlayingBarView: View {
                         .frame(alignment: .leading)
                         .matchedGeometryEffect(id: "VIDEO", in: sheetAnimation)
                         Spacer()
-                        VStack {
+                        VStack(alignment: .leading) {
                             if let currentVideoTitle = VPM.currentItem?.video.title {
                                 Text(currentVideoTitle)
                                     .truncationMode(.tail)
                                     .foregroundColor(theme.labelColor)
+                                    .font(.subheadline)
+                                    .frame(alignment: .leading)
+                                    .multilineTextAlignment(.leading)
                             } else {
                                 Text("No title")
                                     .truncationMode(.tail)
                                     .foregroundColor(theme.labelColor)
                             }
                         }
-                        .padding(.horizontal)
+                        .padding(.leading, 4)
+                        .padding(.trailing, 8)
                         Spacer()
                         //                            }
                         Button {
                             withAnimation {
                                 VPM.deleteCurrentVideo()
+                                
                             }
                         } label: {
                             Image(systemName: "multiply")

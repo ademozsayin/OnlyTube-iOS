@@ -7,18 +7,20 @@
 
 import SwiftUI
 import DesignSystem
+import Env
 
 struct PlayingQueueView: View {
 #if !os(macOS)
     @Environment(\.editMode) private var editMode
 #endif
-    @Environment(\.colorScheme) private var colorScheme
+//    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject private var VTM = VideoThumbnailsManager.main
     @Environment(Theme.self) private var theme
     
     var body: some View {
         GeometryReader { geometry in
             Text("Next up")
+                .foregroundColor(Color.pink)
                 .font(.callout)
                 .bold()
                 .padding(.horizontal)
@@ -89,17 +91,24 @@ struct PlayingQueueView: View {
                     }
                     .listRowSeparator(.hidden)
                     .padding()
+                    .background(theme.primaryBackgroundColor)
+
                     .contextMenu(menuItems: {
                         AddToQueueContextMenuButtonView(video: video.video, videoThumbnailData: VTM.images[video.videoId])
                     }, preview: {
                         VideoView(videoWithData: video.video.withData(.init(allowChannelLinking: false, thumbnailData: VTM.images[video.videoId])))
+                            .environment(Theme.shared)
                     })
                 }
                 .buttonStyle(.plain)
+                .cornerRadius(20)
             }
             .listStyle(.inset)
-            .frame(width: geometry.size.width, height: geometry.size.height * 0.85)
-            
+//            .frame(width: geometry.size.width, height: geometry.size.height * 0.85)
+            .frame(width: geometry.size.width, height: geometry.size.height )
+
         }
+        .background(theme.primaryBackgroundColor)
+
     }
 }

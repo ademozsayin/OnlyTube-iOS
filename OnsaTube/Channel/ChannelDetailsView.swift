@@ -420,7 +420,7 @@ import DesignSystem
 import SwiftUI
 import InfiniteScrollViews
 import YouTubeKit
-
+import Env
 struct ChannelDetailsView: View {
 //    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
@@ -439,6 +439,7 @@ struct ChannelDetailsView: View {
     @ObservedObject private var network = NetworkReachabilityModel.shared
     
     @Environment(Theme.self) private var theme
+    @Environment(RouterPath.self) private var router
 
     
     var body: some View {
@@ -557,7 +558,8 @@ struct ChannelDetailsView: View {
                                                 if !(model.fetchingStates[selectedCategory] ?? false) {
                                                     model.fetchContentsContinuation(for: selectedCategory)
                                                 }
-                                            }
+                                            },
+                                            routerPath: router
                                         )
                                         .frame(width: mainGeometry.size.width, height: mainGeometry.size.height * 0.7 - 49 + (channelInfos.isSubcribeButtonEnabled == true && channelInfos.subscribeStatus != nil ? 35 : 70)) // 49 for the navigation bar and 35 for the subscribe button
                                         .id(selectedCategory)

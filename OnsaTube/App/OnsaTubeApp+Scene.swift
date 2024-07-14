@@ -11,8 +11,10 @@ import Env
 import TipKit
 
 extension OnsaTubeApp {
+    
     var appScene: some Scene {
         WindowGroup(id: "MainWindow") {
+      
             AppView(selectedTab: $selectedTab, appRouterPath: $appRouterPath)
                 .applyTheme(theme)
                 .environment(authenticationManager)
@@ -21,6 +23,8 @@ extension OnsaTubeApp {
                 .environment(pushNotificationsService)
                 .environment(\.isSupporter, isSupporter)
                 .environment(inAppPurchaseManager)
+//                .environment(localeChangeObserver)
+//                .environmentObject(purchaseManager)
                 .onAppear {
                     setupRevenueCat()
                     refreshPushSubs()
@@ -31,33 +35,29 @@ extension OnsaTubeApp {
                     }
                 }
                 .withModelContainer()
-    
         }
     }
     
-//    @SceneBuilder
-//    var otherScenes: some Scene {
-//        WindowGroup(for: WindowDestinationEditor.self) { destination in
-//            Group {
-//                switch destination.wrappedValue {
-//                    case .login:
-//                        LoginView(siteUrl: "")
-//                    case .miniPlayer(let videoId):
-//                        WatchVideoView(videoId: videoId)
-//                            .withEnvironments()
-//                    default:
-//                        EmptyView()
-//                }
-//            }
-//            .withEnvironments()
-//            .environment(RouterPath())
-//            .withModelContainer()
-//            .applyTheme(theme)
-//            .withCoreDataContext()
-//            .frame(minWidth: 300, minHeight: 400)
-//        }
-//        .defaultSize(width: 600, height: 800)
-//        .windowResizability(.contentMinSize)
+    @SceneBuilder
+    var otherScenes: some Scene {
+        WindowGroup(for: WindowDestinationEditor.self) { destination in
+            Group {
+                switch destination.wrappedValue {
+                    case .miniPlayer(let videoId):
+                        WatchVideoView(videoId: videoId)
+                    case  .none:
+                        EmptyView()
+                }
+            }
+            .withEnvironments()
+            .environment(RouterPath())
+            .withModelContainer()
+            .applyTheme(theme)
+            .withCoreDataContext()
+            .frame(minWidth: 300, minHeight: 400)
+        }
+        .defaultSize(width: 600, height: 800)
+        .windowResizability(.contentMinSize)
         
 //        WindowGroup(for: WindowDestinationMedia.self) { destination in
 //            Group {
@@ -76,6 +76,6 @@ extension OnsaTubeApp {
 //        }
 //        .defaultSize(width: 1200, height: 1000)
 //        .windowResizability(.contentMinSize)
-//    }
+    }
 }
 

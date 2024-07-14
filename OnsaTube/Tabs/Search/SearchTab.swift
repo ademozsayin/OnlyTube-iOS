@@ -35,12 +35,11 @@ struct SearchTab: View {
                 .toolbar {
                     toolbarView
                 }
-                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
-                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
                 .withAppRouter()
+                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
+                .id(authenticationManager.currentAccount?.uid)
         }
-        .withSafariRouter()
-        .environment(routerPath)
         .onChange(of: $popToRootTab.wrappedValue) { oldValue, newValue in
             if newValue == .timeline {
                 if routerPath.path.isEmpty {
@@ -49,7 +48,10 @@ struct SearchTab: View {
                     routerPath.path = []
                 }
             }
+            
         }
+        .withSafariRouter()
+        .environment(routerPath)
     }
     
     @ToolbarContentBuilder

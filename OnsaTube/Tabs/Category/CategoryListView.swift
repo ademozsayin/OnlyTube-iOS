@@ -34,39 +34,43 @@ struct CategoryListView: View {
             
             if showCongratulation {
                 
-                VStack(alignment: .leading) {
-                    Text("Selected Items:")
-                        .font(.headline)
-                        .padding(.bottom, 5)
-                    
-                   
-                    ForEach(selectedItems, id: \.self ) { item in
-                        Text(subcategoryName(for: item))
-                            .padding()
-                            .background(theme.tintColor.opacity(0.1))
-                            .cornerRadius(10)
+                VStack(alignment: .center ,spacing: 20) {
+                    Spacer()
+                    VStack(alignment: .leading) {
+                        Text("Selected Items:")
+                            .font(.headline)
                             .padding(.bottom, 5)
                         
+                        
+                        ForEach(selectedItems, id: \.self ) { item in
+                            Text(subcategoryName(for: item))
+                                .padding()
+                                .background(theme.tintColor.opacity(0.1))
+                                .cornerRadius(10)
+                                .padding(.bottom, 5)
+                            
+                        }
+                    }
+                    
+                    CongratulationView()
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        startAgain()
+                        // Reset the state here if needed
+                        selectedItems.removeAll()
+                        deleteAll()
+                        
+                    }) {
+                        Text("Start Again")
+                            .padding()
+                            .background(theme.secondaryBackgroundColor)
+                            .foregroundColor(theme.tintColor)
+                            .cornerRadius(10)
                     }
                 }
-                .padding()
-                
-                CongratulationView()
-                
-                Button(action: {
-                    startAgain()
-                    // Reset the state here if needed
-                    selectedItems.removeAll()
-                    deleteAll()
-                    
-                }) {
-                    Text("Start Again")
-                        .padding()
-                        .background(theme.tintColor)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding()
+               
                 
             } else {
                 VStack(spacing: 16) {
@@ -88,15 +92,15 @@ struct CategoryListView: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                
             }
         }
-        .background(theme.primaryBackgroundColor) 
         .navigationTitle(showCongratulation == false ? "Select a Category" : "Congratulations")
         .toolbar{
             toolbarContent
         }
         .withModelContainer()
+//        .background(theme.primaryBackgroundColor)
+
     }
     
     @ToolbarContentBuilder
@@ -122,6 +126,10 @@ struct CategoryListView: View {
     
     private func save() async {
         isSaving = true
+        
+        for tagGroup in tagGroups {
+            context.delete(tagGroup)
+        }
         
         try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
 

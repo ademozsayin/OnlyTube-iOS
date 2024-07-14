@@ -17,7 +17,8 @@ public enum RouterDestination: Hashable {
 }
 
 public enum WindowDestinationEditor: Hashable, Codable {
-    case quoteLinkStatusEditor(link: URL)
+    case miniPlayer(videoId:String?)
+
 }
 
 public enum WindowDestinationMedia: Hashable, Codable {
@@ -43,6 +44,8 @@ public enum SheetDestination: Identifiable, Hashable {
     case accountEditInfo
     case accountPushNotficationsSettings
     case categorySelection
+    case sleepTimer
+    case whatsNew
     
     public var id: String {
         switch self {
@@ -64,6 +67,10 @@ public enum SheetDestination: Identifiable, Hashable {
                 "accountPushNotficationsSettings"
             case .categorySelection:
                 "categorySelection"
+            case .sleepTimer:
+                "sleepTimer"
+            case .whatsNew:
+                "whatsNew"
         }
     }
 }

@@ -92,7 +92,6 @@ struct LoginView: View {
                     Spacer()
                 }
                 .padding()
-//                .withAppRouter()
             }
             .onChange(of: authenticationManager.currentAccount) { _, newValue in
                 dismiss()

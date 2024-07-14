@@ -76,7 +76,7 @@ struct SearchView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .top) {
-                scrollToTopView
+    
                 GeometryReader { geometry in
                     Image("bg2")
                         .resizable()
@@ -283,7 +283,8 @@ struct SearchView: View {
                         self.shouldReloadScrollView = true
                     })
                 }
-            }
+            },
+            routerPath: routerPath
         )
     }
     
@@ -320,14 +321,14 @@ struct SearchView: View {
     
     private var scrollToTopView: some View {
         ScrollToView()
-        //      .frame(height: pinnedFilters.isEmpty ? .layoutPadding : 0)
-            .frame(height: .layoutPadding )
-//            .onAppear {
-//                viewModel.scrollToTopVisible = true
-//            }
-//            .onDisappear {
-//                viewModel.scrollToTopVisible = false
-//            }
+            .frame(width:30, height: 30)
+//            .frame(height: .layoutPadding )
+            .onAppear {
+                viewModel.scrollToTopVisible = true
+            }
+            .onDisappear {
+                viewModel.scrollToTopVisible = false
+            }
     }
 }
 

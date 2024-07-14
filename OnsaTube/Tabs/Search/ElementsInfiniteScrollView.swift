@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Env
 
 struct ElementsInfiniteScrollView: View {
     @Binding var items: [YTElementWithData]
@@ -18,6 +19,10 @@ struct ElementsInfiniteScrollView: View {
     
     var refreshAction: ((@escaping () -> Void) -> Void)?
     var fetchMoreResultsAction: (() -> Void)?
+    
+    let routerPath: RouterPath
+
+    
     var body: some View {
         let performanceMode = PSM.propetriesState[.performanceMode] as? PreferencesStorageModel.Properties.PerformanceModes
         if performanceMode == .limited {

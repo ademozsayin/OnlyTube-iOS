@@ -17,7 +17,6 @@ struct ProfileTab: View {
     
     @Environment(UserPreferences.self) private var preferences
     
-//    @Binding var selectedTab: Tab
     let lockedType: PreferencesStorageModel.Properties.SortingModes?
     
     var body: some View {

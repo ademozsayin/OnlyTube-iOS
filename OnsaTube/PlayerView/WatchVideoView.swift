@@ -12,10 +12,11 @@ import MediaPlayer
 #endif
 import CoreAudio
 import YouTubeKit
+import Env
+import DesignSystem
 
 struct WatchVideoView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.dismiss) private var dismiss
     @State private var topColorGradient: LinearGradient = .init(colors: [.gray, .white], startPoint: .leading, endPoint: .trailing)
     @State private var bottomColorGradient: LinearGradient = .init(colors: [.gray, .white], startPoint: .leading, endPoint: .trailing)
     @State private var animationColors: [Color] = [.white, .gray, .white, .gray]
@@ -32,6 +33,16 @@ struct WatchVideoView: View {
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     
     @State private var videoId: String?
+    
+    @State private var isDraftsSheetDisplayed: Bool = false
+
+#if targetEnvironment(macCatalyst)
+    @Environment(\.dismissWindow) private var dismissWindow
+#else
+    @Environment(\.dismiss) private var dismiss
+#endif
+    
+    @Environment(Theme.self) private var theme
     
     public init(videoId: String?) {
         self.videoId = videoId
@@ -290,8 +301,21 @@ struct WatchVideoView: View {
                         PlayingQueueView()
                             .opacity(showQueue ? 1 : 0)
                             .frame(height: showQueue ? geometry.size.height * 0.85 - 120 : 0)
+                            .environment(Theme.shared)
                         Spacer()
                         HStack {
+                            
+                            Spacer()
+                            
+                            let tintColor = theme.tintColor
+                            
+                            SleepTimerButtonRepresentable(sleepTimerOn: $VPM.sleepTimerOn, tintColor: .constant(UIColor(tintColor)))
+                                .frame(width: 30, height: 30)
+                                .onTapGesture {
+                                    isDraftsSheetDisplayed.toggle()
+                                }
+                            
+                            
                             let hasDescription = VPM.currentItem?.videoDescription ?? "" != ""
                             Spacer()
                             Button {
@@ -346,6 +370,25 @@ struct WatchVideoView: View {
                                 }
                                 .frame(width: 30, height: 30)
                             }
+                            #if os(visionOS)
+                            Spacer()
+                            Button {
+                                dismiss()
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .foregroundStyle(showQueue ? Color(uiColor: UIColor.lightGray) : .clear)
+                                        .animation(nil, value: 0)
+                                    Image(systemName: "xmark.app")
+                                        .resizable()
+                                        .foregroundStyle(showQueue ? .white : Color(uiColor: UIColor.lightGray))
+                                        .scaledToFit()
+                                        .frame(width: showQueue ? 18 : 22)
+                                        .blendMode(showQueue ? .exclusion : .screen)
+                                }
+                                .frame(width: 30, height: 30)
+                            }
+                            #endif
                             Spacer()
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.12)
@@ -358,9 +401,17 @@ struct WatchVideoView: View {
         .onReceive(of: .atwyDismissPlayerSheet, handler: { _ in
             dismiss()
         })
-        
+        .popover(isPresented: $isDraftsSheetDisplayed) {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                SleepTimerView()
+                    .presentationDetents([.medium])
+            } else {
+                SleepTimerView()
+                    .frame(width: 400, height: 500)
+            }
+        }
 //        .task {
-//            if let channelAvatar = VPM.streamingInfos?.channel?.thumbnails.first?.url {
+//            if let channelAvatar = VPM.streamingInfos.channel.thumbnails.first?.url {
 //                URLSession.shared.dataTask(with: channelAvatar, completionHandler: { data, _, _ in
 //                    if let data = data, let image = UIImage(data: data) {
 //                        DispatchQueue.main.async {
@@ -377,14 +428,14 @@ struct WatchVideoView: View {
 //                }
 //            }
 //        }
-//        .task {
-//            DispatchQueue.main.async {
-//                withAnimation(.easeInOut(duration: 14).repeatForever(autoreverses: true)) {
-//                    animateStartPoint = animateStartPoint == .topLeading ? .bottomTrailing : .topLeading
-//                    animateEndPoint = animateEndPoint == .topLeading ? .bottomTrailing : .topLeading
-//                }
-//            }
-//        }
+        .task {
+            DispatchQueue.main.async {
+                withAnimation(.easeInOut(duration: 14).repeatForever(autoreverses: true)) {
+                    animateStartPoint = animateStartPoint == .topLeading ? .bottomTrailing : .topLeading
+                    animateEndPoint = animateEndPoint == .topLeading ? .bottomTrailing : .topLeading
+                }
+            }
+        }
     }
     
     private struct FadeInOutView: View {

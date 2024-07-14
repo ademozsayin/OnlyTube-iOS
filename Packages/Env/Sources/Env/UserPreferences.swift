@@ -26,6 +26,8 @@ import SwiftUI
 
         @AppStorage("hasAcceptedDisclaimer") var hasAcceptedDisclaimer: Bool = false
         
+        @AppStorage("userPreferredLanguage") var userPreferredLanguage: String = Locale.preferredLanguages.first ?? "en"
+
         init() {
             prepareTranslationType()
         }
@@ -118,6 +120,12 @@ import SwiftUI
         }
     }
     
+    public var userPreferredLanguage: String {
+        didSet {
+            storage.userPreferredLanguage = userPreferredLanguage
+        }
+    }
+    
     private init() {
         preferredBrowser = storage.preferredBrowser
  
@@ -140,6 +148,9 @@ import SwiftUI
         appIcon = storage.appIcon
         
         hasAcceptedDisclaimer = storage.hasAcceptedDisclaimer
+        
+        userPreferredLanguage = storage.userPreferredLanguage
+
     }
 }
 
