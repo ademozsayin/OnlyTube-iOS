@@ -9,6 +9,7 @@ import SwiftUI
 import DesignSystem
 import Env
 
+@MainActor
 struct PlayingQueueView: View {
 #if !os(macOS)
     @Environment(\.editMode) private var editMode

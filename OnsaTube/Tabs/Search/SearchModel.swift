@@ -8,8 +8,8 @@
 import Foundation
 import YouTubeKit
 
-@Observable
-class Model {
+@MainActor
+@Observable class Model {
     
     static public let shared = Model()
     

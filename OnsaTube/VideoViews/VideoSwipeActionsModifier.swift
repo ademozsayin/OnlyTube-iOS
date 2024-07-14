@@ -12,6 +12,7 @@ import SwipeActions
 import YouTubeKit
 
 extension View {
+    @MainActor
     func videoSwipeActions(video: YTVideo, thumbnailData: Data?, isConnectedToNetwork: Bool, disableChannelNavigation: Bool, isConnectedToGoogle: Bool) -> some View {
         self
             .swipeAction(leadingActions: { context in

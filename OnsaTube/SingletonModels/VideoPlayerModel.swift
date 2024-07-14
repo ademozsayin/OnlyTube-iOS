@@ -15,6 +15,7 @@ import SwiftUI
 import GroupActivities
 import YouTubeKit
 
+@MainActor
 class VideoPlayerModel: NSObject, ObservableObject {
 
    
@@ -102,6 +103,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
             .store(in: &subscriptions)
         
         CoordinationManager.shared.$enqueuedVideo
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { video in
                 if let video = video {
                     self.loadVideo(video: video)
@@ -123,11 +125,9 @@ class VideoPlayerModel: NSObject, ObservableObject {
                 guard let self else { return }
                 if [.playing, .waitingToPlayAtSpecifiedRate].contains($0) {
 //                    Video is in pause mode
-                    print("mmmm")
                         self.startUpdateTimer()
                   
                 } else {
-                    print("asdasd")
                     self.cancelUpdateTimer()
                 }
             }
@@ -266,6 +266,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
     }
     
     /// `seekTo`: Variable that will make the player seek to that time (in seconds) as soon as it has loaded the video.
+    @MainActor
     func loadVideo(video: YTVideo, thumbnailData: Data? = nil, channelAvatarImageData: Data? = nil, seekTo: Double? = nil) {
         guard loadingVideo?.videoId != video.videoId, self.currentItem?.videoId != video.videoId else { return }
         self.deleteCurrentVideo()
@@ -369,6 +370,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
         }
     }
 
+    @MainActor
     public func deleteCurrentVideo() {
         self.player.pause()
         self.loadingVideoTask?.cancel()

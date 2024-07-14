@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if !os(macOS)
 import InfiniteScrollViews
+#endif
 import YouTubeKit
 import DesignSystem
 import Env

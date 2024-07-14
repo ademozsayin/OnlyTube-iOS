@@ -72,7 +72,7 @@ struct DefaultElementsInfiniteScrollView: View {
                                     }
                             }
                            
-                            Text( itemOffset.description)
+//                            Text( itemOffset.description)
                             switch item.element {
                                     
                                 case let item as YTChannel:

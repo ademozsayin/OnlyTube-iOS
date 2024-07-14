@@ -8,6 +8,7 @@
 
 import Foundation
 
+@MainActor
 class PrivateManager {
     static let shared = PrivateManager()
     

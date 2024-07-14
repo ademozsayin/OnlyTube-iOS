@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 class AVMenuButton {
     let manager: CustomAVButtonsManager
 
@@ -59,6 +60,7 @@ class AVMenuButton {
         return .init(width: defaultHeight, height: defaultHeight)
     }
 }
+
 
 class AVMenuButtonDelegate: NSObject {
     let manager: CustomAVButtonsManager

@@ -7,6 +7,7 @@
 
 import AVKit
 
+
 class CustomAVPlayer: AVQueuePlayer {
     func updateEndAction() {
         self.actionAtItemEnd = self.items().count < 2 ? .pause : .advance

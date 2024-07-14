@@ -13,7 +13,10 @@
 //
 import Env
 import SwiftUI
+#if !os(macOS)
 import InfiniteScrollViews
+#endif
+
 import YouTubeKit
 #if !os(visionOS)
 import SwipeActions

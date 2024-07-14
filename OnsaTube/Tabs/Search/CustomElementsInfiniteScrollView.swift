@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if !os(macOS)
 import InfiniteScrollViews
+#endif
 #if !os(visionOS)
 import SwipeActions
 #endif

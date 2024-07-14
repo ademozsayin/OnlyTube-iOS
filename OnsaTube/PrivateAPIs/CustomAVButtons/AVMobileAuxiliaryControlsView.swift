@@ -11,7 +11,8 @@ import UIKit
 import Combine
 import YouTubeKit
 
-class AVMobileAuxiliaryControlsView {    
+@MainActor
+class AVMobileAuxiliaryControlsView {
     let manager: CustomAVButtonsManager
     
     var menuState: MenuState = .automatic

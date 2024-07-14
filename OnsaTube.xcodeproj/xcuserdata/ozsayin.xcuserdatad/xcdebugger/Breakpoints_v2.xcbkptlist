@@ -190,8 +190,8 @@
             filePath = "OnsaTube/Tabs/Search/SearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "loadingView"
             landmarkType = "24">
          </BreakpointContent>

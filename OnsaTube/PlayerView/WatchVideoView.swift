@@ -370,25 +370,25 @@ struct WatchVideoView: View {
                                 }
                                 .frame(width: 30, height: 30)
                             }
-                            #if os(visionOS)
-                            Spacer()
-                            Button {
-                                dismiss()
-                            } label: {
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .foregroundStyle(showQueue ? Color(uiColor: UIColor.lightGray) : .clear)
-                                        .animation(nil, value: 0)
-                                    Image(systemName: "xmark.app")
-                                        .resizable()
-                                        .foregroundStyle(showQueue ? .white : Color(uiColor: UIColor.lightGray))
-                                        .scaledToFit()
-                                        .frame(width: showQueue ? 18 : 22)
-                                        .blendMode(showQueue ? .exclusion : .screen)
-                                }
-                                .frame(width: 30, height: 30)
-                            }
-                            #endif
+//                            #if os(visionOS)
+//                            Spacer()
+//                            Button {
+//                                dismiss()
+//                            } label: {
+//                                ZStack {
+//                                    RoundedRectangle(cornerRadius: 6)
+//                                        .foregroundStyle(showQueue ? Color(uiColor: UIColor.lightGray) : .clear)
+//                                        .animation(nil, value: 0)
+//                                    Image(systemName: "xmark.app")
+//                                        .resizable()
+//                                        .foregroundStyle(showQueue ? .white : Color(uiColor: UIColor.lightGray))
+//                                        .scaledToFit()
+//                                        .frame(width: showQueue ? 18 : 22)
+//                                        .blendMode(showQueue ? .exclusion : .screen)
+//                                }
+//                                .frame(width: 30, height: 30)
+//                            }
+//                            #endif
                             Spacer()
                         }
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.12)

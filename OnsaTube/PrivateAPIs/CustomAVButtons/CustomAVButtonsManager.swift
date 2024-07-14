@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 class CustomAVButtonsManager {
     // AVMenuButton
     let AVMenuButtonClass: UIButton.Type

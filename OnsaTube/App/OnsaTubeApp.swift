@@ -51,7 +51,7 @@ struct OnsaTubeApp: App {
     
     var body: some Scene {
         appScene
-//        otherScenes
+        otherScenes
     }
     
     func handleScenePhase(scenePhase: ScenePhase) {

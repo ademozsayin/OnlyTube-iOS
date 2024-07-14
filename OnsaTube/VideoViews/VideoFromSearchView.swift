@@ -14,21 +14,34 @@ import YouTubeKit
 import Env
 import TipKit
 
+@MainActor
 struct VideoFromSearchView: View {
     @Environment(\.colorScheme) private var colorScheme
     let videoWithData: YTVideoWithData
     @ObservedObject private var PSM = PreferencesStorageModel.shared
     @Environment(RouterPath.self) private var routerPath
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.dismissWindow) private var dismissWindow
 
+#if targetEnvironment(macCatalyst)
+    @Environment(\.dismissWindow) private var dismissWindow
+#else
+    @Environment(\.dismiss) private var dismiss
+#endif
+    
+    
     private let tip = TapToSelectImageTip()
+    
     var body: some View {
         Button {
             if VideoPlayerModel.shared.currentItem?.videoId != videoWithData.video.videoId {
                 VideoPlayerModel.shared.loadVideo(video: videoWithData.video, thumbnailData: self.videoWithData.data.thumbnailData, channelAvatarImageData: self.videoWithData.data.channelAvatarData)
             }
             #if os(visionOS) || os(macOS)
-            openWindow(value: WindowDestinationEditor.miniPlayer(videoId: videoWithData.video.videoId))
+           // Task { @MainActor in
+            if VideoPlayerModel.shared.currentItem == nil {
+                openWindow(value: WindowDestinationEditor.miniPlayer(videoId: videoWithData.video.videoId))
+            }
             #else
             //                SheetsModel.shared.showSheet(.watchVideo)
             routerPath.presentedSheet = .miniPlayer(videoId: videoWithData.video.videoId)

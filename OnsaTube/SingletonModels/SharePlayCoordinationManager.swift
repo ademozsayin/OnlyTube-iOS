@@ -31,6 +31,7 @@ struct WatchInGroupActivityMetadata: Codable, Equatable {
     var thumbnailURL: [String]?
 }
 
+@MainActor
 class CoordinationManager {
     static let shared = CoordinationManager()
 

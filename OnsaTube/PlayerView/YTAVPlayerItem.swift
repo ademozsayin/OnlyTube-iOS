@@ -10,6 +10,7 @@ import Foundation
 import YouTubeKit
 import AVKit
 
+
 class YTAVPlayerItem: AVPlayerItem, ObservableObject {
     var videoId: String { self.video.videoId }
     var videoTitle: String? { self.video.title ?? self.streamingInfos.title ?? self.moreVideoInfos?.videoTitle }

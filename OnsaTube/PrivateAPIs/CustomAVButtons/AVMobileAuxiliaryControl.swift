@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Combine
 
+@MainActor
 class AVMobileAuxiliaryControl {
     let manager: CustomAVButtonsManager
     
