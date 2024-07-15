@@ -6,7 +6,7 @@
 //  Copyright © 2024 Antoine Bollengier. All rights reserved.
 //  
 
-#if !os(visionOS)
+#if !os(visionOS) && canImport(ActivityKit)
 import ActivityKit
 
 import Combine

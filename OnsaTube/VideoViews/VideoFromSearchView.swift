@@ -21,8 +21,7 @@ struct VideoFromSearchView: View {
     @ObservedObject private var PSM = PreferencesStorageModel.shared
     @Environment(RouterPath.self) private var routerPath
     @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismissWindow) private var dismissWindow
-
+    
 #if targetEnvironment(macCatalyst)
     @Environment(\.dismissWindow) private var dismissWindow
 #else
@@ -37,16 +36,17 @@ struct VideoFromSearchView: View {
             if VideoPlayerModel.shared.currentItem?.videoId != videoWithData.video.videoId {
                 VideoPlayerModel.shared.loadVideo(video: videoWithData.video, thumbnailData: self.videoWithData.data.thumbnailData, channelAvatarImageData: self.videoWithData.data.channelAvatarData)
             }
-            #if os(visionOS) || os(macOS)
+            #if os(visionOS) 
            // Task { @MainActor in
             if VideoPlayerModel.shared.currentItem == nil {
                 openWindow(value: WindowDestinationEditor.miniPlayer(videoId: videoWithData.video.videoId))
             }
-            #else
             //                SheetsModel.shared.showSheet(.watchVideo)
+            #elseif targetEnvironment(macCatalyst)
+            
+            #else
             routerPath.presentedSheet = .miniPlayer(videoId: videoWithData.video.videoId)
             #endif
- 
             
         } label: {
             if let state = PSM.propetriesState[.videoViewMode] as? PreferencesStorageModel.Properties.VideoViewModes, state == .halfThumbnail {

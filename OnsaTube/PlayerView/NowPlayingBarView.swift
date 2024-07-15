@@ -9,6 +9,11 @@ import SwiftUI
 import AVKit
 import DesignSystem
 import Env
+#if canImport(UIKit)
+import UIKit
+#elseif canImport(AppKit)
+import AppKit
+#endif
 
 struct NowPlayingBarView: View {
     var sheetAnimation: Namespace.ID
@@ -17,6 +22,15 @@ struct NowPlayingBarView: View {
     @ObservedObject private var VPM = VideoPlayerModel.shared
     @Environment(Theme.self) private var theme
 //    var routerPath: RouterPath
+    
+    func checkAppState() {
+        // For both iOS/iPadOS and Mac Catalyst
+        if UIApplication.shared.applicationState == .background {
+            withAnimation {
+                isSheetPresented = true
+            }
+        }
+    }
     
     var body: some View {
 
@@ -31,19 +45,20 @@ struct NowPlayingBarView: View {
                                 VideoPlayer(player: VPM.player)
                                     .frame(height: 70)
                                     .onAppear {
-#if os(macOS)
-                                        if NSApplication.shared.isActive {
-                                            withAnimation {
-                                                isSheetPresented = true
-                                            }
-                                        }
-#else
-                                        if UIApplication.shared.applicationState == .background {
-                                            withAnimation {
-                                                isSheetPresented = true
-                                            }
-                                        }
-#endif
+                                        checkAppState()
+//#if targetEnvironment(macCatalyst)
+//                                        if NSApplication.shared.isActive {
+//                                            withAnimation {
+//                                                isSheetPresented = true
+//                                            }
+//                                        }
+////#else
+//                                        if UIApplication.shared.applicationState == .background {
+//                                            withAnimation {
+//                                                isSheetPresented = true
+//                                            }
+//                                        }
+//#endif
                                     }
                             } else if let thumbnail = VPM.currentItem?.video.thumbnails.first {
                                 CachedAsyncImage(url: thumbnail.url, content: { image, _ in

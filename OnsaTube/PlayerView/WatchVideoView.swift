@@ -7,7 +7,7 @@
 
 import SwiftUI
 import AVKit
-#if !os(macOS)
+#if targetEnvironment(macCatalyst)
 import MediaPlayer
 #endif
 import CoreAudio
@@ -36,6 +36,8 @@ struct WatchVideoView: View {
     
     @State private var isDraftsSheetDisplayed: Bool = false
 
+    @State private var animatePadding: CGFloat = 0
+    
 #if targetEnvironment(macCatalyst)
     @Environment(\.dismissWindow) private var dismissWindow
 #else
@@ -69,6 +71,8 @@ struct WatchVideoView: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
+                
+               
                 ZStack {
                     Rectangle()
                         .fill(Gradient(stops: [
@@ -110,7 +114,7 @@ struct WatchVideoView: View {
 #endif
                 }
                 .ignoresSafeArea(.all)
-                .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top)
+                .frame(width: geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing, height: geometry.size.height + geometry.safeAreaInsets.bottom + geometry.safeAreaInsets.top )
                 .zIndex(0)
                 VStack {
                     Spacer()
@@ -125,28 +129,39 @@ struct WatchVideoView: View {
                                 .frame(width: geometry.size.width, height: (showQueue || showDescription) ?  geometry.size.height * 0.175 : geometry.size.height * 0.45)
                                 .padding(.top, -geometry.size.height * 0.01)
                                 HStack(spacing: 0) {
+
+                                    
                                     if VPM.player.currentItem != nil {
+#if targetEnvironment(macCatalyst)
+                                        if let controller = VPM.controller {
+                                            PlayerViewController(
+                                                player: VPM.player,
+                                                controller: controller
+                                            )
+                                            .frame(width: (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width,
+                                                   height: (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
+                                            .padding(.top, (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
+                                            .shadow(radius: 10)
+                                        }
+#elseif os(visionOS)
                                         PlayerViewController(
                                             player: VPM.player,
                                             controller: VPM.controller
                                         )
-//
-#if !os(visionOS)
-                                        .frame(width: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.width : (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width, height: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.height
-                                               : (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
-                                       
-                                       
-                                        .padding(.top, UIDevice.current.orientation.isLandscape ? 0 : (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
-                                       
-#endif
+                                        .frame(width: geometry.size.width,
+                                               height: geometry.size.height * 0.35)
+                                        .padding(.top, -geometry.size.height * 0.115)
                                         .shadow(radius: 10)
-                                        /* TODO: Remove that in a future version (17/04/2024)
-                                        .onReceive(of: UIApplication.willEnterForegroundNotification, handler: { _ in
-                                            if UIApplication.shared.applicationState == .background {
-                                                dismiss()
-                                            }
-                                        })*/
-                                        
+#else
+                                        PlayerViewController(
+                                            player: VPM.player,
+                                            controller: VPM.controller
+                                        )
+                                        .frame(width: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.width : (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width,
+                                               height: UIDevice.current.orientation.isLandscape ? UIScreen.main.bounds.size.height : (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
+                                        .padding(.top, UIDevice.current.orientation.isLandscape ? 0 : (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
+                                        .shadow(radius: 10)
+#endif
                                     } else if VPM.isLoadingVideo {
                                         LoadingView()
                                             .tint(.white)
@@ -300,7 +315,7 @@ struct WatchVideoView: View {
                         .frame(height: showDescription ? geometry.size.height * 0.85 - 120 : 0)
                         PlayingQueueView()
                             .opacity(showQueue ? 1 : 0)
-                            .frame(height: showQueue ? geometry.size.height * 0.85 - 120 : 0)
+                            .frame(height: showQueue ? geometry.size.height * 0.85 - 120 - 50 : 0)
                             .environment(Theme.shared)
                         Spacer()
                         HStack {
@@ -343,12 +358,13 @@ struct WatchVideoView: View {
                             .disabled(!hasDescription)
                             Spacer()
 #if !os(visionOS)
-//                            AirPlayButton()
-//                                .scaledToFit()
-//                                .blendMode(.screen)
-//                                .frame(width: 50)
+                            AirPlayButton()
+                                .scaledToFit()
+                                .blendMode(.screen)
+                                .frame(width: 50)
+                            Spacer()
 #endif
-//                            Spacer()
+//
                             Button {
                                 withAnimation(.interpolatingSpring(duration: 0.3)) {
                                     if showDescription {
@@ -391,15 +407,27 @@ struct WatchVideoView: View {
 //                            #endif
                             Spacer()
                         }
+
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.12)
+
                     }
                     Spacer()
                 }
+#if targetEnvironment(macCatalyst)
+                .onChange(of: VPM.currentItem) { _ ,_ in
+                    withAnimation {
+                        animatePadding = VPM.currentItem != nil ? 70 : 0
+                    }
+                }
+                .padding(.bottom, animatePadding)
+#endif
                 .zIndex(1)
             }
         }
         .onReceive(of: .atwyDismissPlayerSheet, handler: { _ in
+#if !targetEnvironment(macCatalyst)
             dismiss()
+#endif
         })
         .popover(isPresented: $isDraftsSheetDisplayed) {
             if UIDevice.current.userInterfaceIdiom == .phone {

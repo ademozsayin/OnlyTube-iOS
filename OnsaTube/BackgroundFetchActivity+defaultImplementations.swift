@@ -6,9 +6,9 @@
 //  Copyright © 2024 Antoine Bollengier. All rights reserved.
 //
 
-import BackgroundTasks
-#if !os(visionOS)
+#if !os(visionOS) && canImport(ActivityKit)
 import ActivityKit
+import BackgroundTasks
 
 
 @available(iOS 16.1, *)

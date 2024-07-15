@@ -120,7 +120,7 @@ struct PlayerViewController: UIViewControllerRepresentable {
         player.preventsDisplaySleepDuringVideoPlayback = true
 #endif
         player.automaticallyWaitsToMinimizeStalling = true
-#if !os(macOS) && !os(visionOS)
+#if !targetEnvironment(macCatalyst) && !os(visionOS)
         controller.allowsVideoFrameAnalysis = true
 #endif
         controller.allowsPictureInPicturePlayback =  true

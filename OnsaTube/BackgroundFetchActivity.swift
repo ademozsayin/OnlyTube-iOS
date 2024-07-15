@@ -5,7 +5,7 @@
 //  Created by Antoine Bollengier on 15.03.2024.
 //  Copyright © 2024 Antoine Bollengier. All rights reserved.
 //
-#if !os(visionOS)
+#if !os(visionOS) && canImport(ActivityKit)
 import ActivityKit
 
 /// A protocol describing a Live Activity that regularly needs a background refresh.

@@ -18,6 +18,7 @@ public enum RouterDestination: Hashable {
 
 public enum WindowDestinationEditor: Hashable, Codable {
     case miniPlayer(videoId:String?)
+    case categorySelection
 
 }
 

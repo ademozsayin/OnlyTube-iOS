@@ -120,6 +120,7 @@ struct AppView: View {
                     isSheetPresented: watchVideoBinding,
                     isSettingsSheetPresented: settingsSheetBinding.wrappedValue
                 )
+
                 
             }
         }
@@ -132,6 +133,7 @@ struct AppView: View {
                     isSettingsSheetPresented: settingsSheetBinding.wrappedValue
                 )
             }
+            
         })
 #endif
         .sheet(isPresented: watchVideoBinding, content: {
@@ -208,7 +210,17 @@ struct AppView: View {
                    userPreferences.showiPadSecondaryColumn
                 {
                     Divider().edgesIgnoringSafeArea(.all)
-//                    notificationsSecondaryColumn
+#if targetEnvironment(macCatalyst)
+                    notificationsSecondaryColumn
+                        .withEnvironments()
+#endif
+                } else {
+#if targetEnvironment(macCatalyst)
+                    if  VPM.currentItem != nil {
+                        notificationsSecondaryColumn
+                            .withEnvironments()
+                    }
+#endif
                 }
                 
             }
@@ -222,21 +234,40 @@ struct AppView: View {
                         isSettingsSheetPresented: settingsSheetBinding.wrappedValue
                     )
                     .frame(height: 70)
+                 
+#if targetEnvironment(macCatalyst)
+                    .padding(.top, 0)
+#else
                     .padding(.top, 40)
-                    .padding(.leading, userPreferences.isSidebarExpanded ? 18 : 0)
-//                    .offset(x: 0, y: 50)
+#endif
+                    
+#if targetEnvironment(macCatalyst)
+//                    .padding(.leading, userPreferences.isSidebarExpanded ?  .sidebarWidthExpanded : .sidebarWidth )
+                    .animation(.easeInOut(duration: 0.3), value: userPreferences.isSidebarExpanded)
+                    .padding(.trailing, .secondaryColumnWidth)
+#else
+                    
+                    .animation(.easeInOut(duration: 0.3), value: userPreferences.isSidebarExpanded)
+//                    .padding(.leading, userPreferences.isSidebarExpanded ? .sidebarWidth : 0)
+#endif
+#if targetEnvironment(macCatalyst)
+                    .offset(x: 0, y: 50)
+#endif
                 }
-                
-          
             }
+#if !targetEnvironment(macCatalyst)
+            .background(Color.secondary)
             .background(.thinMaterial)
-            .padding(.leading, .sidebarWidth)
-//            .frame(width: userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth)
+#endif
+            .padding(.leading,userPreferences.isSidebarExpanded ? .sidebarWidthExpanded : .sidebarWidth )
+
         })
+#if !targetEnvironment(macCatalyst)
         .sheet(isPresented: watchVideoBinding, content: {
             WatchVideoView(videoId: nil)
                 .presentationDragIndicator(.hidden)
         })
+#endif
         .overlay(alignment: .center, content: {
             ZStack {
                 let imageData = PM.shownPopup?.data as? Data
@@ -274,11 +305,22 @@ struct AppView: View {
     
     
     var notificationsSecondaryColumn: some View {
-        NotificationsTab(selectedTab: .constant(.notifications),
-                         popToRootTab: $popToRootTab)
-        .environment(\.isSecondaryColumn, true)
-        .frame(maxWidth: .secondaryColumnWidth)
-        .id(authenticationManager.currentAccount?.uid)
+        
+        
+//        NotificationsTab(selectedTab: .constant(.notifications),
+//                         popToRootTab: $popToRootTab)
+//        .environment(\.isSecondaryColumn, true)
+//        .frame(maxWidth: .secondaryColumnWidth)
+//        .id(authenticationManager.currentAccount?.uid)
+//        
+        
+      
+        WatchVideoView(videoId: nil)
+            .environment(\.isSecondaryColumn, true)
+            .id(authenticationManager.currentAccount?.uid)
+            .frame(maxWidth: .secondaryColumnWidth)
+            .environment(Theme.shared)
+        
     }
 }
 

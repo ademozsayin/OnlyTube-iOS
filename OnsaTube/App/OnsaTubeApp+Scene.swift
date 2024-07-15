@@ -45,6 +45,8 @@ extension OnsaTubeApp {
                 switch destination.wrappedValue {
                     case .miniPlayer(let videoId):
                         WatchVideoView(videoId: videoId)
+                    case .categorySelection:
+                        CategorySelectionView()
                     case  .none:
                         EmptyView()
                 }

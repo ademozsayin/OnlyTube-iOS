@@ -4,6 +4,7 @@
 //
 //  Created by Adem Özsayın on 20.06.2024.
 //
+#if !os(visionOS) && canImport(ActivityKit)
 
 import ActivityKit
 import WidgetKit
@@ -78,3 +79,5 @@ extension OnsaTubeWidgetsAttributes.ContentState {
     OnsaTubeWidgetsAttributes.ContentState.smiley
     OnsaTubeWidgetsAttributes.ContentState.starEyes
 }
+
+#endif

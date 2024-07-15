@@ -4,7 +4,7 @@
 //
 //  Created by Adem Özsayın on 20.06.2024.
 //
-#if !os(visionOS)
+#if !os(visionOS) && canImport(ActivityKit)
 import ActivityKit
 import WidgetKit
 import SwiftUI

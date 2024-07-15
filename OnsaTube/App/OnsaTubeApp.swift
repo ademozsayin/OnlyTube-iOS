@@ -14,7 +14,7 @@ import RevenueCat
 import FirebaseCore
 import FirebaseMessaging
 import TipKit
-#if !os(visionOS)
+#if !os(visionOS) && !targetEnvironment(macCatalyst)
 import FirebaseDynamicLinks
 #endif
 
@@ -145,7 +145,7 @@ extension SceneDelegate {
         if let incomingURL = userActivity.webpageURL {
             
             print("\n \nIncoming URL is \(incomingURL)")
-#if !os(visionOS)
+#if !os(visionOS) && !targetEnvironment(macCatalyst)
 
             _ = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
                 

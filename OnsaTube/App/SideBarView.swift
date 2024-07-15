@@ -75,8 +75,9 @@ struct SideBarView<Content: View>: View {
 
         
         Button {
-#if targetEnvironment(macCatalyst) || os(visionOS)
-//            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
+#if targetEnvironment(macCatalyst)
+//            openWindow(value: WindowDestinationEditor.categorySelection )
+            routerPath.presentedSheet = .categorySelection
 #else
             routerPath.presentedSheet = .categorySelection
 #endif
@@ -256,8 +257,10 @@ extension View {
 
 struct BouncyJose: View {
     
+    @Environment(\.openWindow) private var openWindow
     @State var bounceHeight: BounceHeight? = nil
     @Environment(UserPreferences.self) private var userPreferences
+    @Environment(RouterPath.self) private var routerPath
 
     func bounceAnimation() {
         withAnimation(Animation.easeOut(duration: 0.3).delay(0)) {
@@ -282,7 +285,6 @@ struct BouncyJose: View {
             bounceHeight = .none
         }
     }
-    @Environment(RouterPath.self) private var routerPath
 
     var body: some View {
         VStack {
@@ -297,8 +299,9 @@ struct BouncyJose: View {
         .offset(y: bounceHeight?.associatedOffset ?? 0)
         .onTapGesture {
             bounceAnimation()
-#if targetEnvironment(macCatalyst) || os(visionOS)
-            //            openWindow(value: WindowDestinationEditor.newStatusEditor(visibility: userPreferences.postVisibility))
+#if targetEnvironment(macCatalyst)
+//            openWindow(value: WindowDestinationEditor.categorySelection)
+            routerPath.presentedSheet = .categorySelection
 #else
             routerPath.presentedSheet = .categorySelection
 #endif

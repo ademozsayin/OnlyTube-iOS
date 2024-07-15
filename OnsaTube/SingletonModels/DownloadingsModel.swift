@@ -14,7 +14,7 @@ class DownloadingsModel: ObservableObject, HLSDownloaderDelegate {
     static let shared = DownloadingsModel()
     
     @Published private(set) var downloadings: [String: HLSDownloader] = [:] // the video'id and its downloader
-    #if !os(visionOS)
+    #if !os(visionOS) && !targetEnvironment(macCatalyst)
     let downloadersChangePublisher = PassthroughSubject<DownloadingsProgressAttributes.ContentState, Never>()
     #endif
     var activeDownloadingsCount: Int {
@@ -93,7 +93,7 @@ class DownloadingsModel: ObservableObject, HLSDownloaderDelegate {
             guard activeDownloaders < 3 else { break }
             waitingDownloading.downloadVideo()
             activeDownloaders += 1
-            #if !os(visionOS)
+            #if !os(visionOS) && !targetEnvironment(macCatalyst)
             if #available(iOS 16.1, *), LiveActivitesManager.shared.activities[.downloadingsProgress] == nil {
                 DownloadingsProgressActivity.setupOnManager(attributes: .init(), state: .modelState)
             }
@@ -110,7 +110,7 @@ class DownloadingsModel: ObservableObject, HLSDownloaderDelegate {
     }
     
     private func updatePublisher() {
-        #if !os(visionOS)
+        #if !os(visionOS) && !targetEnvironment(macCatalyst)
         self.downloadersChangePublisher.send(.modelState)
         #endif
     }

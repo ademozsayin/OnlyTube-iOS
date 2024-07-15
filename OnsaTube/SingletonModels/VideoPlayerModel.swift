@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 import AVKit
-#if !os(macOS)
+#if !targetEnvironment(macCatalyst)
 import MediaPlayer
-import SwiftUI
 #endif
+import SwiftUI
 import GroupActivities
 import YouTubeKit
 
@@ -22,12 +22,26 @@ class VideoPlayerModel: NSObject, ObservableObject {
     static let shared = VideoPlayerModel()
 
     let player = CustomAVPlayer(playerItem: nil)
-    #if !os(macOS)
-    // TODO: implement AVNavigationMarkersGroup
-    private(set) lazy var controller = AVPlayerViewController() // lazy var to avoid  -[UIViewController init] must be used from main thread only
-
+    
+#if !targetEnvironment(macCatalyst)
+    // iOS-specific implementation
+    private(set) lazy var controller = AVPlayerViewController() // lazy var to avoid -[UIViewController init] must be used from main thread only
     private(set) var nowPlayingSession: MPNowPlayingSession?
-    #endif
+#else
+    // Catalyst-specific implementation
+    private(set) lazy var controller: AVPlayerViewController? = {
+        // Create and configure AVPlayerViewController for Catalyst, if needed
+        let controller = AVPlayerViewController()
+        // Perform any additional Catalyst-specific setup
+        return controller
+    }()
+    
+    private(set) var nowPlayingSession: Any? // Use Any to handle different types for Catalyst, if applicable
+    
+    // Catalyst-specific functionality, if required
+#endif
+    
+ 
     var isLoadingVideo: Bool { self.loadingVideo != nil }
     @Published private(set) var loadingVideo: YTVideo? = nil
     private var loadingVideoTask: Task<Void, Never>? = nil
