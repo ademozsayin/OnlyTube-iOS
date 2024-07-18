@@ -16,7 +16,7 @@ import SwiftUI
         @AppStorage("show_tab_label_iphone") public var showiPhoneTabLabel = true
 
         @AppStorage("inAppBrowserReaderView") public var inAppBrowserReaderView = false
-        @AppStorage("enableAutoPlayAtStart") public var enableAutoPlayAtStart = false
+        @AppStorage("enableAutoPlayAtStart") public var enableAutoPlayAtStart = true
 
         @AppStorage("showBackgroundImage") public var showBackgroundImage = false
        

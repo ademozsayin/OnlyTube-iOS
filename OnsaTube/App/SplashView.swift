@@ -9,13 +9,15 @@ import SwiftUI
 import DesignSystem
 import Env
 
+@MainActor
 struct SplashView: View {
     
     @State private var startKeyframeAnimaton = false
     @State private var trigger: (Bool, Bool , Bool) = (false, false, false)
 
     @Environment(Theme.self) private var theme
-    
+    @Environment(UserPreferences.self) private var userPreferences
+
     var iconName: String {
 #if targetEnvironment(macCatalyst)
         return "splashMac"
@@ -110,8 +112,12 @@ struct SplashView: View {
         .padding()
         .onAppear {
             startKeyframeAnimaton.toggle()
-            SoundEffectManager.shared.playSound(.opening3)
+            
             Task {
+                trigger.0.toggle()
+                try? await Task.sleep(for: .seconds(0.5))
+                trigger.0.toggle()
+                try? await Task.sleep(for: .seconds(0.5))
                 trigger.0.toggle()
                 try? await Task.sleep(for: .seconds(0.5))
                 trigger.0.toggle()

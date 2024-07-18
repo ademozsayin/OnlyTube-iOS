@@ -175,10 +175,10 @@ struct SettingsTabs: View {
                 Toggle(isOn: $preferences.enableAutoPlayAtStart) {
                     Label("settings.other.auto-start-video", systemImage: "play.square")
                 }
-                Text("It will play The Special One song at startup")
-                    .font(.footnote)
-                    .fontWeight(.light)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Text("It will play The Special One song at startup")
+//                    .font(.footnote)
+//                    .fontWeight(.light)
+//                    .frame(maxWidth: .infinity, alignment: .leading)
                
             }
             

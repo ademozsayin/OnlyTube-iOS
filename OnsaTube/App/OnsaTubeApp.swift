@@ -47,6 +47,8 @@ struct OnsaTubeApp: App {
         } catch {
             print("Error configuring TipKit: \(error)")
         }
+        
+        
     }
     
     var body: some Scene {

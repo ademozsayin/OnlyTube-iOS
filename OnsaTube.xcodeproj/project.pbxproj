@@ -91,6 +91,7 @@
 		B767949F2C1B8C0200A623BE /* SearchTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B767949E2C1B8C0200A623BE /* SearchTab.swift */; };
 		B76794A12C1B8C7C00A623BE /* ToolbarTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */; };
 		B76794A32C1BA2E300A623BE /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */; };
+		B76DFF412C493A3E00FB8D5A /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = B76DFF402C493A3E00FB8D5A /* opening.wav */; };
 		B76EF1492C4062A70002A543 /* SleepTimerButtonRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1482C4062A70002A543 /* SleepTimerButtonRepresentable.swift */; };
 		B76EF14C2C4063440002A543 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B76EF14B2C4063440002A543 /* Lottie */; };
 		B76EF14E2C40635C0002A543 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF14D2C40635C0002A543 /* UIView+Extensions.swift */; };
@@ -211,9 +212,6 @@
 		B7B012642C4307B6005B1589 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012632C4307B6005B1589 /* WhatsNew.swift */; };
 		B7B012662C43082A005B1589 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012652C43082A005B1589 /* Announcements.swift */; };
 		B7B012682C4308E9005B1589 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012672C4308E9005B1589 /* Settings.swift */; };
-		B7B56CB72C489CFC006A368D /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CB62C489CFC006A368D /* opening.wav */; };
-		B7B56CB92C489F0E006A368D /* opening2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CB82C489F0E006A368D /* opening2.wav */; };
-		B7B56CBB2C48A2DA006A368D /* opening3.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CBA2C48A2DA006A368D /* opening3.wav */; };
 		B7B8843F2C371D5C0031C523 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = B7B8843E2C371D5C0031C523 /* FirebaseDynamicLinks */; };
 		B7B884412C372E740031C523 /* LogInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884402C372E740031C523 /* LogInWithEmailView.swift */; };
 		B7B884442C3776740031C523 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884432C3776740031C523 /* RegisterView.swift */; };
@@ -375,6 +373,7 @@
 		B767949E2C1B8C0200A623BE /* SearchTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTab.swift; sourceTree = "<group>"; };
 		B76794A02C1B8C7C00A623BE /* ToolbarTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarTab.swift; sourceTree = "<group>"; };
 		B76794A22C1BA2E300A623BE /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
+		B76DFF402C493A3E00FB8D5A /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
 		B76EF1482C4062A70002A543 /* SleepTimerButtonRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerButtonRepresentable.swift; sourceTree = "<group>"; };
 		B76EF14D2C40635C0002A543 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B76EF14F2C40636F0002A543 /* SleepTimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTimerButton.swift; sourceTree = "<group>"; };
@@ -491,9 +490,6 @@
 		B7B012632C4307B6005B1589 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		B7B012652C43082A005B1589 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		B7B012672C4308E9005B1589 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		B7B56CB62C489CFC006A368D /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
-		B7B56CB82C489F0E006A368D /* opening2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening2.wav; sourceTree = "<group>"; };
-		B7B56CBA2C48A2DA006A368D /* opening3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening3.wav; sourceTree = "<group>"; };
 		B7B884402C372E740031C523 /* LogInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInWithEmailView.swift; sourceTree = "<group>"; };
 		B7B884432C3776740031C523 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B7B884452C3781400031C523 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -1091,9 +1087,7 @@
 		B7FE95F32C10E78F00402DE1 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				B7B56CBA2C48A2DA006A368D /* opening3.wav */,
-				B7B56CB82C489F0E006A368D /* opening2.wav */,
-				B7B56CB62C489CFC006A368D /* opening.wav */,
+				B76DFF402C493A3E00FB8D5A /* opening.wav */,
 				B7FE95FA2C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf */,
 				B7FE95FC2C10E7A600402DE1 /* bookmark.wav */,
 				B7FE95F72C10E7A600402DE1 /* boost.wav */,
@@ -1301,7 +1295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7FE960A2C10E7A600402DE1 /* refresh.wav in Resources */,
-				B7B56CB72C489CFC006A368D /* opening.wav in Resources */,
+				B76DFF412C493A3E00FB8D5A /* opening.wav in Resources */,
 				B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */,
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
 				B79C3B592C3E786400EC01C1 /* Assets.xcassets in Resources */,
@@ -1319,8 +1313,6 @@
 				B7FE96062C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf in Resources */,
 				B7FE96092C10E7A600402DE1 /* OpenDyslexic-Regular.otf in Resources */,
 				B76794512C17221500A623BE /* Localizable.xcstrings in Resources */,
-				B7B56CBB2C48A2DA006A368D /* opening3.wav in Resources */,
-				B7B56CB92C489F0E006A368D /* opening2.wav in Resources */,
 				B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */,
 				B7FE96012C10E7A600402DE1 /* glass.wav in Resources */,
 				B746B0852C2613F4003D156E /* PRIVACY.MD in Resources */,

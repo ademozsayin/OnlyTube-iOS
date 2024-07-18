@@ -9,6 +9,7 @@ import Env
 import SwiftUI
 import SwiftUIIntrospect
 import YouTubeKit
+import AVFoundation
 
 @MainActor
 struct AppView: View {
@@ -47,8 +48,13 @@ struct AppView: View {
     var body: some View {
         if showSplash {
             SplashView()
+                .onAppear {
+                    if userPreferences.enableAutoPlayAtStart {
+                        AudioManager.shared.playSound(named: "opening")
+                    }
+                }
                 .task {
-                    try? await Task.sleep(nanoseconds: 2_000_000_000) // 1 second
+                    try? await Task.sleep(nanoseconds: 2_000_000_000)
                     showSplash = false
                 }
         } else {
@@ -352,3 +358,39 @@ struct AppView: View {
     }
 }
 
+import AVFoundation
+
+class AudioManager: NSObject, ObservableObject, AVAudioPlayerDelegate {
+    static let shared = AudioManager()
+    
+    private var player: AVAudioPlayer?
+    
+    private override init() {
+        super.init()
+    }
+    
+    func playSound(named soundName: String) {
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: "wav") else {
+            print("Sound file not found.")
+            return
+        }
+        
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.delegate = self
+            player?.play()
+        } catch {
+            print("Failed to play sound: \(error.localizedDescription)")
+        }
+    }
+    
+    func stopSound() {
+        player?.stop()
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        // Handle actions after audio finishes playing
+        print("Audio finished playing")
+        stopSound()
+    }
+}
