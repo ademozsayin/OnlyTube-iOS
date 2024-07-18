@@ -304,11 +304,13 @@ struct VideoView2: View {
                                 ZStack {
                                     Rectangle()
                                         .clipShape(UnevenRoundedRectangle(topLeadingRadius: 10, bottomTrailingRadius: 10))
-                                        .foregroundStyle(.black)
+//                                        .foregroundStyle(.black)
+                                        .foregroundColor(theme.tintColor)
                                     Text(timeLenght)
                                         .bold()
-                                        .foregroundStyle(.white)
-                                        .font(.system(size: 14))
+                                        .foregroundStyle(theme.primaryBackgroundColor)
+//                                        .font(.system(size: 14))
+                                        .font(.scaledFootnote)
                                         .frame(alignment: .center)
                                 }
                                 .frame(width: CGFloat(timeLenght.count) * 10 + 5, height: 25)
@@ -359,12 +361,14 @@ struct VideoView2: View {
                         Text(video.title ?? "")
                             .foregroundStyle(theme.labelColor)
                             .lineLimit(2)
-                            .foregroundStyle(.white) // Modify
-                            .font(.system(size: 16))
+//                            .foregroundStyle(.white) // Modify
+//                            .font(.system(size: 16))
+                            .font(.scaledBody)
                             .multilineTextAlignment(.leading)
                             .truncationMode(.tail)
                         Text("\(video.channel?.name ?? "")\(video.channel?.name != nil && (video.viewCount != nil || video.timePosted != nil) ? " • " : "")\(video.viewCount != nil ? "\(video.viewCount!)" : "")\(video.timePosted != nil && video.viewCount != nil ? " • " : "")\(video.timePosted != nil ? "\(video.timePosted!)" : "")")
                             .lineLimit(2)
+                            .font(.scaledFootnote)
                             .foregroundStyle(.gray)
                             .multilineTextAlignment(.leading)
                             .truncationMode(.tail)

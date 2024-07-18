@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 import AVKit
-#if !targetEnvironment(macCatalyst)
+//#if !targetEnvironment(macCatalyst)
 import MediaPlayer
-#endif
+//#endif
 import SwiftUI
 import GroupActivities
 import YouTubeKit
@@ -32,6 +32,8 @@ class VideoPlayerModel: NSObject, ObservableObject {
     private(set) lazy var controller: AVPlayerViewController? = {
         // Create and configure AVPlayerViewController for Catalyst, if needed
         let controller = AVPlayerViewController()
+        controller.player = player
+        print("AVPlayerViewController for Catalyst initialized and player set.")
         // Perform any additional Catalyst-specific setup
         return controller
     }()
@@ -108,6 +110,13 @@ class VideoPlayerModel: NSObject, ObservableObject {
     override init() {
         super.init()
         
+#if !targetEnvironment(macCatalyst)
+        // iOS-specific initialization
+#else
+        // Catalyst-specific initialization
+        setupCatalystPlayer()
+#endif
+        
         player.publisher(for: \.currentItem)
             .receive(on: DispatchQueue.main)
             .map {
@@ -176,6 +185,24 @@ class VideoPlayerModel: NSObject, ObservableObject {
 #endif
         }
     
+#if targetEnvironment(macCatalyst)
+    private func setupCatalystPlayer() {
+        // Any additional setup for Catalyst
+        controller?.player = player
+    }
+#endif
+    
+    
+    func play() {
+        print("Play action called")
+        player.play()
+    }
+    
+    func pause() {
+        print("Pause action called")
+        player.pause()
+    }
+    
     func updateSleepRemainingTime() {
         if sleepTimeRemaining >= 0 {
             timeRemaining  = TimeFormatter.shared.playTimeFormat(time: VideoPlayerModel.shared.sleepTimeRemaining)
@@ -227,7 +254,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
     }
     
     @objc private func progressTimerFired() {
-        print(#function)
+//        print(#function)
         if player.currentItem == nil {
             return
         }
@@ -403,7 +430,7 @@ class VideoPlayerModel: NSObject, ObservableObject {
         self.sleepTimeRemaining = -1
     }
 }
-#if !os(macOS)
+//#if !os(macOS)
 struct InterruptionResult {
 
     let type: AVAudioSession.InterruptionType
@@ -419,11 +446,16 @@ struct InterruptionResult {
         self.options = options
     }
 }
-#endif
+//#endif
 
 extension VideoPlayerModel: AVPlayerPlaybackCoordinatorDelegate {
     func playbackCoordinator(_ coordinator: AVPlayerPlaybackCoordinator, identifierFor playerItem: AVPlayerItem) -> String {
+        print(#function)
         return self.currentItem?.videoId ?? ""
+    }
+    func playbackCoordinator(_ coordinator: AVPlayerPlaybackCoordinator, playerItemStatusDidChange status: AVPlayerItem.Status) {
+        // Handle playback status changes
+        print(#function)
     }
 }
 

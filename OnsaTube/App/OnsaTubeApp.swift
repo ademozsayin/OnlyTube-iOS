@@ -5,20 +5,19 @@
 //  Created by Adem Özsayın on 5.06.2024.
 //
 
-import SwiftUI
-import SwiftData
 import AVFoundation
 import DesignSystem
 import Env
-import RevenueCat
 import FirebaseCore
 import FirebaseMessaging
-import TipKit
 #if !os(visionOS) && !targetEnvironment(macCatalyst)
 import FirebaseDynamicLinks
 #endif
-
 import FirebaseAuth
+import RevenueCat
+import SwiftData
+import SwiftUI
+import TipKit
 
 @main
 struct OnsaTubeApp: App {
@@ -37,6 +36,7 @@ struct OnsaTubeApp: App {
     @State var appRouterPath = RouterPath()
     
     @State var isSupporter: Bool = false
+    @State var showSplash: Bool = true
     
     init() {
         do {

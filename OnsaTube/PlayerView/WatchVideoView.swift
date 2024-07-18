@@ -4,7 +4,7 @@
 //
 //  Created by Antoine Bollengier on 25.11.22.
 //
-
+import Foundation
 import SwiftUI
 import AVKit
 #if targetEnvironment(macCatalyst)
@@ -33,46 +33,41 @@ struct WatchVideoView: View {
     @ObservedObject private var NRM = NetworkReachabilityModel.shared
     
     @State private var videoId: String?
-    
     @State private var isDraftsSheetDisplayed: Bool = false
-
-    @State private var animatePadding: CGFloat = 0
     
-#if targetEnvironment(macCatalyst)
     @Environment(\.dismissWindow) private var dismissWindow
-#else
     @Environment(\.dismiss) private var dismiss
-#endif
     
     @Environment(Theme.self) private var theme
     
     public init(videoId: String?) {
         self.videoId = videoId
         if let videoId, !videoId.isEmpty {
-             VideoInfosResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query : videoId], result: { result in
-                 switch result {
-                     case .success(let res):
-                         let ytVideo = YTVideo(
-                            videoId: res.videoId ?? videoId, title: res.title,
-                            thumbnails: res.thumbnails
-                         )
-                       
-                         VideoPlayerModel.shared.loadVideo(video: ytVideo)
-                     case .failure(let err):
-                         print(err)
-                 }
-             })
-      
-        } else {
-            print("asdasd")
+            self.loadVideoWithId(videoId)
         }
+    }
+    
+    private func loadVideoWithId(_ videoId: String) {
+        VideoInfosResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query : videoId], result: { result in
+            switch result {
+                case .success(let res):
+                    let ytVideo = YTVideo(
+                        videoId: res.videoId ?? videoId, title: res.title,
+                        thumbnails: res.thumbnails
+                    )
+                    
+                    VideoPlayerModel.shared.loadVideo(video: ytVideo)
+            
+                    
+                case .failure(let err):
+                    print(err)
+            }
+        })
     }
     
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                
-               
                 ZStack {
                     Rectangle()
                         .fill(Gradient(stops: [
@@ -140,7 +135,7 @@ struct WatchVideoView: View {
                                             )
                                             .frame(width: (showQueue || showDescription) ? geometry.size.width / 2 : geometry.size.width,
                                                    height: (showQueue || showDescription) ? geometry.size.height * 0.175 : geometry.size.height * 0.35)
-                                            .padding(.top, (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.115)
+                                            .padding(.top, (showQueue || showDescription) ? -geometry.size.height * 0.01 : -geometry.size.height * 0.10)
                                             .shadow(radius: 10)
                                         }
 #elseif os(visionOS)
@@ -175,7 +170,8 @@ struct WatchVideoView: View {
                                         ZStack {
                                             VStack(alignment: .leading) {
                                                 Text(VPM.currentItem?.video.title ?? "")
-                                                    .font(.system(size: 500))
+                                                  //.font(.system(size: 500))
+                                                    .font(.scaledBody)
                                                     .foregroundStyle(.white)
                                                     .minimumScaleFactor(0.01)
                                                     .matchedGeometryEffect(id: "VIDEO_TITLE", in: animation)
@@ -184,7 +180,8 @@ struct WatchVideoView: View {
                                                 Divider()
                                                     .frame(height: 1)
                                                 Text(VPM.currentItem?.video.channel?.name ?? "")
-                                                    .font(.system(size: 500))
+//                                                    .font(.system(size: 500))
+                                                    .font(.scaledTitle)
                                                     .foregroundStyle(.white)
                                                     .minimumScaleFactor(0.01)
                                                     .matchedGeometryEffect(id: "VIDEO_AUTHOR", in: animation)
@@ -210,7 +207,7 @@ struct WatchVideoView: View {
                                     VStack(alignment: .leading, spacing: 2) {
                                         let videoTitle = VPM.currentItem?.videoTitle ?? VPM.loadingVideo?.title ?? ""
                                         Text(videoTitle)
-                                            .font(.callout)
+                                            .font(.scaledCallout)
                                             .foregroundStyle(.white)
                                             .lineLimit(2)
                                             .padding(.trailing)
@@ -220,7 +217,7 @@ struct WatchVideoView: View {
                                         
                                         let channelName: String = VPM.currentItem?.channelName ?? VPM.loadingVideo?.channel?.name ?? ""
                                         Text(channelName)
-                                            .font(.subheadline)
+                                            .font(.scaledSubheadline)
                                             .lineLimit(2)
                                             .padding(.trailing)
                                             .frame(maxWidth: geometry.size.width * 0.77, maxHeight: geometry.size.height * 0.035, alignment: .leading)
@@ -263,17 +260,17 @@ struct WatchVideoView: View {
                                         Button {
                                             CoordinationManager.shared.prepareToPlay(video)
                                         } label: {
-//                                            ZStack {
-//                                                RoundedRectangle(cornerRadius: 8)
-//                                                    .foregroundStyle(.white)
-//                                                    .opacity(0.3)
-//                                                    .frame(height: 45)
-//                                                Image(systemName: "shareplay")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: 30)
-//                                                    .foregroundStyle(.white)
-//                                            }
+                                            ZStack {
+                                                RoundedRectangle(cornerRadius: 8)
+                                                    .foregroundStyle(.white)
+                                                    .opacity(0.3)
+                                                    .frame(height: 45)
+                                                Image(systemName: "shareplay")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: 30)
+                                                    .foregroundStyle(.white)
+                                            }
                                         }
                                         .opacity(!(showQueue || showDescription) ? 1 : 0)
                                         .frame(width: 60)
@@ -297,8 +294,8 @@ struct WatchVideoView: View {
                                     })
                                     HStack {
                                         Text("Description")
+                                            .font(.scaledTitle)
                                             .foregroundColor(.gray)
-                                            .font(.caption)
                                         Spacer()
                                     }
                                     .padding([.bottom, .leading])
@@ -306,6 +303,7 @@ struct WatchVideoView: View {
                                         .blendMode(.difference)
                                         .padding(.horizontal)
                                         .foregroundStyle(.white)
+                                        .font(.scaledBody)
                                     Color.clear.frame(height: 15)
                                 }
                             }
@@ -313,10 +311,12 @@ struct WatchVideoView: View {
                         }
                         .opacity(showDescription ? 1 : 0)
                         .frame(height: showDescription ? geometry.size.height * 0.85 - 120 : 0)
+                        
                         PlayingQueueView()
                             .opacity(showQueue ? 1 : 0)
                             .frame(height: showQueue ? geometry.size.height * 0.85 - 120 - 50 : 0)
                             .environment(Theme.shared)
+                            .background(Color.clear)
                         Spacer()
                         HStack {
                             
@@ -365,6 +365,7 @@ struct WatchVideoView: View {
                             Spacer()
 #endif
 //
+#if !os(visionOS)
                             Button {
                                 withAnimation(.interpolatingSpring(duration: 0.3)) {
                                     if showDescription {
@@ -386,25 +387,7 @@ struct WatchVideoView: View {
                                 }
                                 .frame(width: 30, height: 30)
                             }
-//                            #if os(visionOS)
-//                            Spacer()
-//                            Button {
-//                                dismiss()
-//                            } label: {
-//                                ZStack {
-//                                    RoundedRectangle(cornerRadius: 6)
-//                                        .foregroundStyle(showQueue ? Color(uiColor: UIColor.lightGray) : .clear)
-//                                        .animation(nil, value: 0)
-//                                    Image(systemName: "xmark.app")
-//                                        .resizable()
-//                                        .foregroundStyle(showQueue ? .white : Color(uiColor: UIColor.lightGray))
-//                                        .scaledToFit()
-//                                        .frame(width: showQueue ? 18 : 22)
-//                                        .blendMode(showQueue ? .exclusion : .screen)
-//                                }
-//                                .frame(width: 30, height: 30)
-//                            }
-//                            #endif
+#endif
                             Spacer()
                         }
 
@@ -413,49 +396,28 @@ struct WatchVideoView: View {
                     }
                     Spacer()
                 }
-#if targetEnvironment(macCatalyst)
-                .onChange(of: VPM.currentItem) { _ ,_ in
-                    withAnimation {
-                        animatePadding = VPM.currentItem != nil ? 70 : 0
-                    }
-                }
-                .padding(.bottom, animatePadding)
-#endif
                 .zIndex(1)
             }
         }
         .onReceive(of: .atwyDismissPlayerSheet, handler: { _ in
-#if !targetEnvironment(macCatalyst)
             dismiss()
-#endif
         })
-        .popover(isPresented: $isDraftsSheetDisplayed) {
+        /// this is only for #if targetEnvironment(macCatalyst)
+        .onReceive(of: .reloadVideo, handler: { notification in
+            if let videoId = notification.userInfo?["videoId"] as? String {
+                loadVideoWithId(videoId)
+            }
+        })
+        .sheet(isPresented: $isDraftsSheetDisplayed) {
             if UIDevice.current.userInterfaceIdiom == .phone {
                 SleepTimerView()
                     .presentationDetents([.medium])
             } else {
                 SleepTimerView()
-                    .frame(width: 400, height: 500)
+                    .presentationCompactAdaptation((.popover))
+                    .presentationDetents([.medium])
             }
         }
-//        .task {
-//            if let channelAvatar = VPM.streamingInfos.channel.thumbnails.first?.url {
-//                URLSession.shared.dataTask(with: channelAvatar, completionHandler: { data, _, _ in
-//                    if let data = data, let image = UIImage(data: data) {
-//                        DispatchQueue.main.async {
-//                            makeGradient(image: image)
-//                        }
-//                    } else {
-//                        print("Couldn't get/create image")
-//                    }
-//                })
-//                .resume()
-//            } else if let channelAvatarData = VPM.channelAvatarData, let image = UIImage(data: channelAvatarData) {
-//                DispatchQueue.main.async {
-//                    makeGradient(image: image)
-//                }
-//            }
-//        }
         .task {
             DispatchQueue.main.async {
                 withAnimation(.easeInOut(duration: 14).repeatForever(autoreverses: true)) {
@@ -585,7 +547,7 @@ struct WatchVideoView: View {
                     HStack {
                         Text("Chapters")
                             .foregroundColor(.gray)
-                            .font(.caption)
+                            .font(.scaledTitle)
                         Spacer()
                     }
                     .padding([.bottom, .leading])
@@ -658,7 +620,7 @@ struct WatchVideoView: View {
                                             .opacity(0.9)
                                             .foregroundColor(.black)
                                         Text(timeDescription)
-                                            .bold()
+                                            .font(.scaledCaption)
                                             .foregroundColor(.white)
                                             .font(.system(size: 14))
                                     }
@@ -669,7 +631,7 @@ struct WatchVideoView: View {
                             if let title = chapter.title {
                                 HStack {
                                     Text(title)
-                                        .font(.system(size: 13))
+                                        .font(.scaledSubheadline)
                                         .multilineTextAlignment(.leading)
                                         .minimumScaleFactor(0.05)
                                         .foregroundStyle(.white)

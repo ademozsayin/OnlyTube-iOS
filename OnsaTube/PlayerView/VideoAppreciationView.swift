@@ -9,7 +9,9 @@
 import SwiftUI
 import DesignSystem
 
+
 struct VideoAppreciationView: View {
+    
     @Environment(\.colorScheme) private var colorScheme
     @State private var showingConfirmation: Bool = false
     @ObservedObject private var APIM = APIKeyModel.shared
@@ -143,5 +145,4 @@ extension View {
         
     }
 }
-
 #endif

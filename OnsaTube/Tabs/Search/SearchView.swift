@@ -28,6 +28,96 @@ import SwiftData
 
 let YTM = YouTubeModel()
 
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+
+
+extension View {
+    @ViewBuilder
+    func shimmer(_ config: ShimmerConfig) -> some View {
+        self
+            .modifier(ShimmerEffectHelper(config: config))
+    }
+}
+
+// Shimmer effect helper
+fileprivate struct ShimmerEffectHelper: ViewModifier {
+    
+    var config: ShimmerConfig
+    
+    //MARK: - Animation Properties
+    @State private var moveTo: CGFloat = -0.5
+    
+    func body(content: Content) -> some View {
+        content
+        /// Adding shimmer effect using the mask modifier
+        /// Hiding the normal one and adding the shimmer one instead
+            .hidden()
+            .overlay {
+                Rectangle()
+                    .fill(config.tint)
+                    .mask {
+                        content
+                    }
+                    .overlay {
+                        /// Shimmer
+                        GeometryReader{ geometry in
+                            let size = geometry.size
+                            let extraOffset = size.height / 2.5
+                            Rectangle()
+                                .fill(config.highlight)
+                                .mask {
+                                    /// Gradient for glowing at the center
+                                    Rectangle()
+                                        .fill(.linearGradient(colors: [.white.opacity(0),
+                                                                       config.highlight.opacity(config.highlightOpactity)
+                                                                      ],
+                                                              startPoint: .top,
+                                                              endPoint: .bottom)
+                                        )
+                                    /// Blur
+                                        .blur(radius: config.blur)
+                                        .rotationEffect(.degrees(-70))
+                                    /// Move to start
+                                        .offset(x: moveTo > 0 ? extraOffset : -extraOffset)
+                                        .offset(x: size.width * moveTo)
+                                    
+                                } //: MASK RECTANGLE
+                        } //: GEOMETRY
+                        .mask {
+                            content
+                        }
+                    }
+                    .onAppear {
+                        DispatchQueue.main.async {
+                            moveTo = 0.7
+                        }
+                    }
+                    .animation(.linear(duration: config.speed).repeatForever(autoreverses: false), value: moveTo)
+            } //: OVERLAY
+    }
+    
+}
+
+struct ShimmerConfig {
+    
+    var tint: Color
+    var highlight: Color
+    var blur: CGFloat = 0
+    var highlightOpactity: CGFloat = 1
+    var speed: CGFloat = 2
+    
+}
+
+
+
 @MainActor
 struct SearchView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -79,7 +169,6 @@ struct SearchView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ZStack(alignment: .top) {
-    
                 GeometryReader { geometry in
                     Image("bg2")
                         .resizable()
@@ -91,8 +180,11 @@ struct SearchView: View {
                         
                         switch model.state {
                             case .loading:
-                                loadingView
-                                
+                                ScrollView {
+                                    loadingView
+                                }
+                                .allowsHitTesting(false)
+
                             case .empty:
                                 emptyView
                                 
@@ -101,25 +193,25 @@ struct SearchView: View {
                                 
                             case .result:
                                 resultView
-                                
-                                    .onChange(of: viewModel.scrollToIndex) { _, newValue in
-                                        if let collectionView,
-                                           let newValue,
-                                           let rows = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0),
-                                           rows > newValue
-                                        {
-                                            collectionView.scrollToItem(at: .init(row: newValue, section: 0),
-                                                                        at: .top,
-                                                                        animated: viewModel.scrollToIndexAnimated)
-                                            viewModel.scrollToIndexAnimated = false
-                                            viewModel.scrollToIndex = nil
-                                        }
-                                    }
-                                    .onChange(of: scrollToTopSignal) {
-                                        withAnimation {
-                                            proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
-                                        }
-                                    }
+//                                
+//                                    .onChange(of: viewModel.scrollToIndex) { _, newValue in
+//                                        if let collectionView,
+//                                           let newValue,
+//                                           let rows = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0),
+//                                           rows > newValue
+//                                        {
+//                                            collectionView.scrollToItem(at: .init(row: newValue, section: 0),
+//                                                                        at: .top,
+//                                                                        animated: viewModel.scrollToIndexAnimated)
+//                                            viewModel.scrollToIndexAnimated = false
+//                                            viewModel.scrollToIndex = nil
+//                                        }
+//                                    }
+//                                    .onChange(of: scrollToTopSignal) {
+//                                        withAnimation {
+//                                            proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
+//                                        }
+//                                    }
                                 
                         }
                         
@@ -174,15 +266,43 @@ struct SearchView: View {
                     }
                 }
             }
-            
         }
     }
     
+    @MainActor
     private var loadingView: some View {
         VStack(alignment: .center) {
-            Spacer()
-            LoadingView(customText: drafts.isEmpty ? "Waiting for your selection" : "Preparing")
-                .frame(maxWidth: .infinity, alignment: .center)
+//            LoadingView(customText: drafts.isEmpty ? "Waiting for your selection" : "Preparing")
+//                .frame(maxWidth: .infinity, alignment: .center)
+//            
+            ForEach(0..<10) { _ in
+                VStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 180)
+                    
+                    HStack {
+                        Circle()
+                            .frame(height: 30)
+                        
+                        VStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(height: 10)
+                                .padding(.trailing, 50)
+                            
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(height: 10)
+                                .padding(.trailing, 100)
+                        }
+                      
+                        
+                    }
+                }
+                .padding()
+                .padding(.horizontal)
+                .shimmer(.init(tint: theme.tintColor.opacity(0.8), highlight: .white, blur: 25))
+            }
+            
             if drafts.isEmpty {
                 Button {
                     routerPath.presentedSheet = .categorySelection
@@ -197,6 +317,54 @@ struct SearchView: View {
         }
     }
     
+    private var shimmerView: some View {
+      
+           
+                HStack(alignment: .top) {
+                    Image("thumbnail")
+                        .resizable()
+                        .frame(width: 120, height: 80)
+                        .cornerRadius(10)
+                    
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("Intro to Economics: Crash Course Econ #1")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.white)
+                            .lineLimit(2)
+                            .truncationMode(.tail)
+                        
+                        Text("CrashCourse • 7.7M views • 9 years ago")
+                            .font(.system(size: 14))
+                            .foregroundColor(.gray)
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Spacer()
+                            Text("12:09")
+                                .font(.system(size: 14))
+                                .bold()
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 3)
+                                .background(Color.yellow)
+                                .cornerRadius(5)
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .padding(.leading, 8)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "star")
+                        .foregroundColor(.white)
+                        .padding(.top, 5)
+                }
+                .padding(10)
+                .background(Color.black)
+                .cornerRadius(10)
+           
+       
+    }
     private var emptyView: some View {
         
         GeometryReader { geometry in
@@ -286,8 +454,7 @@ struct SearchView: View {
                         self.shouldReloadScrollView = true
                     })
                 }
-            },
-            routerPath: routerPath
+            }
         )
     }
     

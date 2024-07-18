@@ -29,6 +29,9 @@ extension View {
                     AccountSettingsView(account: account, appAccount: appAccount)
                 case .accountDetailWithAccount(let account):
                     AccountSettingsView(account: account, appAccount: account)
+//                case .miniPlayer(let videoId):
+//                    WatchVideoView(videoId: videoId)
+//                        .withEnvironments()
             }
         }
     }

@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
-#if !os(macOS)
-import InfiniteScrollViews
-#endif
+//#if !os(macOS)
+//import InfiniteScrollViews
+//#endif
 import YouTubeKit
 import DesignSystem
 import Env
 
 struct PlaylistDetailsView: View {
-//    @Environment(\.colorScheme) private var colorScheme
     @Environment(Theme.self) private var theme
     @Environment(\.dismiss) private var dismiss
     let playlist: YTPlaylist
@@ -25,17 +24,18 @@ struct PlaylistDetailsView: View {
     @ObservedObject private var VPM = VideoPlayerModel.shared
     @ObservedObject private var network = NetworkReachabilityModel.shared
     private let changeIndex: Int = 0
-    
-    @Environment(RouterPath.self) private var router
-
-    
     var body: some View {
         GeometryReader { geometry in
             //    ScrollView {
             let topPaddingForInformations: CGFloat = (playlist.channel?.name != nil ? 30 : 0) + ((model.playlistInfos?.viewCount != nil || playlist.timePosted != nil || model.playlistInfos?.videoCount != nil) ? 30 : 0)
             VStack(spacing: 0) {
                 if model.isFetchingInfos {
-                    LoadingView()
+//                    LoadingView()
+                    ScrollView {
+                        loadingView
+                    }
+                    .allowsHitTesting(false)
+                    
                 } else {
                     VStack {
                         if model.playlistInfos?.results != nil {
@@ -72,8 +72,7 @@ struct PlaylistDetailsView: View {
                                 shouldReloadScrollView: $shouldReloadScrollView,
                                 fetchMoreResultsAction: {
                                     model.fetchPlaylistContinuation()
-                                },
-                                routerPath: router
+                                }
                             )
                         }
                     }
@@ -81,28 +80,29 @@ struct PlaylistDetailsView: View {
                         VStack {
                             if let channelName = playlist.channel?.name {
                                 Text(channelName)
-                                    .font(.title3)
+                                    .font(.scaledHeadline)
+                                    .lineLimit(3)
                                     .frame(height: 30)
                             }
                             if model.playlistInfos?.viewCount != nil || playlist.timePosted != nil || model.playlistInfos?.videoCount != nil {
                                 HStack {
                                     Text(model.playlistInfos?.videoCount ?? "")
                                         .foregroundColor(theme.labelColor)
-                                        .font(.footnote)
+                                        .font(.scaledFootnote)
                                         .opacity(0.5)
                                     if (model.playlistInfos?.viewCount != nil || playlist.timePosted != nil) && model.playlistInfos?.videoCount != nil {
                                         Divider()
                                     }
                                     Text(model.playlistInfos?.viewCount ?? "")
                                         .foregroundColor(theme.labelColor)
-                                        .font(.footnote)
+                                        .font(.scaledFootnote)                                       
                                         .opacity(0.5)
                                     if model.playlistInfos?.viewCount != nil, playlist.timePosted != nil {
                                         Divider()
                                     }
                                     Text(playlist.timePosted ?? "")
                                         .foregroundColor(theme.labelColor)
-                                        .font(.footnote)
+                                        .font(.scaledFootnote)
                                         .opacity(0.5)
                                 }
                                 .frame(height: 20)
@@ -112,7 +112,7 @@ struct PlaylistDetailsView: View {
                         //}
                         //.frame(width: geometry.size.width, height: topPaddingForInformations)
                     }, height: topPaddingForInformations)
-                    .padding(.top, topPaddingForInformations)
+                    //.padding(.top, topPaddingForInformations)
                 }
                 if VPM.currentItem != nil {
                     Color.clear.frame(width: 0, height: 70)
@@ -125,43 +125,75 @@ struct PlaylistDetailsView: View {
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
-#if !os(macOS)
+#if !targetEnvironment(macCatalyst)
         .navigationBarTitleDisplayMode(.inline)
 #endif
-        //        .navigationTitle(navigationTitle)
         .navigationTitle(playlist.title ?? "")
         .toolbar(content: {
-#if os(macOS)
-            ToolbarItem(placement: .secondaryAction) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                }
-            }
-            // TODO: add the share option here too
-#else
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    dismiss()
-                } label: {
-                    Image(systemName: "chevron.left")
-                }
-            }
-//            if self.playlist.playlistId.hasPrefix("PL") || self.playlist.playlistId.hasPrefix("VLPL") { // avoid private playlists like history and watch later
-//                ToolbarItem(placement: .topBarTrailing) {
-//                    Button {
-////                        self.playlist.showShareSheet()
-//                    } label: {
-//                        Image(systemName: "square.and.arrow.up")
-//                    }
-//                }
-//            }
-#endif
+            toolbarContent
         })
         .navigationBarBackButtonHidden(true)
-//        .customNavigationTitleWithRightIcon {
-//            ShowSettingsButtonView()
+        .customNavigationTitleWithRightIcon {
+            ShowSettingsButtonView()
+        }
+    }
+    
+    @MainActor
+    private var loadingView: some View {
+        VStack(alignment: .center) {
+            //            LoadingView(customText: drafts.isEmpty ? "Waiting for your selection" : "Preparing")
+            //                .frame(maxWidth: .infinity, alignment: .center)
+            //
+            ForEach(0..<10) { _ in
+                VStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 180)
+                    
+                    HStack {
+                        Circle()
+                            .frame(height: 30)
+                        
+                        VStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(height: 10)
+                                .padding(.trailing, 50)
+                            
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(height: 10)
+                                .padding(.trailing, 100)
+                        }
+                        
+                        
+                    }
+                }
+                .padding()
+                .padding(.horizontal)
+                .shimmer(.init(tint: theme.tintColor.opacity(0.8), highlight: .white, blur: 25))
+            }
+        }
+    }
+    
+    @ToolbarContentBuilder
+    private var toolbarContent: some ToolbarContent {
+        
+        ToolbarItem(placement: .topBarLeading) {
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.left")
+            }
+        }
+        
+        //TODO: - Share deeplink integration
+//        if self.playlist.playlistId.hasPrefix("PL") || self.playlist.playlistId.hasPrefix("VLPL") {
+//            ToolbarItem(placement: .topBarTrailing) {
+//                Button(action: {
+//                    self.playlist.showShareSheet()
+//                }) {
+//                    Image(systemName: "square.and.arrow.up")
+//                }
+//            }
 //        }
     }
     
@@ -269,6 +301,7 @@ struct PlaylistDetailsView: View {
         }
     }
 }
+
 
 
 

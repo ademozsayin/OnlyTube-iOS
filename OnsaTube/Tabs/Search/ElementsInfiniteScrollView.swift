@@ -20,7 +20,6 @@ struct ElementsInfiniteScrollView: View {
     var refreshAction: ((@escaping () -> Void) -> Void)?
     var fetchMoreResultsAction: (() -> Void)?
     
-    let routerPath: RouterPath
 
     
     var body: some View {

@@ -8,7 +8,7 @@ public class SoundEffectManager {
     public static let shared: SoundEffectManager = .init()
     
     public enum SoundEffect: String, CaseIterable {
-        case pull, refresh, tootSent, tabSelection, bookmark, boost, favorite, share
+        case pull, refresh, tootSent, tabSelection, bookmark, boost, favorite, share, opening, opening2, opening3
     }
     
     private var systemSoundIDs: [SoundEffect: SystemSoundID] = [:]

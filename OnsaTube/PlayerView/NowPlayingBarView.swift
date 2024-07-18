@@ -46,20 +46,24 @@ struct NowPlayingBarView: View {
                                     .frame(height: 70)
                                     .onAppear {
                                         checkAppState()
-//#if targetEnvironment(macCatalyst)
-//                                        if NSApplication.shared.isActive {
-//                                            withAnimation {
-//                                                isSheetPresented = true
-//                                            }
-//                                        }
-////#else
-//                                        if UIApplication.shared.applicationState == .background {
-//                                            withAnimation {
-//                                                isSheetPresented = true
-//                                            }
-//                                        }
-//#endif
+#if targetEnvironment(macCatalyst)
+                                        VPM.controller?.player = VPM.player
+                                        print("VideoPlayer onAppear called. Player set to AVPlayerViewController.")
+#endif
                                     }
+                                    .onTapGesture{
+                                        print("tapped")
+#if targetEnvironment(macCatalyst)
+                                        if let player = VPM.controller?.player {
+                                            if player.isPlaying {
+                                                VPM.controller?.player?.pause()
+                                            } else {
+                                                VPM.controller?.player?.play()
+                                            }
+                                        }
+#endif
+                                    }
+                          
                             } else if let thumbnail = VPM.currentItem?.video.thumbnails.first {
                                 CachedAsyncImage(url: thumbnail.url, content: { image, _ in
                                     switch image {
@@ -83,7 +87,7 @@ struct NowPlayingBarView: View {
                                 Text(currentVideoTitle)
                                     .truncationMode(.tail)
                                     .foregroundColor(theme.labelColor)
-                                    .font(.subheadline)
+                                    .font(.scaledSubheadline)
                                     .frame(alignment: .leading)
                                     .multilineTextAlignment(.leading)
                             } else {

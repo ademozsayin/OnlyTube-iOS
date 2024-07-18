@@ -32,7 +32,7 @@ struct WatchInGroupActivityMetadata: Codable, Equatable {
 }
 
 @MainActor
-class CoordinationManager {
+class CoordinationManager: ObservableObject {
     static let shared = CoordinationManager()
 
     private var subscriptions = Set<AnyCancellable>()
@@ -94,24 +94,30 @@ class CoordinationManager {
                 switch await activity.prepareForActivation() {
 
                 case .activationDisabled:
+                        print("activationDisabled")
                     // Playback coordination isn't active, or the user prefers to play the
                     // movie apart from the group. Enqueue the movie for local playback only.
                     self.enqueuedVideo = selectedVideo
 
                 case .activationPreferred:
+                        print("activationPreferred")
                     // The user prefers to share this activity with the group.
                     // The app enqueues the movie for playback when the activity starts.
                     do {
                         _ = try await activity.activate()
+                        print("Activity activated successfully")
+
                     } catch {
                         print("Unable to activate the activity: \(error)")
                     }
 
                 case .cancelled:
+                        print("Activity activation cancelled")
                     // The user cancels the operation. Do nothing.
                     break
 
-                default: ()
+                default:
+                        print("Unknown state during activity preparation")
                 }
             }
         }

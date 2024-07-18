@@ -36,8 +36,6 @@ struct DisplaySettingsView: View {
     
     @State private var isFontSelectorPresented = false
     
-
-    
     var body: some View {
         ZStack(alignment: .top) {
             Form {
@@ -51,7 +49,7 @@ struct DisplaySettingsView: View {
                    
                 themeSection
 #endif
-//                fontSection
+                fontSection
 //                layoutSection
                 platformsSection
                 resetSection
@@ -135,6 +133,60 @@ struct DisplaySettingsView: View {
         } footer: {
             if theme.followSystemColorScheme {
                 Text("settings.display.section.theme.footer")
+            }
+        }
+#if !os(visionOS)
+        .listRowBackground(theme.primaryBackgroundColor)
+#endif
+    }
+    
+    private var fontSection: some View {
+        Section("settings.display.section.font") {
+            Picker("settings.display.font", selection: .init(get: { () -> FontState in
+                if theme.chosenFont?.fontName == "OpenDyslexic-Regular" {
+                    return FontState.openDyslexic
+                } else if theme.chosenFont?.fontName == "AtkinsonHyperlegible-Regular" {
+                    return FontState.hyperLegible
+                } else if theme.chosenFont?.fontName == ".AppleSystemUIFontRounded-Regular" {
+                    return FontState.SFRounded
+                }
+                return theme.chosenFontData != nil ? FontState.custom : FontState.system
+            }, set: { newValue in
+                switch newValue {
+                    case .system:
+                        theme.chosenFont = nil
+                    case .openDyslexic:
+                        theme.chosenFont = UIFont(name: "OpenDyslexic", size: 1)
+                    case .hyperLegible:
+                        theme.chosenFont = UIFont(name: "Atkinson Hyperlegible", size: 1)
+                    case .SFRounded:
+                        theme.chosenFont = UIFont.systemFont(ofSize: 1).rounded()
+                    case .custom:
+                        isFontSelectorPresented = true
+                }
+            })) {
+                ForEach(FontState.allCases, id: \.rawValue) { fontState in
+                    Text(fontState.title).tag(fontState)
+                }
+            }
+            .navigationDestination(isPresented: $isFontSelectorPresented, destination: { FontPicker() })
+            
+            VStack {
+                Slider(value: $localValues.fontSizeScale, in: 0.5 ... 1.5, step: 0.1)
+                Text("settings.display.font.scaling-\(String(format: "%.1f", localValues.fontSizeScale))")
+                    .font(.scaledBody)
+            }
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading]
+            }
+            
+            VStack {
+                Slider(value: $localValues.lineSpacing, in: 0.4 ... 10.0, step: 0.2)
+                Text("settings.display.font.line-spacing-\(String(format: "%.1f", localValues.lineSpacing))")
+                    .font(.scaledBody)
+            }
+            .alignmentGuide(.listRowSeparatorLeading) { d in
+                d[.leading]
             }
         }
 #if !os(visionOS)

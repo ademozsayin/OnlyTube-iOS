@@ -29,4 +29,7 @@ extension Notification.Name {
     static let atwyDismissPlayerSheet = Notification.Name("DismissPlayerSheet")
     
     static func atwyDownloadingChanged(for videoId: String) -> Notification.Name { return .init("DownloadingChanged\(videoId)") }
+    
+    static let reloadVideo = Notification.Name("reloadVideo")
+
 }

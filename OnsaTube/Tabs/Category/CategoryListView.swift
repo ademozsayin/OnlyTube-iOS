@@ -38,12 +38,15 @@ struct CategoryListView: View {
                     Spacer()
                     VStack(alignment: .leading) {
                         Text("Selected Items:")
-                            .font(.headline)
+//                            .font(.headline)
+                            .font(.scaledHeadline)
+
                             .padding(.bottom, 5)
                         
                         
                         ForEach(selectedItems, id: \.self ) { item in
                             Text(subcategoryName(for: item))
+                                .font(.scaledBody)
                                 .padding()
                                 .background(theme.tintColor.opacity(0.1))
                                 .cornerRadius(10)
@@ -68,6 +71,7 @@ struct CategoryListView: View {
                             .background(theme.secondaryBackgroundColor)
                             .foregroundColor(theme.tintColor)
                             .cornerRadius(10)
+                            .font(.scaledBody)
                     }
                 }
                
@@ -209,12 +213,11 @@ struct CongratulationView: View {
     var body: some View {
         VStack {
             Text("Congratulations!")
-                .font(.title)
-                .fontWeight(.bold)
+                .font(.scaledTitle)
                 .padding()
             
             Text("You have successfully selected all relevant categories.")
-                .font(.body)
+                .font(.scaledBody)
                 .foregroundColor(.gray)
                 .padding()
             
@@ -233,7 +236,7 @@ struct CategoryItemView: View {
     var body: some View {
         HStack {
             Text(categoryName)
-                .font(.headline)
+                .font(.scaledHeadline)
                 .padding()
                 .foregroundColor(theme.labelColor)
                 .padding(.horizontal, 10)

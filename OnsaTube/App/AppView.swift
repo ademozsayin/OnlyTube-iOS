@@ -8,6 +8,7 @@ import DesignSystem
 import Env
 import SwiftUI
 import SwiftUIIntrospect
+import YouTubeKit
 
 @MainActor
 struct AppView: View {
@@ -39,32 +40,43 @@ struct AppView: View {
 
     @ObservedObject var PM = PopupsModel.shared
 
-   
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var showSplash = true
     
     var body: some View {
-#if os(visionOS)
-        tabBarView
-#else
-        if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
-            ZStack(alignment: .bottom) {
-                sidebarView
-                if !userPreferences.hasAcceptedDisclaimer {
-                    DisclaimerView()
-                        .background(Color.fenerbahceWhite)
+        if showSplash {
+            SplashView()
+                .task {
+                    try? await Task.sleep(nanoseconds: 2_000_000_000) // 1 second
+                    showSplash = false
                 }
-            }
         } else {
-            ZStack(alignment: .bottom) {
-                tabBarView
-                if !userPreferences.hasAcceptedDisclaimer {
-                    DisclaimerView()
-                        .background(Color.fenerbahceWhite)
+#if os(visionOS)
+            tabBarView
+#else
+            if UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.userInterfaceIdiom == .mac {
+                ZStack(alignment: .bottom) {
+                    sidebarView
+                    if !userPreferences.hasAcceptedDisclaimer {
+                        DisclaimerView()
+                            .background(Color.fenerbahceWhite)
+                    }
                 }
+            } else {
+                ZStack(alignment: .bottom) {
+                    tabBarView
+                    if !userPreferences.hasAcceptedDisclaimer {
+                        DisclaimerView()
+                            .background(Color.fenerbahceWhite)
+                    }
+                }
+                
             }
-            
-        }
 #endif
+        }
     }
+    
     var availableTabs: [Tab] {
         guard let _ = authenticationManager.currentAccount else {
             return Tab.loggedOutTab()
@@ -317,10 +329,26 @@ struct AppView: View {
       
         WatchVideoView(videoId: nil)
             .environment(\.isSecondaryColumn, true)
+            .environment(Theme.shared)
             .id(authenticationManager.currentAccount?.uid)
             .frame(maxWidth: .secondaryColumnWidth)
-            .environment(Theme.shared)
+            .onChange(of: VPM.loadingVideo) { _, newVideo in
+                // Automatically update the video when VPM.loadingVideo changes
+                if let newVideo = newVideo {
+                    VPM.loadVideo(video: newVideo)
+                }
+            }
+    }
+    
+    private func handleVideoLoading(_ newVideo: YTVideo?) {
+        print("new \(newVideo?.videoId ?? "nan")" )
+        // Avoid unnecessary reloading if the new video is the same as the current one
+        guard let newVideo = newVideo, newVideo.videoId != VideoPlayerModel.shared.loadingVideo?.videoId else {
+            return
+        }
         
+        // Perform video loading
+        VPM.loadVideo(video: newVideo)
     }
 }
 

@@ -211,10 +211,14 @@
 		B7B012642C4307B6005B1589 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012632C4307B6005B1589 /* WhatsNew.swift */; };
 		B7B012662C43082A005B1589 /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012652C43082A005B1589 /* Announcements.swift */; };
 		B7B012682C4308E9005B1589 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B012672C4308E9005B1589 /* Settings.swift */; };
+		B7B56CB72C489CFC006A368D /* opening.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CB62C489CFC006A368D /* opening.wav */; };
+		B7B56CB92C489F0E006A368D /* opening2.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CB82C489F0E006A368D /* opening2.wav */; };
+		B7B56CBB2C48A2DA006A368D /* opening3.wav in Resources */ = {isa = PBXBuildFile; fileRef = B7B56CBA2C48A2DA006A368D /* opening3.wav */; };
 		B7B8843F2C371D5C0031C523 /* FirebaseDynamicLinks in Frameworks */ = {isa = PBXBuildFile; productRef = B7B8843E2C371D5C0031C523 /* FirebaseDynamicLinks */; };
 		B7B884412C372E740031C523 /* LogInWithEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884402C372E740031C523 /* LogInWithEmailView.swift */; };
 		B7B884442C3776740031C523 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884432C3776740031C523 /* RegisterView.swift */; };
 		B7B884462C3781400031C523 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B884452C3781400031C523 /* RegisterViewModel.swift */; };
+		B7DEA9B42C487210005A2877 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DEA9B32C487210005A2877 /* SplashView.swift */; };
 		B7E6F2DE2C1C787100BEA4BD /* TappablePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */; };
 		B7E7121E2C2DFADB0049A802 /* FavoriteTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E7121D2C2DFADB0049A802 /* FavoriteTab.swift */; };
 		B7E712202C2DFF650049A802 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E7121F2C2DFF650049A802 /* FavoritesView.swift */; };
@@ -320,6 +324,7 @@
 		B74C7A822C3339E300A1CA9C /* GradientBackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackgroundAnimation.swift; sourceTree = "<group>"; };
 		B74C7A842C333AFF00A1CA9C /* RadialEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialEffectView.swift; sourceTree = "<group>"; };
 		B74C7A872C346B1600A1CA9C /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		B74DE82E2C45D1EE00A21C2D /* OnsaTubeDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnsaTubeDebug.entitlements; sourceTree = "<group>"; };
 		B74E96E02C2F11B9003D9D6E /* SortingModeSelectionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingModeSelectionModifier.swift; sourceTree = "<group>"; };
 		B74E96E32C2F21B3003D9D6E /* NotificationsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTab.swift; sourceTree = "<group>"; };
 		B74EEB412C3B609800EADCEC /* Share.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Share.md; sourceTree = "<group>"; };
@@ -486,10 +491,14 @@
 		B7B012632C4307B6005B1589 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		B7B012652C43082A005B1589 /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		B7B012672C4308E9005B1589 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B7B56CB62C489CFC006A368D /* opening.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening.wav; sourceTree = "<group>"; };
+		B7B56CB82C489F0E006A368D /* opening2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening2.wav; sourceTree = "<group>"; };
+		B7B56CBA2C48A2DA006A368D /* opening3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = opening3.wav; sourceTree = "<group>"; };
 		B7B884402C372E740031C523 /* LogInWithEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInWithEmailView.swift; sourceTree = "<group>"; };
 		B7B884432C3776740031C523 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		B7B884452C3781400031C523 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		B7DCCAF92C447E6C00822DAE /* OnsaTubeWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OnsaTubeWidgetsExtension.entitlements; sourceTree = "<group>"; };
+		B7DEA9B32C487210005A2877 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		B7E6F2DD2C1C787100BEA4BD /* TappablePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappablePadding.swift; sourceTree = "<group>"; };
 		B7E7121D2C2DFADB0049A802 /* FavoriteTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTab.swift; sourceTree = "<group>"; };
 		B7E7121F2C2DFF650049A802 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -962,6 +971,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B74DE82E2C45D1EE00A21C2D /* OnsaTubeDebug.entitlements */,
 				B7B0125C2C430581005B1589 /* WhatsNew */,
 				B76EF1472C4062990002A543 /* SleepTimer */,
 				B78754A32C3FB92600348DAC /* IAP */,
@@ -1046,6 +1056,7 @@
 				B767944A2C171C6300A623BE /* SafariRouter.swift */,
 				B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */,
 				B793677A2C2F6C09003AA6E1 /* AlertView.swift */,
+				B7DEA9B32C487210005A2877 /* SplashView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1080,6 +1091,9 @@
 		B7FE95F32C10E78F00402DE1 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
+				B7B56CBA2C48A2DA006A368D /* opening3.wav */,
+				B7B56CB82C489F0E006A368D /* opening2.wav */,
+				B7B56CB62C489CFC006A368D /* opening.wav */,
 				B7FE95FA2C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf */,
 				B7FE95FC2C10E7A600402DE1 /* bookmark.wav */,
 				B7FE95F72C10E7A600402DE1 /* boost.wav */,
@@ -1287,6 +1301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7FE960A2C10E7A600402DE1 /* refresh.wav in Resources */,
+				B7B56CB72C489CFC006A368D /* opening.wav in Resources */,
 				B7FE96022C10E7A600402DE1 /* favorite.wav in Resources */,
 				B7FE96082C10E7A600402DE1 /* bookmark.wav in Resources */,
 				B79C3B592C3E786400EC01C1 /* Assets.xcassets in Resources */,
@@ -1304,6 +1319,8 @@
 				B7FE96062C10E7A600402DE1 /* Atkinson-Hyperlegible-Regular-102.ttf in Resources */,
 				B7FE96092C10E7A600402DE1 /* OpenDyslexic-Regular.otf in Resources */,
 				B76794512C17221500A623BE /* Localizable.xcstrings in Resources */,
+				B7B56CBB2C48A2DA006A368D /* opening3.wav in Resources */,
+				B7B56CB92C489F0E006A368D /* opening2.wav in Resources */,
 				B7FE960B2C10E7A600402DE1 /* tootSent.wav in Resources */,
 				B7FE96012C10E7A600402DE1 /* glass.wav in Resources */,
 				B746B0852C2613F4003D156E /* PRIVACY.MD in Resources */,
@@ -1386,6 +1403,7 @@
 				B7A5E8AF2C2486110038EDE1 /* DownloadOptionsView.swift in Sources */,
 				B7A5E8512C246F4A0038EDE1 /* DownloadedChannel+CoreDataProperties.swift in Sources */,
 				B79B71C82C2A031B00108D6E /* ChannelBannerRectangleView.swift in Sources */,
+				B7DEA9B42C487210005A2877 /* SplashView.swift in Sources */,
 				B7A5E81A2C245FFD0038EDE1 /* YTPlaylistWithData.swift in Sources */,
 				B7A5E8B12C2486110038EDE1 /* DownloadSwipeActionsView.swift in Sources */,
 				B7A5E81D2C2460260038EDE1 /* YTVideo+.swift in Sources */,
@@ -1797,7 +1815,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = OnsaTube/OnsaTube.entitlements;
+				CODE_SIGN_ENTITLEMENTS = OnsaTube/OnsaTubeDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";

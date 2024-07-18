@@ -721,6 +721,9 @@
         }
       }
     },
+    "12:09" : {
+
+    },
     "15 minutes" : {
       "localizations" : {
         "el" : {
@@ -2323,6 +2326,9 @@
         }
       }
     },
+    "asdasd" : {
+
+    },
     "Audio formats" : {
       "localizations" : {
         "el" : {
@@ -2646,6 +2652,7 @@
       }
     },
     "chanel" : {
+      "extractionState" : "stale",
       "localizations" : {
         "el" : {
           "stringUnit" : {
@@ -2925,6 +2932,9 @@
           }
         }
       }
+    },
+    "CrashCourse • 7.7M views • 9 years ago" : {
+
     },
     "Create" : {
       "localizations" : {
@@ -3971,6 +3981,9 @@
         }
       }
     },
+    "Intro to Economics: Crash Course Econ #1" : {
+
+    },
     "It seems you changed the app language." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -4133,6 +4146,12 @@
           }
         }
       }
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
+    },
+    "Key 2" : {
+      "extractionState" : "manual"
     },
     "key0" : {
       "extractionState" : "manual",
@@ -5183,6 +5202,9 @@
         }
       }
     },
+    "OnsaTube" : {
+
+    },
     "other" : {
       "localizations" : {
         "el" : {
@@ -5585,6 +5607,7 @@
       }
     },
     "Preparing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "el" : {
           "stringUnit" : {
@@ -6668,6 +6691,58 @@
         }
       }
     },
+    "settings.display.font" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dashboard Font"
+          }
+        }
+      }
+    },
+    "settings.display.font.custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "settings.display.font.line-spacing-%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line Spacing: %@"
+          }
+        }
+      }
+    },
+    "settings.display.font.scaling-%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font Scaling: %@"
+          }
+        }
+      }
+    },
+    "settings.display.font.system" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
     "settings.display.navigation-title" : {
       "localizations" : {
         "el" : {
@@ -6744,6 +6819,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sıfırla"
+          }
+        }
+      }
+    },
+    "settings.display.section.font" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Font"
           }
         }
       }
@@ -9158,6 +9243,7 @@
       }
     },
     "ss" : {
+      "extractionState" : "stale",
       "localizations" : {
         "el" : {
           "stringUnit" : {

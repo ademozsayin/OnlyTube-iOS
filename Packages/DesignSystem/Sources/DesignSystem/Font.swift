@@ -108,6 +108,14 @@ public extension Font {
     static var scaledCaptionFont: UIFont {
         customUIFont(size: userScaledFontSize(baseSize: caption))
     }
+    
+    static var scaledSplash: Font {
+        customFont(size: userScaledFontSize(baseSize: 36), relativeTo: .body)
+    }
+    
+    static var scaledSplashFont: UIFont {
+        customUIFont(size: userScaledFontSize(baseSize: body * 4))
+    }
 }
 
 public extension UIFont {

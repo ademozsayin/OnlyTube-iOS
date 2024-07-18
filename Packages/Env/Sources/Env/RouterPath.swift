@@ -14,6 +14,9 @@ public enum RouterDestination: Hashable {
     case register
     case accountSettingsWithAccount(account: User, appAccount: User)
     case accountDetailWithAccount(account: User)
+        
+    
+//    case miniPlayer(videoId:String?)
 }
 
 public enum WindowDestinationEditor: Hashable, Codable {
@@ -91,6 +94,7 @@ public enum SettingsStartingPoint {
 @MainActor
 @Observable public class RouterPath {
 
+    // Use a stored property for `openWindow`
     public var urlHandler: ((URL) -> OpenURLAction.Result)?
     
     public var path: [RouterDestination] = []
@@ -149,7 +153,15 @@ public enum SettingsStartingPoint {
             case "watch":
                 if case .success(let sanitizedVideoId) = ParameterValidator.videoIdValidator.handler(component),
                    let sanitizedVideoId = sanitizedVideoId {
+#if targetEnvironment(macCatalyst)
+                    NotificationCenter.default.post(
+                        name: Notification.Name("reloadVideo"),
+                        object: nil,
+                        userInfo: ["videoId": sanitizedVideoId]
+                    )
+#else
                     presentedSheet = .miniPlayer(videoId: sanitizedVideoId)
+#endif
                     return .handled
                 } else {
                     Task {
