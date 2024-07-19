@@ -11,10 +11,13 @@ import YouTubeKit
 public extension DownloadedVideo {
     func toYTVideo() -> YTVideo {
         return YTVideo(
-            id: Int(self.timestamp.timeIntervalSince1970),
-            videoId: self.videoId,
-            title: self.title,
-            channel: self.channel != nil ? .init(channelId: self.channel!.channelId, name: self.channel?.name) : nil,
+            id: Int(self.timestamp?.timeIntervalSince1970 ?? 0), // Provide default value for nil timestamp
+            videoId: self.videoId ?? "", // Provide default value for nil videoId
+            title: self.title ?? "", // Provide default value for nil title
+            channel: self.channel != nil ? .init(
+                channelId: self.channel?.channelId ?? "", // Ensure channel is not nil before accessing channelId
+                name: self.channel?.name ?? "" // Provide default value for nil channel name
+            ) : nil,
             timePosted: self.timePosted,
             timeLength: self.timeLength
         )

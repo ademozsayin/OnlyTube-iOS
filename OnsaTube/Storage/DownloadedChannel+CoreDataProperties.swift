@@ -16,7 +16,7 @@ extension DownloadedChannel {
         return NSFetchRequest<DownloadedChannel>(entityName: "DownloadedChannel")
     }
 
-    @NSManaged public var channelId: String
+    @NSManaged public var channelId: String?
     @NSManaged public var name: String?
     @NSManaged public var thumbnail: Data?
     @NSManaged public var videos: NSSet?
@@ -26,7 +26,7 @@ extension DownloadedChannel {
         let set = videos as? Set<DownloadedVideo> ?? []
         
         return set.sorted {
-            $0.timestamp < $1.timestamp
+            $0.timestamp ?? Date() < $1.timestamp ?? Date()
         }
     }
     
@@ -40,7 +40,7 @@ extension DownloadedChannel {
     
     public var wrapped: WrappedDownloadedChannel {
         return WrappedDownloadedChannel(
-            channelId: self.channelId,
+            channelId: self.channelId ?? "",
             name: self.name,
             thumbnail: self.thumbnail
         )

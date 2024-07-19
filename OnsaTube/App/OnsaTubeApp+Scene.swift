@@ -14,7 +14,6 @@ extension OnsaTubeApp {
     
     var appScene: some Scene {
         WindowGroup(id: "MainWindow") {
-      
             AppView(selectedTab: $selectedTab, appRouterPath: $appRouterPath)
                 .applyTheme(theme)
                 .environment(authenticationManager)
@@ -23,8 +22,6 @@ extension OnsaTubeApp {
                 .environment(pushNotificationsService)
                 .environment(\.isSupporter, isSupporter)
                 .environment(inAppPurchaseManager)
-//                .environment(localeChangeObserver)
-//                .environmentObject(purchaseManager)
                 .onAppear {
                     setupRevenueCat()
                     refreshPushSubs()

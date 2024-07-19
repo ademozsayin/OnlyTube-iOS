@@ -9,69 +9,71 @@ import CoreData
 import CoreSpotlight
 import YouTubeKit
 import UIKit
-
+import CloudKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
     private (set) var spotlightIndexer: YTSpotlightDelegate?
     
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
     
     let context: NSManagedObjectContext
     
     
-    
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "OnsaTube")
-        //        container = NSPersistentCloudKitContainer(name: "Atwy")
-        //        try? container.initializeCloudKitSchema(options: [])
+        // Create and configure a local container variable
+        let localContainer = NSPersistentCloudKitContainer(name: "OnsaTube")
+        
         // Add support to group
         let storeUrl = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.agency.fiable.OnlyJose")!.appendingPathComponent("OnsaTube.sqlite")
-        let storeDescription = NSPersistentStoreDescription()
+        let storeDescription = NSPersistentStoreDescription(url: storeUrl)
         storeDescription.shouldInferMappingModelAutomatically = true
         storeDescription.shouldMigrateStoreAutomatically = true
-        storeDescription.url = storeUrl
-        storeDescription.type = NSSQLiteStoreType
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        container.persistentStoreDescriptions = [storeDescription]
         
+        // CloudKit container options
+        storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.agency.fiable.OnlyJose")
         
-        // End of group support
+        localContainer.persistentStoreDescriptions = [storeDescription]
+        
         if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
+            localContainer.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        let semamphore = DispatchSemaphore(value: 0)
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        // Use a semaphore to ensure synchronous initialization
+        let semaphore = DispatchSemaphore(value: 0)
+        localContainer.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                print("Successfully loaded persistent store at \(storeDescription.url?.absoluteString ?? "Unknown URL")")
                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                print("Unresolved error \(error), \(error.userInfo)")
+                // Check for persistent stores
+                let persistentStoreCoordinator = localContainer.persistentStoreCoordinator
+                if persistentStoreCoordinator.persistentStores.isEmpty {
+                    print("No persistent stores loaded")
+                } else {
+                    print("Persistent stores: \(persistentStoreCoordinator.persistentStores)")
+                }
             }
-            semamphore.signal()
-        })
-        semamphore.wait()
+            semaphore.signal()
+        }
+        semaphore.wait()
         
-        self.spotlightIndexer = YTSpotlightDelegate(forStoreWith: storeDescription, coordinator: container.persistentStoreCoordinator)
-        self.spotlightIndexer?.startSpotlightIndexing()
-        
-        self.context = container.viewContext
+        // Initialize properties after the stores are loaded
+        self.container = localContainer
+        self.context = localContainer.viewContext
         self.context.automaticallyMergesChangesFromParent = true
         self.context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
+        // Initialize the spotlight indexer
+        self.spotlightIndexer = YTSpotlightDelegate(forStoreWith: localContainer.persistentStoreDescriptions.first!, coordinator: localContainer.persistentStoreCoordinator)
+        self.spotlightIndexer?.startSpotlightIndexing()
+        
         NotificationCenter.default.addObserver(forName: NSCoreDataCoreSpotlightDelegate.indexDidUpdateNotification,
                                                object: nil,
-                                               queue: .main) { (notification) in
+                                               queue: .main) { notification in
             let userInfo = notification.userInfo
             let storeID = userInfo?[NSStoreUUIDKey] as? String
             let token = userInfo?[NSPersistentHistoryTokenKey] as? NSPersistentHistoryToken
@@ -80,17 +82,14 @@ struct PersistenceController {
                       "indexing and has processed history token up through \(String(describing: token)).")
             }
         }
-         
     }
 }
 
 class PersistenceModel: ObservableObject {
-
     static let shared = PersistenceModel()
-
+    
     var controller: PersistenceController
     var context: NSManagedObjectContext
-    
     var currentData: PersistenceData
     
     init() {
@@ -100,7 +99,7 @@ class PersistenceModel: ObservableObject {
         self.currentData = getPersistenceData()
         NotificationCenter.default.addObserver(self, selector: #selector(updateContext), name: .atwyCoreDataChanged, object: nil)
     }
-
+    
     @objc func updateContext() {
         Task {
             self.context = controller.context
@@ -126,10 +125,13 @@ class PersistenceModel: ObservableObject {
             let downloads: [PersistenceData.VideoIdAndLocation]
             let favorites: [String]
             do {
-                downloads = try backgroundContext.fetch(downloadsFetchRequest).map({($0.videoId, $0.storageLocation)})
-                favorites = try backgroundContext.fetch(favoritesFetchRequest).map({$0.videoId})
+                downloads = try backgroundContext.fetch(downloadsFetchRequest).compactMap { video in
+                    guard let videoId = video.videoId, let storageLocation = video.storageLocation else { return nil }
+                    return (videoId, storageLocation)
+                }
+                favorites = try backgroundContext.fetch(favoritesFetchRequest).compactMap { $0.videoId }
             } catch {
-                print("Error while refreshing data")
+                print("Error while refreshing data: \(error)")
                 return self.currentData
             }
             
@@ -193,12 +195,12 @@ class PersistenceModel: ObservableObject {
                 try backgroundContext.save()
                 
                 self.currentData.addFavoriteVideo(videoId: video.videoId)
-                /*
-                    NotificationCenter.default.post(
-                        name: .atwyCoreDataChanged,
-                        object: nil
-                    )
-                 */
+                
+                NotificationCenter.default.post(
+                    name: .atwyCoreDataChanged,
+                    object: nil
+                )
+                
                 self.update()
                 
                 DispatchQueue.main.async {
@@ -209,24 +211,22 @@ class PersistenceModel: ObservableObject {
             }
         }
     }
-        
+    
+    // Crop image method
     func cropImage(data: Data) -> Data? {
         guard let uiImage = UIImage(data: data) else { return nil }
         let portionToCut = (uiImage.size.height - uiImage.size.width * 9/16) / 2
         
-        // Scale cropRect to handle images larger than shown-on-screen size
         let cropZone = CGRect(x: 0,
                               y: portionToCut,
                               width: uiImage.size.width,
                               height: uiImage.size.height - portionToCut * 2)
         
-        // Perform cropping in Core Graphics
         guard let cutImageRef: CGImage = uiImage.cgImage?.cropping(to: cropZone)
         else {
             return nil
         }
         
-        // Return image to UIImage
         let croppedImage: UIImage = UIImage(cgImage: cutImageRef)
         return croppedImage.pngData()
     }
@@ -236,23 +236,15 @@ class PersistenceModel: ObservableObject {
         backgroundContext.perform {
             do {
                 let request = FavoriteVideo.fetchRequest()
-                
                 request.predicate = NSPredicate(format: "videoId == %@", video.videoId)
-
                 let result = try backgroundContext.fetch(request)
-                
                 result.forEach({ backgroundContext.delete($0) })
-
-                try backgroundContext.save()
                 
+                try backgroundContext.save()
                 self.currentData.removeFavoriteVideo(videoId: video.videoId)
-                NotificationCenter.default.post(
-                    name: .atwyCoreDataChanged,
-                    object: nil
-                )
+                NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
                 self.update()
             } catch {
-                // handle the Core Data error
                 print(error)
             }
         }
@@ -264,32 +256,24 @@ class PersistenceModel: ObservableObject {
             fetchRequest.returnsObjectsAsFaults = false
             do {
                 let result = try backgroundContext.fetch(fetchRequest)
-                
                 for video in videos {
                     guard let videoIndex = self.currentData.downloadedVideoIds.firstIndex(where: {$0.videoId == video.videoId}), let videoObject = result.first(where: {$0.videoId == video.videoId}) else { return }
-                    
                     videoObject.storageLocation = video.newLocation
                     self.currentData.replaceDownloadedVideoURLAtIndex(videoIndex, by: video.newLocation)
-                    
                 }
-                
                 try backgroundContext.save()
-                
-                NotificationCenter.default.post(
-                    name: .atwyCoreDataChanged,
-                    object: nil
-                )
+                NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
                 self.update()
             } catch {
                 print("Couldn't update URLs: \(error)")
             }
         })
     }
-
+    
     public func checkIfFavorite(video: YTVideo) -> Bool {
         return self.currentData.favoriteVideoIds.contains(where: {$0 == video.videoId})
     }
-        
+    
     public func getDownloadedVideo(videoId: String) -> WrappedDownloadedVideo? {
         let backgroundContext = self.controller.container.newBackgroundContext()
         return backgroundContext.performAndWait {
@@ -317,30 +301,28 @@ class PersistenceModel: ObservableObject {
             
             do {
                 let result = try backgroundContext.fetch(fetchRequest)
-                                
+                
                 for video in result {
-                    if videoIds.contains(video.videoId) {
-                        if FileManager.default.fileExists(atPath: video.storageLocation.path()) {
-                            FileManagerModel.shared.removeVideoDownload(videoId: video.videoId)
+                    guard let videoId = video.videoId, let storageLocation = video.storageLocation else {
+                        continue
+                    }
+                    
+                    if videoIds.contains(videoId) {
+                        if FileManager.default.fileExists(atPath: storageLocation.path()) {
+                            FileManagerModel.shared.removeVideoDownload(videoId: videoId)
                         }
                         
                         if let channel = video.channel, channel.favoritesArray.isEmpty, channel.videosArray.count == 1 {
                             backgroundContext.delete(channel)
                         }
-                        backgroundContext.delete(video)
                         
-                        self.currentData.removeDownloadedVideo(videoId: video.videoId)
+                        backgroundContext.delete(video)
+                        self.currentData.removeDownloadedVideo(videoId: videoId)
                     }
                 }
                 
                 try backgroundContext.save()
-                
-                
-                NotificationCenter.default.post(
-                    name: .atwyCoreDataChanged,
-                    object: nil
-                )
-                 
+                NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
                 self.update()
             } catch {
                 print(error)
@@ -359,32 +341,53 @@ class PersistenceModel: ObservableObject {
         
         mutating func addDownloadedVideo(videoId: String, storageLocation: URL) {
             self.downloadedVideoIds.append((videoId, storageLocation))
-            self.id = UUID()
+            NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
         }
         
         mutating func removeDownloadedVideo(videoId: String) {
             self.downloadedVideoIds.removeAll(where: {$0.videoId == videoId})
-            self.id = UUID()
+            NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
         }
         
-        mutating func replaceDownloadedVideoURLAtIndex(_ index: Int, by newStorageLocation: URL) {
-            if downloadedVideoIds.count > index {
-                self.downloadedVideoIds[index].storageLocation = newStorageLocation
-                self.id = UUID()
-            }
+        mutating func replaceDownloadedVideoURLAtIndex(_ index: Int, by newLocation: URL) {
+            self.downloadedVideoIds[index].storageLocation = newLocation
+            NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
         }
         
         mutating func addFavoriteVideo(videoId: String) {
             self.favoriteVideoIds.append(videoId)
-            self.id = UUID()
+            NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
         }
         
         mutating func removeFavoriteVideo(videoId: String) {
             self.favoriteVideoIds.removeAll(where: {$0 == videoId})
-            self.id = UUID()
+            NotificationCenter.default.post(name: .atwyCoreDataChanged, object: nil)
         }
     }
 }
+
+// MARK: - DownloadImageOperation
+
+extension PersistenceModel {
+    class DownloadImageOperation: Operation {
+        var imageData: Data?
+        private let imageURL: URL
+        
+        init(imageURL: URL) {
+            self.imageURL = imageURL
+            super.init()
+        }
+        
+        override func main() {
+            if isCancelled { return }
+            if let data = try? Data(contentsOf: imageURL) {
+                if isCancelled { return }
+                self.imageData = data
+            }
+        }
+    }
+}
+
 
 class YTSpotlightDelegate: NSCoreDataCoreSpotlightDelegate {
     override func domainIdentifier() -> String {

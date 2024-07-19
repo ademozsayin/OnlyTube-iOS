@@ -15,11 +15,11 @@ extension FavoriteVideo {
         return NSFetchRequest<FavoriteVideo>(entityName: "FavoriteVideo")
     }
 
-    @NSManaged public var videoId: String
+    @NSManaged public var videoId: String?
     @NSManaged public var timeLength: String?
     /// Note: isn't used for the moment
     @NSManaged public var timePosted: String?
-    @NSManaged public var timestamp: Date
+    @NSManaged public var timestamp: Date?
     @NSManaged public var thumbnailData: Data?
     @NSManaged public var title: String?
     @NSManaged public var channel: DownloadedChannel?
@@ -30,10 +30,10 @@ extension FavoriteVideo {
     
     public var wrapped: WrappedFavoriteVideo {
         return WrappedFavoriteVideo(
-            videoId: self.videoId,
+            videoId: self.videoId ?? "",
             timeLength: self.timeLength,
             timePosted: self.timePosted,
-            timestamp: self.timestamp,
+            timestamp: self.timestamp ?? Date(),
             thumbnailData: self.thumbnailData,
             title: self.title
         )
@@ -43,11 +43,11 @@ extension FavoriteVideo {
 extension FavoriteVideo : Identifiable {}
 
 public struct WrappedFavoriteVideo {
-    public var videoId: String
+    public var videoId: String?
     public var timeLength: String?
     /// Note: isn't used for the moment
     public var timePosted: String?
-    public var timestamp: Date
+    public var timestamp: Date?
     public var thumbnailData: Data?
     public var title: String?
 }

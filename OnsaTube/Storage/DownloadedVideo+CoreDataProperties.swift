@@ -16,20 +16,21 @@ extension DownloadedVideo {
         return NSFetchRequest<DownloadedVideo>(entityName: "DownloadedVideo")
     }
     
-    @NSManaged public var videoId: String
+    @NSManaged public var videoId: String?
     
     @NSManaged public var videoDescription: String?
     @NSManaged public var title: String?
-    @NSManaged public var timestamp: Date
+    @NSManaged public var timestamp: Date?
     @NSManaged public var timeLength: String?
     @NSManaged public var timePosted: String?
     @NSManaged public var thumbnail: Data?
-    @NSManaged public var storageLocation: URL
+    @NSManaged public var storageLocation: URL? // Ensure this is optional
 
     @NSManaged public var channel: DownloadedChannel?
     @NSManaged public var chapters: NSSet?
 
     public override func awakeFromInsert() {
+        super.awakeFromInsert()
         timestamp = Date()
     }
     
@@ -43,11 +44,11 @@ extension DownloadedVideo {
     
     public var wrapped: WrappedDownloadedVideo {
         return WrappedDownloadedVideo(
-            videoId: self.videoId,
+            videoId: self.videoId ?? "",
             videoDescription: self.videoDescription,
             title: self.title,
             channel: self.channel?.wrapped,
-            timestamp: self.timestamp,
+            timestamp: self.timestamp ?? Date(),
             timeLength: self.timeLength,
             timePosted: self.timePosted,
             thumbnail: self.thumbnail,
@@ -79,7 +80,7 @@ extension DownloadedVideo : Identifiable {
 }
 
 public struct WrappedDownloadedVideo {
-    public var videoId: String
+    public var videoId: String?
     
     public var videoDescription: String?
     public var title: String?
@@ -88,7 +89,7 @@ public struct WrappedDownloadedVideo {
     public var timeLength: String?
     public var timePosted: String?
     public var thumbnail: Data?
-    public var storageLocation: URL
+    public var storageLocation: URL?
     
     public var chaptersArray: [DownloadedVideoChapter]
 }

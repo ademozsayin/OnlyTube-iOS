@@ -71,15 +71,21 @@ struct FavoritesView: View {
     var sortedVideos: [FavoriteVideo] {
         return self.favorites
             .filter({$0.matchesQuery(search)})
-            .conditionnalFilter(mainCondition: !NM.connected, {PersistenceModel.shared.isVideoDownloaded(videoId: $0.videoId) != nil})
+            .conditionnalFilter(mainCondition: !NM.connected, { PersistenceModel.shared.isVideoDownloaded(videoId: $0.videoId ?? "") != nil })
             .sorted(by: {
+                let timestamp1 = $0.timestamp ?? Date.distantPast // Default to a distant past date if nil
+                let timestamp2 = $1.timestamp ?? Date.distantPast // Default to a distant past date if nil
+                
+                
                 switch (self.PSM.propetriesState[.favoritesSortingMode] as? PreferencesStorageModel.Properties.SortingModes) ?? .oldest {
                     case .newest:
-                        return $0.timestamp > $1.timestamp
+                        return timestamp1 > timestamp2
                     case .oldest:
-                        return $0.timestamp < $1.timestamp
+                        return timestamp1 < timestamp2
                     case .title:
-                        return ($0.title ?? "") < ($1.title ?? "")
+                        let title1 = $0.title ?? ""
+                        let title2 = $1.title ?? ""
+                        return title1 < title2
 //                    case .channelName:
 //                        return ($0.channel?.name ?? "") < ($1.channel?.name ?? "")
                 }

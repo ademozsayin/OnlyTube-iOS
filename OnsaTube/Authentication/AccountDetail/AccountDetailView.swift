@@ -243,21 +243,30 @@ struct AccountDetailView: View {
     
     var sortedVideos: [FavoriteVideo] {
         return self.favorites
-            .filter({$0.matchesQuery(search)})
-            .conditionnalFilter(mainCondition: !NM.connected, {PersistenceModel.shared.isVideoDownloaded(videoId: $0.videoId) != nil})
-            .sorted(by: {
+            .filter { $0.matchesQuery(search) }
+            .conditionnalFilter(mainCondition: !NM.connected, { PersistenceModel.shared.isVideoDownloaded(videoId: $0.videoId ?? "") != nil })
+            .sorted { video1, video2 in
+                // Unwrap optional values with default values
+                let timestamp1 = video1.timestamp ?? Date.distantPast
+                let timestamp2 = video2.timestamp ?? Date.distantPast
+                let title1 = video1.title ?? ""
+                let title2 = video2.title ?? ""
+                
                 switch (self.PSM.propetriesState[.favoritesSortingMode] as? PreferencesStorageModel.Properties.SortingModes) ?? .oldest {
                     case .newest:
-                        return $0.timestamp > $1.timestamp
+                        return timestamp1 > timestamp2
                     case .oldest:
-                        return $0.timestamp < $1.timestamp
+                        return timestamp1 < timestamp2
                     case .title:
-                        return ($0.title ?? "") < ($1.title ?? "")
-                        //                    case .channelName:
-                        //                        return ($0.channel?.name ?? "") < ($1.channel?.name ?? "")
+                        return title1 < title2
+                        // case .channelName:
+                        //     let channelName1 = video1.channel?.name ?? ""
+                        //     let channelName2 = video2.channel?.name ?? ""
+                        //     return channelName1 < channelName2
                 }
-            })
+            }
     }
+
 }
 
 extension View {
