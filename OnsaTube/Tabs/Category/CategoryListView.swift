@@ -74,6 +74,7 @@ struct CategoryListView: View {
                             .font(.scaledBody)
                     }
                 }
+                .frame(maxWidth: .infinity)
                
                 
             } else {
