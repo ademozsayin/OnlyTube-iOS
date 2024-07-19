@@ -48,7 +48,7 @@ struct WatchVideoView: View {
     }
     
     private func loadVideoWithId(_ videoId: String) {
-        VideoInfosResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query : videoId], result: { result in
+        VideoInfosResponse.sendNonThrowingRequest(youtubeModel: YTM, data: [.query : self.videoId ?? videoId], result: { result in
             switch result {
                 case .success(let res):
                     let ytVideo = YTVideo(
