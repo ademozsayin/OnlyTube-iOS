@@ -14,6 +14,7 @@ public enum RouterDestination: Hashable {
     case register
     case accountSettingsWithAccount(account: User, appAccount: User)
     case accountDetailWithAccount(account: User)
+    case loggerSettingsView
         
     
 //    case miniPlayer(videoId:String?)

@@ -22,13 +22,15 @@ public struct AppAccountsSelectorView: View {
 
     @State private var showAlert = false
     
+    @Environment(\.modelContext) private var context
+    @Query(sort: \Draft.creationDate, order: .reverse) var drafts: [Draft]
+
     private var preferredHeight: CGFloat {
         var baseHeight: CGFloat = 480
         baseHeight += CGFloat(60)
         return baseHeight
     }
     
-    @Query(sort: \Draft.creationDate, order: .reverse) var drafts: [Draft]
     
     public init(routerPath: RouterPath,
                 accountCreationEnabled: Bool = true,
@@ -129,6 +131,12 @@ public struct AppAccountsSelectorView: View {
                                     .buttonStyle(SecondaryButtonStyle())
                                 }
                             }
+                        }
+                        
+                        Button(role: .destructive) {
+                            deleteAllDrafts()
+                        } label: {
+                            Text("Clear")
                         }
                     }
                 }
@@ -277,5 +285,19 @@ public struct AppAccountsSelectorView: View {
             showBadge: true
         )
         self.accountsViewModel = viewModel
+    }
+    
+    private func deleteAllDrafts() {
+        for draft in drafts {
+            context.delete(draft)
+        }
+        
+        // Save changes
+        do {
+            try context.save()
+        } catch {
+            // Handle the error appropriately
+            print("Failed to delete drafts: \(error)")
+        }
     }
 }

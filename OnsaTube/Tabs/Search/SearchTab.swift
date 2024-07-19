@@ -25,20 +25,27 @@ struct SearchTab: View {
     @State private var scrollToTopSignal: Int = 0
     @Binding var popToRootTab: Tab
     
+    @ObservedObject private var network = NetworkReachabilityModel.shared
+
     init(popToRootTab: Binding<Tab>) {
         _popToRootTab = popToRootTab
     }
     
     var body: some View {
         NavigationStack(path: $routerPath.path) {
-            SearchView(scrollToTopSignal: $scrollToTopSignal)
-                .toolbar {
-                    toolbarView
-                }
-                .withAppRouter()
-                .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
-                .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
-                .id(authenticationManager.currentAccount?.uid)
+            if network.connected {
+                SearchView(scrollToTopSignal: $scrollToTopSignal)
+                    .toolbar {
+                        toolbarView
+                    }
+                    .withAppRouter()
+                    .withSheetDestinations(sheetDestinations: $routerPath.presentedSheet)
+                    .toolbarBackground(theme.primaryBackgroundColor.opacity(0.30), for: .navigationBar)
+                    .id(authenticationManager.currentAccount?.uid)
+            } else {
+                NoConnectionView()
+            }
+            
         }
         .onChange(of: $popToRootTab.wrappedValue) { oldValue, newValue in
             if newValue == .timeline {

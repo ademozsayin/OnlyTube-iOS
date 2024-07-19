@@ -113,6 +113,7 @@ struct AppView: View {
             
             selectedTab = newTab
         })) {
+          
             ForEach(availableTabs) { tab in
                 tab.makeContentView(selectedTab: $selectedTab, popToRootTab: $popToRootTab)
                     .tabItem {

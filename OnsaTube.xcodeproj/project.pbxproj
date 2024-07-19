@@ -99,6 +99,7 @@
 		B76EF1522C40644A0002A543 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1512C40644A0002A543 /* UIColor+Extension.swift */; };
 		B76EF1542C4066240002A543 /* sleep_button.json in Resources */ = {isa = PBXBuildFile; fileRef = B76EF1532C4066240002A543 /* sleep_button.json */; };
 		B76EF1562C41047C0002A543 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EF1552C41047C0002A543 /* PurchaseManager.swift */; };
+		B771DA4F2C4AB95E00E80916 /* NoConnectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771DA4E2C4AB95E00E80916 /* NoConnectionView.swift */; };
 		B7804CA32C3C0D1C001192B4 /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */; };
 		B7804CA62C3C0F53001192B4 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */; };
 		B7804CA82C3C18B2001192B4 /* AccountDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7804CA72C3C18B2001192B4 /* AccountDetailHeaderView.swift */; };
@@ -108,6 +109,7 @@
 		B79367752C2F265A003AA6E1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B79367742C2F265A003AA6E1 /* KeychainSwift */; };
 		B79367772C2F3495003AA6E1 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = B79367762C2F3495003AA6E1 /* FirebaseMessaging */; };
 		B793677B2C2F6C09003AA6E1 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B793677A2C2F6C09003AA6E1 /* AlertView.swift */; };
+		B79912612C4A91E500665CF8 /* LoggerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79912602C4A91E500665CF8 /* LoggerSettingsView.swift */; };
 		B79B71B22C29C8E600108D6E /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B71B12C29C8E600108D6E /* DisclaimerView.swift */; };
 		B79B71BB2C29D6CA00108D6E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71BA2C29D6CA00108D6E /* FirebaseCrashlytics */; };
 		B79B71BD2C29D6CA00108D6E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B79B71BC2C29D6CA00108D6E /* FirebaseDatabase */; };
@@ -380,6 +382,7 @@
 		B76EF1512C40644A0002A543 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B76EF1532C4066240002A543 /* sleep_button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sleep_button.json; sourceTree = "<group>"; };
 		B76EF1552C41047C0002A543 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		B771DA4E2C4AB95E00E80916 /* NoConnectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoConnectionView.swift; sourceTree = "<group>"; };
 		B77D78B82C2F22BC0020EB96 /* Notifications */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Notifications; sourceTree = "<group>"; };
 		B7804CA22C3C0D1C001192B4 /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
 		B7804CA52C3C0F53001192B4 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 		B78F9E232C40334C00C5ECC4 /* OnsaStorage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OnsaStorage; path = Packages/OnsaStorage; sourceTree = "<group>"; };
 		B79367782C2F661A003AA6E1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B793677A2C2F6C09003AA6E1 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		B79912602C4A91E500665CF8 /* LoggerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerSettingsView.swift; sourceTree = "<group>"; };
 		B79B71B12C29C8E600108D6E /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
 		B79B71C22C29D97D00108D6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B79B71C42C2A028600108D6E /* ChannelDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelDetailsView.swift; sourceTree = "<group>"; };
@@ -789,6 +793,14 @@
 			path = IAP;
 			sourceTree = "<group>";
 		};
+		B79912622C4A91F800665CF8 /* LoggerSettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				B79912602C4A91E500665CF8 /* LoggerSettingsView.swift */,
+			);
+			path = LoggerSettingsView;
+			sourceTree = "<group>";
+		};
 		B79B71C62C2A031300108D6E /* Channel */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +979,7 @@
 		B7FE95B62C10DC9900402DE1 /* OnsaTube */ = {
 			isa = PBXGroup;
 			children = (
+				B79912622C4A91F800665CF8 /* LoggerSettingsView */,
 				B74DE82E2C45D1EE00A21C2D /* OnsaTubeDebug.entitlements */,
 				B7B0125C2C430581005B1589 /* WhatsNew */,
 				B76EF1472C4062990002A543 /* SleepTimer */,
@@ -1053,6 +1066,7 @@
 				B733A67B2C24EFA900E0BDC4 /* SideBarView.swift */,
 				B793677A2C2F6C09003AA6E1 /* AlertView.swift */,
 				B7DEA9B32C487210005A2877 /* SplashView.swift */,
+				B771DA4E2C4AB95E00E80916 /* NoConnectionView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1505,6 +1519,7 @@
 				B733A6792C249A8600E0BDC4 /* PrivateManager.swift in Sources */,
 				B79B71CD2C2A11F000108D6E /* CustomNavigationTitleView.swift in Sources */,
 				B7A5E8392C246CF10038EDE1 /* View+OnReceive.swift in Sources */,
+				B79912612C4A91E500665CF8 /* LoggerSettingsView.swift in Sources */,
 				B7A5E8AB2C2486110038EDE1 /* CancelDownloadContextMenuView.swift in Sources */,
 				B7FE95B82C10DC9900402DE1 /* OnsaTubeApp.swift in Sources */,
 				B7B884462C3781400031C523 /* RegisterViewModel.swift in Sources */,
@@ -1540,6 +1555,7 @@
 				B711498E2C38B3DB00108228 /* ProfileTab.swift in Sources */,
 				B74C7A882C346B1600A1CA9C /* AuthenticationManager.swift in Sources */,
 				B7A5E8332C246B760038EDE1 /* VideoAppreciationView.swift in Sources */,
+				B771DA4F2C4AB95E00E80916 /* NoConnectionView.swift in Sources */,
 				B7B012592C42D68C005B1589 /* TimeExtension.swift in Sources */,
 				B76794972C17628300A623BE /* Notification+OnsaTubeApp.swift in Sources */,
 				B7A5E81F2C2460360038EDE1 /* YTPlaylist+.swift in Sources */,

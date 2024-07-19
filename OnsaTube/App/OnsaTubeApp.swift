@@ -44,11 +44,17 @@ struct OnsaTubeApp: App {
                 .displayFrequency(.immediate),
                 .datastoreLocation(.applicationDefault)
             ])
+           
+//            Task {
+//                FileManagerModel.shared.updateNewDownloadPathsAndCleanUpFiles()
+//            }
+//            if YTM.logger == nil {
+//                YTM.logger = YouTubeModelLogger.shared
+//            }
+            
         } catch {
             print("Error configuring TipKit: \(error)")
         }
-        
-        
     }
     
     var body: some Scene {

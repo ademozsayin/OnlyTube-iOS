@@ -35,11 +35,15 @@ struct SettingsTabs: View {
        
     @State private var startingPoint: SettingsStartingPoint? = nil
     
+    @Environment(\.modelContext) private var context
+    @Query(sort: \Draft.creationDate, order: .reverse) var drafts: [Draft]
+    
     var body: some View {
         NavigationStack(path: $routerPath.path) {
             Form {
                 appSection
                 accountsSection
+                contentsSection
                 generalSection
                 otherSections
             }
@@ -162,6 +166,51 @@ struct SettingsTabs: View {
 #endif
     }
     
+    private var contentsSection: some View {
+        Section {
+            if !drafts.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack {
+                        ForEach(drafts, id:\.self) { draft in
+                            Button {
+                                
+                            } label: {
+                                Text(draft.content)
+                            }
+                            .buttonStyle(SecondaryButtonStyle())
+                        }
+                    }
+                }
+                
+                Button(role: .destructive) {
+                    deleteAllDrafts()
+                } label: {
+                    Text("Clear")
+                }
+            }
+        }
+#if os(visionOS)
+        .foregroundStyle(theme.labelColor)
+#else
+        .listRowBackground(theme.primaryBackgroundColor.opacity(0.4))
+#endif
+        
+    }
+    
+    private func deleteAllDrafts() {
+        for draft in drafts {
+            context.delete(draft)
+        }
+        
+        // Save changes
+        do {
+            try context.save()
+        } catch {
+            // Handle the error appropriately
+            print("Failed to delete drafts: \(error)")
+        }
+    }
+    
     @ViewBuilder
     private var otherSections: some View {
         @Bindable var preferences = preferences
@@ -219,6 +268,10 @@ struct SettingsTabs: View {
             NavigationLink(destination: AboutView()) {
                 Label("settings.app.about", systemImage: "info.circle")
             }
+            
+//            NavigationLink(destination: LoggerSettingsView()) {
+//                Label("Logger", systemImage: "exclamationmark.triangle")
+//            }
             
         } header: {
             Text("settings.section.app")

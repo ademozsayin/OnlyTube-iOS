@@ -116,8 +116,6 @@ struct ShimmerConfig {
     
 }
 
-
-
 @MainActor
 struct SearchView: View {
     @Environment(\.colorScheme) private var colorScheme
@@ -170,52 +168,8 @@ struct SearchView: View {
         ScrollViewReader { proxy in
             ZStack(alignment: .top) {
                 GeometryReader { geometry in
-                    Image("bg2")
-                        .resizable()
-                        .edgesIgnoringSafeArea(.all)
-                        .aspectRatio(contentMode: .fill)
-                        .opacity(preferences.showBackgroundImage ? 1 : 0)
-                    
-                    Group {
-                        
-                        switch model.state {
-                            case .loading:
-                                ScrollView {
-                                    loadingView
-                                }
-                                .allowsHitTesting(false)
-
-                            case .empty:
-                                emptyView
-                                
-                            case .error:
-                                errorView
-                                
-                            case .result:
-                                resultView
-//                                
-//                                    .onChange(of: viewModel.scrollToIndex) { _, newValue in
-//                                        if let collectionView,
-//                                           let newValue,
-//                                           let rows = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0),
-//                                           rows > newValue
-//                                        {
-//                                            collectionView.scrollToItem(at: .init(row: newValue, section: 0),
-//                                                                        at: .top,
-//                                                                        animated: viewModel.scrollToIndexAnimated)
-//                                            viewModel.scrollToIndexAnimated = false
-//                                            viewModel.scrollToIndex = nil
-//                                        }
-//                                    }
-//                                    .onChange(of: scrollToTopSignal) {
-//                                        withAnimation {
-//                                            proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
-//                                        }
-//                                    }
-                                
-                        }
-                        
-                    }
+                   backgroundImageView
+                    statesView
                 }
                 .onChange(of: viewModel.search) { oldValue, newValue in
                     search = newValue
@@ -232,6 +186,7 @@ struct SearchView: View {
                 .onAppear {
                     if drafts.isEmpty && preferences.hasAcceptedDisclaimer {
                         routerPath.presentedSheet = .categorySelection
+                        model.state = .loading
                     } else {
                         
                         search = drafts.map { $0.content }.joined(separator: ", ")
@@ -269,40 +224,63 @@ struct SearchView: View {
         }
     }
     
+    private var backgroundImageView: some View {
+        Image("bg2")
+            .resizable()
+            .edgesIgnoringSafeArea(.all)
+            .aspectRatio(contentMode: .fill)
+            .opacity(preferences.showBackgroundImage ? 1 : 0)
+    }
+    
+    private var statesView: some View {
+        Group {
+            
+            switch model.state {
+                case .loading:
+                    
+                    loadingView
+                    
+                    
+                    
+                case .empty:
+                    emptyView
+                    
+                case .error:
+                    errorView
+                    
+                case .result:
+                    resultView
+                    //
+                    //                                    .onChange(of: viewModel.scrollToIndex) { _, newValue in
+                    //                                        if let collectionView,
+                    //                                           let newValue,
+                    //                                           let rows = collectionView.dataSource?.collectionView(collectionView, numberOfItemsInSection: 0),
+                    //                                           rows > newValue
+                    //                                        {
+                    //                                            collectionView.scrollToItem(at: .init(row: newValue, section: 0),
+                    //                                                                        at: .top,
+                    //                                                                        animated: viewModel.scrollToIndexAnimated)
+                    //                                            viewModel.scrollToIndexAnimated = false
+                    //                                            viewModel.scrollToIndex = nil
+                    //                                        }
+                    //                                    }
+                    //                                    .onChange(of: scrollToTopSignal) {
+                    //                                        withAnimation {
+                    //                                            proxy.scrollTo(ScrollToView.Constants.scrollToTop, anchor: .top)
+                    //                                        }
+                    //                                    }
+                    
+            }
+            
+        }
+    }
+    
     @MainActor
     private var loadingView: some View {
         VStack(alignment: .center) {
 //            LoadingView(customText: drafts.isEmpty ? "Waiting for your selection" : "Preparing")
 //                .frame(maxWidth: .infinity, alignment: .center)
 //            
-            ForEach(0..<10) { _ in
-                VStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 180)
-                    
-                    HStack {
-                        Circle()
-                            .frame(height: 30)
-                        
-                        VStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(height: 10)
-                                .padding(.trailing, 50)
-                            
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(height: 10)
-                                .padding(.trailing, 100)
-                        }
-                      
-                        
-                    }
-                }
-                .padding()
-                .padding(.horizontal)
-                .shimmer(.init(tint: theme.tintColor.opacity(0.8), highlight: .white, blur: 25))
-            }
-            
             if drafts.isEmpty {
                 Button {
                     routerPath.presentedSheet = .categorySelection
@@ -311,60 +289,87 @@ struct SearchView: View {
                 }
                 .buttonStyle(SecondaryButtonStyle())
                 .padding()
-
+                
             }
-            Spacer()
+            ScrollView {
+                ForEach(0..<10) { _ in
+                    VStack {
+                        RoundedRectangle(cornerRadius: 16)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 180)
+                        
+                        HStack {
+                            Circle()
+                                .frame(height: 30)
+                            
+                            VStack {
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(height: 10)
+                                    .padding(.trailing, 50)
+                                
+                                RoundedRectangle(cornerRadius: 5)
+                                    .frame(height: 10)
+                                    .padding(.trailing, 100)
+                            }
+                            
+                            
+                        }
+                    }
+                    .padding()
+                    .padding(.horizontal)
+                    .shimmer(.init(tint: theme.tintColor.opacity(0.8), highlight: .white, blur: 25))
+                }
+            }
+            .allowsHitTesting(false)
         }
     }
     
     private var shimmerView: some View {
       
-           
-                HStack(alignment: .top) {
-                    Image("thumbnail")
-                        .resizable()
-                        .frame(width: 120, height: 80)
-                        .cornerRadius(10)
-                    
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("Intro to Economics: Crash Course Econ #1")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .lineLimit(2)
-                            .truncationMode(.tail)
-                        
-                        Text("CrashCourse • 7.7M views • 9 years ago")
-                            .font(.system(size: 14))
-                            .foregroundColor(.gray)
-                        
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            Text("12:09")
-                                .font(.system(size: 14))
-                                .bold()
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 3)
-                                .background(Color.yellow)
-                                .cornerRadius(5)
-                                .foregroundColor(.black)
-                        }
-                    }
-                    .padding(.leading, 8)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star")
-                        .foregroundColor(.white)
-                        .padding(.top, 5)
-                }
-                .padding(10)
-                .background(Color.black)
+        HStack(alignment: .top) {
+            Image("thumbnail")
+                .resizable()
+                .frame(width: 120, height: 80)
                 .cornerRadius(10)
-           
-       
+            
+            VStack(alignment: .leading, spacing: 5) {
+                Text("Intro to Economics: Crash Course Econ #1")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(.white)
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+                
+                Text("CrashCourse • 7.7M views • 9 years ago")
+                    .font(.system(size: 14))
+                    .foregroundColor(.gray)
+                
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    Text("12:09")
+                        .font(.system(size: 14))
+                        .bold()
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(Color.yellow)
+                        .cornerRadius(5)
+                        .foregroundColor(.black)
+                }
+            }
+            .padding(.leading, 8)
+            
+            Spacer()
+            
+            Image(systemName: "star")
+                .foregroundColor(.white)
+                .padding(.top, 5)
+        }
+        .padding(10)
+        .background(Color.black)
+        .cornerRadius(10)
     }
+    
     private var emptyView: some View {
         
         GeometryReader { geometry in
@@ -464,17 +469,17 @@ struct SearchView: View {
                 model.getVideos(demo: false)
             } else {
                 model.getVideos(search, demo: false)
-                let ytVideo = YTVideo(
-                    videoId: "gO70C5Q_f6Y",
-                    title: "The special One",
-                    thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
-                )
-                
+//                let ytVideo = YTVideo(
+//                    videoId: "gO70C5Q_f6Y",
+//                    title: "The special One",
+//                    thumbnails: [YTThumbnail(url: URL(string: "https://i.ytimg.com/vi/VLFy-a-_wFI/hq720.jpg?sqp=-oaymwEjCOgCEMoBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDhGZLAAHzUFdfBbe2Yx-wS6h3_Dg")!)]
+//                )
+//                
 //                if preferences.enableAutoPlayAtStart && preferences.hasAcceptedDisclaimer  {
 //                    VideoPlayerModel.shared.loadVideo(video: ytVideo, thumbnailData: nil, channelAvatarImageData: nil)
 //                }
                 
-                model.getVideos(searchDemoData, demo: true)
+//                model.getVideos(searchDemoData, demo: true)
             }
             needToReload = false
         }
