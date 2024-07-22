@@ -296,7 +296,7 @@ struct SearchView: View {
                     VStack {
                         RoundedRectangle(cornerRadius: 16)
                             .frame(maxWidth: .infinity)
-                            .frame(height: 180)
+                            .frame(height: 220)
                         
                         HStack {
                             Circle()
@@ -315,7 +315,7 @@ struct SearchView: View {
                             
                         }
                     }
-                    .padding()
+                    .padding(.vertical, 8)
                     .padding(.horizontal)
                     .shimmer(.init(tint: theme.tintColor.opacity(0.8), highlight: .white, blur: 25))
                 }

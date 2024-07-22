@@ -25,7 +25,7 @@ struct SplashView: View {
         if let alternateIconName = UIApplication.shared.alternateIconName {
             return IconSelectorView.Icon(string: alternateIconName).appIconName
         } else {
-            return "AppIcon"
+            return "splashMac"
         }
 #endif
     }
